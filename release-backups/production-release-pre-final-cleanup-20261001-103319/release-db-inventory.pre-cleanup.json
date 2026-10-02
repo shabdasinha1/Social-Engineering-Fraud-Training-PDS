@@ -1,0 +1,695 @@
+{
+  "captured_at": "2026-10-01T05:03:49.603Z",
+  "purpose": "MIGRATION-001 read-only inventory",
+  "mongod_version": "8.3.7",
+  "topology": "replica set \"rs0\"",
+  "server_database_count": 15,
+  "database": "cyber_awareness_training_release",
+  "collections": {
+    "adminusers": {
+      "count": 1,
+      "indexes": [
+        {
+          "name": "_id_",
+          "key": {
+            "_id": 1
+          }
+        },
+        {
+          "name": "usernameNormalised_1",
+          "key": {
+            "usernameNormalised": 1
+          },
+          "unique": true
+        }
+      ],
+      "validator": null,
+      "newest": {
+        "_id": "{\"$oid\":\"6ab76e66f4f15057d9c9b620\"}",
+        "updatedAt": "2026-09-26T07:04:06.742Z",
+        "sha256": "68b6fa40a3762b6e1fd2a57e414c9cae31f2fb061c17d967d7802d69ba92ad81"
+      },
+      "sha256": "97a1756594ca4c8b3541e383b6a35344af29f19d0294a860c22bf89bed0b764e",
+      "ids_sha256": "cea67fc2a0631dc73d5b391988e547051da6531e80dfa9132f2f70604ccca03c"
+    },
+    "assessments": {
+      "count": 0,
+      "indexes": [
+        {
+          "name": "_id_",
+          "key": {
+            "_id": 1
+          }
+        },
+        {
+          "name": "candidate_1",
+          "key": {
+            "candidate": 1
+          }
+        },
+        {
+          "name": "candidate_1_createdAt_-1",
+          "key": {
+            "candidate": 1,
+            "createdAt": -1
+          }
+        },
+        {
+          "name": "candidate_1_status_1",
+          "key": {
+            "candidate": 1,
+            "status": 1
+          }
+        }
+      ],
+      "validator": null,
+      "newest": null,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "ids_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "attempts": {
+      "count": 2,
+      "indexes": [
+        {
+          "name": "_id_",
+          "key": {
+            "_id": 1
+          }
+        },
+        {
+          "name": "profile_id_1",
+          "key": {
+            "profile_id": 1
+          }
+        },
+        {
+          "name": "profile_id_1_started_at_-1",
+          "key": {
+            "profile_id": 1,
+            "started_at": -1
+          }
+        },
+        {
+          "name": "profile_id_1_status_1",
+          "key": {
+            "profile_id": 1,
+            "status": 1
+          }
+        },
+        {
+          "name": "started_at_-1__id_-1",
+          "key": {
+            "started_at": -1,
+            "_id": -1
+          }
+        },
+        {
+          "name": "status_1_expires_at_1",
+          "key": {
+            "status": 1,
+            "expires_at": 1
+          }
+        }
+      ],
+      "validator": null,
+      "newest": {
+        "_id": "{\"$oid\":\"6abc9fa639537f2e38f3b786\"}",
+        "updatedAt": "2026-09-30T05:35:34.174Z",
+        "sha256": "83258009b7bf54f4979f04cddd0a4439103055b0fb79e68b1bd3a44ef2c86705"
+      },
+      "sha256": "c1bb562abb66e8c488e77b82240d73aea82b8893798b50599a88d39d3662bb99",
+      "ids_sha256": "af7e721d91d03e05b7a1fd266762c7579e081fa872c91b03a564e310c2ac5f13"
+    },
+    "auditevents": {
+      "count": 0,
+      "indexes": [
+        {
+          "name": "_id_",
+          "key": {
+            "_id": 1
+          }
+        },
+        {
+          "name": "action_1",
+          "key": {
+            "action": 1
+          }
+        },
+        {
+          "name": "actor_admin_id_1",
+          "key": {
+            "actor_admin_id": 1
+          }
+        },
+        {
+          "name": "idempotency_key_1",
+          "key": {
+            "idempotency_key": 1
+          },
+          "unique": true,
+          "partialFilterExpression": {
+            "idempotency_key": {
+              "$type": "string"
+            }
+          }
+        },
+        {
+          "name": "occurred_at_-1",
+          "key": {
+            "occurred_at": -1
+          }
+        },
+        {
+          "name": "occurred_at_1",
+          "key": {
+            "occurred_at": 1
+          }
+        },
+        {
+          "name": "resource_type_1",
+          "key": {
+            "resource_type": 1
+          }
+        },
+        {
+          "name": "resource_type_1_resource_id_1_occurred_at_-1",
+          "key": {
+            "resource_type": 1,
+            "resource_id": 1,
+            "occurred_at": -1
+          }
+        }
+      ],
+      "validator": null,
+      "newest": null,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "ids_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "candidates": {
+      "count": 1,
+      "indexes": [
+        {
+          "name": "_id_",
+          "key": {
+            "_id": 1
+          }
+        },
+        {
+          "name": "archived_1",
+          "key": {
+            "archived": 1
+          }
+        },
+        {
+          "name": "identifierNormalised_1",
+          "key": {
+            "identifierNormalised": 1
+          },
+          "unique": true
+        }
+      ],
+      "validator": null,
+      "newest": {
+        "_id": "{\"$oid\":\"6ab9f0a6cd198cbe616608b5\"}",
+        "updatedAt": "2026-09-30T05:59:52.640Z",
+        "sha256": "414c16aef4d3c0d766cfb4d0fa6e6d8e0dea7aad0a9c137a746281ad872f4af6"
+      },
+      "sha256": "d783526b7d523805bead1ac793ea3e20ee9f8b3f765172074b405b6ba2910071",
+      "ids_sha256": "94bfbb36a854bb047e92dcee84e49d55203bb46157cdf54d3056f50e95547cff"
+    },
+    "configurations": {
+      "count": 1,
+      "indexes": [
+        {
+          "name": "_id_",
+          "key": {
+            "_id": 1
+          }
+        },
+        {
+          "name": "scope_1",
+          "key": {
+            "scope": 1
+          },
+          "unique": true
+        }
+      ],
+      "validator": null,
+      "newest": {
+        "_id": "{\"$oid\":\"6ab36d9f8753ff46f7bf003a\"}",
+        "updatedAt": "2026-09-23T06:11:43.990Z",
+        "sha256": "b6bd270310e8f712c571045356fd5608a6efd533121fdff76b4756526208f5c5"
+      },
+      "sha256": "8482ae77bb4ea47ca7e76bfa3f322df24c64d6f784984829b9346441ce758f10",
+      "ids_sha256": "c767b069d1870d466dc019a291a0284e92da80a40c00404f56b1e4481383d3dc"
+    },
+    "progresssnapshots": {
+      "count": 1,
+      "indexes": [
+        {
+          "name": "_id_",
+          "key": {
+            "_id": 1
+          }
+        },
+        {
+          "name": "profile_id_1",
+          "key": {
+            "profile_id": 1
+          },
+          "unique": true
+        }
+      ],
+      "validator": null,
+      "newest": {
+        "_id": "{\"$oid\":\"6ab9f0aba7caab1efd530874\"}",
+        "updatedAt": "2026-09-30T05:33:30.865Z",
+        "sha256": "78b9578ce52ad341b1bef430d612d31c2b6c165973bf34cb22a2e5709113d7a5"
+      },
+      "sha256": "be2eb6908ce25f48e5a0be7168079a5372a7f909fd856b9c1b86f331fc7373bc",
+      "ids_sha256": "de2d556a7f0869dcd2f7120a961601d880b7a13eb2d375ed8f56f42ca930ba7d"
+    },
+    "scenariodefinitions": {
+      "count": 100,
+      "indexes": [
+        {
+          "name": "_id_",
+          "key": {
+            "_id": 1
+          }
+        },
+        {
+          "name": "active_1_canonical_family_1",
+          "key": {
+            "active": 1,
+            "canonical_family": 1
+          }
+        },
+        {
+          "name": "active_1_canonical_triggers_1",
+          "key": {
+            "active": 1,
+            "canonical_triggers": 1
+          }
+        },
+        {
+          "name": "active_1_disposition_1",
+          "key": {
+            "active": 1,
+            "disposition": 1
+          }
+        },
+        {
+          "name": "active_1_military_flag_1",
+          "key": {
+            "active": 1,
+            "military_flag": 1
+          }
+        },
+        {
+          "name": "active_1_platform_1_level_1",
+          "key": {
+            "active": 1,
+            "platform": 1,
+            "level": 1
+          }
+        },
+        {
+          "name": "scenario_id_1_version_1",
+          "key": {
+            "scenario_id": 1,
+            "version": 1
+          },
+          "unique": true
+        }
+      ],
+      "validator": null,
+      "newest": {
+        "_id": "{\"$oid\":\"6ab297be8dc7b559c40c55d4\"}",
+        "updatedAt": "2026-09-22T14:59:10.254Z",
+        "sha256": "4f53b1b4a6341c43e656917710574b58abbb987a7b763ecf7e51e20492017d5d"
+      },
+      "sha256": "9a8c4bc3378acbcb5c082958c0ac1ee04416109c804473bd58eadf8045d7d43f",
+      "ids_sha256": "0e08375bc0bf78b372ca691a6ed945ab2e1c11064296e7c34b1b34b4ba89485e"
+    },
+    "scenarioevents": {
+      "count": 56,
+      "indexes": [
+        {
+          "name": "_id_",
+          "key": {
+            "_id": 1
+          }
+        },
+        {
+          "name": "intent_key_1",
+          "key": {
+            "intent_key": 1
+          },
+          "unique": true
+        },
+        {
+          "name": "run_id_1_sequence_1",
+          "key": {
+            "run_id": 1,
+            "sequence": 1
+          },
+          "unique": true
+        }
+      ],
+      "validator": null,
+      "newest": {
+        "_id": "{\"$oid\":\"6abc9f2939537f2e38f3b785\"}",
+        "updatedAt": "2026-09-30T05:33:29.042Z",
+        "sha256": "4ddb446233516a4d4b79c7754c0fbc3ebbeda3e2171daa2ca820e8fdb55d16e1"
+      },
+      "sha256": "c9e36907553d27b098c79ae8f425c0103e2a85556dfe795a03d6e3e1ce49729b",
+      "ids_sha256": "e242174a58a53fc2a7883030dfb11af568edd6a6ad7077be2fc3a864cec4900f"
+    },
+    "scenarioruns": {
+      "count": 20,
+      "indexes": [
+        {
+          "name": "_id_",
+          "key": {
+            "_id": 1
+          }
+        },
+        {
+          "name": "attempt_id_1_ordinal_1",
+          "key": {
+            "attempt_id": 1,
+            "ordinal": 1
+          },
+          "unique": true
+        },
+        {
+          "name": "attempt_id_1_status_1",
+          "key": {
+            "attempt_id": 1,
+            "status": 1
+          }
+        },
+        {
+          "name": "scenario_id_1_definition_version_1",
+          "key": {
+            "scenario_id": 1,
+            "definition_version": 1
+          }
+        },
+        {
+          "name": "status_1",
+          "key": {
+            "status": 1
+          }
+        }
+      ],
+      "validator": null,
+      "newest": {
+        "_id": "{\"$oid\":\"6abc9fa639537f2e38f3b790\"}",
+        "updatedAt": "2026-09-30T05:35:34.183Z",
+        "sha256": "1e5b2da0f8a6997f79ec5bc55df8021c86d6725904f81b5d05aa458ad7327a27"
+      },
+      "sha256": "0a532a41864128faaf8d54b2ba51826e065a9d1ba5977bc784015a221c9f1861",
+      "ids_sha256": "22242277074e72b0e9ce1237c2ea19bd519d57da50a3f576751548263dd680e6"
+    },
+    "scenarios": {
+      "count": 0,
+      "indexes": [
+        {
+          "name": "_id_",
+          "key": {
+            "_id": 1
+          }
+        },
+        {
+          "name": "isActive_1_channel_1_type_1",
+          "key": {
+            "isActive": 1,
+            "channel": 1,
+            "type": 1
+          }
+        },
+        {
+          "name": "scenarioCode_1",
+          "key": {
+            "scenarioCode": 1
+          },
+          "unique": true
+        }
+      ],
+      "validator": null,
+      "newest": null,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "ids_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "scenario_definitions": {
+    "total": 100,
+    "active": 100,
+    "inactive": 0,
+    "active_distribution": {
+      "documents": 100,
+      "scenario_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06",
+        "E07",
+        "E08",
+        "E09",
+        "E10",
+        "E11",
+        "E12",
+        "E13",
+        "E14",
+        "E15",
+        "E16",
+        "E17",
+        "E18",
+        "E19",
+        "E20",
+        "E21",
+        "E22",
+        "E23",
+        "E24",
+        "E25",
+        "I01",
+        "I02",
+        "I03",
+        "I04",
+        "I05",
+        "I06",
+        "I07",
+        "I08",
+        "I09",
+        "I10",
+        "I11",
+        "I12",
+        "I13",
+        "I14",
+        "I15",
+        "I16",
+        "I17",
+        "I18",
+        "I19",
+        "I20",
+        "I21",
+        "I22",
+        "I23",
+        "I24",
+        "I25",
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19",
+        "S20",
+        "S21",
+        "S22",
+        "S23",
+        "S24",
+        "S25",
+        "W01",
+        "W02",
+        "W03",
+        "W04",
+        "W05",
+        "W06",
+        "W07",
+        "W08",
+        "W09",
+        "W10",
+        "W11",
+        "W12",
+        "W13",
+        "W14",
+        "W15",
+        "W16",
+        "W17",
+        "W18",
+        "W19",
+        "W20",
+        "W21",
+        "W22",
+        "W23",
+        "W24",
+        "W25"
+      ],
+      "versions": {
+        "1": 100
+      },
+      "platform": {
+        "email": 25,
+        "instagram": 25,
+        "sms": 25,
+        "whatsapp": 25
+      },
+      "disposition": {
+        "legitimate": 20,
+        "malicious": 80
+      },
+      "level": {
+        "easy": 32,
+        "hard": 32,
+        "medium": 36
+      },
+      "canonical_family": {
+        "account_takeover_authorisation_abuse": 6,
+        "coercion_and_extortion": 4,
+        "credential_phishing": 6,
+        "disinformation_amplification": 1,
+        "financial_credential_phishing": 9,
+        "identity_data_harvesting": 5,
+        "impersonation_emergency_payment": 3,
+        "investment_and_task_fraud": 5,
+        "legit_coordination_request": 6,
+        "legit_routine_broadcast": 6,
+        "legit_system_confirmation": 7,
+        "legit_verified_high_risk_change": 1,
+        "malware_delivery": 5,
+        "operational_elicitation": 10,
+        "payment_diversion": 7,
+        "qr_code_phishing": 5,
+        "relationship_grooming_fraud": 3,
+        "tech_support_and_callback_fraud": 6,
+        "unsolicited_payment_lure": 5
+      },
+      "canonical_triggers": {
+        "authority": 40,
+        "commitment": 2,
+        "confusion": 1,
+        "convenience": 5,
+        "curiosity": 10,
+        "duty_compliance": 3,
+        "empathy": 9,
+        "expert_status": 2,
+        "familiarity": 8,
+        "fear": 18,
+        "flattery": 4,
+        "greed": 11,
+        "helpfulness": 3,
+        "isolation_secrecy": 5,
+        "pride": 5,
+        "reciprocity": 3,
+        "routine": 19,
+        "scarcity": 6,
+        "shame_embarrassment": 2,
+        "social_proof": 2,
+        "trust": 6,
+        "urgency": 27
+      },
+      "military_flag": {
+        "false": 65,
+        "true": 35
+      },
+      "lifecycle_state": {
+        "null": 100
+      },
+      "taxonomy_version": {
+        "1.0.0": 100
+      },
+      "trigger_taxonomy_version": {
+        "1.0.0": 100
+      },
+      "platform_x_disposition": {
+        "sms": {
+          "legitimate": 5,
+          "malicious": 20
+        },
+        "email": {
+          "legitimate": 5,
+          "malicious": 20
+        },
+        "whatsapp": {
+          "legitimate": 5,
+          "malicious": 20
+        },
+        "instagram": {
+          "legitimate": 5,
+          "malicious": 20
+        }
+      },
+      "platform_x_level": {
+        "whatsapp": {
+          "hard": 8,
+          "easy": 8,
+          "medium": 9
+        },
+        "instagram": {
+          "easy": 8,
+          "hard": 8,
+          "medium": 9
+        },
+        "email": {
+          "medium": 9,
+          "easy": 8,
+          "hard": 8
+        },
+        "sms": {
+          "easy": 8,
+          "medium": 9,
+          "hard": 8
+        }
+      },
+      "level_x_disposition": {
+        "easy": {
+          "malicious": 24,
+          "legitimate": 8
+        },
+        "hard": {
+          "legitimate": 4,
+          "malicious": 28
+        },
+        "medium": {
+          "legitimate": 8,
+          "malicious": 28
+        }
+      }
+    }
+  },
+  "legacy_scenarios": {
+    "total": 0,
+    "active": 0,
+    "inactive": 0,
+    "channel": {},
+    "type": {},
+    "channel_x_type": {}
+  }
+}

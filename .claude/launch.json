@@ -1,0 +1,62 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "frontend",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "frontend"
+      ],
+      "port": 5173
+    },
+    {
+      "name": "scene-verify",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "frontend",
+        "--",
+        "--mode",
+        "verify",
+        "--port",
+        "5199",
+        "--strictPort"
+      ],
+      "port": 5199
+    },
+    {
+      "name": "backend",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "start",
+        "--prefix",
+        "backend"
+      ],
+      "port": 5000
+    },
+    {
+      "name": "api-verify-enh003",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": [
+        "/c",
+        "cd backend&&set MONGO_URI=mongodb://127.0.0.1:27017/cyber_awareness_enh003_verify?replicaSet=rs0&&set PORT=5066&&set CORS_ORIGIN=http://localhost:5188&&node src/server.js"
+      ],
+      "port": 5066
+    },
+    {
+      "name": "web-verify-enh003",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": [
+        "/c",
+        "cd frontend&&set VITE_API_BASE_URL=http://localhost:5066/api&&npx vite --port 5188 --strictPort"
+      ],
+      "port": 5188
+    }
+  ]
+}

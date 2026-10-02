@@ -1,0 +1,3040 @@
+[
+ {
+  "scenario_id": "W01",
+  "definition_version": 1,
+  "platform": "whatsapp",
+  "synthetic": {
+   "sender": {
+    "display_name": "Unknown",
+    "identifier": "+91 00000 46205",
+    "avatar_initials": "U",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "14:18"
+   },
+   "prior_context": "An unknown number apologizes for entering the learner's number by mistake.",
+   "assets": [
+    {
+     "asset_id": "W01-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "whatsapp notification",
+     "content": {
+      "sender": "Unknown",
+      "body": "I sent a 6-digit code to you by mistake. Please send it back now.",
+      "platform": "whatsapp",
+      "received_at": "13:56",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "W01-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Unknown",
+     "content": {
+      "display_name": "Unknown",
+      "identifier": "+91 00000 46205",
+      "avatar_initials": "U",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "14:18"
+     }
+    },
+    {
+     "asset_id": "W01-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Unknown thread",
+     "content": {
+      "header": {
+       "title": "Unknown",
+       "subtitle": "+91 00000 46205",
+       "avatarSeed": "U"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "An unknown number apologizes for entering the learner's number by mistake."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "I sent a 6-digit code to you by mistake. Please send it back now.",
+        "time": "11:29"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "W01-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 21986",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "W01-notif-01"
+   ],
+   [
+    "W01-thread-01",
+    "W01-sender-01"
+   ],
+   [
+    "W01-sender-01"
+   ],
+   [],
+   [
+    "W01-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "W02",
+  "definition_version": 1,
+  "platform": "whatsapp",
+  "synthetic": {
+   "sender": {
+    "display_name": "QuickParcel Support",
+    "identifier": "+91 00000 90397",
+    "avatar_initials": "QS",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "08:51"
+   },
+   "prior_context": "A business-style account claims a parcel cannot be delivered until a small fee is paid.",
+   "assets": [
+    {
+     "asset_id": "W02-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "whatsapp notification",
+     "content": {
+      "sender": "QuickParcel Support",
+      "body": "Delivery failed. Pay INR 25 today to avoid return.",
+      "platform": "whatsapp",
+      "received_at": "19:27",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "W02-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "QuickParcel Support",
+     "content": {
+      "display_name": "QuickParcel Support",
+      "identifier": "+91 00000 90397",
+      "avatar_initials": "QS",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "08:51"
+     }
+    },
+    {
+     "asset_id": "W02-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "QuickParcel Support thread",
+     "content": {
+      "header": {
+       "title": "QuickParcel Support",
+       "subtitle": "+91 00000 90397",
+       "avatarSeed": "QS"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A business-style account claims a parcel cannot be delivered until a small fee is paid."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Delivery failed. Pay INR 25 today to avoid return.",
+        "time": "12:07"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "W02-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 10824",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "W02-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://w02.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "w02.training.example",
+      "body": "The interaction advances to an offline tracking page requesting card/UPI details",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    },
+    {
+     "asset_id": "W02-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "QuickParcel Support",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-W02",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "W02-notif-01"
+   ],
+   [
+    "W02-thread-01",
+    "W02-sender-01"
+   ],
+   [
+    "W02-sender-01",
+    "W02-browser-01"
+   ],
+   [
+    "W02-browser-01",
+    "W02-payment-01"
+   ],
+   [
+    "W02-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "W03",
+  "definition_version": 1,
+  "platform": "whatsapp",
+  "synthetic": {
+   "sender": {
+    "display_name": "Recreation Coord",
+    "identifier": "+91 00000 74150",
+    "avatar_initials": "RC",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "07:08"
+   },
+   "prior_context": "A saved recreation coordinator creates the announced weekend sports group; no sensitive data or external link is requested.",
+   "assets": [
+    {
+     "asset_id": "W03-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "whatsapp notification",
+     "content": {
+      "sender": "Recreation Coord",
+      "body": "Unit Falcon sports meet group is ready. Please confirm attendance in the poll.",
+      "platform": "whatsapp",
+      "received_at": "08:24",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "W03-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Recreation Coord",
+     "content": {
+      "display_name": "Recreation Coord",
+      "identifier": "+91 00000 74150",
+      "avatar_initials": "RC",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "07:08"
+     }
+    },
+    {
+     "asset_id": "W03-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Recreation Coord thread",
+     "content": {
+      "header": {
+       "title": "Recreation Coord",
+       "subtitle": "+91 00000 74150",
+       "avatarSeed": "RC"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A saved recreation coordinator creates the announced weekend sports group; no sensitive data or external link is requested."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Unit Falcon sports meet group is ready. Please confirm attendance in the poll.",
+        "time": "07:38"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "W03-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 50765",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "W03-notif-01"
+   ],
+   [
+    "W03-thread-01",
+    "W03-sender-01"
+   ],
+   [
+    "W03-sender-01"
+   ],
+   [],
+   [
+    "W03-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "W04",
+  "definition_version": 1,
+  "platform": "whatsapp",
+  "synthetic": {
+   "sender": {
+    "display_name": "Riya (new number)",
+    "identifier": "+91 00000 23051",
+    "avatar_initials": "RN",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "12:04"
+   },
+   "prior_context": "An unsaved number uses a friend's name and says their phone was damaged.",
+   "assets": [
+    {
+     "asset_id": "W04-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "whatsapp notification",
+     "content": {
+      "sender": "Riya (new number)",
+      "body": "Phone broke. Please send INR 8,000 for the clinic before 20:00.",
+      "platform": "whatsapp",
+      "received_at": "10:28",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "W04-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Riya (new number)",
+     "content": {
+      "display_name": "Riya (new number)",
+      "identifier": "+91 00000 23051",
+      "avatar_initials": "RN",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "12:04"
+     }
+    },
+    {
+     "asset_id": "W04-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Riya (new number) thread",
+     "content": {
+      "header": {
+       "title": "Riya (new number)",
+       "subtitle": "+91 00000 23051",
+       "avatarSeed": "RN"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "An unsaved number uses a friend's name and says their phone was damaged."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Phone broke. Please send INR 8,000 for the clinic before 20:00.",
+        "time": "16:31"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "W04-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 51484",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "W04-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "Riya (new number)",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-W04",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "W04-notif-01"
+   ],
+   [
+    "W04-thread-01",
+    "W04-sender-01"
+   ],
+   [
+    "W04-sender-01"
+   ],
+   [
+    "W04-payment-01"
+   ],
+   [
+    "W04-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "W05",
+  "definition_version": 1,
+  "platform": "whatsapp",
+  "synthetic": {
+   "sender": {
+    "display_name": "NationalPay KYC",
+    "identifier": "+91 00000 53894",
+    "avatar_initials": "NK",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "17:21"
+   },
+   "prior_context": "A logo-bearing account threatens immediate wallet suspension unless KYC is updated.",
+   "assets": [
+    {
+     "asset_id": "W05-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "whatsapp notification",
+     "content": {
+      "sender": "NationalPay KYC",
+      "body": "Your wallet will be blocked in 30 minutes. Update now.",
+      "platform": "whatsapp",
+      "received_at": "16:23",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "W05-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "NationalPay KYC",
+     "content": {
+      "display_name": "NationalPay KYC",
+      "identifier": "+91 00000 53894",
+      "avatar_initials": "NK",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "17:21"
+     }
+    },
+    {
+     "asset_id": "W05-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "NationalPay KYC thread",
+     "content": {
+      "header": {
+       "title": "NationalPay KYC",
+       "subtitle": "+91 00000 53894",
+       "avatarSeed": "NK"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A logo-bearing account threatens immediate wallet suspension unless KYC is updated."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Your wallet will be blocked in 30 minutes. Update now.",
+        "time": "08:50"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "W05-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 73331",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "W05-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://w05.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "w05.training.example",
+      "body": "The interaction advances to a synthetic KYC form asking for account, PIN and OTP",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "W05-notif-01"
+   ],
+   [
+    "W05-thread-01",
+    "W05-sender-01"
+   ],
+   [
+    "W05-sender-01",
+    "W05-browser-01"
+   ],
+   [
+    "W05-browser-01"
+   ],
+   [
+    "W05-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "W06",
+  "definition_version": 1,
+  "platform": "whatsapp",
+  "synthetic": {
+   "sender": {
+    "display_name": "Unit Clerk",
+    "identifier": "+91 00000 65927",
+    "avatar_initials": "UC",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "08:11"
+   },
+   "prior_context": "An unknown account uses a generic crest and claims a personnel database update is due immediately.",
+   "assets": [
+    {
+     "asset_id": "W06-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "whatsapp notification",
+     "content": {
+      "sender": "Unit Clerk",
+      "body": "Send front/back service ID photo now for today",
+      "platform": "whatsapp",
+      "received_at": "17:54",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "W06-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Unit Clerk",
+     "content": {
+      "display_name": "Unit Clerk",
+      "identifier": "+91 00000 65927",
+      "avatar_initials": "UC",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "08:11"
+     }
+    },
+    {
+     "asset_id": "W06-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Unit Clerk thread",
+     "content": {
+      "header": {
+       "title": "Unit Clerk",
+       "subtitle": "+91 00000 65927",
+       "avatarSeed": "UC"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "An unknown account uses a generic crest and claims a personnel database update is due immediately."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Send front/back service ID photo now for today",
+        "time": "16:48"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "W06-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 40840",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "W06-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "Unit Clerk",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-W06",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "W06-notif-01"
+   ],
+   [
+    "W06-thread-01",
+    "W06-sender-01"
+   ],
+   [
+    "W06-sender-01"
+   ],
+   [
+    "W06-payment-01"
+   ],
+   [
+    "W06-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "W07",
+  "definition_version": 1,
+  "platform": "whatsapp",
+  "synthetic": {
+   "sender": {
+    "display_name": "Asha",
+    "identifier": "+91 00000 86621",
+    "avatar_initials": "A",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "17:40"
+   },
+   "prior_context": "A saved family contact sends the event invitation PDF the learner requested earlier in the same thread.",
+   "assets": [
+    {
+     "asset_id": "W07-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "whatsapp notification",
+     "content": {
+      "sender": "Asha",
+      "body": "Here is the invitation PDF you asked for. No form - just check the date.",
+      "platform": "whatsapp",
+      "received_at": "10:03",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "W07-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Asha",
+     "content": {
+      "display_name": "Asha",
+      "identifier": "+91 00000 86621",
+      "avatar_initials": "A",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "17:40"
+     }
+    },
+    {
+     "asset_id": "W07-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Asha thread",
+     "content": {
+      "header": {
+       "title": "Asha",
+       "subtitle": "+91 00000 86621",
+       "avatarSeed": "A"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A saved family contact sends the event invitation PDF the learner requested earlier in the same thread."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Here is the invitation PDF you asked for. No form - just check the date.",
+        "time": "13:25"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "W07-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 62772",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "W07-file-01",
+     "kind": "file",
+     "inert": true,
+     "label": "W07_attachment.pdf",
+     "content": {
+      "file_name": "W07_attachment.pdf",
+      "file_kind": "pdf",
+      "file_size": "332 KB",
+      "preview": "The interaction advances to the inert PDF preview showing only event details",
+      "executes": false,
+      "macros_extracted": false,
+      "archive_mounted": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "W07-notif-01"
+   ],
+   [
+    "W07-thread-01",
+    "W07-sender-01"
+   ],
+   [
+    "W07-sender-01",
+    "W07-file-01"
+   ],
+   [
+    "W07-file-01"
+   ],
+   [
+    "W07-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "W08",
+  "definition_version": 1,
+  "platform": "whatsapp",
+  "synthetic": {
+   "sender": {
+    "display_name": "Forwarded many times",
+    "identifier": "+91 00000 48370",
+    "avatar_initials": "FM",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "12:32"
+   },
+   "prior_context": "A forwarded message promises a time-limited shopping voucher to the first 500 scanners.",
+   "assets": [
+    {
+     "asset_id": "W08-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "whatsapp notification",
+     "content": {
+      "sender": "Forwarded many times",
+      "body": "Scan to claim a INR 5,000 festival voucher - 12 left.",
+      "platform": "whatsapp",
+      "received_at": "09:09",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "W08-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Forwarded many times",
+     "content": {
+      "display_name": "Forwarded many times",
+      "identifier": "+91 00000 48370",
+      "avatar_initials": "FM",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "12:32"
+     }
+    },
+    {
+     "asset_id": "W08-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Forwarded many times thread",
+     "content": {
+      "header": {
+       "title": "Forwarded many times",
+       "subtitle": "+91 00000 48370",
+       "avatarSeed": "FM"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A forwarded message promises a time-limited shopping voucher to the first 500 scanners."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Scan to claim a INR 5,000 festival voucher - 12 left.",
+        "time": "07:19"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "W08-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 41351",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "W08-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://w08.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "w08.training.example",
+      "body": "The interaction advances to the local QR inspector and then a claim form",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    },
+    {
+     "asset_id": "W08-qr-01",
+     "kind": "qr_payload",
+     "inert": true,
+     "label": "QR code",
+     "display_target": "https://w08.training.example/qr",
+     "content": {
+      "decoded_target": "https://w08.training.example/qr",
+      "decoded_locally": true,
+      "camera": false,
+      "clipboard": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "W08-notif-01"
+   ],
+   [
+    "W08-thread-01",
+    "W08-sender-01"
+   ],
+   [
+    "W08-sender-01",
+    "W08-browser-01"
+   ],
+   [
+    "W08-browser-01",
+    "W08-qr-01"
+   ],
+   [
+    "W08-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "W09",
+  "definition_version": 1,
+  "platform": "whatsapp",
+  "synthetic": {
+   "sender": {
+    "display_name": "Maj. Arin",
+    "identifier": "+91 00000 39779",
+    "avatar_initials": "MA",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "18:52"
+   },
+   "prior_context": "A saved colleague's genuine account sends an out-of-character request while claiming to be in a meeting.",
+   "assets": [
+    {
+     "asset_id": "W09-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "whatsapp notification",
+     "content": {
+      "sender": "Maj. Arin",
+      "body": "Can",
+      "platform": "whatsapp",
+      "received_at": "18:29",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "W09-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Maj. Arin",
+     "content": {
+      "display_name": "Maj. Arin",
+      "identifier": "+91 00000 39779",
+      "avatar_initials": "MA",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "18:52"
+     }
+    },
+    {
+     "asset_id": "W09-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Maj. Arin thread",
+     "content": {
+      "header": {
+       "title": "Maj. Arin",
+       "subtitle": "+91 00000 39779",
+       "avatarSeed": "MA"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A saved colleague's genuine account sends an out-of-character request while claiming to be in a meeting."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Can",
+        "time": "14:02"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "W09-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 57265",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "W09-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "Maj. Arin",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-W09",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "W09-notif-01"
+   ],
+   [
+    "W09-thread-01",
+    "W09-sender-01"
+   ],
+   [
+    "W09-sender-01"
+   ],
+   [
+    "W09-payment-01"
+   ],
+   [
+    "W09-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "W10",
+  "definition_version": 1,
+  "platform": "whatsapp",
+  "synthetic": {
+   "sender": {
+    "display_name": "WhatsApp Survey Desk",
+    "identifier": "+91 00000 49168",
+    "avatar_initials": "WS",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "17:02"
+   },
+   "prior_context": "A fake support account offers a service survey and says scanning a QR will validate participation.",
+   "assets": [
+    {
+     "asset_id": "W10-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "whatsapp notification",
+     "content": {
+      "sender": "WhatsApp Survey Desk",
+      "body": "Scan this QR on Linked Devices to verify your feedback account.",
+      "platform": "whatsapp",
+      "received_at": "10:53",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "W10-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "WhatsApp Survey Desk",
+     "content": {
+      "display_name": "WhatsApp Survey Desk",
+      "identifier": "+91 00000 49168",
+      "avatar_initials": "WS",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "17:02"
+     }
+    },
+    {
+     "asset_id": "W10-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "WhatsApp Survey Desk thread",
+     "content": {
+      "header": {
+       "title": "WhatsApp Survey Desk",
+       "subtitle": "+91 00000 49168",
+       "avatarSeed": "WS"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A fake support account offers a service survey and says scanning a QR will validate participation."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Scan this QR on Linked Devices to verify your feedback account.",
+        "time": "13:50"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "W10-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 59214",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "W10-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://w10.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "w10.training.example",
+      "body": "The interaction advances to a faithful local Linked Devices screen with a pending link confirmation",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "W10-notif-01"
+   ],
+   [
+    "W10-thread-01",
+    "W10-sender-01"
+   ],
+   [
+    "W10-sender-01",
+    "W10-browser-01"
+   ],
+   [
+    "W10-browser-01"
+   ],
+   [
+    "W10-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "W11",
+  "definition_version": 1,
+  "platform": "whatsapp",
+  "synthetic": {
+   "sender": {
+    "display_name": "Welfare Office",
+    "identifier": "+91 00000 11251",
+    "avatar_initials": "WO",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "17:31"
+   },
+   "prior_context": "The learner initiated a welfare-office appointment in the local portal; the saved office account confirms a time.",
+   "assets": [
+    {
+     "asset_id": "W11-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "whatsapp notification",
+     "content": {
+      "sender": "Welfare Office",
+      "body": "Your requested appointment is confirmed for 10:30. Reply C to confirm.",
+      "platform": "whatsapp",
+      "received_at": "08:50",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "W11-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Welfare Office",
+     "content": {
+      "display_name": "Welfare Office",
+      "identifier": "+91 00000 11251",
+      "avatar_initials": "WO",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "17:31"
+     }
+    },
+    {
+     "asset_id": "W11-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Welfare Office thread",
+     "content": {
+      "header": {
+       "title": "Welfare Office",
+       "subtitle": "+91 00000 11251",
+       "avatarSeed": "WO"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "The learner initiated a welfare-office appointment in the local portal; the saved office account confirms a time."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Your requested appointment is confirmed for 10:30. Reply C to confirm.",
+        "time": "12:05"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "W11-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 16689",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "W11-notif-01"
+   ],
+   [
+    "W11-thread-01",
+    "W11-sender-01"
+   ],
+   [
+    "W11-sender-01"
+   ],
+   [],
+   [
+    "W11-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "W12",
+  "definition_version": 1,
+  "platform": "whatsapp",
+  "synthetic": {
+   "sender": {
+    "display_name": "Investigation Desk",
+    "identifier": "+91 00000 85201",
+    "avatar_initials": "ID",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "08:21"
+   },
+   "prior_context": "An unknown caller claims a parcel linked to the learner contains contraband and demands a video call.",
+   "assets": [
+    {
+     "asset_id": "W12-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "whatsapp notification",
+     "content": {
+      "sender": "Investigation Desk",
+      "body": "Your ID is linked to a seized parcel. Join video verification now.",
+      "platform": "whatsapp",
+      "received_at": "13:47",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "W12-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Investigation Desk",
+     "content": {
+      "display_name": "Investigation Desk",
+      "identifier": "+91 00000 85201",
+      "avatar_initials": "ID",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "08:21"
+     }
+    },
+    {
+     "asset_id": "W12-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Investigation Desk thread",
+     "content": {
+      "header": {
+       "title": "Investigation Desk",
+       "subtitle": "+91 00000 85201",
+       "avatarSeed": "ID"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "An unknown caller claims a parcel linked to the learner contains contraband and demands a video call."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Your ID is linked to a seized parcel. Join video verification now.",
+        "time": "13:58"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "W12-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 68795",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "W12-call-01",
+     "kind": "call_screen",
+     "inert": true,
+     "label": "Incoming call",
+     "content": {
+      "caller": "Investigation Desk",
+      "number": "+91 00000 85201",
+      "captions": [
+       "Your ID is linked to a seized parcel. Join video verification now."
+      ],
+      "timer_seconds": 0,
+      "choices": [
+       "decline",
+       "accept",
+       "end",
+       "verify",
+       "report"
+      ],
+      "microphone": false,
+      "camera": false,
+      "real_dialer": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "W12-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "Investigation Desk",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-W12",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "W12-notif-01"
+   ],
+   [
+    "W12-thread-01",
+    "W12-sender-01"
+   ],
+   [
+    "W12-sender-01"
+   ],
+   [
+    "W12-call-01",
+    "W12-payment-01"
+   ],
+   [
+    "W12-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "W13",
+  "definition_version": 1,
+  "platform": "whatsapp",
+  "synthetic": {
+   "sender": {
+    "display_name": "Alpha Wealth VIP",
+    "identifier": "+91 00000 70411",
+    "avatar_initials": "AW",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "10:21"
+   },
+   "prior_context": "The learner is added to a group showing fabricated profits and a supposed adviser offering guaranteed allotments.",
+   "assets": [
+    {
+     "asset_id": "W13-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "whatsapp notification",
+     "content": {
+      "sender": "Alpha Wealth VIP",
+      "body": "Guaranteed IPO allotment. Deposit today for 18% weekly returns.",
+      "platform": "whatsapp",
+      "received_at": "14:54",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "W13-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Alpha Wealth VIP",
+     "content": {
+      "display_name": "Alpha Wealth VIP",
+      "identifier": "+91 00000 70411",
+      "avatar_initials": "AW",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "10:21"
+     }
+    },
+    {
+     "asset_id": "W13-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Alpha Wealth VIP thread",
+     "content": {
+      "header": {
+       "title": "Alpha Wealth VIP",
+       "subtitle": "+91 00000 70411",
+       "avatarSeed": "AW"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "The learner is added to a group showing fabricated profits and a supposed adviser offering guaranteed allotments."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Guaranteed IPO allotment. Deposit today for 18% weekly returns.",
+        "time": "18:42"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "W13-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 30082",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "W13-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://w13.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "w13.training.example",
+      "body": "The interaction advances to a fake trading-app page showing a small bonus and Deposit button",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    },
+    {
+     "asset_id": "W13-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "Alpha Wealth VIP",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-W13",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "W13-notif-01"
+   ],
+   [
+    "W13-thread-01",
+    "W13-sender-01"
+   ],
+   [
+    "W13-sender-01",
+    "W13-browser-01"
+   ],
+   [
+    "W13-browser-01",
+    "W13-payment-01"
+   ],
+   [
+    "W13-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "W14",
+  "definition_version": 1,
+  "platform": "whatsapp",
+  "synthetic": {
+   "sender": {
+    "display_name": "HQ Alpha Ops",
+    "identifier": "+91 00000 96490",
+    "avatar_initials": "HA",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "12:50"
+   },
+   "prior_context": "A number using a senior-sounding name sends an Android package labelled as a revised movement order.",
+   "assets": [
+    {
+     "asset_id": "W14-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "whatsapp notification",
+     "content": {
+      "sender": "HQ Alpha Ops",
+      "body": "Revised movement order attached. Install viewer before 18:00.",
+      "platform": "whatsapp",
+      "received_at": "14:41",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "W14-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "HQ Alpha Ops",
+     "content": {
+      "display_name": "HQ Alpha Ops",
+      "identifier": "+91 00000 96490",
+      "avatar_initials": "HA",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "12:50"
+     }
+    },
+    {
+     "asset_id": "W14-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "HQ Alpha Ops thread",
+     "content": {
+      "header": {
+       "title": "HQ Alpha Ops",
+       "subtitle": "+91 00000 96490",
+       "avatarSeed": "HA"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A number using a senior-sounding name sends an Android package labelled as a revised movement order."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Revised movement order attached. Install viewer before 18:00.",
+        "time": "13:25"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "W14-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 95688",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "W14-install-01",
+     "kind": "install_screen",
+     "inert": true,
+     "label": "Install / permission request",
+     "content": {
+      "app_name": "W14 Training Mock",
+      "permissions": [
+       "sms",
+       "accessibility",
+       "screen_capture"
+      ],
+      "installs": false,
+      "grants_real_permission": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "W14-notif-01"
+   ],
+   [
+    "W14-thread-01",
+    "W14-sender-01"
+   ],
+   [
+    "W14-sender-01"
+   ],
+   [
+    "W14-install-01"
+   ],
+   [
+    "W14-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "W15",
+  "definition_version": 1,
+  "platform": "whatsapp",
+  "synthetic": {
+   "sender": {
+    "display_name": "Col. Dev (new account)",
+    "identifier": "+91 00000 27397",
+    "avatar_initials": "CD",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "17:09"
+   },
+   "prior_context": "A cloned profile sends a convincing synthetic voice note asking for a secure-room access detail.",
+   "assets": [
+    {
+     "asset_id": "W15-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "whatsapp notification",
+     "content": {
+      "sender": "Col. Dev (new account)",
+      "body": "Voice note - Send today",
+      "platform": "whatsapp",
+      "received_at": "11:30",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "W15-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Col. Dev (new account)",
+     "content": {
+      "display_name": "Col. Dev (new account)",
+      "identifier": "+91 00000 27397",
+      "avatar_initials": "CD",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "17:09"
+     }
+    },
+    {
+     "asset_id": "W15-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Col. Dev (new account) thread",
+     "content": {
+      "header": {
+       "title": "Col. Dev (new account)",
+       "subtitle": "+91 00000 27397",
+       "avatarSeed": "CD"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A cloned profile sends a convincing synthetic voice note asking for a secure-room access detail."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Voice note - Send today",
+        "time": "07:26"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "W15-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 56817",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "W15-file-01",
+     "kind": "file",
+     "inert": true,
+     "label": "W15_attachment.pdf",
+     "content": {
+      "file_name": "W15_attachment.pdf",
+      "file_kind": "pdf",
+      "file_size": "55 KB",
+      "preview": "The interaction advances to a reply composer with quick chips for phrase/photo/document",
+      "executes": false,
+      "macros_extracted": false,
+      "archive_mounted": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "W15-notif-01"
+   ],
+   [
+    "W15-thread-01",
+    "W15-sender-01"
+   ],
+   [
+    "W15-sender-01",
+    "W15-file-01"
+   ],
+   [
+    "W15-file-01"
+   ],
+   [
+    "W15-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "W16",
+  "definition_version": 1,
+  "platform": "whatsapp",
+  "synthetic": {
+   "sender": {
+    "display_name": "Transport Coord",
+    "identifier": "+91 00000 10744",
+    "avatar_initials": "TC",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "16:48"
+   },
+   "prior_context": "A saved transport coordinator changes a routine pickup point to the already published alternate location.",
+   "assets": [
+    {
+     "asset_id": "W16-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "whatsapp notification",
+     "content": {
+      "sender": "Transport Coord",
+      "body": "Weather closure. Use Alternate Gate B at 07:15; acknowledge only.",
+      "platform": "whatsapp",
+      "received_at": "10:19",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "W16-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Transport Coord",
+     "content": {
+      "display_name": "Transport Coord",
+      "identifier": "+91 00000 10744",
+      "avatar_initials": "TC",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "16:48"
+     }
+    },
+    {
+     "asset_id": "W16-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Transport Coord thread",
+     "content": {
+      "header": {
+       "title": "Transport Coord",
+       "subtitle": "+91 00000 10744",
+       "avatarSeed": "TC"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A saved transport coordinator changes a routine pickup point to the already published alternate location."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Weather closure. Use Alternate Gate B at 07:15; acknowledge only.",
+        "time": "10:00"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "W16-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 62840",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "W16-notif-01"
+   ],
+   [
+    "W16-thread-01",
+    "W16-sender-01"
+   ],
+   [
+    "W16-sender-01"
+   ],
+   [],
+   [
+    "W16-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "W17",
+  "definition_version": 1,
+  "platform": "whatsapp",
+  "synthetic": {
+   "sender": {
+    "display_name": "Recruiter Mia",
+    "identifier": "+91 00000 32407",
+    "avatar_initials": "RM",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "11:40"
+   },
+   "prior_context": "A recruiter offers quick pay for rating products, then displays small synthetic earnings.",
+   "assets": [
+    {
+     "asset_id": "W17-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "whatsapp notification",
+     "content": {
+      "sender": "Recruiter Mia",
+      "body": "Earn INR 3,000 daily rating products. First task pays instantly.",
+      "platform": "whatsapp",
+      "received_at": "15:39",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "W17-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Recruiter Mia",
+     "content": {
+      "display_name": "Recruiter Mia",
+      "identifier": "+91 00000 32407",
+      "avatar_initials": "RM",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "11:40"
+     }
+    },
+    {
+     "asset_id": "W17-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Recruiter Mia thread",
+     "content": {
+      "header": {
+       "title": "Recruiter Mia",
+       "subtitle": "+91 00000 32407",
+       "avatarSeed": "RM"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A recruiter offers quick pay for rating products, then displays small synthetic earnings."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Earn INR 3,000 daily rating products. First task pays instantly.",
+        "time": "08:44"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "W17-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 42991",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "W17-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://w17.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "w17.training.example",
+      "body": "The interaction advances to a task dashboard showing a bonus, then a 'recharge to unlock' demand",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "W17-notif-01"
+   ],
+   [
+    "W17-thread-01",
+    "W17-sender-01"
+   ],
+   [
+    "W17-sender-01",
+    "W17-browser-01"
+   ],
+   [
+    "W17-browser-01"
+   ],
+   [
+    "W17-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "W18",
+  "definition_version": 1,
+  "platform": "whatsapp",
+  "synthetic": {
+   "sender": {
+    "display_name": "Admin",
+    "identifier": "+91 00000 59612",
+    "avatar_initials": "A",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "12:50"
+   },
+   "prior_context": "A real group admin account posts a roster-update link that conflicts subtly with prior process.",
+   "assets": [
+    {
+     "asset_id": "W18-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "whatsapp notification",
+     "content": {
+      "sender": "Admin",
+      "body": "Final roster correction closes in 15 minutes. Confirm your entry here.",
+      "platform": "whatsapp",
+      "received_at": "09:25",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "W18-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Admin",
+     "content": {
+      "display_name": "Admin",
+      "identifier": "+91 00000 59612",
+      "avatar_initials": "A",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "12:50"
+     }
+    },
+    {
+     "asset_id": "W18-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Admin thread",
+     "content": {
+      "header": {
+       "title": "Admin",
+       "subtitle": "+91 00000 59612",
+       "avatarSeed": "A"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A real group admin account posts a roster-update link that conflicts subtly with prior process."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Final roster correction closes in 15 minutes. Confirm your entry here.",
+        "time": "19:30"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "W18-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 70450",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "W18-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://w18.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "w18.training.example",
+      "body": "The interaction advances to a prefilled synthetic roster form asking service number, role and current location",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "W18-notif-01"
+   ],
+   [
+    "W18-thread-01",
+    "W18-sender-01"
+   ],
+   [
+    "W18-sender-01",
+    "W18-browser-01"
+   ],
+   [
+    "W18-browser-01"
+   ],
+   [
+    "W18-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "W19",
+  "definition_version": 1,
+  "platform": "whatsapp",
+  "synthetic": {
+   "sender": {
+    "display_name": "Commander",
+    "identifier": "+91 00000 31017",
+    "avatar_initials": "C",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "12:03"
+   },
+   "prior_context": "A clone closely matches a senior's photo and About text, and references a public event.",
+   "assets": [
+    {
+     "asset_id": "W19-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "whatsapp notification",
+     "content": {
+      "sender": "Commander",
+      "body": "For revised coordination, send live location now. Do not post in the group.",
+      "platform": "whatsapp",
+      "received_at": "14:59",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "W19-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Commander",
+     "content": {
+      "display_name": "Commander",
+      "identifier": "+91 00000 31017",
+      "avatar_initials": "C",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "12:03"
+     }
+    },
+    {
+     "asset_id": "W19-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Commander thread",
+     "content": {
+      "header": {
+       "title": "Commander",
+       "subtitle": "+91 00000 31017",
+       "avatarSeed": "C"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A clone closely matches a senior's photo and About text, and references a public event."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "For revised coordination, send live location now. Do not post in the group.",
+        "time": "16:38"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "W19-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 19060",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "W19-notif-01"
+   ],
+   [
+    "W19-thread-01",
+    "W19-sender-01"
+   ],
+   [
+    "W19-sender-01"
+   ],
+   [],
+   [
+    "W19-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "W20",
+  "definition_version": 1,
+  "platform": "whatsapp",
+  "synthetic": {
+   "sender": {
+    "display_name": "Northstar Supplies",
+    "identifier": "+91 00000 96500",
+    "avatar_initials": "NS",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "10:04"
+   },
+   "prior_context": "A known supplier logo account enters an existing project context and requests payment to a new beneficiary.",
+   "assets": [
+    {
+     "asset_id": "W20-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "whatsapp notification",
+     "content": {
+      "sender": "Northstar Supplies",
+      "body": "Our bank is under audit. Use this new account for today",
+      "platform": "whatsapp",
+      "received_at": "13:24",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "W20-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Northstar Supplies",
+     "content": {
+      "display_name": "Northstar Supplies",
+      "identifier": "+91 00000 96500",
+      "avatar_initials": "NS",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "10:04"
+     }
+    },
+    {
+     "asset_id": "W20-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Northstar Supplies thread",
+     "content": {
+      "header": {
+       "title": "Northstar Supplies",
+       "subtitle": "+91 00000 96500",
+       "avatarSeed": "NS"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A known supplier logo account enters an existing project context and requests payment to a new beneficiary."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Our bank is under audit. Use this new account for today",
+        "time": "09:00"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "W20-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 53491",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "W20-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "Northstar Supplies",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-W20",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "W20-notif-01"
+   ],
+   [
+    "W20-thread-01",
+    "W20-sender-01"
+   ],
+   [
+    "W20-sender-01"
+   ],
+   [
+    "W20-payment-01"
+   ],
+   [
+    "W20-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "W21",
+  "definition_version": 1,
+  "platform": "whatsapp",
+  "synthetic": {
+   "sender": {
+    "display_name": "Col. Dev",
+    "identifier": "+91 00000 92055",
+    "avatar_initials": "CD",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "16:31"
+   },
+   "prior_context": "A saved senior sends a brief personal-channel message that contains no task detail and directs the learner to the approved secure system.",
+   "assets": [
+    {
+     "asset_id": "W21-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "whatsapp notification",
+     "content": {
+      "sender": "Col. Dev",
+      "body": "Please review item REF-ALPHA-17 in the approved portal. No reply details here.",
+      "platform": "whatsapp",
+      "received_at": "11:59",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "W21-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Col. Dev",
+     "content": {
+      "display_name": "Col. Dev",
+      "identifier": "+91 00000 92055",
+      "avatar_initials": "CD",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "16:31"
+     }
+    },
+    {
+     "asset_id": "W21-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Col. Dev thread",
+     "content": {
+      "header": {
+       "title": "Col. Dev",
+       "subtitle": "+91 00000 92055",
+       "avatarSeed": "CD"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A saved senior sends a brief personal-channel message that contains no task detail and directs the learner to the approved secure system."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Please review item REF-ALPHA-17 in the approved portal. No reply details here.",
+        "time": "08:31"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "W21-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 32815",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "W21-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://w21.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "w21.training.example",
+      "body": "The interaction advances to the local approved-portal launcher without an embedded login link",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "W21-notif-01"
+   ],
+   [
+    "W21-thread-01",
+    "W21-sender-01"
+   ],
+   [
+    "W21-sender-01",
+    "W21-browser-01"
+   ],
+   [
+    "W21-browser-01"
+   ],
+   [
+    "W21-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "W22",
+  "definition_version": 1,
+  "platform": "whatsapp",
+  "synthetic": {
+   "sender": {
+    "display_name": "Samira",
+    "identifier": "+91 00000 59743",
+    "avatar_initials": "S",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "12:43"
+   },
+   "prior_context": "A contact cultivated over several synthetic weeks now recommends a private crypto opportunity.",
+   "assets": [
+    {
+     "asset_id": "W22-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "whatsapp notification",
+     "content": {
+      "sender": "Samira",
+      "body": "My uncle",
+      "platform": "whatsapp",
+      "received_at": "09:42",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "W22-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Samira",
+     "content": {
+      "display_name": "Samira",
+      "identifier": "+91 00000 59743",
+      "avatar_initials": "S",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "12:43"
+     }
+    },
+    {
+     "asset_id": "W22-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Samira thread",
+     "content": {
+      "header": {
+       "title": "Samira",
+       "subtitle": "+91 00000 59743",
+       "avatarSeed": "S"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A contact cultivated over several synthetic weeks now recommends a private crypto opportunity."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "My uncle",
+        "time": "10:58"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "W22-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 38340",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "W22-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "Samira",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-W22",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "W22-notif-01"
+   ],
+   [
+    "W22-thread-01",
+    "W22-sender-01"
+   ],
+   [
+    "W22-sender-01"
+   ],
+   [
+    "W22-payment-01"
+   ],
+   [
+    "W22-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "W23",
+  "definition_version": 1,
+  "platform": "whatsapp",
+  "synthetic": {
+   "sender": {
+    "display_name": "Forces Welfare Volunteer",
+    "identifier": "+91 00000 51541",
+    "avatar_initials": "FW",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "08:08"
+   },
+   "prior_context": "An account posing as a welfare volunteer says a family member needs help and asks where the learner is posted.",
+   "assets": [
+    {
+     "asset_id": "W23-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "whatsapp notification",
+     "content": {
+      "sender": "Forces Welfare Volunteer",
+      "body": "We must route an emergency grant. Confirm unit, post and deployment dates.",
+      "platform": "whatsapp",
+      "received_at": "17:49",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "W23-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Forces Welfare Volunteer",
+     "content": {
+      "display_name": "Forces Welfare Volunteer",
+      "identifier": "+91 00000 51541",
+      "avatar_initials": "FW",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "08:08"
+     }
+    },
+    {
+     "asset_id": "W23-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Forces Welfare Volunteer thread",
+     "content": {
+      "header": {
+       "title": "Forces Welfare Volunteer",
+       "subtitle": "+91 00000 51541",
+       "avatarSeed": "FW"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "An account posing as a welfare volunteer says a family member needs help and asks where the learner is posted."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "We must route an emergency grant. Confirm unit, post and deployment dates.",
+        "time": "12:10"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "W23-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 64090",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "W23-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://w23.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "w23.training.example",
+      "body": "The interaction advances to a synthetic grant form requesting unit, location, schedule, family and bank data",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    },
+    {
+     "asset_id": "W23-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "Forces Welfare Volunteer",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-W23",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "W23-notif-01"
+   ],
+   [
+    "W23-thread-01",
+    "W23-sender-01"
+   ],
+   [
+    "W23-sender-01",
+    "W23-browser-01"
+   ],
+   [
+    "W23-browser-01",
+    "W23-payment-01"
+   ],
+   [
+    "W23-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "W24",
+  "definition_version": 1,
+  "platform": "whatsapp",
+  "synthetic": {
+   "sender": {
+    "display_name": "Mobile Security Desk",
+    "identifier": "+91 00000 18503",
+    "avatar_initials": "MS",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "17:04"
+   },
+   "prior_context": "A support agent claims the learner's phone is spreading malware and offers to fix it immediately.",
+   "assets": [
+    {
+     "asset_id": "W24-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "whatsapp notification",
+     "content": {
+      "sender": "Mobile Security Desk",
+      "body": "Critical infection detected. Install AssistNow and share screen.",
+      "platform": "whatsapp",
+      "received_at": "14:38",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "W24-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Mobile Security Desk",
+     "content": {
+      "display_name": "Mobile Security Desk",
+      "identifier": "+91 00000 18503",
+      "avatar_initials": "MS",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "17:04"
+     }
+    },
+    {
+     "asset_id": "W24-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Mobile Security Desk thread",
+     "content": {
+      "header": {
+       "title": "Mobile Security Desk",
+       "subtitle": "+91 00000 18503",
+       "avatarSeed": "MS"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A support agent claims the learner's phone is spreading malware and offers to fix it immediately."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Critical infection detected. Install AssistNow and share screen.",
+        "time": "11:01"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "W24-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 13894",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "W24-install-01",
+     "kind": "install_screen",
+     "inert": true,
+     "label": "Install / permission request",
+     "content": {
+      "app_name": "W24 Training Mock",
+      "permissions": [
+       "sms",
+       "accessibility",
+       "screen_capture"
+      ],
+      "installs": false,
+      "grants_real_permission": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "W24-notif-01"
+   ],
+   [
+    "W24-thread-01",
+    "W24-sender-01"
+   ],
+   [
+    "W24-sender-01"
+   ],
+   [
+    "W24-install-01"
+   ],
+   [
+    "W24-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "W25",
+  "definition_version": 1,
+  "platform": "whatsapp",
+  "synthetic": {
+   "sender": {
+    "display_name": "Neel",
+    "identifier": "+91 00000 50561",
+    "avatar_initials": "N",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "08:56"
+   },
+   "prior_context": "A saved contact's compromised account asks the learner to help test a desktop login.",
+   "assets": [
+    {
+     "asset_id": "W25-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "whatsapp notification",
+     "content": {
+      "sender": "Neel",
+      "body": "I",
+      "platform": "whatsapp",
+      "received_at": "19:39",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "W25-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Neel",
+     "content": {
+      "display_name": "Neel",
+      "identifier": "+91 00000 50561",
+      "avatar_initials": "N",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "08:56"
+     }
+    },
+    {
+     "asset_id": "W25-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Neel thread",
+     "content": {
+      "header": {
+       "title": "Neel",
+       "subtitle": "+91 00000 50561",
+       "avatarSeed": "N"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A saved contact's compromised account asks the learner to help test a desktop login."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "I",
+        "time": "19:34"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "W25-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 16701",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "W25-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://w25.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "w25.training.example",
+      "body": "The interaction advances to a simulated device-link code and approval sheet",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "W25-notif-01"
+   ],
+   [
+    "W25-thread-01",
+    "W25-sender-01"
+   ],
+   [
+    "W25-sender-01",
+    "W25-browser-01"
+   ],
+   [
+    "W25-browser-01"
+   ],
+   [
+    "W25-dir-01"
+   ],
+   []
+  ]
+ }
+]

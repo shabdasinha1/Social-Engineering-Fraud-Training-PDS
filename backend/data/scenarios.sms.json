@@ -1,0 +1,545 @@
+[
+  {
+    "scenarioCode": "SMS-01",
+    "channel": "sms",
+    "type": "malicious",
+    "title": "Review this text message",
+    "instruction": "A loan offer has arrived.",
+    "simulation": {
+      "entryScreenId": "sms-list",
+      "screens": [
+        {
+          "id": "sms-list",
+          "kind": "list",
+          "header": { "title": "Messages", "showBack": false },
+          "blocks": [
+            { "type": "listItem", "title": "VK-PAISNW", "preview": "Congratulations! Your loan of Rs 2,00,000 is pre-approved...", "time": "11:47", "unread": true, "target": "thread" },
+            { "type": "listItem", "title": "AX-STATBK", "preview": "Your salary has been credited", "time": "09:02", "unread": false, "target": null }
+          ],
+          "actions": []
+        },
+        {
+          "id": "thread",
+          "kind": "thread",
+          "header": { "title": "VK-PAISNW", "subtitle": "Sender ID", "showBack": true },
+          "blocks": [
+            { "type": "note", "text": "Today" },
+            { "type": "message", "from": "them", "text": "Congratulations! Your loan of Rs 2,00,000 is PRE-APPROVED at 0.9% interest. No documents, no salary slip, no CIBIL check required.", "time": "11:45" },
+            { "type": "message", "from": "them", "text": "Amount will be credited within 30 minutes of paying the one-time file processing charge of Rs 1,850. Ref: PN/AP/77214", "time": "11:46" },
+            { "type": "message", "from": "them", "text": "Apply here before 6 PM today: paisanow-approval.instant-credit.example.in/apply", "time": "11:47" }
+          ],
+          "actions": [
+            { "id": "back", "label": "Back", "target": "sms-list", "interaction": null },
+            { "id": "open-link", "label": "Open the link", "target": null, "interaction": "open-link" },
+            { "id": "pay-fee", "label": "Pay the processing charge", "target": null, "interaction": "make-payment" }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "delete", "label": "Delete the message", "marks": 5 },
+      { "key": "report-spam", "label": "Report it as spam", "marks": 5 },
+      { "key": "ignore", "label": "Ignore it", "marks": 3 },
+      { "key": "open-link", "label": "Open the link to check the offer", "marks": -3 },
+      { "key": "pay-fee", "label": "Pay the 1,850 processing charge", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "pay-before-loan", "label": "A real lender never asks for money before giving a loan", "marks": 2 },
+      { "key": "no-checks", "label": "No documents and no credit check is not how lending works", "marks": 2 },
+      { "key": "deadline", "label": "A same-day deadline is used to rush me", "marks": 2 },
+      { "key": "good-rate", "label": "The interest rate is good, so it is worth applying", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "instant-loan",
+      "eviTags": ["greed_reward", "urgency"],
+      "warningSigns": [
+        "A fee is demanded before any money is given",
+        "No documents, salary proof or credit check - real lenders always check",
+        "An interest rate far below anything a real lender offers",
+        "A same-day deadline removes your time to think"
+      ],
+      "feedback": "This is an instant-loan fraud. The fee is the fraud - once it is paid the sender disappears and no loan arrives. A genuine lender deducts charges from the loan, never asks you to pay first.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved SMS fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "SMS-02",
+    "channel": "sms",
+    "type": "malicious",
+    "title": "Review this text message",
+    "instruction": "A prize message has arrived.",
+    "simulation": {
+      "entryScreenId": "thread",
+      "screens": [
+        {
+          "id": "thread",
+          "kind": "thread",
+          "header": { "title": "+91 70045 88213", "subtitle": "Unknown number", "showBack": false },
+          "blocks": [
+            { "type": "note", "text": "Yesterday" },
+            { "type": "message", "from": "them", "text": "LUCKY DRAW RESULT: Your mobile number has won Rs 15,00,000 in the Bharat Festive Draw 2026. Winner code: BFD-2026-40871.", "time": "19:22" },
+            { "type": "note", "text": "Today" },
+            { "type": "message", "from": "them", "text": "Second and final reminder. Your claim expires in 48 hours. Send your name, address, Aadhaar number and bank account to release the amount.", "time": "08:14" },
+            { "type": "message", "from": "them", "text": "Government processing tax of Rs 4,999 is payable before transfer. Reply CLAIM to proceed.", "time": "08:15" }
+          ],
+          "actions": [
+            { "id": "reply-claim", "label": "Reply CLAIM", "target": null, "interaction": null },
+            { "id": "pay-tax", "label": "Pay the processing tax", "target": null, "interaction": "make-payment" }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "delete-block", "label": "Delete and block the number", "marks": 5 },
+      { "key": "ignore", "label": "Ignore it", "marks": 3 },
+      { "key": "reply-claim", "label": "Reply CLAIM to find out more", "marks": -3 },
+      { "key": "send-details", "label": "Send the Aadhaar and bank details", "marks": -5, "isCriticalFailure": true },
+      { "key": "pay-tax", "label": "Pay the 4,999 processing tax", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "never-entered", "label": "I never entered any draw", "marks": 2 },
+      { "key": "pay-to-receive", "label": "A real prize never requires a payment from the winner", "marks": 2 },
+      { "key": "asks-identity", "label": "It asks for Aadhaar and bank details over SMS", "marks": 2 },
+      { "key": "official-code", "label": "It has a winner code, so it looks official", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "lottery-prize",
+      "eviTags": ["greed_reward", "urgency"],
+      "warningSigns": [
+        "A prize for a draw you never entered",
+        "A 'processing tax' must be paid before the money arrives",
+        "Aadhaar and bank details are requested over SMS",
+        "The message comes from an ordinary mobile number, not a registered sender ID"
+      ],
+      "feedback": "This is a lottery fraud. No genuine prize requires the winner to pay tax or a fee in advance, and no legitimate body collects Aadhaar or bank details by text message. Notice it came from a personal number, not a company sender ID.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved SMS fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "SMS-03",
+    "channel": "sms",
+    "type": "malicious",
+    "title": "Review this text message",
+    "instruction": "A message about your bank account has arrived.",
+    "simulation": {
+      "entryScreenId": "sms-list",
+      "screens": [
+        {
+          "id": "sms-list",
+          "kind": "list",
+          "header": { "title": "Messages", "showBack": false },
+          "blocks": [
+            { "type": "listItem", "title": "BZ-KYCVRF", "preview": "Dear Customer, your account will be suspended today...", "time": "10:31", "unread": true, "target": "thread" },
+            { "type": "listItem", "title": "VM-MERUBK", "preview": "Rs 1,240.00 debited from a/c XX4471", "time": "Mon", "unread": false, "target": null }
+          ],
+          "actions": []
+        },
+        {
+          "id": "thread",
+          "kind": "thread",
+          "header": { "title": "BZ-KYCVRF", "subtitle": "Sender ID", "showBack": true },
+          "blocks": [
+            { "type": "message", "from": "them", "text": "Dear Customer, your Meru Bank account will be SUSPENDED today as your KYC is incomplete. Service request SR-9920174.", "time": "10:29" },
+            { "type": "message", "from": "them", "text": "Complete verification now to avoid restriction on your account and debit card: meru-kyc-update.secure-verify.example.in", "time": "10:31" }
+          ],
+          "actions": [
+            { "id": "back", "label": "Back", "target": "sms-list", "interaction": null },
+            { "id": "open-link", "label": "Open the verification link", "target": null, "interaction": "open-link" },
+            { "id": "enter-details", "label": "Enter card and PIN to verify", "target": null, "interaction": "enter-credentials" }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "call-bank", "label": "Call the bank on the number printed on your card", "marks": 5 },
+      { "key": "use-bank-app", "label": "Check KYC status inside the bank's own app", "marks": 5 },
+      { "key": "delete", "label": "Delete the message", "marks": 3 },
+      { "key": "open-link", "label": "Open the verification link", "marks": -3 },
+      { "key": "enter-card", "label": "Enter card number and PIN on the page", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "bad-domain", "label": "The web address is not the bank's own address", "marks": 2 },
+      { "key": "same-day-threat", "label": "It threatens to suspend the account the same day", "marks": 2 },
+      { "key": "kyc-by-link", "label": "A bank never completes KYC through an SMS link", "marks": 2 },
+      { "key": "has-reference", "label": "It quotes a service request number, so it is genuine", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "kyc-freeze",
+      "eviTags": ["authority_fear", "urgency"],
+      "warningSigns": [
+        "The web address is not the bank's real domain",
+        "Same-day suspension is threatened to stop you checking",
+        "A reference number is quoted to look official - anyone can invent one",
+        "Real KYC is never completed through a link in a text message"
+      ],
+      "feedback": "This is a KYC-freeze fraud. The threat of same-day suspension is there to make you act before thinking. Compare the sender ID with the genuine bank alert already in your inbox, and always use the number printed on your own card.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved SMS fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "SMS-04",
+    "channel": "sms",
+    "type": "malicious",
+    "title": "Review this text message",
+    "instruction": "A traffic notice has arrived.",
+    "simulation": {
+      "entryScreenId": "thread",
+      "screens": [
+        {
+          "id": "thread",
+          "kind": "thread",
+          "header": { "title": "TX-ECHLAN", "subtitle": "Sender ID", "showBack": false },
+          "blocks": [
+            { "type": "note", "text": "Today" },
+            { "type": "message", "from": "them", "text": "TRAFFIC NOTICE: E-challan of Rs 1,000 issued against vehicle no. CH01AK4482 for signal violation on 29/08/2026. Challan no. EC/CH/2026/551203.", "time": "14:05" },
+            { "type": "message", "from": "them", "text": "Pay within 24 hours to avoid court summons and licence suspension: echallan-payment.trafficdesk.example.in/pay", "time": "14:05" }
+          ],
+          "actions": [
+            { "id": "open-link", "label": "Open the payment link", "target": null, "interaction": "open-link" },
+            { "id": "pay", "label": "Pay the challan", "target": null, "interaction": "make-payment" }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "check-official", "label": "Check on the official transport portal you already use", "marks": 5 },
+      { "key": "verify-vehicle", "label": "Check whether the vehicle number is even yours", "marks": 5 },
+      { "key": "ignore", "label": "Ignore the message", "marks": 1 },
+      { "key": "open-link", "label": "Open the payment link", "marks": -3 },
+      { "key": "pay", "label": "Pay the 1,000 challan through the link", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "not-official-portal", "label": "The link is not the official transport portal", "marks": 2 },
+      { "key": "court-threat", "label": "A 24-hour court and licence threat is used to rush me", "marks": 2 },
+      { "key": "check-vehicle", "label": "The vehicle number should be checked before paying anything", "marks": 2 },
+      { "key": "detailed", "label": "It has a challan number and a date, so it must be real", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "e-challan",
+      "eviTags": ["authority_fear", "urgency"],
+      "warningSigns": [
+        "The payment link is not the official transport portal",
+        "Court summons and licence suspension within 24 hours is not how challans work",
+        "Specific-looking challan and vehicle numbers create false credibility",
+        "Real challans can always be checked independently on the official portal"
+      ],
+      "feedback": "This is an e-challan fraud. Precise-looking numbers and an official tone are easy to fake. A real challan can always be looked up on the official portal yourself - never pay through a link that arrived by SMS.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved SMS fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "SMS-05",
+    "channel": "sms",
+    "type": "malicious",
+    "title": "Review this text message",
+    "instruction": "A delivery update has arrived.",
+    "simulation": {
+      "entryScreenId": "sms-list",
+      "screens": [
+        {
+          "id": "sms-list",
+          "kind": "list",
+          "header": { "title": "Messages", "showBack": false },
+          "blocks": [
+            { "type": "listItem", "title": "+91 86220 71904", "preview": "Your parcel is on hold at the sorting facility", "time": "16:52", "unread": true, "target": "thread" }
+          ],
+          "actions": []
+        },
+        {
+          "id": "thread",
+          "kind": "thread",
+          "header": { "title": "+91 86220 71904", "subtitle": "Unknown number", "showBack": true },
+          "blocks": [
+            { "type": "message", "from": "them", "text": "SwiftPost: Your parcel SP884120375IN is on hold at the sorting facility because the delivery address is incomplete.", "time": "16:50" },
+            { "type": "message", "from": "them", "text": "Update your address and pay the redelivery handling fee of Rs 58 within 12 hours or the parcel will be returned to sender.", "time": "16:51" },
+            { "type": "message", "from": "them", "text": "swiftpost-redelivery.parcel-update.example.net/track", "time": "16:52" }
+          ],
+          "actions": [
+            { "id": "back", "label": "Back", "target": "sms-list", "interaction": null },
+            { "id": "open-link", "label": "Open the tracking link", "target": null, "interaction": "open-link" },
+            { "id": "pay-fee", "label": "Pay the 58 rupee fee", "target": null, "interaction": "make-payment" }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "check-courier-app", "label": "Check the order in the shopping or courier app itself", "marks": 5 },
+      { "key": "delete", "label": "Delete the message", "marks": 3 },
+      { "key": "ignore", "label": "Ignore it", "marks": 3 },
+      { "key": "open-link", "label": "Open the tracking link", "marks": -3 },
+      { "key": "pay-fee", "label": "Pay the 58 rupee handling fee", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "small-amount-trick", "label": "The small amount is there to make me pay without thinking", "marks": 2 },
+      { "key": "personal-number", "label": "A courier company does not text from a personal mobile number", "marks": 2 },
+      { "key": "not-expecting", "label": "The tracking number does not match any order I placed", "marks": 2 },
+      { "key": "cheap", "label": "It is only 58 rupees, so there is little risk", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "parcel-delivery",
+      "eviTags": ["curiosity", "routine_convenience"],
+      "warningSigns": [
+        "The message comes from a personal mobile number, not a company sender ID",
+        "A very small fee is used so the amount does not feel worth checking",
+        "A 12-hour deadline is attached to a routine delivery",
+        "The link is not the courier's real website"
+      ],
+      "feedback": "This is a parcel fraud. The tiny fee is deliberate - it is small enough that people pay without checking, and the real goal is your card details on the payment page. Always check a delivery inside the app you ordered from.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved SMS fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "SMS-06",
+    "channel": "sms",
+    "type": "malicious",
+    "title": "Review this text message",
+    "instruction": "A job offer has arrived.",
+    "simulation": {
+      "entryScreenId": "thread",
+      "screens": [
+        {
+          "id": "thread",
+          "kind": "thread",
+          "header": { "title": "+91 91554 20087", "subtitle": "Unknown number", "showBack": false },
+          "blocks": [
+            { "type": "note", "text": "Today" },
+            { "type": "message", "from": "them", "text": "Hello, I am Neha from CareerBridge HR. Your profile has been shortlisted for a part-time work-from-home data entry role.", "time": "12:18" },
+            { "type": "message", "from": "them", "text": "Daily payout Rs 2,200 - Rs 2,800 for 2 hours work. No experience or interview needed. Immediate joining.", "time": "12:19" },
+            { "type": "message", "from": "them", "text": "A refundable registration and ID card charge of Rs 1,200 confirms your seat. Only 4 seats left for this batch.", "time": "12:20" }
+          ],
+          "actions": [
+            { "id": "reply", "label": "Reply to the recruiter", "target": null, "interaction": null },
+            { "id": "pay-registration", "label": "Pay the registration charge", "target": null, "interaction": "make-payment" }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "ignore-block", "label": "Ignore and block the number", "marks": 5 },
+      { "key": "verify-company", "label": "Look up the company independently before replying", "marks": 3 },
+      { "key": "reply", "label": "Reply and ask for details", "marks": 0 },
+      { "key": "pay-registration", "label": "Pay the 1,200 registration charge", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "pay-to-work", "label": "A real employer never charges you to start work", "marks": 2 },
+      { "key": "no-interview", "label": "No interview and no experience needed is not a real hiring process", "marks": 2 },
+      { "key": "unrealistic-pay", "label": "The pay is far too high for two hours of data entry", "marks": 2 },
+      { "key": "shortlisted", "label": "My profile was shortlisted, so it is genuine", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "job-offer",
+      "eviTags": ["greed_reward", "urgency"],
+      "warningSigns": [
+        "A registration fee is demanded before any work begins",
+        "The daily pay is far above the market rate for the work described",
+        "No interview, no experience and immediate joining",
+        "'Only 4 seats left' is pressure, not a fact you can verify"
+      ],
+      "feedback": "This is a job fraud. Genuine employers pay you, never the other way round, and no real role skips the interview entirely. The 'refundable' fee is never refunded.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved SMS fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "SMS-07",
+    "channel": "sms",
+    "type": "malicious",
+    "title": "Review this text message",
+    "instruction": "An alert about a debit has arrived.",
+    "simulation": {
+      "entryScreenId": "sms-list",
+      "screens": [
+        {
+          "id": "sms-list",
+          "kind": "list",
+          "header": { "title": "Messages", "showBack": false },
+          "blocks": [
+            { "type": "listItem", "title": "+91 74110 39628", "preview": "Rs 49,999.00 debited for online purchase", "time": "22:41", "unread": true, "target": "thread" },
+            { "type": "listItem", "title": "VM-MERUBK", "preview": "Rs 1,240.00 debited from a/c XX4471", "time": "Mon", "unread": false, "target": null }
+          ],
+          "actions": []
+        },
+        {
+          "id": "thread",
+          "kind": "thread",
+          "header": { "title": "+91 74110 39628", "subtitle": "Unknown number", "showBack": true },
+          "blocks": [
+            { "type": "message", "from": "them", "text": "ALERT: Rs 49,999.00 has been debited from your account for an online purchase at 22:39 today. Txn ID 8841207755.", "time": "22:40" },
+            { "type": "message", "from": "them", "text": "If this transaction was NOT done by you, call our fraud helpline immediately on 91 74110 39628 to reverse it within 30 minutes.", "time": "22:41" }
+          ],
+          "actions": [
+            { "id": "back", "label": "Back", "target": "sms-list", "interaction": null },
+            { "id": "call-helpline", "label": "Call the helpline number", "target": null, "interaction": "call-number" }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "check-bank-app", "label": "Check the balance in the bank's own app", "marks": 5 },
+      { "key": "call-card-number", "label": "Call the number printed on your own bank card", "marks": 5 },
+      { "key": "delete", "label": "Delete the message", "marks": 1 },
+      { "key": "call-helpline", "label": "Call the helpline number in the message", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "same-number", "label": "The 'helpline' is the same number that sent the message", "marks": 2 },
+      { "key": "personal-number", "label": "A bank alert does not come from a personal mobile number", "marks": 2 },
+      { "key": "panic-deadline", "label": "A 30-minute reversal window is designed to cause panic", "marks": 2 },
+      { "key": "large-amount", "label": "The amount is large, so I should call at once", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "fake-bank-alert",
+      "eviTags": ["authority_fear", "urgency"],
+      "warningSigns": [
+        "The 'fraud helpline' is the same mobile number that sent the message",
+        "A genuine bank alert comes from a registered sender ID, not a personal number",
+        "A 30-minute window is designed to cause panic and stop you checking",
+        "The real bank alert already in your inbox looks completely different"
+      ],
+      "feedback": "This is a callback fraud. There is no debit - the alarm exists only to make you ring the fraudster, who will then walk you into sharing an OTP or installing a screen-sharing app. Check your balance in the bank's own app and call only the number on your card.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved SMS fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "SMS-08",
+    "channel": "sms",
+    "type": "legitimate",
+    "title": "Review this text message",
+    "instruction": "A bank alert has arrived.",
+    "simulation": {
+      "entryScreenId": "thread",
+      "screens": [
+        {
+          "id": "thread",
+          "kind": "thread",
+          "header": { "title": "VM-MERUBK", "subtitle": "Sender ID", "showBack": false },
+          "blocks": [
+            { "type": "note", "text": "Today" },
+            { "type": "message", "from": "them", "text": "Rs 1,240.00 debited from a/c XX4471 on 02-09-26 at MERU MART. Avl bal Rs 18,362.15. Not you? Call 1800-XXX-4400. -Meru Bank", "time": "13:12" }
+          ],
+          "actions": []
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "no-action", "label": "Read it and do nothing - the purchase was mine", "marks": 5 },
+      { "key": "check-app", "label": "Check the balance in the bank app to confirm", "marks": 3 },
+      { "key": "delete", "label": "Delete the message", "marks": 1 },
+      { "key": "report-spam", "label": "Report it as spam", "marks": -3 }
+    ],
+    "reasonOptions": [
+      { "key": "no-link-no-ask", "label": "There is no link and nothing is asked of me", "marks": 2 },
+      { "key": "masked-account", "label": "The account number is masked and the balance is shown", "marks": 2 },
+      { "key": "registered-sender", "label": "It comes from the bank's registered sender ID", "marks": 2 },
+      { "key": "urgent", "label": "It creates urgency", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "genuine",
+      "fraudTheme": null,
+      "eviTags": [],
+      "warningSigns": [],
+      "feedback": "This is a genuine bank alert. It informs you of a transaction you made, masks the account number, shows the balance, contains no link, and asks for nothing. The helpline it gives is the bank's published number, not a mobile number.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "SMS-09",
+    "channel": "sms",
+    "type": "legitimate",
+    "title": "Review this text message",
+    "instruction": "An appointment reminder has arrived.",
+    "simulation": {
+      "entryScreenId": "sms-list",
+      "screens": [
+        {
+          "id": "sms-list",
+          "kind": "list",
+          "header": { "title": "Messages", "showBack": false },
+          "blocks": [
+            { "type": "listItem", "title": "AD-STNHLC", "preview": "Reminder: appointment on 05 Sep at 10:30 AM", "time": "08:00", "unread": true, "target": "thread" }
+          ],
+          "actions": []
+        },
+        {
+          "id": "thread",
+          "kind": "thread",
+          "header": { "title": "AD-STNHLC", "subtitle": "Sender ID", "showBack": true },
+          "blocks": [
+            { "type": "note", "text": "Today" },
+            { "type": "message", "from": "them", "text": "Reminder: Your appointment at Station Health Centre is on 05 Sep 2026 at 10:30 AM, OPD counter 3. Please carry your ID card.", "time": "08:00" },
+            { "type": "message", "from": "them", "text": "To reschedule, visit the reception or call the centre during working hours. Do not reply to this message.", "time": "08:00" }
+          ],
+          "actions": [{ "id": "back", "label": "Back", "target": "sms-list", "interaction": null }]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "note-it", "label": "Note the appointment and carry the ID card", "marks": 5 },
+      { "key": "call-centre", "label": "Call the health centre if the time does not suit", "marks": 3 },
+      { "key": "delete", "label": "Delete the message", "marks": 1 },
+      { "key": "block", "label": "Block the sender", "marks": -3 }
+    ],
+    "reasonOptions": [
+      { "key": "information-only", "label": "It only gives information and asks for nothing", "marks": 2 },
+      { "key": "no-link-no-payment", "label": "There is no link and no payment request", "marks": 2 },
+      { "key": "asks-money", "label": "It asks for money", "marks": 0 },
+      { "key": "unknown-number", "label": "The sender is an unknown mobile number", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "genuine",
+      "fraudTheme": null,
+      "eviTags": [],
+      "warningSigns": [],
+      "feedback": "This is a genuine appointment reminder. It confirms something you arranged, gives practical details, contains no link, asks for no payment and tells you to use the reception to change it. Ordinary messages like this should not be treated as fraud.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "SMS-10",
+    "channel": "sms",
+    "type": "legitimate",
+    "title": "Review this text message",
+    "instruction": "A service notification has arrived.",
+    "simulation": {
+      "entryScreenId": "thread",
+      "screens": [
+        {
+          "id": "thread",
+          "kind": "thread",
+          "header": { "title": "VK-PWRSUP", "subtitle": "Sender ID", "showBack": false },
+          "blocks": [
+            { "type": "note", "text": "Today" },
+            { "type": "message", "from": "them", "text": "Your electricity bill for Aug 2026 has been generated. Consumer no. 41120887. Amount Rs 1,865.00. Due date 12 Sep 2026.", "time": "07:45" },
+            { "type": "message", "from": "them", "text": "Pay through the official app or at any collection centre. This message is for information only.", "time": "07:45" }
+          ],
+          "actions": []
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "pay-official", "label": "Pay through the official app before the due date", "marks": 5 },
+      { "key": "check-consumer-no", "label": "Check the consumer number against a previous bill", "marks": 3 },
+      { "key": "ignore", "label": "Ignore it", "marks": 0 },
+      { "key": "report-spam", "label": "Report it as spam", "marks": -3 }
+    ],
+    "reasonOptions": [
+      { "key": "no-link", "label": "There is no payment link - it points to the official app", "marks": 2 },
+      { "key": "matches-account", "label": "The consumer number matches my own account", "marks": 2 },
+      { "key": "deadline-pressure", "label": "It threatens immediate disconnection", "marks": 0 },
+      { "key": "asks-card", "label": "It asks for card details", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "genuine",
+      "fraudTheme": null,
+      "eviTags": [],
+      "warningSigns": [],
+      "feedback": "This is a genuine bill notification. It states the amount and due date, quotes your own consumer number, contains no payment link, and directs you to the official app. A fraudulent version would add a link and a same-day disconnection threat.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored. Replace with client content when received."
+    }
+  }
+]

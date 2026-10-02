@@ -1,0 +1,6330 @@
+{
+ "contract": "SECURITY-001",
+ "note": "Every scored scene control resolved by the engine BEFORE SECURITY-001, when the scene itself carried the intent. Keyed by the authoring name. learnerAction.test.js requires the neutral contract to reproduce every row exactly. Do not regenerate from the current code.",
+ "captured": "2026-09-17",
+ "controls": 1037,
+ "scenes": {
+  "W01": {
+   "w01-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w01-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "w01-inspect-contact": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w01-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w01-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w01-branch-send": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "w01-branch-ask": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "w01-branch-pivot": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w01-branch-call": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_call"
+   },
+   "w01-verify-account": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w01-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w01-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w01-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w01-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w01-resolve-keep": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w01-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w01-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w01-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w01-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "W02": {
+   "w02-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w02-open-link": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "w02-inspect-contact": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w02-inspect-link": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w02-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w02-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w02-branch-open": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_browser_open"
+   },
+   "w02-branch-pay": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_payment"
+   },
+   "w02-branch-submit": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "w02-branch-reply": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "w02-branch-pivot": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w02-branch-call": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_call"
+   },
+   "w02-verify-courier": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w02-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w02-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w02-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w02-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w02-resolve-keep": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w02-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w02-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w02-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w02-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "W03": {
+   "w03-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w03-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "w03-inspect-group": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w03-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w03-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w03-branch-yes": {
+    "stage": "branch",
+    "event_code": "CORRECT_USE",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w03-branch-no": {
+    "stage": "branch",
+    "event_code": "CORRECT_USE",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w03-branch-exit": {
+    "stage": "branch",
+    "event_code": "NEEDLESS_REJECT_IGNORE",
+    "points_delta": -2,
+    "consequence": null
+   },
+   "w03-branch-location": {
+    "stage": "branch",
+    "event_code": "UNSAFE_EXTERNAL_ACTION",
+    "points_delta": -4,
+    "consequence": "simulated_data_submission"
+   },
+   "w03-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w03-verify-known": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w03-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w03-verify-report": {
+    "stage": "verify",
+    "event_code": "FALSE_REPORT_BLOCK",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w03-verify-block": {
+    "stage": "verify",
+    "event_code": "FALSE_REPORT_BLOCK",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w03-resolve-report": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w03-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w03-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w03-resolve-block": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w03-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "W04": {
+   "w04-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w04-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "w04-inspect-contact": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w04-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w04-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w04-branch-pay": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_payment"
+   },
+   "w04-branch-reply": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "w04-branch-pivot": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w04-branch-call": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_call"
+   },
+   "w04-verify-known": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w04-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w04-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w04-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w04-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w04-resolve-keep": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w04-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w04-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w04-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w04-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "W05": {
+   "w05-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w05-open-link": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "w05-inspect-contact": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w05-inspect-link": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w05-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w05-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w05-branch-open": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_browser_open"
+   },
+   "w05-branch-submit": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "w05-branch-reply": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "w05-branch-pivot": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w05-branch-call": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_call"
+   },
+   "w05-verify-app": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w05-verify-card": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w05-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w05-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w05-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w05-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w05-resolve-keep": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w05-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w05-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w05-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w05-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "W06": {
+   "w06-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w06-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "w06-inspect-contact": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w06-inspect-notice": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w06-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w06-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w06-branch-pivot": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w06-branch-send": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "w06-branch-ask": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "w06-branch-call": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_call"
+   },
+   "w06-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w06-verify-desk": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w06-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w06-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w06-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w06-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w06-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w06-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w06-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w06-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "W07": {
+   "w07-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w07-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "w07-inspect-contact": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w07-inspect-file": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w07-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w07-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w07-branch-keep": {
+    "stage": "branch",
+    "event_code": "CORRECT_USE",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w07-branch-delete": {
+    "stage": "branch",
+    "event_code": "NEEDLESS_REJECT_IGNORE",
+    "points_delta": -2,
+    "consequence": null
+   },
+   "w07-branch-install": {
+    "stage": "branch",
+    "event_code": "UNSAFE_EXTERNAL_ACTION",
+    "points_delta": -4,
+    "consequence": "simulated_install"
+   },
+   "w07-branch-location": {
+    "stage": "branch",
+    "event_code": "UNSAFE_EXTERNAL_ACTION",
+    "points_delta": -4,
+    "consequence": "simulated_data_submission"
+   },
+   "w07-verify-known": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w07-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w07-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w07-verify-report": {
+    "stage": "verify",
+    "event_code": "FALSE_REPORT_BLOCK",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w07-verify-block": {
+    "stage": "verify",
+    "event_code": "FALSE_REPORT_BLOCK",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w07-resolve-report": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w07-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w07-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w07-resolve-block": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w07-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "W08": {
+   "w08-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w08-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "w08-inspect-qr": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w08-inspect-group": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w08-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w08-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w08-branch-pivot": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w08-branch-scan": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_qr_inspect"
+   },
+   "w08-branch-submit": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "w08-branch-forward": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "w08-verify-app": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w08-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w08-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w08-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w08-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w08-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w08-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w08-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w08-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w08-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "W09": {
+   "w09-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w09-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "w09-inspect-contact": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w09-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w09-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w09-branch-pivot": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w09-branch-pay": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_payment"
+   },
+   "w09-branch-secret": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "w09-branch-reply": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "w09-verify-known": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w09-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w09-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w09-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w09-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w09-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w09-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w09-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w09-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w09-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "W10": {
+   "w10-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w10-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "w10-inspect-qr": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w10-inspect-contact": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w10-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w10-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w10-branch-pivot": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w10-branch-approve": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_device_link"
+   },
+   "w10-branch-scan": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_qr_inspect"
+   },
+   "w10-branch-reply": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "w10-verify-settings": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w10-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w10-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w10-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w10-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w10-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w10-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w10-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w10-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w10-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "W11": {
+   "w11-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w11-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "w11-inspect-contact": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w11-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w11-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w11-branch-confirm": {
+    "stage": "branch",
+    "event_code": "CORRECT_USE",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w11-branch-ignore": {
+    "stage": "branch",
+    "event_code": "NEEDLESS_REJECT_IGNORE",
+    "points_delta": -2,
+    "consequence": null
+   },
+   "w11-branch-call": {
+    "stage": "branch",
+    "event_code": "UNSAFE_EXTERNAL_ACTION",
+    "points_delta": -4,
+    "consequence": "simulated_call"
+   },
+   "w11-verify-app": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w11-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w11-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w11-verify-report": {
+    "stage": "verify",
+    "event_code": "FALSE_REPORT_BLOCK",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w11-verify-block": {
+    "stage": "verify",
+    "event_code": "FALSE_REPORT_BLOCK",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w11-resolve-report": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w11-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w11-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w11-resolve-block": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w11-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "W12": {
+   "w12-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w12-open-answer": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "w12-inspect-contact": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w12-inspect-file": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w12-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w12-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w12-branch-hangup": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w12-branch-stay": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_call"
+   },
+   "w12-branch-id": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "w12-branch-pay": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_payment"
+   },
+   "w12-branch-pivot": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w12-branch-plead": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "w12-verify-desk": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w12-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w12-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w12-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w12-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w12-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w12-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w12-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w12-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w12-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "W13": {
+   "w13-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w13-open-link": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "w13-inspect-group": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w13-inspect-link": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w13-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w13-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w13-branch-exit": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w13-branch-dm": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "w13-branch-pay": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_payment"
+   },
+   "w13-verify-app": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w13-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w13-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w13-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w13-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w13-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w13-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w13-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w13-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w13-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "W14": {
+   "w14-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w14-open-file": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "w14-inspect-contact": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w14-inspect-file": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w14-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w14-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w14-branch-cancel-blocked": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w14-branch-cancel-confirm": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w14-branch-install": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_install"
+   },
+   "w14-branch-pivot": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w14-branch-reply": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "w14-verify-dms": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w14-verify-ops": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w14-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w14-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w14-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w14-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w14-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w14-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w14-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w14-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w14-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "W15": {
+   "w15-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w15-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "w15-inspect-contact": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w15-inspect-voice": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w15-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w15-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w15-branch-phrase": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "w15-branch-photo": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "w15-branch-doc": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "w15-branch-pivot": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w15-branch-call": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_call"
+   },
+   "w15-verify-adjt": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w15-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w15-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w15-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w15-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w15-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w15-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w15-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w15-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w15-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "W16": {
+   "w16-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w16-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "w16-inspect-contact": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w16-inspect-plan": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w16-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w16-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w16-branch-ack": {
+    "stage": "branch",
+    "event_code": "CORRECT_USE",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w16-branch-reply": {
+    "stage": "branch",
+    "event_code": "CORRECT_USE",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w16-branch-overshare": {
+    "stage": "branch",
+    "event_code": "UNSAFE_EXTERNAL_ACTION",
+    "points_delta": -4,
+    "consequence": "simulated_data_submission"
+   },
+   "w16-branch-forward": {
+    "stage": "branch",
+    "event_code": "UNSAFE_EXTERNAL_ACTION",
+    "points_delta": -4,
+    "consequence": "simulated_reply_sent"
+   },
+   "w16-branch-ignore": {
+    "stage": "branch",
+    "event_code": "NEEDLESS_REJECT_IGNORE",
+    "points_delta": -2,
+    "consequence": null
+   },
+   "w16-verify-board": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w16-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w16-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w16-verify-report": {
+    "stage": "verify",
+    "event_code": "FALSE_REPORT_BLOCK",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w16-verify-block": {
+    "stage": "verify",
+    "event_code": "FALSE_REPORT_BLOCK",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w16-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w16-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w16-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w16-resolve-report": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w16-resolve-block": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "W17": {
+   "w17-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w17-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "w17-inspect-contact": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w17-inspect-link": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w17-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w17-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w17-branch-stop": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w17-branch-yes": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "w17-branch-invite": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "w17-branch-bank": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "w17-branch-pay": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_payment"
+   },
+   "w17-verify-jobs": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w17-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w17-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w17-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w17-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w17-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w17-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w17-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w17-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w17-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "W18": {
+   "w18-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w18-open-link": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "w18-inspect-group": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w18-inspect-link": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w18-inspect-admin": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w18-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w18-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w18-branch-submit": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "w18-branch-pivot": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w18-branch-ask": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "w18-branch-forward": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "w18-verify-office": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w18-verify-app": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w18-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w18-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w18-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w18-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w18-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w18-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w18-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w18-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w18-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "W19": {
+   "w19-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w19-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "w19-inspect-contact": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w19-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w19-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w19-branch-deny": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w19-branch-15m": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "w19-branch-1h": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "w19-branch-current": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "w19-branch-cancel": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w19-branch-schedule": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "w19-branch-ask": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "w19-verify-duty": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w19-verify-co": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w19-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w19-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w19-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w19-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w19-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w19-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w19-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w19-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w19-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "W20": {
+   "w20-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w20-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "w20-inspect-contact": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w20-inspect-file": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w20-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w20-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w20-branch-hold": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w20-branch-submit": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "w20-branch-pay": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_payment"
+   },
+   "w20-branch-reply": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "w20-verify-rohit": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w20-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w20-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w20-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w20-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w20-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w20-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w20-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w20-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w20-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "W21": {
+   "w21-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w21-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "w21-inspect-contact": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w21-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w21-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w21-branch-ack": {
+    "stage": "branch",
+    "event_code": "CORRECT_USE",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w21-branch-ask": {
+    "stage": "branch",
+    "event_code": "UNSAFE_EXTERNAL_ACTION",
+    "points_delta": -4,
+    "consequence": "simulated_reply_sent"
+   },
+   "w21-branch-call": {
+    "stage": "branch",
+    "event_code": "UNSAFE_EXTERNAL_ACTION",
+    "points_delta": -4,
+    "consequence": "simulated_call"
+   },
+   "w21-branch-forward": {
+    "stage": "branch",
+    "event_code": "UNSAFE_EXTERNAL_ACTION",
+    "points_delta": -4,
+    "consequence": "simulated_reply_sent"
+   },
+   "w21-branch-ignore": {
+    "stage": "branch",
+    "event_code": "NEEDLESS_REJECT_IGNORE",
+    "points_delta": -2,
+    "consequence": null
+   },
+   "w21-verify-portal": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w21-verify-office": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w21-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w21-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w21-verify-report": {
+    "stage": "verify",
+    "event_code": "FALSE_REPORT_BLOCK",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w21-verify-block": {
+    "stage": "verify",
+    "event_code": "FALSE_REPORT_BLOCK",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w21-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w21-resolve-report": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w21-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w21-resolve-block": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w21-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "W22": {
+   "w22-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w22-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "w22-inspect-contact": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w22-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w22-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w22-branch-kyc": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "w22-branch-pay": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_payment"
+   },
+   "w22-branch-proof": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "w22-branch-call": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_call"
+   },
+   "w22-branch-pivot": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w22-verify-register": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w22-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w22-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w22-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w22-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w22-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w22-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w22-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w22-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w22-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "W23": {
+   "w23-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w23-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "w23-inspect-contact": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w23-inspect-poster": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w23-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w23-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w23-branch-close": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w23-branch-submit": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "w23-branch-disclose": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "w23-branch-ask": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "w23-branch-pivot": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w23-verify-ma": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w23-verify-welfare": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w23-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w23-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w23-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w23-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w23-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w23-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w23-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w23-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w23-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "W24": {
+   "w24-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w24-open-link": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "w24-inspect-contact": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w24-inspect-file": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w24-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w24-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w24-branch-hangup": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w24-branch-share": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "w24-branch-cancel-share": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w24-branch-cancel-download": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w24-branch-install": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_install"
+   },
+   "w24-branch-cancel-install": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w24-branch-reply": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "w24-branch-pivot": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w24-verify-it": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w24-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w24-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w24-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w24-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w24-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w24-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w24-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w24-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w24-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "W25": {
+   "w25-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w25-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "w25-inspect-contact": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w25-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w25-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w25-branch-link": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_device_link"
+   },
+   "w25-branch-deny": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w25-branch-code": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "w25-branch-ask": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "w25-branch-pivot": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w25-verify-call": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w25-verify-devices": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w25-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "w25-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "w25-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w25-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "w25-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w25-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w25-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "w25-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "w25-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "I01": {
+   "i01-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i01-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "i01-inspect-profile": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i01-inspect-tags": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i01-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i01-branch-login": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i01-branch-pay": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_payment"
+   },
+   "i01-branch-close": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i01-branch-share": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "i01-branch-leave": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i01-verify-search": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i01-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i01-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i01-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i01-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i01-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i01-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i01-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i01-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i01-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "I02": {
+   "i02-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i02-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "i02-inspect-profile": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i02-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i02-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i02-branch-submit": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i02-branch-close": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i02-branch-reply": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "i02-branch-ignore": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i02-verify-status": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i02-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i02-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i02-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i02-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i02-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i02-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i02-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i02-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i02-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "I03": {
+   "i03-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i03-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "i03-inspect-profile": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i03-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i03-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i03-branch-save": {
+    "stage": "branch",
+    "event_code": "CORRECT_USE",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i03-branch-share": {
+    "stage": "branch",
+    "event_code": "CORRECT_USE",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i03-branch-ignore": {
+    "stage": "branch",
+    "event_code": "NEEDLESS_REJECT_IGNORE",
+    "points_delta": -2,
+    "consequence": null
+   },
+   "i03-branch-link": {
+    "stage": "branch",
+    "event_code": "UNSAFE_EXTERNAL_ACTION",
+    "points_delta": -4,
+    "consequence": "simulated_browser_open"
+   },
+   "i03-branch-reply": {
+    "stage": "branch",
+    "event_code": "UNSAFE_EXTERNAL_ACTION",
+    "points_delta": -4,
+    "consequence": "simulated_reply_sent"
+   },
+   "i03-branch-repost": {
+    "stage": "branch",
+    "event_code": "UNSAFE_EXTERNAL_ACTION",
+    "points_delta": -4,
+    "consequence": "simulated_data_submission"
+   },
+   "i03-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i03-verify-call": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i03-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i03-verify-report": {
+    "stage": "verify",
+    "event_code": "FALSE_REPORT_BLOCK",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i03-verify-block": {
+    "stage": "verify",
+    "event_code": "FALSE_REPORT_BLOCK",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i03-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i03-resolve-report": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i03-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i03-resolve-block": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i03-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "I04": {
+   "i04-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i04-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "i04-inspect-profile": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i04-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i04-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i04-branch-pay": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_payment"
+   },
+   "i04-branch-ask": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "i04-branch-pivot": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i04-verify-call": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i04-verify-mutual": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i04-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i04-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i04-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i04-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i04-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i04-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i04-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i04-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i04-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "I05": {
+   "i05-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i05-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "i05-inspect-profile": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i05-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i05-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i05-branch-city": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i05-branch-unit": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i05-branch-route": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i05-branch-ask": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "i05-branch-pivot": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i05-verify-mutual": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i05-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i05-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i05-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i05-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i05-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i05-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i05-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i05-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i05-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "I06": {
+   "i06-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i06-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "i06-inspect-profile": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i06-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i06-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i06-branch-answer": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i06-branch-dm": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "i06-branch-tag-range": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i06-branch-tag-lake": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i06-branch-cancel": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i06-branch-pivot": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i06-verify-pio": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i06-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i06-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i06-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i06-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i06-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i06-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i06-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i06-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i06-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "I07": {
+   "i07-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i07-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "i07-inspect-profile": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i07-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i07-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i07-branch-like": {
+    "stage": "branch",
+    "event_code": "CORRECT_USE",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i07-branch-save": {
+    "stage": "branch",
+    "event_code": "CORRECT_USE",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i07-branch-reply": {
+    "stage": "branch",
+    "event_code": "CORRECT_USE",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i07-branch-mute": {
+    "stage": "branch",
+    "event_code": "NEEDLESS_REJECT_IGNORE",
+    "points_delta": -2,
+    "consequence": null
+   },
+   "i07-branch-download": {
+    "stage": "branch",
+    "event_code": "UNSAFE_EXTERNAL_ACTION",
+    "points_delta": -4,
+    "consequence": "simulated_browser_open"
+   },
+   "i07-verify-thread": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i07-verify-call": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i07-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i07-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i07-verify-report": {
+    "stage": "verify",
+    "event_code": "FALSE_REPORT_BLOCK",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i07-verify-block": {
+    "stage": "verify",
+    "event_code": "FALSE_REPORT_BLOCK",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i07-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i07-resolve-report": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i07-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i07-resolve-block": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i07-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "I08": {
+   "i08-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i08-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "i08-inspect-profile": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i08-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i08-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i08-branch-submit": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i08-branch-pay": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_payment"
+   },
+   "i08-branch-close": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i08-branch-ask": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "i08-branch-leave": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i08-verify-request": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i08-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i08-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i08-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i08-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i08-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i08-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i08-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i08-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i08-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "I09": {
+   "i09-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i09-open-join": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "i09-inspect-profile": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i09-inspect-ad": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i09-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i09-branch-join": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_browser_open"
+   },
+   "i09-branch-install": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_install"
+   },
+   "i09-branch-kyc": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i09-branch-deposit": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_payment"
+   },
+   "i09-branch-close": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i09-branch-hide": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i09-verify-register": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i09-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i09-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i09-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i09-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i09-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i09-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i09-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i09-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i09-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "I10": {
+   "i10-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i10-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "i10-inspect-profile": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i10-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i10-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i10-branch-sign": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i10-branch-pay": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_payment"
+   },
+   "i10-branch-close": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i10-branch-yes": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "i10-branch-decline": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i10-verify-site": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i10-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i10-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i10-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i10-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i10-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i10-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i10-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i10-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i10-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "I11": {
+   "i11-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i11-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "i11-inspect-profile": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i11-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i11-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i11-branch-save": {
+    "stage": "branch",
+    "event_code": "CORRECT_USE",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i11-branch-file": {
+    "stage": "branch",
+    "event_code": "CORRECT_USE",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i11-branch-comment": {
+    "stage": "branch",
+    "event_code": "UNSAFE_EXTERNAL_ACTION",
+    "points_delta": -4,
+    "consequence": "simulated_data_submission"
+   },
+   "i11-branch-dm": {
+    "stage": "branch",
+    "event_code": "UNSAFE_EXTERNAL_ACTION",
+    "points_delta": -4,
+    "consequence": "simulated_reply_sent"
+   },
+   "i11-branch-mute": {
+    "stage": "branch",
+    "event_code": "NEEDLESS_REJECT_IGNORE",
+    "points_delta": -2,
+    "consequence": null
+   },
+   "i11-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i11-verify-app": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i11-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i11-verify-report": {
+    "stage": "verify",
+    "event_code": "FALSE_REPORT_BLOCK",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i11-verify-block": {
+    "stage": "verify",
+    "event_code": "FALSE_REPORT_BLOCK",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i11-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i11-resolve-report": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i11-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i11-resolve-block": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i11-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "I12": {
+   "i12-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i12-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "i12-inspect-profile": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i12-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i12-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i12-branch-code": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i12-branch-ask": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "i12-branch-submit": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i12-branch-close": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i12-branch-leave": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i12-verify-security": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i12-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i12-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i12-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i12-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i12-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i12-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i12-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i12-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i12-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "I13": {
+   "i13-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i13-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "i13-inspect-profile": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i13-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i13-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i13-branch-gift": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i13-branch-wallet": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_payment"
+   },
+   "i13-branch-close": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i13-branch-id": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i13-branch-soon": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "i13-branch-stop": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i13-verify-image": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i13-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i13-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i13-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i13-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i13-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i13-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i13-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i13-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i13-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "I14": {
+   "i14-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i14-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "i14-inspect-profile": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i14-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i14-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i14-branch-send": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i14-branch-clear": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i14-branch-type": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i14-branch-ask": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "i14-branch-form": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_browser_open"
+   },
+   "i14-branch-leave": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i14-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i14-verify-desk": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i14-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i14-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i14-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i14-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i14-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i14-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i14-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i14-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "I15": {
+   "i15-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i15-open-link": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "i15-inspect-profile": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i15-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i15-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i15-branch-login": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i15-branch-close": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i15-branch-approve": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_device_link"
+   },
+   "i15-branch-deny": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i15-branch-ask": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "i15-branch-leave": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i15-verify-call": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i15-verify-activity": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i15-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i15-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i15-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i15-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i15-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i15-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i15-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i15-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i15-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "I16": {
+   "i16-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i16-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "i16-inspect-profile": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i16-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i16-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i16-branch-confirm": {
+    "stage": "branch",
+    "event_code": "CORRECT_USE",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i16-branch-decline": {
+    "stage": "branch",
+    "event_code": "CORRECT_USE",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i16-branch-ignore": {
+    "stage": "branch",
+    "event_code": "NEEDLESS_REJECT_IGNORE",
+    "points_delta": -2,
+    "consequence": null
+   },
+   "i16-branch-caption": {
+    "stage": "branch",
+    "event_code": "UNSAFE_EXTERNAL_ACTION",
+    "points_delta": -4,
+    "consequence": "simulated_data_submission"
+   },
+   "i16-branch-ask": {
+    "stage": "branch",
+    "event_code": "UNSAFE_EXTERNAL_ACTION",
+    "points_delta": -4,
+    "consequence": "simulated_reply_sent"
+   },
+   "i16-verify-register": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i16-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i16-verify-desk": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i16-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i16-verify-report": {
+    "stage": "verify",
+    "event_code": "FALSE_REPORT_BLOCK",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i16-verify-block": {
+    "stage": "verify",
+    "event_code": "FALSE_REPORT_BLOCK",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i16-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i16-resolve-report": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i16-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i16-resolve-block": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i16-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "I17": {
+   "i17-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i17-open-pay": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "i17-inspect-profile": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i17-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i17-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i17-branch-pay": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_payment"
+   },
+   "i17-branch-restrict": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i17-branch-photo": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i17-branch-plead": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "i17-branch-keep": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i17-verify-support": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i17-verify-desk": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i17-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i17-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i17-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i17-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i17-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i17-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i17-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i17-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i17-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "I18": {
+   "i18-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i18-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "i18-inspect-profile": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i18-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i18-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i18-branch-pin": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i18-branch-close": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i18-branch-type": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i18-branch-ask": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "i18-branch-pivot": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i18-verify-call": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i18-verify-orders": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i18-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i18-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i18-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i18-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i18-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i18-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i18-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i18-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i18-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "I19": {
+   "i19-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i19-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "i19-inspect-profile": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i19-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i19-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i19-branch-story": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "i19-branch-location": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i19-branch-tag": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i19-branch-close": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i19-branch-comment": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "i19-branch-hold": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i19-verify-bulletin": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i19-verify-pio": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i19-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i19-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i19-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i19-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i19-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i19-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i19-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i19-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i19-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "I20": {
+   "i20-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i20-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "i20-inspect-profile": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i20-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i20-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i20-branch-submit": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i20-branch-close": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i20-branch-answer": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i20-branch-correct": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i20-branch-general": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "i20-branch-decline": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i20-verify-pio": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i20-verify-register": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i20-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i20-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i20-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i20-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i20-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i20-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i20-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i20-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i20-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "I21": {
+   "i21-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i21-open-quickreply": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "i21-inspect-profile": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i21-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i21-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i21-branch-approve": {
+    "stage": "branch",
+    "event_code": "CORRECT_USE",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i21-branch-decline": {
+    "stage": "branch",
+    "event_code": "CORRECT_USE",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i21-branch-album": {
+    "stage": "branch",
+    "event_code": "UNSAFE_EXTERNAL_ACTION",
+    "points_delta": -4,
+    "consequence": "simulated_browser_open"
+   },
+   "i21-branch-ignore": {
+    "stage": "branch",
+    "event_code": "NEEDLESS_REJECT_IGNORE",
+    "points_delta": -2,
+    "consequence": null
+   },
+   "i21-branch-caption": {
+    "stage": "branch",
+    "event_code": "UNSAFE_EXTERNAL_ACTION",
+    "points_delta": -4,
+    "consequence": "simulated_data_submission"
+   },
+   "i21-verify-register": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i21-verify-call": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i21-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i21-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i21-verify-report": {
+    "stage": "verify",
+    "event_code": "FALSE_REPORT_BLOCK",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i21-verify-block": {
+    "stage": "verify",
+    "event_code": "FALSE_REPORT_BLOCK",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i21-resolve-report": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i21-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i21-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i21-resolve-block": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i21-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "I22": {
+   "i22-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i22-open-join": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "i22-inspect-profile": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i22-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i22-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i22-branch-hangup": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i22-branch-ask": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "i22-branch-camera": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i22-branch-nocamera": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i22-branch-share": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i22-branch-noshare": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i22-branch-code": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i22-branch-decline": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i22-verify-status": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i22-verify-desk": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i22-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i22-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i22-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i22-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i22-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i22-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i22-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i22-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i22-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "I23": {
+   "i23-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i23-open-pay": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "i23-inspect-profile": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i23-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i23-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i23-branch-pay": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_payment"
+   },
+   "i23-branch-share": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "i23-branch-hold": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i23-verify-site": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i23-verify-call": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i23-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i23-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i23-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i23-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i23-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i23-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i23-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i23-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i23-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "I24": {
+   "i24-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i24-open-install": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "i24-inspect-profile": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i24-inspect-thread": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i24-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i24-branch-install": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_install"
+   },
+   "i24-branch-notnow": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i24-branch-kyc": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i24-branch-tax": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_payment"
+   },
+   "i24-branch-comment": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "i24-branch-hide": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i24-verify-store": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i24-verify-broker": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i24-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i24-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i24-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i24-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i24-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i24-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i24-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i24-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i24-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  },
+  "I25": {
+   "i25-open-read": {
+    "stage": "open",
+    "event_code": "ITEM_OPEN",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i25-open-link": {
+    "stage": "open",
+    "event_code": "PREMATURE_REPLY",
+    "points_delta": -1,
+    "consequence": null
+   },
+   "i25-inspect-qr": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i25-inspect-profile": {
+    "stage": "inspect",
+    "event_code": "INSPECT_CONTEXT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i25-inspect-skip": {
+    "stage": "inspect",
+    "event_code": "STAGE_SKIPPED",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i25-branch-open": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_qr_inspect"
+   },
+   "i25-branch-close": {
+    "stage": "branch",
+    "event_code": "SAFE_PIVOT",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i25-branch-submit": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_data_submission"
+   },
+   "i25-branch-pay": {
+    "stage": "branch",
+    "event_code": "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "points_delta": -8,
+    "consequence": "simulated_payment"
+   },
+   "i25-branch-share": {
+    "stage": "branch",
+    "event_code": "RISKY_OPEN_REPLY",
+    "points_delta": -3,
+    "consequence": "simulated_reply_sent"
+   },
+   "i25-verify-notices": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i25-verify-call": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i25-verify-directory": {
+    "stage": "verify",
+    "event_code": "TRUSTED_VERIFY",
+    "points_delta": 3,
+    "consequence": null
+   },
+   "i25-verify-inmessage": {
+    "stage": "verify",
+    "event_code": "VERIFY_THROUGH_MESSAGE",
+    "points_delta": 0,
+    "consequence": null
+   },
+   "i25-verify-report": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i25-verify-block": {
+    "stage": "verify",
+    "event_code": "REPORT_ONLY_WITHOUT_CHECK",
+    "points_delta": 1,
+    "consequence": null
+   },
+   "i25-resolve-report": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i25-resolve-retain": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i25-resolve-block": {
+    "stage": "resolve",
+    "event_code": "RESOLVE_CORRECT",
+    "points_delta": 2,
+    "consequence": null
+   },
+   "i25-resolve-continue": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   },
+   "i25-resolve-ignore": {
+    "stage": "resolve",
+    "event_code": "CONTRADICTORY_UNSAFE_FINAL",
+    "points_delta": -4,
+    "consequence": null
+   }
+  }
+ }
+}

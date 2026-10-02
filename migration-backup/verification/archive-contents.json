@@ -1,0 +1,51 @@
+﻿{
+ "serverVersion": "8.3.8",
+ "toolVersion": "100.18.0",
+ "collections": {
+  "cyber_awareness_training_release.adminusers": {
+   "docs": 1,
+   "indexes": 2
+  },
+  "cyber_awareness_training_release.assessments": {
+   "docs": 0,
+   "indexes": 4
+  },
+  "cyber_awareness_training_release.attempts": {
+   "docs": 3,
+   "indexes": 6
+  },
+  "cyber_awareness_training_release.auditevents": {
+   "docs": 0,
+   "indexes": 8
+  },
+  "cyber_awareness_training_release.candidates": {
+   "docs": 2,
+   "indexes": 3
+  },
+  "cyber_awareness_training_release.configurations": {
+   "docs": 1,
+   "indexes": 2
+  },
+  "cyber_awareness_training_release.progresssnapshots": {
+   "docs": 2,
+   "indexes": 2
+  },
+  "cyber_awareness_training_release.scenariodefinitions": {
+   "docs": 100,
+   "indexes": 7
+  },
+  "cyber_awareness_training_release.scenarioevents": {
+   "docs": 129,
+   "indexes": 3
+  },
+  "cyber_awareness_training_release.scenarioruns": {
+   "docs": 30,
+   "indexes": 5
+  },
+  "cyber_awareness_training_release.scenarios": {
+   "docs": 0,
+   "indexes": 3
+  }
+ },
+ "totalDocs": 268
+}

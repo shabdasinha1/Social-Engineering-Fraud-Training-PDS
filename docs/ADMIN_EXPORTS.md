@@ -1,0 +1,438 @@
+# Offline Instructor Exports (ADMIN-003)
+
+**Status:** IMPLEMENTED — 7 September 2026.
+**Services:** `backend/src/services/exportService.js` (orchestration) · `backend/src/services/exportReportService.js` (the report model and both renderings)
+**Writers:** `backend/src/utils/csvWriter.js` · `backend/src/utils/pdfWriter.js`
+**Vocabulary:** `backend/src/constants/export.js` · **Controller:** `backend/src/controllers/exportController.js` · **Routes:** `/api/admin/exports/*`
+**Companions:** [`ADMIN_ATTEMPT_VIEWER.md`](ADMIN_ATTEMPT_VIEWER.md) · [`RESULT_API.md`](RESULT_API.md) · [`ADMIN_AUDIT_LOG.md`](ADMIN_AUDIT_LOG.md)
+
+---
+
+## 1. What this is
+
+Specification section 6, third admin capability:
+
+> "Exports: offline CSV/PDF summary to instructor-selected local path; clearly mark
+> training data and version."
+
+An authenticated instructor asks for one attempt as CSV or PDF. The server builds the
+report, writes it into a controlled local directory, records `EXPORT_CREATED` in the
+ADMIN-005 audit log, and returns a safe reference to the file.
+
+Backend and API only. **There is no admin frontend, no export UI and no Electron layer in
+this task.**
+
+## 2. Scope: one attempt, or one learner
+
+**Single attempt** (`POST /api/admin/exports/attempts/:attemptId`). The per-attempt report
+ADMIN-002 already assembles.
+
+**Single learner** (ADM-007, `POST /api/admin/exports/learners/:profileId`). Every
+COMPLETED attempt of one learner, oldest first, in one CSV or PDF, each attempt built by the
+same `buildAttemptReport()`. Same body contract (`format`, optional `idempotency_key`, a
+path-shaped field refused), same controlled directory, same `EXPORT_CREATED` audit entry —
+`export_scope: "learner"` and `profile_id` in its metadata. Artifact ids are
+`training-learner-<profile>-<utc>-<random>`. Unfinished and reset attempts are counted in the
+header but not exported. A learner with no completed attempt is `409 NO_COMPLETED_ATTEMPTS`;
+at most 100 attempts per export. An idempotency key reused for a different learner or scope
+is `409 IDEMPOTENCY_KEY_REUSED`. The UI offers it on the Attempts page once a learner is
+selected ("Export learner").
+
+The learner CSV sections are REPORT, LEARNER (display name, masked service number, archive
+state, counts, best and latest score), ATTEMPTS (one row per attempt), SCENARIOS (one row per
+scenario of every attempt), BEHAVIOUR_BY_PLATFORM / _CASE_FAMILY / _TRIGGER /
+_ACTION_STAGE and REMEDIATION — every per-attempt block led by `attempt_no` and
+`attempt_id`, so it filters cleanly in a spreadsheet.
+
+Both exports carry `level` (difficulty) and `military_flag` per finished scenario, from the
+pinned definition, placed after `disposition` so existing column positions are unchanged.
+
+Exports across several learners remain out of scope.
+
+## 3. Endpoints
+
+| Method | Path | Purpose |
+|---|---|---|
+| POST | `/api/admin/exports/attempts/:attemptId` | Build and write one export artifact |
+| GET | `/api/admin/exports/:filename` | Read back an artifact this server wrote |
+
+Request body — **these two keys and nothing else**:
+
+```json
+{ "format": "csv" | "pdf", "idempotency_key": "optional-client-token" }
+```
+
+Response (`201` for a new export, `200` for an idempotent replay):
+
+```json
+{ "export": {
+  "artifact_id": "training-attempt-<attempt>-<utc>-<random>",
+  "format": "csv",
+  "filename": "training-attempt-….csv",
+  "bytes": 11788,
+  "generated_at": "2026-09-07T12:00:00.000Z",
+  "scope": "attempt",
+  "attempt_id": "…",
+  "content_version": 1,
+  "content_is_current": true,
+  "training_marker": "TRAINING SIMULATION",
+  "network_marker": "OFFLINE",
+  "location": { "kind": "local_export_directory", "directory": "…", "path": "…",
+                "artifact_present": true, "note": "…" },
+  "audit": { "action": "EXPORT_CREATED", "resource_type": "export",
+             "resource_id": "…", "status": "succeeded" },
+  "replayed": false
+} }
+```
+
+## 4. Authentication and authorisation
+
+Both routes sit behind the existing `requireAdmin` — the signed `admin_session` cookie
+resolved against `AdminUser`. **No second authentication system.**
+
+| Caller | Result |
+|---|---|
+| Anonymous | `401 NO_ADMIN_SESSION` |
+| Candidate session | `401 NO_ADMIN_SESSION` — rejected, never downgraded |
+| Administrator | allowed, for **any** learner's attempt |
+
+There is **no candidate-facing export**. A learner sees their own result on the RESULT-001
+screen; a file naming a learner, their score and their weak families is an instructor
+artefact. An administrator is not restricted to attempts they "own" — no such ownership
+exists for an admin, and the attempt viewer already establishes that boundary.
+
+## 5. Report contents
+
+One model, two renderings. Both are built from `getAttemptForAdmin()` (ADMIN-002), which is
+itself built from `buildAttemptResult()` (RESULT-001).
+
+| Block | Contents |
+|---|---|
+| Report header | Product, report name, **TRAINING SIMULATION**, **OFFLINE**, synthetic-data notice, generated timestamp (UTC), generated by, export format, report schema version, content version, current content version, whether the content is still current, taxonomy versions |
+| Attempt | Attempt id, learner display name, **masked** service number, mode, status, started, completed, duration, scenarios resolved / total, total score (completed only), resolved points |
+| Outcome summary | Handled safely, missed threats, false positives, unsafe handling, duration |
+| Platform coverage | Scenarios and resolved count per platform |
+| Behaviour | By platform, by case family, by persuasion trigger, by decision stage — plus the scope (`complete` / `partial`) |
+| Scenarios | Ordinal, reference, platform, score, outcome class, disposition, family, triggers, final action, duration, item as shown (sender + preview), compact path replay, and the section 7 feedback card (what it was, cues, safe response, likely impact, one habit) |
+| Remediation | 2–3 weak **families**, each with a blame-free reason, points and the number of practice scenarios available |
+| Comparison | Previous attempt and delta, or a stable unavailable reason |
+
+**Nothing is recomputed.** No score, no classification, no taxonomy and no remediation
+decision is made in the export path; `ScenarioEvent` is never read by it. The only figures
+this feature produces itself are sums of values it was handed.
+
+## 6. Privacy exclusions
+
+The export inherits the ADMIN-002 allowlist and then narrows it: the report model names
+every field it copies, so a field added to the viewer later does not appear in an export
+until someone puts it there.
+
+**Never present, in either artifact or in any API response:**
+
+| Category | Fields |
+|---|---|
+| Typed learner content | `ScenarioRun.rationale` — the learner's own one-line explanation |
+| Ledger internals | `event_id`, `event_code`, `points_delta`, `metadata`, `intent_key`, `synthetic_target_id`, `sequence`, `client_ts`, `server_ts` |
+| Run internals | `run_id`, `score_running`, `last_sequence` |
+| Attempt internals | `seed`, `selection`, `scenario_sequence`, composition, relaxations |
+| Identity | raw `identifier`, `identifierNormalised`, `seenScenarios`. `password`, `otp`, payment credentials, `aadhaar`, biometrics, `phone`, `email` and `rank` do not exist on the model and were not introduced |
+| Answer keys | `evaluation`, `expected_actions`, `scoring`, `stages`, `end_state`, and the scenario **authoring title** — "Cloned Friend in Distress" states the answer outright (DATA-001) |
+| Mongo internals | `_id`, `__v` |
+
+The service number appears **masked to its last four characters**, server-side, matching
+specification section 2 and `frontend/src/utils/maskIdentifier.js`.
+
+### How this is tested
+
+- Every attempt in the integration suite submits a distinctive typed rationale; it is
+  confirmed **stored**, then confirmed absent from the CSV, the PDF and the API response.
+- The report **model** is scanned for forbidden keys at every depth. That is a structural
+  check on purpose: the report legitimately carries the client's authored feedback, and
+  that prose contains words like "password" — scenario E15's feedback is *"A consent screen
+  can grant access without asking for a password"*, which section 3 requires the export to
+  include. Searching the rendered text for the word would test the client's writing, not
+  this feature's boundary.
+- Real secret **values** — the seed, the raw service number, every run id, every event id,
+  every intent key, every event code, every scenario's authoring title — are searched for
+  in both artifacts.
+
+## 7. CSV
+
+- **UTF-8 with a byte-order mark.** The deployment is a standalone Windows PC and the
+  reader is Excel, which without a BOM decodes a UTF-8 CSV as the system ANSI codepage and
+  mangles every non-ASCII character, including the bullets in a masked service number.
+- **RFC 4180**: CRLF records; a field is quoted when it contains a comma, a double quote,
+  CR or LF, or has leading/trailing whitespace; an embedded quote is doubled.
+- **Sectioned layout.** A single flat table cannot carry a header, five breakdowns, ten
+  scenarios and a remediation list. The file is a fixed sequence of labelled blocks:
+
+  ```
+  #SECTION,REPORT / ATTEMPT / OUTCOME_SUMMARY / PLATFORM_COVERAGE / BEHAVIOUR_SCOPE /
+  BEHAVIOUR_BY_PLATFORM / BEHAVIOUR_BY_CASE_FAMILY / BEHAVIOUR_BY_TRIGGER /
+  BEHAVIOUR_BY_ACTION_STAGE / SCENARIOS / REMEDIATION / COMPARISON
+  ```
+
+  Each block is a marker row, a header row, its rows, then a blank line.
+- **Deterministic**: same model, same bytes. Rows are emitted in a fixed order and nothing
+  is sorted at render time.
+
+### Formula-injection policy
+
+A spreadsheet treats a cell beginning with `=`, `+`, `-`, `@`, tab or CR as a formula.
+**Text cells** beginning with one of those get a leading apostrophe — the convention every
+major spreadsheet reads as "literal string".
+
+**Numeric cells are never neutralised.** A score of `-3` stays the number `-3`. Prefixing
+it would turn it into text and corrupt exactly the figures the report exists to
+communicate. That is why the writer distinguishes `num()` from `text()` rather than
+stringifying everything: the policy can only be applied correctly if the type is known.
+
+A test asserts that no record in a generated CSV begins with a formula character, and that
+a feedback line starting with `=` is neutralised while a negative number is not.
+
+## 8. PDF
+
+A genuine PDF 1.4 file — catalog, page tree, content streams, cross-reference table,
+trailer — written by `pdfWriter.js`. The cross-reference offsets are verified by test to
+point at their own objects, and the rendered output was opened and read in a PDF viewer.
+
+| Property | How |
+|---|---|
+| Marked | Every page repeats `TRAINING SIMULATION \| OFFLINE \| CONTENT VERSION n \| SYNTHETIC DATA`; the cover block repeats it and carries the synthetic-data notice |
+| Paged | A4, page breaks, `Page n of m` in the footer with the training marker beside it |
+| No clipping | Courier is monospaced, so a line's width is exactly `chars × 0.6 × size`. `PDF_LINE_CHARS` is derived from the page geometry and every string is wrapped to it; a token longer than a line is hard-split rather than run off the page |
+| No colour-only meaning | Monochrome text throughout; the only non-text mark is a horizontal rule |
+| Nothing external | Courier and Courier-Bold are two of the fourteen PDF **base fonts** every reader must provide, so no font is embedded and nothing is fetched. A test asserts the file contains no `/JavaScript`, `/JS`, `/URI`, `/Launch`, `/EmbeddedFile`, `/OpenAction`, `/FontFile`, `http://` or `https://` |
+| Deterministic | Same model and timestamp, same bytes. No `/ID`, no modification date |
+
+## 9. Dependencies: none were added
+
+`package.json` is unchanged. The backend's dependency set is still express, mongoose, cors,
+cookie-parser, cookie-signature and dotenv.
+
+No CSV or PDF library was installed. Both writers are small, single-purpose and fully
+covered by unit tests:
+
+- **CSV** is a page of code with two rules (quote when you must, double an embedded quote)
+  plus the injection policy above.
+- **PDF** is monospaced text on A4 with a repeated header and page numbers. `pdfkit` would
+  have brought a font-subsetting stack, a stream pipeline and a dozen transitive packages
+  to lay out text that is already fixed-width.
+
+For an air-gapped defence deployment a dependency is a permanent supply-chain and update
+obligation. Neither purchase was worth it here. **The trade-off is stated plainly:** these
+writers cover what this report needs — they are not general-purpose libraries, and a future
+requirement for embedded fonts, images or proportional layout would be a reason to revisit
+the decision rather than to extend them.
+
+## 10. Offline behaviour and the local path
+
+The requirement says "instructor-selected local path". The application is a Vite browser
+frontend talking to a local Node API, and **browser JavaScript cannot choose a path on the
+host filesystem.** This task does not invent an Electron layer to pretend otherwise.
+
+So: the backend writes into **one controlled directory** and returns a reference.
+
+| | |
+|---|---|
+| Directory | `env.exportDir` — `backend/exports` by default, overridable by an operator with `EXPORT_DIR` |
+| Who chooses it | The server, from configuration. **Never a request.** |
+| Is it the instructor's own machine? | Yes. DEPLOY-001 binds the API to `127.0.0.1` on the training PC, so the artifact genuinely is a local file on the instructor's computer |
+| What is missing | The native "Save As" dialog |
+
+**This is a foundation, not the finished capability.** Letting an instructor pick an
+arbitrary destination requires a desktop integration layer (Electron main process, or an
+equivalent native bridge) that does not exist in this project. When it arrives, it maps the
+returned artifact onto a native save dialog; nothing in this feature has to change. The
+`GET /api/admin/exports/:filename` route exists so a browser-based admin UI can offer the
+same "save a copy" without a second mechanism.
+
+Everything is local. No cloud storage, no S3, no external PDF or CSV service, no email, no
+HTTP callback, no CDN, no remote font, no remote image, no telemetry. The new code contains
+no `fetch`, no URL, no hostname and no child process — verified by grep.
+
+## 11. Path safety
+
+**No client-supplied path, path fragment, filename or extension reaches the filesystem.**
+There is no code path from a request body to a directory or a name.
+
+1. **Path-shaped body fields are rejected, not ignored.** `path`, `file_path`,
+   `destination`, `output_path`, `directory`, `folder`, `filename`, `basename`,
+   `extension`, `target`, `save_as`, `export_dir`, `root`, `url`, `upload_url`,
+   `callback_url` and their variants each produce `422 FORBIDDEN_FIELD` naming the field.
+   A caller that believes it chose `C:\Reports\out.csv` and got a 200 has been misled about
+   where its data went, and that is the whole security question for an export.
+2. **The artifact name is server-generated**:
+   `training-attempt-<24 hex attempt id>-<YYYYMMDDTHHMMSSZ>-<8 hex random>`.
+   Every component is ours, so a name cannot carry `..`, a separator, a drive letter, a UNC
+   prefix, a null byte or a Windows reserved device name.
+3. **The read route parses a filename into a validated id plus a known extension.** The
+   stem must match `ARTIFACT_ID_PATTERN`; the extension must be `csv` or `pdf`.
+4. **Containment is checked anyway.** `path.resolve` collapses anything that survived, and
+   the resolved path must be a direct child of the export root — `path.relative` reports an
+   absolute path, a different drive and a UNC path as leaving the root.
+
+Tested and refused: `../../etc/passwd`, `..\..\windows\system32\config\sam`, `/etc/passwd`,
+`C:\Windows\win.ini`, `\\server\share\report`, `//server/share/report`, a trailing
+`/../x`, an embedded `\u0000`, `CON`, `NUL`, `.env`, `package.json`, `web.config`, and an
+id with non-hex characters.
+
+## 12. Artifact handling
+
+- **Collision-safe names.** The random suffix makes a collision impractical, and the write
+  uses the `wx` flag so an existing file is never overwritten — a collision surfaces as a
+  failure rather than destroying an artifact.
+- **No learner-provided fragment** appears in any filename.
+- **Bounded**: an artifact over 8 MB is refused. A ten-scenario report measures in tens of
+  kilobytes; the ceiling exists to turn a runaway builder into a clear failure rather than
+  a full disk.
+- **No export catalog and no new database model.** The filesystem artifact plus its audit
+  entry are the record. The artifact id *is* the filename stem, so an artifact resolves by
+  string join — no directory scan, nothing to keep in sync.
+- `backend/exports/` is git-ignored: artifacts are local, per-machine, and contain learner
+  performance data.
+
+## 13. Audit
+
+A successful export appends exactly one entry through ADMIN-005's `append()`:
+
+| Field | Value |
+|---|---|
+| `action` | `EXPORT_CREATED` |
+| `resource_type` | `export` |
+| `resource_id` | the artifact id |
+| `status` | `succeeded` |
+| `metadata` | `export_format`, `export_scope`, `export_record_count`, `attempt_id`, `attempt_status` |
+
+Only ADMIN-005's existing allowlist is used, and **no new action, resource type or metadata
+key was invented**. The entry carries no report content, no learner text, no event data and
+**no filesystem path** — a test asserts the export directory does not appear anywhere in it.
+
+`GET /api/admin/exports/:filename` appends nothing: the log records changes, and re-reading
+a file that was recorded when it was created is not one.
+
+### The filesystem is not transactional, and this does not pretend it is
+
+A file write and a MongoDB commit cannot be made atomic. The sequence is ordered so the
+failure modes are the safe ones:
+
+```
+1. build the whole report in memory
+2. write it to  <exportDir>/.pending/<artifact>.part   and verify its size on disk
+3. append EXPORT_CREATED inside withEngineTransaction
+      failure -> DELETE the part-file, rethrow.  No unaudited export is left behind.
+4. rename the part-file into <exportDir>/<artifact>
+      failure -> delete the part-file, return 500 EXPORT_FINALISE_FAILED
+```
+
+Transaction support is asserted **before** anything is written, so an export that could not
+be recorded never reaches the disk in the first place. `auditService.append()` is given the
+caller's session and opens no transaction of its own, so nothing nests.
+
+**The one honest gap:** step 4 happens after the audit commits. It is a rename within one
+directory on one filesystem — the cheapest and most reliable operation available — but it
+is not impossible to fail. If it does, the audit entry stands and no artifact exists. The
+log is append-only, so the entry cannot be retracted; the API says so explicitly and tells
+the operator to run the export again. This is stated rather than hidden because an audit
+log that quietly overstates is worse than one with a documented edge.
+
+A test proves the step-3 compensation: with the audit writer forced to fail, the export
+directory and the pending directory are both left empty and no entry is written.
+
+## 14. Idempotency and retry
+
+An optional `idempotency_key` (8–128 characters of letters, digits, `_ . : -`) makes a
+retried export record once and produce one artifact.
+
+**ADMIN-005's unique index on `idempotency_key` is the idempotency store.** No second
+collection, no export catalog, no new model — one of those would have to be kept consistent
+with the log anyway. On a repeat request the existing entry is found and the original result
+is rebuilt from it: the artifact id from `resource_id`, the format and attempt from the
+metadata, the timestamp from `occurred_at`, and the size by stat-ing the file.
+
+`replayed: true` and a `200` (rather than `201`) say plainly that nothing new was created.
+`location.artifact_present` is reported honestly — an instructor may have moved or deleted
+the file, and claiming it is still there would be a guess.
+
+Without a key, every request is a new export, because two deliberate exports really are two
+facts.
+
+## 15. Content version marking
+
+Section 6 requires the export to "clearly mark ... version". Every artifact carries:
+
+- the attempt's pinned `content_version`, plus `taxonomy_version` and
+  `trigger_taxonomy_version`;
+- the version the **currently active** bank carries;
+- whether the two match, and a sentence saying what that means.
+
+| Situation | Note |
+|---|---|
+| Same version | "This attempt was taken on the scenario content that is currently published." |
+| Older version | "This attempt was taken on an EARLIER content version ... not directly comparable with attempts on the current version." |
+| Active bank spans versions | "The currently published content version could not be determined ..." |
+
+No new version field was invented — the existing attempt and definition versions are used.
+A test retires the version-1 bank, publishes version-2 copies, and asserts the export of the
+older attempt says `content_is_current,false` and names both versions.
+
+## 16. Incomplete attempts
+
+ADMIN-002 semantics, carried through unchanged:
+
+| | Behaviour |
+|---|---|
+| `total_score` | **null**. Never a partial sum wearing the name of a 0–100 total |
+| `resolved_points` | the sum of the resolved scenarios, published under its own name |
+| Outcome summary | absent, with "not available — the attempt is not complete" |
+| Unresolved scenarios | listed as `NOT RESOLVED` with the stage reached, and **no score, outcome, disposition, family, trigger, path or feedback** |
+| Behaviour breakdown | computed from the resolved scenarios only, labelled `partial` with the count included |
+| Remediation / comparison | `attempt_not_complete` |
+
+Exporting changes nothing: a test plays five scenarios, exports twice, and asserts the
+attempt document is byte-identical and the learner still resumes at ordinal 6.
+
+## 17. CSV / PDF consistency
+
+`buildAttemptReport()` produces the report **model**; `reportToCsvRows()` and
+`reportToPdfDocument()` are pure formatters over it that read nothing else. The two formats
+therefore cannot disagree about a score, an outcome or a recommendation — they are two
+presentations of one object.
+
+Proven at both levels: a unit test builds both from a single in-memory model and checks the
+figures agree, and an integration test exports the same attempt twice and checks both files
+against the learner's own authoritative result.
+
+## 18. Testing
+
+| Suite | Tests | Runs under |
+|---|---|---|
+| `tests/export.test.js` | 27, no database | `npm test` |
+| `tests/exportApi.test.js` | 25, real HTTP + replica set + filesystem | `npm run test:engine` |
+
+The integration suite redirects `env.exportDir` to a throwaway temporary directory, so no
+test ever writes into `backend/exports`.
+
+## 19. Known limitations
+
+- **No native "instructor-selected" path.** The artifact is written to the configured local
+  export directory. Choosing an arbitrary destination needs a desktop integration layer that
+  does not exist; this is the foundation for it. Section 10.
+- **Single attempt only.** No bulk or filtered export. Section 2.
+- **A rename failure after the audit commits leaves an entry with no artifact.** Documented
+  rather than hidden; the log is append-only and cannot be retracted. Section 13.
+- **Hand-written CSV and PDF writers.** Sufficient for this report, not general-purpose. No
+  embedded fonts, no images, no proportional layout, no charts. Section 9.
+- **No artifact retention or cleanup policy.** Artifacts accumulate in the export directory
+  until an operator removes them. A retention rule would be an instructor control, which is
+  ADMIN-004.
+- **`GET` does not verify that an artifact was produced by this installation** beyond its
+  name and its presence in the export root — there is no catalog to check against, by
+  design.
+- **No admin frontend.**
+
+## 20. Not in this task
+
+ADMIN-004 instructor controls (attempt reset, profile archive, feedback-timing
+configuration), any admin frontend or export UI, Electron or a native save dialog, practice
+mode, adaptive difficulty, and any analytics or reporting redesign. **None were started.**

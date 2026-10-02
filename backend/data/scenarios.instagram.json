@@ -1,0 +1,769 @@
+[
+  {
+    "scenarioCode": "IG-01",
+    "channel": "instagram",
+    "type": "malicious",
+    "title": "Review this Instagram message",
+    "instruction": "A new message request has arrived.",
+    "simulation": {
+      "entryScreenId": "dm-list",
+      "screens": [
+        {
+          "id": "dm-list",
+          "kind": "list",
+          "header": { "title": "your_account", "subtitle": "Messages", "showBack": false },
+          "blocks": [
+            { "type": "note", "text": "Message requests (1)" },
+            { "type": "listItem", "title": "meera_kapoor__", "preview": "Hi! I think we have a mutual friend :)", "time": "21:14", "unread": true, "target": "dm-thread" },
+            { "type": "listItem", "title": "vikram.rao", "preview": "See you at the ground", "time": "18:02", "unread": false, "target": null }
+          ],
+          "actions": []
+        },
+        {
+          "id": "dm-thread",
+          "kind": "thread",
+          "header": { "title": "meera_kapoor__", "subtitle": "Meera Kapoor", "avatarSeed": "meera", "showBack": true },
+          "blocks": [
+            { "type": "note", "text": "This account is not following you" },
+            { "type": "message", "from": "them", "text": "Hi! I think we have a mutual friend :) You seem really genuine from your posts.", "time": "21:09" },
+            { "type": "message", "from": "them", "text": "I moved here 3 months ago and honestly I don't know many people. It's nice to finally talk to someone kind.", "time": "21:11" },
+            { "type": "message", "from": "them", "text": "Can we talk on another app? Instagram keeps restricting my messages. I'll send you my number.", "time": "21:14" }
+          ],
+          "actions": [
+            { "id": "back", "label": "Back", "target": "dm-list", "interaction": null },
+            { "id": "view-profile", "label": "View profile", "target": "profile", "interaction": null }
+          ]
+        },
+        {
+          "id": "profile",
+          "kind": "profile",
+          "header": { "title": "meera_kapoor__", "showBack": true },
+          "blocks": [
+            {
+              "type": "profileHeader",
+              "displayName": "Meera Kapoor",
+              "username": "meera_kapoor__",
+              "bio": "Travel | Coffee | New in town",
+              "avatarSeed": "meera",
+              "verified": false,
+              "postCount": 6,
+              "followers": "184",
+              "following": "2,940",
+              "isFollowing": false
+            },
+            { "type": "note", "text": "Joined 3 weeks ago" },
+            { "type": "image", "caption": "Sunset", "placeholder": "photo" },
+            { "type": "image", "caption": "Cafe", "placeholder": "photo" },
+            { "type": "image", "caption": "Beach", "placeholder": "photo" }
+          ],
+          "actions": [{ "id": "back-thread", "label": "Back", "target": "dm-thread", "interaction": null }]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "ignore-delete", "label": "Delete the request and do not reply", "marks": 5 },
+      { "key": "block-report", "label": "Block and report the account", "marks": 5 },
+      { "key": "reply-friendly", "label": "Reply and continue the conversation", "marks": -3 },
+      { "key": "move-app", "label": "Move the chat to another app as asked", "marks": -5, "isCriticalFailure": true },
+      { "key": "ask-mutual", "label": "Ask which mutual friend they mean", "marks": 1 }
+    ],
+    "reasonOptions": [
+      { "key": "stranger-fast-warmth", "label": "A stranger is becoming personal very quickly", "marks": 2 },
+      { "key": "thin-new-profile", "label": "The account is new, follows thousands and has few followers", "marks": 2 },
+      { "key": "move-off-platform", "label": "They want to move the chat off Instagram", "marks": 2 },
+      { "key": "looks-normal", "label": "Everything about it looks normal", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "honey-trap",
+      "eviTags": ["romance_attraction", "empathy_trust"],
+      "warningSigns": [
+        "An unknown account opens with personal warmth and a vague 'mutual friend'",
+        "The profile is three weeks old, follows 2,940 accounts but has only 184 followers",
+        "They push to move the conversation to another app, away from any record"
+      ],
+      "feedback": "This is a romance approach. The account builds closeness fast and then tries to move you off Instagram, where the conversation cannot be reported. Check how old an account is and how its follower and following counts compare before replying.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved Instagram fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "IG-02",
+    "channel": "instagram",
+    "type": "malicious",
+    "title": "Review this Instagram message",
+    "instruction": "A message has arrived from a familiar name.",
+    "simulation": {
+      "entryScreenId": "dm-list",
+      "screens": [
+        {
+          "id": "dm-list",
+          "kind": "list",
+          "header": { "title": "your_account", "subtitle": "Messages", "showBack": false },
+          "blocks": [
+            { "type": "listItem", "title": "arjun.mehta_", "preview": "Bro are you free? Small problem", "time": "13:40", "unread": true, "target": "dm-thread" },
+            { "type": "listItem", "title": "arjun.mehta", "preview": "Photos from the sports meet", "time": "Mon", "unread": false, "target": null }
+          ],
+          "actions": []
+        },
+        {
+          "id": "dm-thread",
+          "kind": "thread",
+          "header": { "title": "arjun.mehta_", "subtitle": "Arjun Mehta", "avatarSeed": "arjun", "showBack": true },
+          "blocks": [
+            { "type": "message", "from": "them", "text": "Bro are you free? Small problem. My UPI is blocked since morning.", "time": "13:36" },
+            { "type": "message", "from": "them", "text": "I have to pay 8,000 for my sister's coaching fee today or the seat goes. Can you send it? I'll return by evening.", "time": "13:38" },
+            { "type": "message", "from": "them", "text": "Don't call, I'm in class. Just send to this number 98xxx 41120", "time": "13:40" }
+          ],
+          "actions": [
+            { "id": "back", "label": "Back", "target": "dm-list", "interaction": null },
+            { "id": "view-profile", "label": "View profile", "target": "profile", "interaction": null },
+            { "id": "pay", "label": "Send the money", "target": null, "interaction": "make-payment" }
+          ]
+        },
+        {
+          "id": "profile",
+          "kind": "profile",
+          "header": { "title": "arjun.mehta_", "showBack": true },
+          "blocks": [
+            {
+              "type": "profileHeader",
+              "displayName": "Arjun Mehta",
+              "username": "arjun.mehta_",
+              "bio": "Sports | Fitness | Chandigarh",
+              "avatarSeed": "arjun",
+              "verified": false,
+              "postCount": 4,
+              "followers": "57",
+              "following": "312",
+              "isFollowing": false
+            },
+            { "type": "note", "text": "Joined 5 days ago" },
+            { "type": "image", "caption": "Ground", "placeholder": "photo" },
+            { "type": "image", "caption": "Team", "placeholder": "photo" }
+          ],
+          "actions": [{ "id": "back-thread", "label": "Back", "target": "dm-thread", "interaction": null }]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "call-known-number", "label": "Call Arjun on his saved number to check", "marks": 5 },
+      { "key": "block-report", "label": "Block and report the account", "marks": 3 },
+      { "key": "ignore", "label": "Ignore the message", "marks": 3 },
+      { "key": "send-money", "label": "Send the 8,000 rupees", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "duplicate-username", "label": "The username is a near-copy of an account I already follow", "marks": 2 },
+      { "key": "refuses-call", "label": "They ask for money and refuse a phone call", "marks": 2 },
+      { "key": "new-thin-account", "label": "The account is days old with very few followers", "marks": 2 },
+      { "key": "known-friend", "label": "It is my friend, so it is safe", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "cloned-friend-account",
+      "eviTags": ["empathy_trust", "urgency"],
+      "warningSigns": [
+        "The username 'arjun.mehta_' copies 'arjun.mehta', which is already in your inbox",
+        "The account was created five days ago and has 57 followers",
+        "Money is requested with a deadline, and a phone call is refused"
+      ],
+      "feedback": "This is a cloned account. Someone copied a friend's name and photo on a new username and asked for money urgently. Look at the username character by character, and always call the person on the number you already have.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved Instagram fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "IG-03",
+    "channel": "instagram",
+    "type": "malicious",
+    "title": "Review this Instagram notice",
+    "instruction": "A notification has appeared about your account.",
+    "simulation": {
+      "entryScreenId": "notifications",
+      "screens": [
+        {
+          "id": "notifications",
+          "kind": "list",
+          "header": { "title": "Notifications", "showBack": false },
+          "blocks": [
+            { "type": "listItem", "title": "creator.support.help", "preview": "Copyright violation detected on your account", "time": "2h", "unread": true, "target": "notice" },
+            { "type": "listItem", "title": "priya_n", "preview": "liked your photo", "time": "5h", "unread": false, "target": null }
+          ],
+          "actions": []
+        },
+        {
+          "id": "notice",
+          "kind": "message",
+          "header": { "title": "creator.support.help", "showBack": true },
+          "blocks": [
+            { "type": "note", "text": "Message request" },
+            { "type": "message", "from": "them", "text": "Copyright Violation Notice. We have received a report that one of your posts uses protected music without permission.", "time": "2h" },
+            { "type": "message", "from": "them", "text": "Your account will be permanently removed in 24 hours unless you complete the appeal form. If the report was a mistake, you can restore your account immediately.", "time": "2h" },
+            { "type": "linkPreview", "displayUrl": "appeal-center.ig-help-form.example.net/verify", "title": "Copyright Appeal Form", "description": "Confirm account ownership to keep your account active", "time": "2h" }
+          ],
+          "actions": [
+            { "id": "back", "label": "Back", "target": "notifications", "interaction": null },
+            { "id": "view-profile", "label": "View profile", "target": "profile", "interaction": null },
+            { "id": "open-appeal", "label": "Open the appeal form", "target": null, "interaction": "open-link" },
+            { "id": "sign-in", "label": "Sign in to appeal", "target": null, "interaction": "enter-credentials" }
+          ]
+        },
+        {
+          "id": "profile",
+          "kind": "profile",
+          "header": { "title": "creator.support.help", "showBack": true },
+          "blocks": [
+            {
+              "type": "profileHeader",
+              "displayName": "Creator Support",
+              "username": "creator.support.help",
+              "bio": "Official creator assistance | Appeals | Account recovery",
+              "avatarSeed": "support",
+              "verified": false,
+              "postCount": 0,
+              "followers": "41",
+              "following": "1,806",
+              "isFollowing": false
+            },
+            { "type": "note", "text": "No posts yet" }
+          ],
+          "actions": [{ "id": "back-notice", "label": "Back", "target": "notice", "interaction": null }]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "check-in-app", "label": "Check the account status inside Instagram's own settings", "marks": 5 },
+      { "key": "report-block", "label": "Report and block the account", "marks": 5 },
+      { "key": "ignore", "label": "Ignore the message", "marks": 3 },
+      { "key": "open-link", "label": "Open the appeal form to check", "marks": -3 },
+      { "key": "enter-login", "label": "Sign in on the appeal form", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "not-official", "label": "A real platform notice does not arrive as a message request", "marks": 2 },
+      { "key": "bad-domain", "label": "The web address is not Instagram's own address", "marks": 2 },
+      { "key": "deadline-pressure", "label": "A 24-hour deletion threat is used to rush me", "marks": 2 },
+      { "key": "looks-official", "label": "It looks official, so it must be real", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "fake-support-copyright",
+      "eviTags": ["authority_fear", "urgency"],
+      "warningSigns": [
+        "A platform notice arrives as a message request from an ordinary account",
+        "The account has no posts, 41 followers and follows 1,806 accounts",
+        "The link is not an Instagram address",
+        "A 24-hour account-deletion deadline is used to stop you checking"
+      ],
+      "feedback": "This is a fake support message. Real platform notices appear inside the app's own settings, never as a DM with a sign-in link. Check your account status from inside the app, and never sign in on a page a message sent you.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved Instagram fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "IG-04",
+    "channel": "instagram",
+    "type": "malicious",
+    "title": "Review this Instagram message",
+    "instruction": "A giveaway account has messaged you.",
+    "simulation": {
+      "entryScreenId": "dm-thread",
+      "screens": [
+        {
+          "id": "dm-thread",
+          "kind": "thread",
+          "header": { "title": "festivewin.official24", "subtitle": "Message request", "avatarSeed": "festive", "showBack": false },
+          "blocks": [
+            { "type": "message", "from": "them", "text": "Congratulations! Your account has been selected in our Festive Giveaway. You have won a smartphone worth 42,000.", "time": "11:02" },
+            { "type": "message", "from": "them", "text": "To release the parcel we only need the courier and insurance charge of 1,499. This is refunded with your delivery.", "time": "11:03" },
+            { "type": "message", "from": "them", "text": "Please confirm within 2 hours, otherwise the prize moves to the next winner.", "time": "11:05" }
+          ],
+          "actions": [
+            { "id": "view-profile", "label": "View profile", "target": "profile", "interaction": null },
+            { "id": "pay-fee", "label": "Pay the courier charge", "target": null, "interaction": "make-payment" }
+          ]
+        },
+        {
+          "id": "profile",
+          "kind": "profile",
+          "header": { "title": "festivewin.official24", "showBack": true },
+          "blocks": [
+            {
+              "type": "profileHeader",
+              "displayName": "Festive Win Official",
+              "username": "festivewin.official24",
+              "bio": "Daily giveaways | Winners announced every hour | DM to claim",
+              "avatarSeed": "festive",
+              "verified": false,
+              "postCount": 3,
+              "followers": "2,104",
+              "following": "7,850",
+              "isFollowing": false
+            },
+            { "type": "note", "text": "Joined 2 months ago" },
+            { "type": "post", "author": "festivewin.official24", "caption": "Another happy winner! DM us to claim yours", "likes": 11, "comments": 0, "time": "3d" }
+          ],
+          "actions": [{ "id": "back-thread", "label": "Back", "target": "dm-thread", "interaction": null }]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "delete-report", "label": "Delete the request and report the account", "marks": 5 },
+      { "key": "ignore", "label": "Ignore it", "marks": 3 },
+      { "key": "ask-details", "label": "Reply and ask for details of the giveaway", "marks": 0 },
+      { "key": "pay-fee", "label": "Pay the 1,499 courier charge", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "never-entered", "label": "I never entered any giveaway", "marks": 2 },
+      { "key": "pay-to-receive", "label": "A real prize never asks you to pay first", "marks": 2 },
+      { "key": "two-hour-deadline", "label": "A two-hour deadline is used to rush me", "marks": 2 },
+      { "key": "looks-genuine", "label": "The account name says official", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "lottery-giveaway",
+      "eviTags": ["greed_reward", "urgency"],
+      "warningSigns": [
+        "You are told you won a competition you never entered",
+        "A fee is demanded before the prize can be released",
+        "The account has three posts and follows far more accounts than follow it",
+        "A two-hour deadline removes your time to think"
+      ],
+      "feedback": "This is a giveaway fraud. Paying a 'courier' or 'insurance' charge to receive a prize is the fraud itself - the prize does not exist. A genuine prize never requires a payment from you.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved Instagram fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "IG-05",
+    "channel": "instagram",
+    "type": "malicious",
+    "title": "Review this Instagram message",
+    "instruction": "A brand account has offered you a collaboration.",
+    "simulation": {
+      "entryScreenId": "dm-thread",
+      "screens": [
+        {
+          "id": "dm-thread",
+          "kind": "thread",
+          "header": { "title": "urbanfit.collabs", "subtitle": "Message request", "avatarSeed": "urbanfit", "showBack": false },
+          "blocks": [
+            { "type": "message", "from": "them", "text": "Hello! We are UrbanFit and we loved your profile. We are selecting 20 brand ambassadors this month.", "time": "16:20" },
+            { "type": "message", "from": "them", "text": "You will receive a free kit worth 6,500 and 20,000 per month for two posts a week.", "time": "16:21" },
+            { "type": "message", "from": "them", "text": "Fill the onboarding form with your address, PAN and bank details to confirm. Only a refundable 499 registration is charged.", "time": "16:22" },
+            { "type": "linkPreview", "displayUrl": "urbanfit-collabs.forms-onboarding.example.co/apply", "title": "Ambassador Onboarding", "description": "Complete your details to confirm your slot", "time": "16:22" }
+          ],
+          "actions": [
+            { "id": "view-profile", "label": "View profile", "target": "profile", "interaction": null },
+            { "id": "open-form", "label": "Open the onboarding form", "target": null, "interaction": "open-link" }
+          ]
+        },
+        {
+          "id": "profile",
+          "kind": "profile",
+          "header": { "title": "urbanfit.collabs", "showBack": true },
+          "blocks": [
+            {
+              "type": "profileHeader",
+              "displayName": "UrbanFit Collabs",
+              "username": "urbanfit.collabs",
+              "bio": "Official collaborations desk | Ambassador programme | DM to apply",
+              "avatarSeed": "urbanfit",
+              "verified": false,
+              "postCount": 2,
+              "followers": "638",
+              "following": "4,102",
+              "isFollowing": false
+            },
+            { "type": "note", "text": "Joined last month" },
+            { "type": "image", "caption": "Kit", "placeholder": "photo" },
+            { "type": "image", "caption": "Logo", "placeholder": "photo" }
+          ],
+          "actions": [{ "id": "back-thread", "label": "Back", "target": "dm-thread", "interaction": null }]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "verify-brand", "label": "Check the brand's real verified account before replying", "marks": 5 },
+      { "key": "ignore-report", "label": "Ignore and report the account", "marks": 3 },
+      { "key": "ask-more", "label": "Reply and ask for more information", "marks": 1 },
+      { "key": "share-bank", "label": "Fill the form with PAN and bank details", "marks": -5, "isCriticalFailure": true },
+      { "key": "pay-registration", "label": "Pay the 499 registration", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "pay-to-work", "label": "Real paid work never asks you to pay a registration fee", "marks": 2 },
+      { "key": "asks-bank-pan", "label": "It asks for PAN and bank details through a web form", "marks": 2 },
+      { "key": "unverified-brand", "label": "The brand account is new, unverified and has two posts", "marks": 2 },
+      { "key": "good-offer", "label": "The offer is good, so it is worth trying", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "fake-brand-collaboration",
+      "eviTags": ["greed_reward", "routine_convenience"],
+      "warningSigns": [
+        "A large monthly payment is offered for very little work",
+        "A 'refundable' registration fee is requested",
+        "PAN and bank details are collected on a form that is not the brand's own site",
+        "The collaborations account is a month old, unverified, with two posts"
+      ],
+      "feedback": "This is a fake collaboration. Genuine brands do not charge you to work for them and do not collect PAN or bank details through a DM link. Check the brand's real verified account and contact them there instead.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved Instagram fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "IG-06",
+    "channel": "instagram",
+    "type": "malicious",
+    "title": "Review this Instagram post",
+    "instruction": "This post appeared in your feed.",
+    "simulation": {
+      "entryScreenId": "feed",
+      "screens": [
+        {
+          "id": "feed",
+          "kind": "feed",
+          "header": { "title": "Instagram", "showBack": false },
+          "blocks": [
+            { "type": "post", "author": "wealth.circle.pro", "caption": "Day 41. Another 18% closed this week. My students started with 10,000 and are now withdrawing weekly. Comment READY and I will DM you the plan.", "likes": 1287, "comments": 214, "time": "4h", "placeholder": "chart" },
+            { "type": "note", "text": "Sponsored" }
+          ],
+          "actions": [
+            { "id": "view-profile", "label": "View profile", "target": "profile", "interaction": null },
+            { "id": "open-dm", "label": "Open the DM", "target": "dm-thread", "interaction": null }
+          ]
+        },
+        {
+          "id": "profile",
+          "kind": "profile",
+          "header": { "title": "wealth.circle.pro", "showBack": true },
+          "blocks": [
+            {
+              "type": "profileHeader",
+              "displayName": "Wealth Circle",
+              "username": "wealth.circle.pro",
+              "bio": "Guaranteed weekly returns | 2,000+ students | Limited seats | DM READY",
+              "avatarSeed": "wealth",
+              "verified": false,
+              "postCount": 19,
+              "followers": "48.2K",
+              "following": "12",
+              "isFollowing": false
+            },
+            { "type": "image", "caption": "Profit screenshot", "placeholder": "chart" },
+            { "type": "image", "caption": "Withdrawal screenshot", "placeholder": "chart" },
+            { "type": "image", "caption": "Testimonial", "placeholder": "photo" }
+          ],
+          "actions": [{ "id": "back-feed", "label": "Back", "target": "feed", "interaction": null }]
+        },
+        {
+          "id": "dm-thread",
+          "kind": "thread",
+          "header": { "title": "wealth.circle.pro", "subtitle": "Active now", "avatarSeed": "wealth", "showBack": true },
+          "blocks": [
+            { "type": "message", "from": "them", "text": "Welcome. The starter plan is 10,000 and returns begin in 7 days. Today is the last day of this batch.", "time": "20:41" },
+            { "type": "message", "from": "them", "text": "Deposit to the trading wallet and send me the screenshot. I will add you to the private group.", "time": "20:42" }
+          ],
+          "actions": [
+            { "id": "back-feed-2", "label": "Back", "target": "feed", "interaction": null },
+            { "id": "deposit", "label": "Deposit 10,000", "target": null, "interaction": "make-payment" }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "ignore-scroll", "label": "Ignore the post and move on", "marks": 5 },
+      { "key": "report", "label": "Report the account", "marks": 5 },
+      { "key": "comment-ready", "label": "Comment READY to hear the plan", "marks": -3 },
+      { "key": "deposit", "label": "Deposit the 10,000 starter amount", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "guaranteed-returns", "label": "Guaranteed weekly returns are not possible", "marks": 2 },
+      { "key": "screenshot-proof", "label": "The only proof is screenshots the account made itself", "marks": 2 },
+      { "key": "last-day-pressure", "label": "A 'last day of the batch' deadline is used to rush me", "marks": 2 },
+      { "key": "many-followers", "label": "It has 48,000 followers, so it must be genuine", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "investment-quick-money",
+      "eviTags": ["greed_reward", "urgency"],
+      "warningSigns": [
+        "Weekly returns are described as guaranteed",
+        "Evidence is only screenshots posted by the same account",
+        "A closing batch and limited seats create pressure",
+        "You are asked to deposit money into a wallet the account controls"
+      ],
+      "feedback": "This is an investment fraud. No genuine investment guarantees weekly profits, and screenshots are not evidence. A large follower count can be bought - it is not proof of anything.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved Instagram fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "IG-07",
+    "channel": "instagram",
+    "type": "malicious",
+    "title": "Review this Instagram message",
+    "instruction": "You posted a complaint about a delayed order yesterday.",
+    "simulation": {
+      "entryScreenId": "dm-thread",
+      "screens": [
+        {
+          "id": "dm-thread",
+          "kind": "thread",
+          "header": { "title": "shopnest.care.team", "subtitle": "Message request", "avatarSeed": "shopnest", "showBack": false },
+          "blocks": [
+            { "type": "message", "from": "them", "text": "Hello, this is ShopNest support. We saw your comment about order delay and we are sorry for the trouble.", "time": "10:12" },
+            { "type": "message", "from": "them", "text": "We have approved a full refund of 3,499. To process it we need your order number, registered mobile and the card the payment was made from.", "time": "10:13" },
+            { "type": "message", "from": "them", "text": "Please share the OTP you receive so we can confirm the refund on our side.", "time": "10:15" }
+          ],
+          "actions": [
+            { "id": "view-profile", "label": "View profile", "target": "profile", "interaction": null },
+            { "id": "share-otp", "label": "Share the OTP", "target": null, "interaction": "enter-otp" }
+          ]
+        },
+        {
+          "id": "profile",
+          "kind": "profile",
+          "header": { "title": "shopnest.care.team", "showBack": true },
+          "blocks": [
+            {
+              "type": "profileHeader",
+              "displayName": "ShopNest Care",
+              "username": "shopnest.care.team",
+              "bio": "Customer care | Refunds | Order support",
+              "avatarSeed": "shopnest",
+              "verified": false,
+              "postCount": 0,
+              "followers": "96",
+              "following": "3,417",
+              "isFollowing": false
+            },
+            { "type": "note", "text": "No posts yet" }
+          ],
+          "actions": [{ "id": "back-thread", "label": "Back", "target": "dm-thread", "interaction": null }]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "use-official-app", "label": "Contact support through the shopping app itself", "marks": 5 },
+      { "key": "block-report", "label": "Block and report the account", "marks": 3 },
+      { "key": "ignore", "label": "Ignore the message", "marks": 3 },
+      { "key": "share-card", "label": "Share the card details", "marks": -5, "isCriticalFailure": true },
+      { "key": "share-otp", "label": "Share the OTP", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "asks-otp", "label": "Nobody genuine ever needs your OTP", "marks": 2 },
+      { "key": "asks-card", "label": "A refund never requires your card details", "marks": 2 },
+      { "key": "unofficial-account", "label": "The support account is unverified with no posts", "marks": 2 },
+      { "key": "expected-refund", "label": "I was expecting a refund, so it fits", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "fake-support-impersonation",
+      "eviTags": ["routine_convenience", "authority_fear"],
+      "warningSigns": [
+        "The account replied to a public complaint, which anyone can read",
+        "The support account is unverified, has no posts and follows 3,417 accounts",
+        "Card details are requested for a refund",
+        "An OTP is requested, which no genuine company ever needs"
+      ],
+      "feedback": "This is support impersonation. Fraudsters watch public complaints and reply pretending to be the company. A refund never needs your card number or an OTP. Always go back into the shopping app to contact support.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved Instagram fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "IG-08",
+    "channel": "instagram",
+    "type": "legitimate",
+    "title": "Review this Instagram message",
+    "instruction": "A shop you ordered from has sent an update.",
+    "simulation": {
+      "entryScreenId": "dm-list",
+      "screens": [
+        {
+          "id": "dm-list",
+          "kind": "list",
+          "header": { "title": "your_account", "subtitle": "Messages", "showBack": false },
+          "blocks": [
+            { "type": "listItem", "title": "kitabghar_books", "preview": "Your order has been packed", "time": "09:30", "unread": true, "target": "dm-thread" }
+          ],
+          "actions": []
+        },
+        {
+          "id": "dm-thread",
+          "kind": "thread",
+          "header": { "title": "kitabghar_books", "subtitle": "You follow each other", "avatarSeed": "kitab", "showBack": true },
+          "blocks": [
+            { "type": "message", "from": "me", "text": "Hi, has my order been packed yet?", "time": "Yesterday", "status": "read" },
+            { "type": "message", "from": "them", "text": "Good morning! Yes, your order has been packed and will be handed to the courier today.", "time": "09:28" },
+            { "type": "message", "from": "them", "text": "You can track it from the Orders section of your account. No action is needed from your side.", "time": "09:30" }
+          ],
+          "actions": [
+            { "id": "back", "label": "Back", "target": "dm-list", "interaction": null },
+            { "id": "view-profile", "label": "View profile", "target": "profile", "interaction": null }
+          ]
+        },
+        {
+          "id": "profile",
+          "kind": "profile",
+          "header": { "title": "kitabghar_books", "showBack": true },
+          "blocks": [
+            {
+              "type": "profileHeader",
+              "displayName": "Kitab Ghar",
+              "username": "kitabghar_books",
+              "bio": "Independent bookshop since 2011 | Orders through our website only",
+              "avatarSeed": "kitab",
+              "verified": true,
+              "postCount": 412,
+              "followers": "38.6K",
+              "following": "188",
+              "isFollowing": true
+            },
+            { "type": "image", "caption": "New arrivals", "placeholder": "photo" },
+            { "type": "image", "caption": "Store", "placeholder": "photo" },
+            { "type": "image", "caption": "Staff picks", "placeholder": "photo" }
+          ],
+          "actions": [{ "id": "back-thread", "label": "Back", "target": "dm-thread", "interaction": null }]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "acknowledge", "label": "Read it and wait for the delivery", "marks": 5 },
+      { "key": "check-orders", "label": "Check the Orders section to confirm", "marks": 3 },
+      { "key": "ignore", "label": "Ignore the message", "marks": 1 },
+      { "key": "block-report", "label": "Block and report the account", "marks": -3 }
+    ],
+    "reasonOptions": [
+      { "key": "nothing-asked", "label": "Nothing is asked for - no money, no OTP, no link", "marks": 2 },
+      { "key": "known-account", "label": "It is an established account I already follow", "marks": 2 },
+      { "key": "asks-otp", "label": "It asks for an OTP", "marks": 0 },
+      { "key": "urgent", "label": "It creates urgency", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "genuine",
+      "fraudTheme": null,
+      "eviTags": [],
+      "warningSigns": [],
+      "feedback": "This message is genuine. It continues a conversation you started, asks for nothing, contains no link and points you back to the app's own Orders section. Treating ordinary messages as fraud also costs marks.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved Instagram categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "IG-09",
+    "channel": "instagram",
+    "type": "legitimate",
+    "title": "Review this Instagram notice",
+    "instruction": "A security notice has appeared in your account.",
+    "simulation": {
+      "entryScreenId": "notifications",
+      "screens": [
+        {
+          "id": "notifications",
+          "kind": "list",
+          "header": { "title": "Notifications", "showBack": false },
+          "blocks": [
+            { "type": "listItem", "title": "Login activity", "preview": "New login from Chandigarh", "time": "1h", "unread": true, "target": "notice" },
+            { "type": "listItem", "title": "rohit_s", "preview": "started following you", "time": "3h", "unread": false, "target": null }
+          ],
+          "actions": []
+        },
+        {
+          "id": "notice",
+          "kind": "message",
+          "header": { "title": "Login activity", "showBack": true },
+          "blocks": [
+            { "type": "note", "text": "From Instagram" },
+            { "type": "emailBody", "paragraphs": [
+              "We noticed a new login to your account.",
+              "Device: Android phone. Location: Chandigarh. Time: today, 08:40.",
+              "If this was you, no action is needed. If you do not recognise this login, open Settings and then Security in this app to review your active sessions and change your password."
+            ] }
+          ],
+          "actions": [{ "id": "back", "label": "Back", "target": "notifications", "interaction": null }]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "review-in-app", "label": "Open Settings and Security in the app to review sessions", "marks": 5 },
+      { "key": "no-action", "label": "Do nothing - it was my own login", "marks": 3 },
+      { "key": "ignore", "label": "Ignore the notice entirely", "marks": 1 },
+      { "key": "search-link", "label": "Search online for a login-recovery site", "marks": -3 }
+    ],
+    "reasonOptions": [
+      { "key": "in-app-notice", "label": "The notice is inside the app, not a message from an account", "marks": 2 },
+      { "key": "no-link-no-ask", "label": "It contains no link and asks for nothing", "marks": 2 },
+      { "key": "bad-domain", "label": "The web address looks wrong", "marks": 0 },
+      { "key": "deadline-pressure", "label": "It sets a deadline", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "genuine",
+      "fraudTheme": null,
+      "eviTags": [],
+      "warningSigns": [],
+      "feedback": "This notice is genuine. It appears inside the app's own notifications, contains no link, asks for nothing, and tells you to use the app's own Settings if you do not recognise the login. That is exactly how a real security notice behaves.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved Instagram categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "IG-10",
+    "channel": "instagram",
+    "type": "legitimate",
+    "title": "Review this Instagram message",
+    "instruction": "A friend has sent you a message.",
+    "simulation": {
+      "entryScreenId": "dm-thread",
+      "screens": [
+        {
+          "id": "dm-thread",
+          "kind": "thread",
+          "header": { "title": "sunita.verma", "subtitle": "You follow each other", "avatarSeed": "sunita", "showBack": false },
+          "blocks": [
+            { "type": "note", "text": "Yesterday" },
+            { "type": "message", "from": "them", "text": "Did you see the unit sports meet photos? I tagged you in one.", "time": "19:40" },
+            { "type": "image", "caption": "Sports meet - relay final", "placeholder": "photo" },
+            { "type": "message", "from": "me", "text": "Ha, that is a good one. Send the rest when you can.", "time": "19:52", "status": "read" },
+            { "type": "message", "from": "them", "text": "Will do. See you Saturday.", "time": "19:55" }
+          ],
+          "actions": [{ "id": "view-profile", "label": "View profile", "target": "profile", "interaction": null }]
+        },
+        {
+          "id": "profile",
+          "kind": "profile",
+          "header": { "title": "sunita.verma", "showBack": true },
+          "blocks": [
+            {
+              "type": "profileHeader",
+              "displayName": "Sunita Verma",
+              "username": "sunita.verma",
+              "bio": "Photography | Running | Chandigarh",
+              "avatarSeed": "sunita",
+              "verified": false,
+              "postCount": 268,
+              "followers": "1,142",
+              "following": "604",
+              "isFollowing": true
+            },
+            { "type": "image", "caption": "Race day", "placeholder": "photo" },
+            { "type": "image", "caption": "Hills", "placeholder": "photo" },
+            { "type": "image", "caption": "Portrait", "placeholder": "photo" }
+          ],
+          "actions": [{ "id": "back-thread", "label": "Back", "target": "dm-thread", "interaction": null }]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "reply-normally", "label": "Reply normally", "marks": 5 },
+      { "key": "ignore", "label": "Ignore the message", "marks": 1 },
+      { "key": "verify", "label": "Confirm it is really her before replying", "marks": 3 },
+      { "key": "block-report", "label": "Block and report the account", "marks": -3 }
+    ],
+    "reasonOptions": [
+      { "key": "established-friend", "label": "It is an established account I follow, with years of posts", "marks": 2 },
+      { "key": "nothing-asked", "label": "Nothing is asked for and there is no link", "marks": 2 },
+      { "key": "new-account", "label": "The account was created recently", "marks": 0 },
+      { "key": "asks-money", "label": "It asks for money", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "genuine",
+      "fraudTheme": null,
+      "eviTags": [],
+      "warningSigns": [],
+      "feedback": "This message is genuine. It is an ordinary exchange with an established account you follow, with no request, no link and no pressure. Recognising normal messages matters as much as spotting fraud.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved Instagram categories. Replace with client content when received."
+    }
+  }
+]

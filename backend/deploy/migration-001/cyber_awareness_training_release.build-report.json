@@ -1,0 +1,1107 @@
+{
+  "migration": "MIGRATION-001",
+  "build_script": "backend/scripts/release/buildProductionRelease.js v1.0.0",
+  "release_database": "cyber_awareness_training_release",
+  "started_at": "2026-09-22T14:59:08.738Z",
+  "finished_at": "2026-09-22T14:59:12.459Z",
+  "mongod_version": "8.3.8",
+  "topology": "replica set \"rs0\"",
+  "git": {
+    "head": "ab41199c40c2d092aa7b2de1e0680406e602b328",
+    "uncommitted_changes": true
+  },
+  "import": {
+    "source_document": "Interactive_Social_Engineering_Scenario_UI_Development_Specification.pdf",
+    "source_document_version": "1.0",
+    "scenario_version": 1,
+    "content_sha256": "8e7a6c98bf938dc863df507f5d778e30eca0c9d59d966f47d7e57551038a7687",
+    "synthetic_content_version": 1,
+    "synthetic_content_sha256": "2779b03939e13cf11e0bee44493609f0c91e228f201f22f8c025a080509afde1",
+    "inserted": 100
+  },
+  "source_files_sha256": {
+    "backend/data/scenarios/v1/MANIFEST.json": "1b6677142454dff09dfdf11219f08931a26c86692b3659c0c451db1fe1b04ecb",
+    "backend/data/scenarios/v1/scenarios.email.json": "96023e4e548cbd1044bd48c8d0e7b1a6987068ac502af6bcafd10789c5b14fc1",
+    "backend/data/scenarios/v1/scenarios.instagram.json": "7473e9cfe3bccf4bff8e2839bff8e9a4bd5a12ef8413fdec58084974f1d3aa99",
+    "backend/data/scenarios/v1/scenarios.sms.json": "e28defea90cd16adeea1c79b913fd70ddba79b8042571037e08107bc9b511a78",
+    "backend/data/scenarios/v1/scenarios.whatsapp.json": "30e29a4ab5ea041d2be3878790f2f7c9819379104a10c914660a33af6eb57e95",
+    "backend/data/synthetic/v1/MANIFEST.json": "1f0ea03b32a4f5511fc34d0fd3b1d20354d3ea985b3c133cede59ebce63493d5",
+    "backend/data/synthetic/v1/synthetic.email.json": "a6c75a4fa75b68ef242380a1982b90f678f7fa80d33856e7b3eb2228eaa1822b",
+    "backend/data/synthetic/v1/synthetic.instagram.json": "d5f69bccbd7bb023cf444c1add8cb53bbbc35e27641ebc2c1fc5be710976e652",
+    "backend/data/synthetic/v1/synthetic.sms.json": "e133718a1f2852a7546b5698e31c6bd2aaade6bf38cf2a110c8efc0648c5ff1c",
+    "backend/data/synthetic/v1/synthetic.whatsapp.json": "bbeb59b838157af904e9c9326dd0b72705adbb66329c11a07c757f870d5f257a",
+    "backend/data/learner-actions/v1/email.json": "152e30558ac3966ff63d6d448108125f9cea11ddd41eb3a92d0c26971b349bc9",
+    "backend/data/learner-actions/v1/generic.json": "c1950b0a640e765ba73a4bd9c8c279c4aad6f2d56dd8201cf9686c70880709d4",
+    "backend/data/learner-actions/v1/instagram.json": "3b3722dd82528e0a6d40ea994dd685d455309085c30554088f1f4ba60c10a014",
+    "backend/data/learner-actions/v1/sms.json": "0ddda2892ba99f960a5e946542682731d9273e4d2d7fd2c162dc3cf04a81bda8",
+    "backend/data/learner-actions/v1/whatsapp.json": "5abd32f5958e905aecd9810842478c0625a241db1955d08b86033f6c7c75637d",
+    "backend/data/taxonomy/attack-family-taxonomy.v1.json": "f6c62c89231102f606080c494fc2429e6eccc23da7bfabe96433096b434e3adc",
+    "backend/data/taxonomy/trigger-taxonomy.v1.json": "46cb99d42fbe4cea02680ed0f7e5f8be8d55905a0000a54ac21fcc3378e8f711"
+  },
+  "collection_roles": {
+    "scenariodefinitions": "authoritative content - the final 100-scenario bank",
+    "configurations": "instructor settings singleton - created on first read with documented defaults",
+    "adminusers": "admin foundation - accounts are created on the target machine with `npm run admin:create`",
+    "candidates": "operational - learner profiles",
+    "attempts": "operational - attempts",
+    "scenarioruns": "operational - scenario runs",
+    "scenarioevents": "operational - event ledger",
+    "progresssnapshots": "derived - rebuilt from completed attempts",
+    "auditevents": "operational - append-only instructor audit log",
+    "assessments": "legacy 40-scenario journey - operational",
+    "scenarios": "legacy 40-scenario bank - not migrated (see MIGRATION-001)"
+  },
+  "release_bank_semantic_sha256": "6ec38baa86a7b56427d2926c2236c4eec379990866d72748c06df8569ae63f08",
+  "release_bank_raw_sha256": "6ec38baa86a7b56427d2926c2236c4eec379990866d72748c06df8569ae63f08",
+  "comparison": {
+    "database": "cyber_awareness_training",
+    "semantic_bank_sha256": "6ec38baa86a7b56427d2926c2236c4eec379990866d72748c06df8569ae63f08",
+    "raw_bank_sha256": "92bc1c2d4f044f80be2024e6ba1f90071efb3aed3e878ce521f6f9dbd9b136af",
+    "identical": true,
+    "raw_identical": false,
+    "raw_differences": {
+      "published_at: <absent> vs null": 100
+    }
+  },
+  "validation": {
+    "status": "PASS",
+    "results": [
+      {
+        "id": "collections",
+        "title": "Exactly the application collections exist",
+        "status": "PASS",
+        "problems": [],
+        "detail": [
+          "adminusers",
+          "assessments",
+          "attempts",
+          "auditevents",
+          "candidates",
+          "configurations",
+          "progresssnapshots",
+          "scenariodefinitions",
+          "scenarioevents",
+          "scenarioruns",
+          "scenarios"
+        ]
+      },
+      {
+        "id": "indexes",
+        "title": "Every index the models declare exists, and nothing else",
+        "status": "PASS",
+        "problems": [],
+        "detail": {
+          "adminusers": [
+            "_id_",
+            "usernameNormalised_1 (unique)"
+          ],
+          "assessments": [
+            "_id_",
+            "candidate_1",
+            "candidate_1_status_1",
+            "candidate_1_createdAt_-1"
+          ],
+          "attempts": [
+            "_id_",
+            "profile_id_1",
+            "profile_id_1_status_1",
+            "profile_id_1_started_at_-1",
+            "started_at_-1__id_-1",
+            "status_1_expires_at_1"
+          ],
+          "auditevents": [
+            "_id_",
+            "actor_admin_id_1",
+            "action_1",
+            "resource_type_1",
+            "occurred_at_1",
+            "occurred_at_-1",
+            "resource_type_1_resource_id_1_occurred_at_-1",
+            "idempotency_key_1 (unique)"
+          ],
+          "candidates": [
+            "_id_",
+            "identifierNormalised_1 (unique)",
+            "archived_1"
+          ],
+          "configurations": [
+            "_id_",
+            "scope_1 (unique)"
+          ],
+          "progresssnapshots": [
+            "_id_",
+            "profile_id_1 (unique)"
+          ],
+          "scenarios": [
+            "_id_",
+            "scenarioCode_1 (unique)",
+            "isActive_1_channel_1_type_1"
+          ],
+          "scenariodefinitions": [
+            "_id_",
+            "scenario_id_1_version_1 (unique)",
+            "active_1_platform_1_level_1",
+            "active_1_disposition_1",
+            "active_1_canonical_family_1",
+            "active_1_canonical_triggers_1",
+            "active_1_military_flag_1"
+          ],
+          "scenarioevents": [
+            "_id_",
+            "intent_key_1 (unique)",
+            "run_id_1_sequence_1 (unique)"
+          ],
+          "scenarioruns": [
+            "_id_",
+            "status_1",
+            "attempt_id_1_ordinal_1 (unique)",
+            "attempt_id_1_status_1",
+            "scenario_id_1_definition_version_1"
+          ]
+        }
+      },
+      {
+        "id": "operational-state",
+        "title": "Operational collections are clean; only the bank is populated",
+        "status": "PASS",
+        "problems": [],
+        "detail": {
+          "scenariodefinitions": 100,
+          "configurations": 0,
+          "adminusers": 0,
+          "candidates": 0,
+          "attempts": 0,
+          "scenarioruns": 0,
+          "scenarioevents": 0,
+          "progresssnapshots": 0,
+          "auditevents": 0,
+          "assessments": 0,
+          "scenarios": 0
+        }
+      },
+      {
+        "id": "legacy-not-playable",
+        "title": "No legacy scenario can be selected",
+        "status": "PASS",
+        "problems": [],
+        "detail": {
+          "legacy_documents": 0,
+          "legacy_active": 0,
+          "pool_summary_total": 0
+        }
+      },
+      {
+        "id": "bank-ids",
+        "title": "The active bank is exactly W01-W25, I01-I25, E01-E25, S01-S25",
+        "status": "PASS",
+        "problems": [],
+        "detail": {
+          "active": 100,
+          "total": 100,
+          "versions": {
+            "1": 100
+          }
+        }
+      },
+      {
+        "id": "schema",
+        "title": "Every stored definition passes the application schema",
+        "status": "PASS",
+        "problems": [],
+        "detail": null
+      },
+      {
+        "id": "distribution",
+        "title": "Counts per platform, disposition and difficulty match the specification",
+        "status": "PASS",
+        "problems": [],
+        "detail": null
+      },
+      {
+        "id": "taxonomy",
+        "title": "Families and triggers are canonical, current and unchanged",
+        "status": "PASS",
+        "problems": [],
+        "detail": null
+      },
+      {
+        "id": "stages",
+        "title": "Six stages, safe-behaviour text, scoring and feedback on every scenario",
+        "status": "PASS",
+        "problems": [],
+        "detail": null
+      },
+      {
+        "id": "source-alignment",
+        "title": "Stored content matches the verified source bank and synthetic content",
+        "status": "PASS",
+        "problems": [],
+        "detail": null
+      },
+      {
+        "id": "learner-actions",
+        "title": "Every scenario has a complete, unambiguous, server-side action map",
+        "status": "PASS",
+        "problems": [],
+        "detail": {
+          "scene_controls": 1986,
+          "generic_controls": 37,
+          "per_platform": {
+            "whatsapp": 25,
+            "instagram": 25,
+            "email": 25,
+            "sms": 25
+          },
+          "frontend_scan": "frontend/src (non-test) scanned for map names"
+        }
+      },
+      {
+        "id": "selection",
+        "title": "The real selector builds valid attempts from this bank, never from legacy data",
+        "status": "PASS",
+        "problems": [],
+        "detail": {
+          "attempts_simulated": 200,
+          "distinct_scenarios_selected": 100
+        }
+      }
+    ],
+    "figures": {
+      "collection_counts": {
+        "scenariodefinitions": 100,
+        "configurations": 0,
+        "adminusers": 0,
+        "candidates": 0,
+        "attempts": 0,
+        "scenarioruns": 0,
+        "scenarioevents": 0,
+        "progresssnapshots": 0,
+        "auditevents": 0,
+        "assessments": 0,
+        "scenarios": 0
+      },
+      "platform": {
+        "email": 25,
+        "instagram": 25,
+        "sms": 25,
+        "whatsapp": 25
+      },
+      "disposition": {
+        "malicious": 80,
+        "legitimate": 20
+      },
+      "level": {
+        "easy": 32,
+        "medium": 36,
+        "hard": 32
+      },
+      "platform_x_disposition": {
+        "email": {
+          "malicious": 20,
+          "legitimate": 5
+        },
+        "instagram": {
+          "malicious": 20,
+          "legitimate": 5
+        },
+        "sms": {
+          "malicious": 20,
+          "legitimate": 5
+        },
+        "whatsapp": {
+          "malicious": 20,
+          "legitimate": 5
+        }
+      },
+      "platform_x_level": {
+        "email": {
+          "easy": 8,
+          "medium": 9,
+          "hard": 8
+        },
+        "instagram": {
+          "easy": 8,
+          "medium": 9,
+          "hard": 8
+        },
+        "sms": {
+          "easy": 8,
+          "medium": 9,
+          "hard": 8
+        },
+        "whatsapp": {
+          "easy": 8,
+          "medium": 9,
+          "hard": 8
+        }
+      },
+      "level_x_disposition": {
+        "easy": {
+          "malicious": 24,
+          "legitimate": 8
+        },
+        "medium": {
+          "malicious": 28,
+          "legitimate": 8
+        },
+        "hard": {
+          "malicious": 28,
+          "legitimate": 4
+        }
+      },
+      "canonical_family": {
+        "credential_phishing": 6,
+        "malware_delivery": 5,
+        "legit_routine_broadcast": 6,
+        "financial_credential_phishing": 9,
+        "identity_data_harvesting": 5,
+        "legit_coordination_request": 6,
+        "payment_diversion": 7,
+        "legit_system_confirmation": 7,
+        "qr_code_phishing": 5,
+        "account_takeover_authorisation_abuse": 6,
+        "tech_support_and_callback_fraud": 6,
+        "operational_elicitation": 10,
+        "coercion_and_extortion": 4,
+        "legit_verified_high_risk_change": 1,
+        "unsolicited_payment_lure": 5,
+        "impersonation_emergency_payment": 3,
+        "investment_and_task_fraud": 5,
+        "relationship_grooming_fraud": 3,
+        "disinformation_amplification": 1
+      },
+      "canonical_triggers": {
+        "urgency": 27,
+        "authority": 40,
+        "routine": 19,
+        "fear": 18,
+        "curiosity": 10,
+        "duty_compliance": 3,
+        "greed": 11,
+        "isolation_secrecy": 5,
+        "convenience": 5,
+        "trust": 6,
+        "expert_status": 2,
+        "flattery": 4,
+        "scarcity": 6,
+        "empathy": 9,
+        "pride": 5,
+        "familiarity": 8,
+        "reciprocity": 3,
+        "shame_embarrassment": 2,
+        "social_proof": 2,
+        "commitment": 2,
+        "helpfulness": 3,
+        "confusion": 1
+      },
+      "raw_family_count": 99,
+      "military": 35,
+      "military_by_platform": {
+        "email": 8,
+        "instagram": 12,
+        "sms": 5,
+        "whatsapp": 10
+      },
+      "military_by_disposition": {
+        "malicious": 27,
+        "legitimate": 8
+      },
+      "multi_trigger": 87,
+      "taxonomy": {
+        "family_version": "1.0.0",
+        "trigger_version": "1.0.0",
+        "family_file_sha256": "f6c62c89231102f606080c494fc2429e6eccc23da7bfabe96433096b434e3adc",
+        "trigger_file_sha256": "46cb99d42fbe4cea02680ed0f7e5f8be8d55905a0000a54ac21fcc3378e8f711",
+        "families_declared": 19,
+        "families_used": 19,
+        "triggers_declared": 22,
+        "triggers_used": 22
+      },
+      "hashes": {
+        "source_bank_content_sha256": "8e7a6c98bf938dc863df507f5d778e30eca0c9d59d966f47d7e57551038a7687",
+        "stored_bank_internal_digest_sha256": "43c45ff79be01ea7552e2f552f0132a6a41347ae7173519b5e2cf9c71bf9cf2a",
+        "synthetic_content_version": 1,
+        "synthetic_content_sha256": "2779b03939e13cf11e0bee44493609f0c91e228f201f22f8c025a080509afde1",
+        "stored_definitions_raw_sha256": "6ec38baa86a7b56427d2926c2236c4eec379990866d72748c06df8569ae63f08",
+        "stored_definitions_semantic_sha256": "6ec38baa86a7b56427d2926c2236c4eec379990866d72748c06df8569ae63f08"
+      },
+      "learner_actions": {
+        "scene_controls": 1986,
+        "generic_controls": 37,
+        "per_platform": {
+          "whatsapp": 25,
+          "instagram": 25,
+          "email": 25,
+          "sms": 25
+        },
+        "frontend_scan": "frontend/src (non-test) scanned for map names"
+      },
+      "selection": {
+        "attempts_simulated": 200,
+        "distinct_scenarios_selected": 100
+      }
+    }
+  },
+  "inventory": {
+    "database": "cyber_awareness_training_release",
+    "collections": {
+      "adminusers": {
+        "count": 0,
+        "indexes": [
+          {
+            "name": "_id_",
+            "key": {
+              "_id": 1
+            }
+          },
+          {
+            "name": "usernameNormalised_1",
+            "key": {
+              "usernameNormalised": 1
+            },
+            "unique": true
+          }
+        ],
+        "validator": null,
+        "newest": null,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ids_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "assessments": {
+        "count": 0,
+        "indexes": [
+          {
+            "name": "_id_",
+            "key": {
+              "_id": 1
+            }
+          },
+          {
+            "name": "candidate_1",
+            "key": {
+              "candidate": 1
+            }
+          },
+          {
+            "name": "candidate_1_createdAt_-1",
+            "key": {
+              "candidate": 1,
+              "createdAt": -1
+            }
+          },
+          {
+            "name": "candidate_1_status_1",
+            "key": {
+              "candidate": 1,
+              "status": 1
+            }
+          }
+        ],
+        "validator": null,
+        "newest": null,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ids_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "attempts": {
+        "count": 0,
+        "indexes": [
+          {
+            "name": "_id_",
+            "key": {
+              "_id": 1
+            }
+          },
+          {
+            "name": "profile_id_1",
+            "key": {
+              "profile_id": 1
+            }
+          },
+          {
+            "name": "profile_id_1_started_at_-1",
+            "key": {
+              "profile_id": 1,
+              "started_at": -1
+            }
+          },
+          {
+            "name": "profile_id_1_status_1",
+            "key": {
+              "profile_id": 1,
+              "status": 1
+            }
+          },
+          {
+            "name": "started_at_-1__id_-1",
+            "key": {
+              "started_at": -1,
+              "_id": -1
+            }
+          },
+          {
+            "name": "status_1_expires_at_1",
+            "key": {
+              "status": 1,
+              "expires_at": 1
+            }
+          }
+        ],
+        "validator": null,
+        "newest": null,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ids_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "auditevents": {
+        "count": 0,
+        "indexes": [
+          {
+            "name": "_id_",
+            "key": {
+              "_id": 1
+            }
+          },
+          {
+            "name": "action_1",
+            "key": {
+              "action": 1
+            }
+          },
+          {
+            "name": "actor_admin_id_1",
+            "key": {
+              "actor_admin_id": 1
+            }
+          },
+          {
+            "name": "idempotency_key_1",
+            "key": {
+              "idempotency_key": 1
+            },
+            "unique": true,
+            "partialFilterExpression": {
+              "idempotency_key": {
+                "$type": "string"
+              }
+            }
+          },
+          {
+            "name": "occurred_at_-1",
+            "key": {
+              "occurred_at": -1
+            }
+          },
+          {
+            "name": "occurred_at_1",
+            "key": {
+              "occurred_at": 1
+            }
+          },
+          {
+            "name": "resource_type_1",
+            "key": {
+              "resource_type": 1
+            }
+          },
+          {
+            "name": "resource_type_1_resource_id_1_occurred_at_-1",
+            "key": {
+              "resource_type": 1,
+              "resource_id": 1,
+              "occurred_at": -1
+            }
+          }
+        ],
+        "validator": null,
+        "newest": null,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ids_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "candidates": {
+        "count": 0,
+        "indexes": [
+          {
+            "name": "_id_",
+            "key": {
+              "_id": 1
+            }
+          },
+          {
+            "name": "archived_1",
+            "key": {
+              "archived": 1
+            }
+          },
+          {
+            "name": "identifierNormalised_1",
+            "key": {
+              "identifierNormalised": 1
+            },
+            "unique": true
+          }
+        ],
+        "validator": null,
+        "newest": null,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ids_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "configurations": {
+        "count": 0,
+        "indexes": [
+          {
+            "name": "_id_",
+            "key": {
+              "_id": 1
+            }
+          },
+          {
+            "name": "scope_1",
+            "key": {
+              "scope": 1
+            },
+            "unique": true
+          }
+        ],
+        "validator": null,
+        "newest": null,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ids_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "progresssnapshots": {
+        "count": 0,
+        "indexes": [
+          {
+            "name": "_id_",
+            "key": {
+              "_id": 1
+            }
+          },
+          {
+            "name": "profile_id_1",
+            "key": {
+              "profile_id": 1
+            },
+            "unique": true
+          }
+        ],
+        "validator": null,
+        "newest": null,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ids_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "scenariodefinitions": {
+        "count": 100,
+        "indexes": [
+          {
+            "name": "_id_",
+            "key": {
+              "_id": 1
+            }
+          },
+          {
+            "name": "active_1_canonical_family_1",
+            "key": {
+              "active": 1,
+              "canonical_family": 1
+            }
+          },
+          {
+            "name": "active_1_canonical_triggers_1",
+            "key": {
+              "active": 1,
+              "canonical_triggers": 1
+            }
+          },
+          {
+            "name": "active_1_disposition_1",
+            "key": {
+              "active": 1,
+              "disposition": 1
+            }
+          },
+          {
+            "name": "active_1_military_flag_1",
+            "key": {
+              "active": 1,
+              "military_flag": 1
+            }
+          },
+          {
+            "name": "active_1_platform_1_level_1",
+            "key": {
+              "active": 1,
+              "platform": 1,
+              "level": 1
+            }
+          },
+          {
+            "name": "scenario_id_1_version_1",
+            "key": {
+              "scenario_id": 1,
+              "version": 1
+            },
+            "unique": true
+          }
+        ],
+        "validator": null,
+        "newest": {
+          "_id": "{\"$oid\":\"6ab297be8dc7b559c40c55d4\"}",
+          "updatedAt": "2026-09-22T14:59:10.254Z",
+          "sha256": "4f53b1b4a6341c43e656917710574b58abbb987a7b763ecf7e51e20492017d5d"
+        },
+        "sha256": "9a8c4bc3378acbcb5c082958c0ac1ee04416109c804473bd58eadf8045d7d43f",
+        "ids_sha256": "0e08375bc0bf78b372ca691a6ed945ab2e1c11064296e7c34b1b34b4ba89485e"
+      },
+      "scenarioevents": {
+        "count": 0,
+        "indexes": [
+          {
+            "name": "_id_",
+            "key": {
+              "_id": 1
+            }
+          },
+          {
+            "name": "intent_key_1",
+            "key": {
+              "intent_key": 1
+            },
+            "unique": true
+          },
+          {
+            "name": "run_id_1_sequence_1",
+            "key": {
+              "run_id": 1,
+              "sequence": 1
+            },
+            "unique": true
+          }
+        ],
+        "validator": null,
+        "newest": null,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ids_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "scenarioruns": {
+        "count": 0,
+        "indexes": [
+          {
+            "name": "_id_",
+            "key": {
+              "_id": 1
+            }
+          },
+          {
+            "name": "attempt_id_1_ordinal_1",
+            "key": {
+              "attempt_id": 1,
+              "ordinal": 1
+            },
+            "unique": true
+          },
+          {
+            "name": "attempt_id_1_status_1",
+            "key": {
+              "attempt_id": 1,
+              "status": 1
+            }
+          },
+          {
+            "name": "scenario_id_1_definition_version_1",
+            "key": {
+              "scenario_id": 1,
+              "definition_version": 1
+            }
+          },
+          {
+            "name": "status_1",
+            "key": {
+              "status": 1
+            }
+          }
+        ],
+        "validator": null,
+        "newest": null,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ids_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "scenarios": {
+        "count": 0,
+        "indexes": [
+          {
+            "name": "_id_",
+            "key": {
+              "_id": 1
+            }
+          },
+          {
+            "name": "isActive_1_channel_1_type_1",
+            "key": {
+              "isActive": 1,
+              "channel": 1,
+              "type": 1
+            }
+          },
+          {
+            "name": "scenarioCode_1",
+            "key": {
+              "scenarioCode": 1
+            },
+            "unique": true
+          }
+        ],
+        "validator": null,
+        "newest": null,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ids_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "scenario_definitions": {
+      "total": 100,
+      "active": 100,
+      "inactive": 0,
+      "active_distribution": {
+        "documents": 100,
+        "scenario_ids": [
+          "E01",
+          "E02",
+          "E03",
+          "E04",
+          "E05",
+          "E06",
+          "E07",
+          "E08",
+          "E09",
+          "E10",
+          "E11",
+          "E12",
+          "E13",
+          "E14",
+          "E15",
+          "E16",
+          "E17",
+          "E18",
+          "E19",
+          "E20",
+          "E21",
+          "E22",
+          "E23",
+          "E24",
+          "E25",
+          "I01",
+          "I02",
+          "I03",
+          "I04",
+          "I05",
+          "I06",
+          "I07",
+          "I08",
+          "I09",
+          "I10",
+          "I11",
+          "I12",
+          "I13",
+          "I14",
+          "I15",
+          "I16",
+          "I17",
+          "I18",
+          "I19",
+          "I20",
+          "I21",
+          "I22",
+          "I23",
+          "I24",
+          "I25",
+          "S01",
+          "S02",
+          "S03",
+          "S04",
+          "S05",
+          "S06",
+          "S07",
+          "S08",
+          "S09",
+          "S10",
+          "S11",
+          "S12",
+          "S13",
+          "S14",
+          "S15",
+          "S16",
+          "S17",
+          "S18",
+          "S19",
+          "S20",
+          "S21",
+          "S22",
+          "S23",
+          "S24",
+          "S25",
+          "W01",
+          "W02",
+          "W03",
+          "W04",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10",
+          "W11",
+          "W12",
+          "W13",
+          "W14",
+          "W15",
+          "W16",
+          "W17",
+          "W18",
+          "W19",
+          "W20",
+          "W21",
+          "W22",
+          "W23",
+          "W24",
+          "W25"
+        ],
+        "versions": {
+          "1": 100
+        },
+        "platform": {
+          "email": 25,
+          "instagram": 25,
+          "sms": 25,
+          "whatsapp": 25
+        },
+        "disposition": {
+          "legitimate": 20,
+          "malicious": 80
+        },
+        "level": {
+          "easy": 32,
+          "hard": 32,
+          "medium": 36
+        },
+        "canonical_family": {
+          "account_takeover_authorisation_abuse": 6,
+          "coercion_and_extortion": 4,
+          "credential_phishing": 6,
+          "disinformation_amplification": 1,
+          "financial_credential_phishing": 9,
+          "identity_data_harvesting": 5,
+          "impersonation_emergency_payment": 3,
+          "investment_and_task_fraud": 5,
+          "legit_coordination_request": 6,
+          "legit_routine_broadcast": 6,
+          "legit_system_confirmation": 7,
+          "legit_verified_high_risk_change": 1,
+          "malware_delivery": 5,
+          "operational_elicitation": 10,
+          "payment_diversion": 7,
+          "qr_code_phishing": 5,
+          "relationship_grooming_fraud": 3,
+          "tech_support_and_callback_fraud": 6,
+          "unsolicited_payment_lure": 5
+        },
+        "canonical_triggers": {
+          "authority": 40,
+          "commitment": 2,
+          "confusion": 1,
+          "convenience": 5,
+          "curiosity": 10,
+          "duty_compliance": 3,
+          "empathy": 9,
+          "expert_status": 2,
+          "familiarity": 8,
+          "fear": 18,
+          "flattery": 4,
+          "greed": 11,
+          "helpfulness": 3,
+          "isolation_secrecy": 5,
+          "pride": 5,
+          "reciprocity": 3,
+          "routine": 19,
+          "scarcity": 6,
+          "shame_embarrassment": 2,
+          "social_proof": 2,
+          "trust": 6,
+          "urgency": 27
+        },
+        "military_flag": {
+          "false": 65,
+          "true": 35
+        },
+        "lifecycle_state": {
+          "null": 100
+        },
+        "taxonomy_version": {
+          "1.0.0": 100
+        },
+        "trigger_taxonomy_version": {
+          "1.0.0": 100
+        },
+        "platform_x_disposition": {
+          "sms": {
+            "legitimate": 5,
+            "malicious": 20
+          },
+          "email": {
+            "legitimate": 5,
+            "malicious": 20
+          },
+          "whatsapp": {
+            "legitimate": 5,
+            "malicious": 20
+          },
+          "instagram": {
+            "legitimate": 5,
+            "malicious": 20
+          }
+        },
+        "platform_x_level": {
+          "sms": {
+            "hard": 8,
+            "easy": 8,
+            "medium": 9
+          },
+          "instagram": {
+            "hard": 8,
+            "medium": 9,
+            "easy": 8
+          },
+          "email": {
+            "medium": 9,
+            "easy": 8,
+            "hard": 8
+          },
+          "whatsapp": {
+            "easy": 8,
+            "hard": 8,
+            "medium": 9
+          }
+        },
+        "level_x_disposition": {
+          "hard": {
+            "legitimate": 4,
+            "malicious": 28
+          },
+          "easy": {
+            "legitimate": 8,
+            "malicious": 24
+          },
+          "medium": {
+            "legitimate": 8,
+            "malicious": 28
+          }
+        }
+      }
+    },
+    "legacy_scenarios": {
+      "total": 0,
+      "active": 0,
+      "inactive": 0,
+      "channel": {},
+      "type": {},
+      "channel_x_type": {}
+    }
+  }
+}

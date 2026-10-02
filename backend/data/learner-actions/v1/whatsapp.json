@@ -1,0 +1,2643 @@
+{
+  "contract": "SECURITY-001 neutral learner action contract",
+  "note": "SERVER-SIDE ONLY. Maps each neutral scene control id to the canonical engine intent it submits. `name` is the authoring name the control had before SECURITY-001; it is kept for tests and review and is never sent to a client.",
+  "version": 1,
+  "platform": "whatsapp",
+  "scenes": {
+    "W01": {
+      "w01-c01": {
+        "stage": "open",
+        "intent": "read",
+        "name": "w01-open-read"
+      },
+      "w01-c02": {
+        "stage": "open",
+        "intent": "reply",
+        "name": "w01-open-quickreply"
+      },
+      "w01-c03": {
+        "stage": "inspect",
+        "intent": "inspect_sender",
+        "name": "w01-inspect-contact"
+      },
+      "w01-c04": {
+        "stage": "inspect",
+        "intent": "read_thread",
+        "name": "w01-inspect-thread"
+      },
+      "w01-c05": {
+        "stage": "inspect",
+        "intent": "skip_inspection",
+        "name": "w01-inspect-skip"
+      },
+      "w01-c06": {
+        "stage": "branch",
+        "intent": "share_secret",
+        "name": "w01-branch-send"
+      },
+      "w01-c07": {
+        "stage": "branch",
+        "intent": "reply",
+        "name": "w01-branch-ask"
+      },
+      "w01-c08": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w01-branch-pivot"
+      },
+      "w01-c09": {
+        "stage": "branch",
+        "intent": "call_number",
+        "name": "w01-branch-call"
+      },
+      "w01-c10": {
+        "stage": "verify",
+        "intent": "verify_known_app",
+        "name": "w01-verify-account"
+      },
+      "w01-c11": {
+        "stage": "verify",
+        "intent": "verify_trusted_directory",
+        "name": "w01-verify-directory"
+      },
+      "w01-c12": {
+        "stage": "verify",
+        "intent": "verify_in_message_contact",
+        "name": "w01-verify-inmessage"
+      },
+      "w01-c13": {
+        "stage": "verify",
+        "intent": "report",
+        "name": "w01-verify-report"
+      },
+      "w01-c14": {
+        "stage": "verify",
+        "intent": "block",
+        "name": "w01-verify-block"
+      },
+      "w01-c15": {
+        "stage": "resolve",
+        "intent": "resolve_retain",
+        "name": "w01-resolve-keep"
+      },
+      "w01-c16": {
+        "stage": "resolve",
+        "intent": "resolve_report",
+        "name": "w01-resolve-report"
+      },
+      "w01-c17": {
+        "stage": "resolve",
+        "intent": "resolve_block",
+        "name": "w01-resolve-block"
+      },
+      "w01-c18": {
+        "stage": "resolve",
+        "intent": "resolve_continue",
+        "name": "w01-resolve-continue"
+      },
+      "w01-c19": {
+        "stage": "resolve",
+        "intent": "resolve_ignore",
+        "name": "w01-resolve-ignore"
+      }
+    },
+    "W02": {
+      "w02-c01": {
+        "stage": "open",
+        "intent": "read",
+        "name": "w02-open-read"
+      },
+      "w02-c02": {
+        "stage": "open",
+        "intent": "open_link",
+        "name": "w02-open-link"
+      },
+      "w02-c03": {
+        "stage": "inspect",
+        "intent": "inspect_sender",
+        "name": "w02-inspect-contact"
+      },
+      "w02-c04": {
+        "stage": "inspect",
+        "intent": "inspect_link",
+        "name": "w02-inspect-link"
+      },
+      "w02-c05": {
+        "stage": "inspect",
+        "intent": "read_thread",
+        "name": "w02-inspect-thread"
+      },
+      "w02-c06": {
+        "stage": "inspect",
+        "intent": "skip_inspection",
+        "name": "w02-inspect-skip"
+      },
+      "w02-c07": {
+        "stage": "branch",
+        "intent": "open_link",
+        "name": "w02-branch-open"
+      },
+      "w02-c08": {
+        "stage": "branch",
+        "intent": "attempt_payment",
+        "name": "w02-branch-pay"
+      },
+      "w02-c09": {
+        "stage": "branch",
+        "intent": "submit_data",
+        "name": "w02-branch-submit"
+      },
+      "w02-c10": {
+        "stage": "branch",
+        "intent": "reply",
+        "name": "w02-branch-reply"
+      },
+      "w02-c11": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w02-branch-pivot"
+      },
+      "w02-c12": {
+        "stage": "branch",
+        "intent": "call_number",
+        "name": "w02-branch-call"
+      },
+      "w02-c13": {
+        "stage": "verify",
+        "intent": "verify_known_app",
+        "name": "w02-verify-courier"
+      },
+      "w02-c14": {
+        "stage": "verify",
+        "intent": "verify_trusted_directory",
+        "name": "w02-verify-directory"
+      },
+      "w02-c15": {
+        "stage": "verify",
+        "intent": "verify_in_message_contact",
+        "name": "w02-verify-inmessage"
+      },
+      "w02-c16": {
+        "stage": "verify",
+        "intent": "report",
+        "name": "w02-verify-report"
+      },
+      "w02-c17": {
+        "stage": "verify",
+        "intent": "block",
+        "name": "w02-verify-block"
+      },
+      "w02-c18": {
+        "stage": "resolve",
+        "intent": "resolve_retain",
+        "name": "w02-resolve-keep"
+      },
+      "w02-c19": {
+        "stage": "resolve",
+        "intent": "resolve_report",
+        "name": "w02-resolve-report"
+      },
+      "w02-c20": {
+        "stage": "resolve",
+        "intent": "resolve_block",
+        "name": "w02-resolve-block"
+      },
+      "w02-c21": {
+        "stage": "resolve",
+        "intent": "resolve_continue",
+        "name": "w02-resolve-continue"
+      },
+      "w02-c22": {
+        "stage": "resolve",
+        "intent": "resolve_ignore",
+        "name": "w02-resolve-ignore"
+      }
+    },
+    "W03": {
+      "w03-c01": {
+        "stage": "open",
+        "intent": "read",
+        "name": "w03-open-read"
+      },
+      "w03-c02": {
+        "stage": "open",
+        "intent": "reply",
+        "name": "w03-open-quickreply"
+      },
+      "w03-c03": {
+        "stage": "inspect",
+        "intent": "inspect_sender",
+        "name": "w03-inspect-group"
+      },
+      "w03-c04": {
+        "stage": "inspect",
+        "intent": "read_thread",
+        "name": "w03-inspect-thread"
+      },
+      "w03-c05": {
+        "stage": "inspect",
+        "intent": "skip_inspection",
+        "name": "w03-inspect-skip"
+      },
+      "w03-c06": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w03-branch-yes"
+      },
+      "w03-c07": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w03-branch-no"
+      },
+      "w03-c08": {
+        "stage": "branch",
+        "intent": "reject_ignore",
+        "name": "w03-branch-exit"
+      },
+      "w03-c09": {
+        "stage": "branch",
+        "intent": "share_location",
+        "name": "w03-branch-location"
+      },
+      "w03-c10": {
+        "stage": "verify",
+        "intent": "verify_trusted_directory",
+        "name": "w03-verify-directory"
+      },
+      "w03-c11": {
+        "stage": "verify",
+        "intent": "verify_known_number",
+        "name": "w03-verify-known"
+      },
+      "w03-c12": {
+        "stage": "verify",
+        "intent": "verify_in_message_contact",
+        "name": "w03-verify-inmessage"
+      },
+      "w03-c13": {
+        "stage": "verify",
+        "intent": "report",
+        "name": "w03-verify-report"
+      },
+      "w03-c14": {
+        "stage": "verify",
+        "intent": "block",
+        "name": "w03-verify-block"
+      },
+      "w03-c15": {
+        "stage": "resolve",
+        "intent": "resolve_report",
+        "name": "w03-resolve-report"
+      },
+      "w03-c16": {
+        "stage": "resolve",
+        "intent": "resolve_continue",
+        "name": "w03-resolve-continue"
+      },
+      "w03-c17": {
+        "stage": "resolve",
+        "intent": "resolve_retain",
+        "name": "w03-resolve-retain"
+      },
+      "w03-c18": {
+        "stage": "resolve",
+        "intent": "resolve_block",
+        "name": "w03-resolve-block"
+      },
+      "w03-c19": {
+        "stage": "resolve",
+        "intent": "resolve_ignore",
+        "name": "w03-resolve-ignore"
+      }
+    },
+    "W04": {
+      "w04-c01": {
+        "stage": "open",
+        "intent": "read",
+        "name": "w04-open-read"
+      },
+      "w04-c02": {
+        "stage": "open",
+        "intent": "reply",
+        "name": "w04-open-quickreply"
+      },
+      "w04-c03": {
+        "stage": "inspect",
+        "intent": "inspect_sender",
+        "name": "w04-inspect-contact"
+      },
+      "w04-c04": {
+        "stage": "inspect",
+        "intent": "read_thread",
+        "name": "w04-inspect-thread"
+      },
+      "w04-c05": {
+        "stage": "inspect",
+        "intent": "skip_inspection",
+        "name": "w04-inspect-skip"
+      },
+      "w04-c06": {
+        "stage": "branch",
+        "intent": "attempt_payment",
+        "name": "w04-branch-pay"
+      },
+      "w04-c07": {
+        "stage": "branch",
+        "intent": "reply",
+        "name": "w04-branch-reply"
+      },
+      "w04-c08": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w04-branch-pivot"
+      },
+      "w04-c09": {
+        "stage": "branch",
+        "intent": "call_number",
+        "name": "w04-branch-call"
+      },
+      "w04-c10": {
+        "stage": "verify",
+        "intent": "verify_known_number",
+        "name": "w04-verify-known"
+      },
+      "w04-c11": {
+        "stage": "verify",
+        "intent": "verify_trusted_directory",
+        "name": "w04-verify-directory"
+      },
+      "w04-c12": {
+        "stage": "verify",
+        "intent": "verify_in_message_contact",
+        "name": "w04-verify-inmessage"
+      },
+      "w04-c13": {
+        "stage": "verify",
+        "intent": "report",
+        "name": "w04-verify-report"
+      },
+      "w04-c14": {
+        "stage": "verify",
+        "intent": "block",
+        "name": "w04-verify-block"
+      },
+      "w04-c15": {
+        "stage": "resolve",
+        "intent": "resolve_retain",
+        "name": "w04-resolve-keep"
+      },
+      "w04-c16": {
+        "stage": "resolve",
+        "intent": "resolve_report",
+        "name": "w04-resolve-report"
+      },
+      "w04-c17": {
+        "stage": "resolve",
+        "intent": "resolve_block",
+        "name": "w04-resolve-block"
+      },
+      "w04-c18": {
+        "stage": "resolve",
+        "intent": "resolve_continue",
+        "name": "w04-resolve-continue"
+      },
+      "w04-c19": {
+        "stage": "resolve",
+        "intent": "resolve_ignore",
+        "name": "w04-resolve-ignore"
+      }
+    },
+    "W05": {
+      "w05-c01": {
+        "stage": "open",
+        "intent": "read",
+        "name": "w05-open-read"
+      },
+      "w05-c02": {
+        "stage": "open",
+        "intent": "open_link",
+        "name": "w05-open-link"
+      },
+      "w05-c03": {
+        "stage": "inspect",
+        "intent": "inspect_sender",
+        "name": "w05-inspect-contact"
+      },
+      "w05-c04": {
+        "stage": "inspect",
+        "intent": "inspect_link",
+        "name": "w05-inspect-link"
+      },
+      "w05-c05": {
+        "stage": "inspect",
+        "intent": "read_thread",
+        "name": "w05-inspect-thread"
+      },
+      "w05-c06": {
+        "stage": "inspect",
+        "intent": "skip_inspection",
+        "name": "w05-inspect-skip"
+      },
+      "w05-c07": {
+        "stage": "branch",
+        "intent": "open_link",
+        "name": "w05-branch-open"
+      },
+      "w05-c08": {
+        "stage": "branch",
+        "intent": "submit_data",
+        "name": "w05-branch-submit"
+      },
+      "w05-c09": {
+        "stage": "branch",
+        "intent": "reply",
+        "name": "w05-branch-reply"
+      },
+      "w05-c10": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w05-branch-pivot"
+      },
+      "w05-c11": {
+        "stage": "branch",
+        "intent": "call_number",
+        "name": "w05-branch-call"
+      },
+      "w05-c12": {
+        "stage": "verify",
+        "intent": "verify_known_app",
+        "name": "w05-verify-app"
+      },
+      "w05-c13": {
+        "stage": "verify",
+        "intent": "verify_known_number",
+        "name": "w05-verify-card"
+      },
+      "w05-c14": {
+        "stage": "verify",
+        "intent": "verify_trusted_directory",
+        "name": "w05-verify-directory"
+      },
+      "w05-c15": {
+        "stage": "verify",
+        "intent": "verify_in_message_contact",
+        "name": "w05-verify-inmessage"
+      },
+      "w05-c16": {
+        "stage": "verify",
+        "intent": "report",
+        "name": "w05-verify-report"
+      },
+      "w05-c17": {
+        "stage": "verify",
+        "intent": "block",
+        "name": "w05-verify-block"
+      },
+      "w05-c18": {
+        "stage": "resolve",
+        "intent": "resolve_retain",
+        "name": "w05-resolve-keep"
+      },
+      "w05-c19": {
+        "stage": "resolve",
+        "intent": "resolve_report",
+        "name": "w05-resolve-report"
+      },
+      "w05-c20": {
+        "stage": "resolve",
+        "intent": "resolve_block",
+        "name": "w05-resolve-block"
+      },
+      "w05-c21": {
+        "stage": "resolve",
+        "intent": "resolve_continue",
+        "name": "w05-resolve-continue"
+      },
+      "w05-c22": {
+        "stage": "resolve",
+        "intent": "resolve_ignore",
+        "name": "w05-resolve-ignore"
+      }
+    },
+    "W06": {
+      "w06-c01": {
+        "stage": "open",
+        "intent": "read",
+        "name": "w06-open-read"
+      },
+      "w06-c02": {
+        "stage": "open",
+        "intent": "reply",
+        "name": "w06-open-quickreply"
+      },
+      "w06-c03": {
+        "stage": "inspect",
+        "intent": "inspect_sender",
+        "name": "w06-inspect-contact"
+      },
+      "w06-c04": {
+        "stage": "inspect",
+        "intent": "preview_file",
+        "name": "w06-inspect-notice"
+      },
+      "w06-c05": {
+        "stage": "inspect",
+        "intent": "read_thread",
+        "name": "w06-inspect-thread"
+      },
+      "w06-c06": {
+        "stage": "inspect",
+        "intent": "skip_inspection",
+        "name": "w06-inspect-skip"
+      },
+      "w06-c07": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w06-branch-pivot"
+      },
+      "w06-c08": {
+        "stage": "branch",
+        "intent": "submit_data",
+        "name": "w06-branch-send"
+      },
+      "w06-c09": {
+        "stage": "branch",
+        "intent": "reply",
+        "name": "w06-branch-ask"
+      },
+      "w06-c10": {
+        "stage": "branch",
+        "intent": "call_number",
+        "name": "w06-branch-call"
+      },
+      "w06-c11": {
+        "stage": "verify",
+        "intent": "verify_trusted_directory",
+        "name": "w06-verify-directory"
+      },
+      "w06-c12": {
+        "stage": "verify",
+        "intent": "verify_known_number",
+        "name": "w06-verify-desk"
+      },
+      "w06-c13": {
+        "stage": "verify",
+        "intent": "verify_in_message_contact",
+        "name": "w06-verify-inmessage"
+      },
+      "w06-c14": {
+        "stage": "verify",
+        "intent": "report",
+        "name": "w06-verify-report"
+      },
+      "w06-c15": {
+        "stage": "verify",
+        "intent": "block",
+        "name": "w06-verify-block"
+      },
+      "w06-c16": {
+        "stage": "resolve",
+        "intent": "resolve_retain",
+        "name": "w06-resolve-retain"
+      },
+      "w06-c17": {
+        "stage": "resolve",
+        "intent": "resolve_report",
+        "name": "w06-resolve-report"
+      },
+      "w06-c18": {
+        "stage": "resolve",
+        "intent": "resolve_block",
+        "name": "w06-resolve-block"
+      },
+      "w06-c19": {
+        "stage": "resolve",
+        "intent": "resolve_continue",
+        "name": "w06-resolve-continue"
+      },
+      "w06-c20": {
+        "stage": "resolve",
+        "intent": "resolve_ignore",
+        "name": "w06-resolve-ignore"
+      }
+    },
+    "W07": {
+      "w07-c01": {
+        "stage": "open",
+        "intent": "read",
+        "name": "w07-open-read"
+      },
+      "w07-c02": {
+        "stage": "open",
+        "intent": "reply",
+        "name": "w07-open-quickreply"
+      },
+      "w07-c03": {
+        "stage": "inspect",
+        "intent": "inspect_sender",
+        "name": "w07-inspect-contact"
+      },
+      "w07-c04": {
+        "stage": "inspect",
+        "intent": "preview_file",
+        "name": "w07-inspect-file"
+      },
+      "w07-c05": {
+        "stage": "inspect",
+        "intent": "read_thread",
+        "name": "w07-inspect-thread"
+      },
+      "w07-c06": {
+        "stage": "inspect",
+        "intent": "skip_inspection",
+        "name": "w07-inspect-skip"
+      },
+      "w07-c07": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w07-branch-keep"
+      },
+      "w07-c08": {
+        "stage": "branch",
+        "intent": "reject_ignore",
+        "name": "w07-branch-delete"
+      },
+      "w07-c09": {
+        "stage": "branch",
+        "intent": "attempt_install",
+        "name": "w07-branch-install"
+      },
+      "w07-c10": {
+        "stage": "branch",
+        "intent": "share_location",
+        "name": "w07-branch-location"
+      },
+      "w07-c11": {
+        "stage": "verify",
+        "intent": "verify_known_number",
+        "name": "w07-verify-known"
+      },
+      "w07-c12": {
+        "stage": "verify",
+        "intent": "verify_trusted_directory",
+        "name": "w07-verify-directory"
+      },
+      "w07-c13": {
+        "stage": "verify",
+        "intent": "verify_in_message_contact",
+        "name": "w07-verify-inmessage"
+      },
+      "w07-c14": {
+        "stage": "verify",
+        "intent": "report",
+        "name": "w07-verify-report"
+      },
+      "w07-c15": {
+        "stage": "verify",
+        "intent": "block",
+        "name": "w07-verify-block"
+      },
+      "w07-c16": {
+        "stage": "resolve",
+        "intent": "resolve_report",
+        "name": "w07-resolve-report"
+      },
+      "w07-c17": {
+        "stage": "resolve",
+        "intent": "resolve_retain",
+        "name": "w07-resolve-retain"
+      },
+      "w07-c18": {
+        "stage": "resolve",
+        "intent": "resolve_continue",
+        "name": "w07-resolve-continue"
+      },
+      "w07-c19": {
+        "stage": "resolve",
+        "intent": "resolve_block",
+        "name": "w07-resolve-block"
+      },
+      "w07-c20": {
+        "stage": "resolve",
+        "intent": "resolve_ignore",
+        "name": "w07-resolve-ignore"
+      }
+    },
+    "W08": {
+      "w08-c01": {
+        "stage": "open",
+        "intent": "read",
+        "name": "w08-open-read"
+      },
+      "w08-c02": {
+        "stage": "open",
+        "intent": "reply",
+        "name": "w08-open-quickreply"
+      },
+      "w08-c03": {
+        "stage": "inspect",
+        "intent": "inspect_qr",
+        "name": "w08-inspect-qr"
+      },
+      "w08-c04": {
+        "stage": "inspect",
+        "intent": "inspect_sender",
+        "name": "w08-inspect-group"
+      },
+      "w08-c05": {
+        "stage": "inspect",
+        "intent": "read_thread",
+        "name": "w08-inspect-thread"
+      },
+      "w08-c06": {
+        "stage": "inspect",
+        "intent": "skip_inspection",
+        "name": "w08-inspect-skip"
+      },
+      "w08-c07": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w08-branch-pivot"
+      },
+      "w08-c08": {
+        "stage": "branch",
+        "intent": "scan_qr",
+        "name": "w08-branch-scan"
+      },
+      "w08-c09": {
+        "stage": "branch",
+        "intent": "submit_data",
+        "name": "w08-branch-submit"
+      },
+      "w08-c10": {
+        "stage": "branch",
+        "intent": "reply",
+        "name": "w08-branch-forward"
+      },
+      "w08-c11": {
+        "stage": "verify",
+        "intent": "verify_known_app",
+        "name": "w08-verify-app"
+      },
+      "w08-c12": {
+        "stage": "verify",
+        "intent": "verify_trusted_directory",
+        "name": "w08-verify-directory"
+      },
+      "w08-c13": {
+        "stage": "verify",
+        "intent": "verify_in_message_contact",
+        "name": "w08-verify-inmessage"
+      },
+      "w08-c14": {
+        "stage": "verify",
+        "intent": "report",
+        "name": "w08-verify-report"
+      },
+      "w08-c15": {
+        "stage": "verify",
+        "intent": "block",
+        "name": "w08-verify-block"
+      },
+      "w08-c16": {
+        "stage": "resolve",
+        "intent": "resolve_retain",
+        "name": "w08-resolve-retain"
+      },
+      "w08-c17": {
+        "stage": "resolve",
+        "intent": "resolve_report",
+        "name": "w08-resolve-report"
+      },
+      "w08-c18": {
+        "stage": "resolve",
+        "intent": "resolve_block",
+        "name": "w08-resolve-block"
+      },
+      "w08-c19": {
+        "stage": "resolve",
+        "intent": "resolve_continue",
+        "name": "w08-resolve-continue"
+      },
+      "w08-c20": {
+        "stage": "resolve",
+        "intent": "resolve_ignore",
+        "name": "w08-resolve-ignore"
+      }
+    },
+    "W09": {
+      "w09-c01": {
+        "stage": "open",
+        "intent": "read",
+        "name": "w09-open-read"
+      },
+      "w09-c02": {
+        "stage": "open",
+        "intent": "reply",
+        "name": "w09-open-quickreply"
+      },
+      "w09-c03": {
+        "stage": "inspect",
+        "intent": "inspect_sender",
+        "name": "w09-inspect-contact"
+      },
+      "w09-c04": {
+        "stage": "inspect",
+        "intent": "read_thread",
+        "name": "w09-inspect-thread"
+      },
+      "w09-c05": {
+        "stage": "inspect",
+        "intent": "skip_inspection",
+        "name": "w09-inspect-skip"
+      },
+      "w09-c06": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w09-branch-pivot"
+      },
+      "w09-c07": {
+        "stage": "branch",
+        "intent": "attempt_payment",
+        "name": "w09-branch-pay"
+      },
+      "w09-c08": {
+        "stage": "branch",
+        "intent": "share_secret",
+        "name": "w09-branch-secret"
+      },
+      "w09-c09": {
+        "stage": "branch",
+        "intent": "reply",
+        "name": "w09-branch-reply"
+      },
+      "w09-c10": {
+        "stage": "verify",
+        "intent": "verify_known_number",
+        "name": "w09-verify-known"
+      },
+      "w09-c11": {
+        "stage": "verify",
+        "intent": "verify_trusted_directory",
+        "name": "w09-verify-directory"
+      },
+      "w09-c12": {
+        "stage": "verify",
+        "intent": "verify_in_message_contact",
+        "name": "w09-verify-inmessage"
+      },
+      "w09-c13": {
+        "stage": "verify",
+        "intent": "report",
+        "name": "w09-verify-report"
+      },
+      "w09-c14": {
+        "stage": "verify",
+        "intent": "block",
+        "name": "w09-verify-block"
+      },
+      "w09-c15": {
+        "stage": "resolve",
+        "intent": "resolve_retain",
+        "name": "w09-resolve-retain"
+      },
+      "w09-c16": {
+        "stage": "resolve",
+        "intent": "resolve_report",
+        "name": "w09-resolve-report"
+      },
+      "w09-c17": {
+        "stage": "resolve",
+        "intent": "resolve_block",
+        "name": "w09-resolve-block"
+      },
+      "w09-c18": {
+        "stage": "resolve",
+        "intent": "resolve_continue",
+        "name": "w09-resolve-continue"
+      },
+      "w09-c19": {
+        "stage": "resolve",
+        "intent": "resolve_ignore",
+        "name": "w09-resolve-ignore"
+      }
+    },
+    "W10": {
+      "w10-c01": {
+        "stage": "open",
+        "intent": "read",
+        "name": "w10-open-read"
+      },
+      "w10-c02": {
+        "stage": "open",
+        "intent": "reply",
+        "name": "w10-open-quickreply"
+      },
+      "w10-c03": {
+        "stage": "inspect",
+        "intent": "inspect_qr",
+        "name": "w10-inspect-qr"
+      },
+      "w10-c04": {
+        "stage": "inspect",
+        "intent": "inspect_sender",
+        "name": "w10-inspect-contact"
+      },
+      "w10-c05": {
+        "stage": "inspect",
+        "intent": "read_thread",
+        "name": "w10-inspect-thread"
+      },
+      "w10-c06": {
+        "stage": "inspect",
+        "intent": "skip_inspection",
+        "name": "w10-inspect-skip"
+      },
+      "w10-c07": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w10-branch-pivot"
+      },
+      "w10-c08": {
+        "stage": "branch",
+        "intent": "approve_device_link",
+        "name": "w10-branch-approve"
+      },
+      "w10-c09": {
+        "stage": "branch",
+        "intent": "scan_qr",
+        "name": "w10-branch-scan"
+      },
+      "w10-c10": {
+        "stage": "branch",
+        "intent": "reply",
+        "name": "w10-branch-reply"
+      },
+      "w10-c11": {
+        "stage": "verify",
+        "intent": "verify_known_app",
+        "name": "w10-verify-settings"
+      },
+      "w10-c12": {
+        "stage": "verify",
+        "intent": "verify_trusted_directory",
+        "name": "w10-verify-directory"
+      },
+      "w10-c13": {
+        "stage": "verify",
+        "intent": "verify_in_message_contact",
+        "name": "w10-verify-inmessage"
+      },
+      "w10-c14": {
+        "stage": "verify",
+        "intent": "report",
+        "name": "w10-verify-report"
+      },
+      "w10-c15": {
+        "stage": "verify",
+        "intent": "block",
+        "name": "w10-verify-block"
+      },
+      "w10-c16": {
+        "stage": "resolve",
+        "intent": "resolve_retain",
+        "name": "w10-resolve-retain"
+      },
+      "w10-c17": {
+        "stage": "resolve",
+        "intent": "resolve_report",
+        "name": "w10-resolve-report"
+      },
+      "w10-c18": {
+        "stage": "resolve",
+        "intent": "resolve_block",
+        "name": "w10-resolve-block"
+      },
+      "w10-c19": {
+        "stage": "resolve",
+        "intent": "resolve_continue",
+        "name": "w10-resolve-continue"
+      },
+      "w10-c20": {
+        "stage": "resolve",
+        "intent": "resolve_ignore",
+        "name": "w10-resolve-ignore"
+      }
+    },
+    "W11": {
+      "w11-c01": {
+        "stage": "open",
+        "intent": "read",
+        "name": "w11-open-read"
+      },
+      "w11-c02": {
+        "stage": "open",
+        "intent": "reply",
+        "name": "w11-open-quickreply"
+      },
+      "w11-c03": {
+        "stage": "inspect",
+        "intent": "inspect_sender",
+        "name": "w11-inspect-contact"
+      },
+      "w11-c04": {
+        "stage": "inspect",
+        "intent": "read_thread",
+        "name": "w11-inspect-thread"
+      },
+      "w11-c05": {
+        "stage": "inspect",
+        "intent": "skip_inspection",
+        "name": "w11-inspect-skip"
+      },
+      "w11-c06": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w11-branch-confirm"
+      },
+      "w11-c07": {
+        "stage": "branch",
+        "intent": "reject_ignore",
+        "name": "w11-branch-ignore"
+      },
+      "w11-c08": {
+        "stage": "branch",
+        "intent": "call_number",
+        "name": "w11-branch-call"
+      },
+      "w11-c09": {
+        "stage": "verify",
+        "intent": "verify_known_app",
+        "name": "w11-verify-app"
+      },
+      "w11-c10": {
+        "stage": "verify",
+        "intent": "verify_trusted_directory",
+        "name": "w11-verify-directory"
+      },
+      "w11-c11": {
+        "stage": "verify",
+        "intent": "verify_in_message_contact",
+        "name": "w11-verify-inmessage"
+      },
+      "w11-c12": {
+        "stage": "verify",
+        "intent": "report",
+        "name": "w11-verify-report"
+      },
+      "w11-c13": {
+        "stage": "verify",
+        "intent": "block",
+        "name": "w11-verify-block"
+      },
+      "w11-c14": {
+        "stage": "resolve",
+        "intent": "resolve_report",
+        "name": "w11-resolve-report"
+      },
+      "w11-c15": {
+        "stage": "resolve",
+        "intent": "resolve_continue",
+        "name": "w11-resolve-continue"
+      },
+      "w11-c16": {
+        "stage": "resolve",
+        "intent": "resolve_retain",
+        "name": "w11-resolve-retain"
+      },
+      "w11-c17": {
+        "stage": "resolve",
+        "intent": "resolve_block",
+        "name": "w11-resolve-block"
+      },
+      "w11-c18": {
+        "stage": "resolve",
+        "intent": "resolve_ignore",
+        "name": "w11-resolve-ignore"
+      }
+    },
+    "W12": {
+      "w12-c01": {
+        "stage": "open",
+        "intent": "read",
+        "name": "w12-open-read"
+      },
+      "w12-c02": {
+        "stage": "open",
+        "intent": "call_number",
+        "name": "w12-open-answer"
+      },
+      "w12-c03": {
+        "stage": "inspect",
+        "intent": "inspect_sender",
+        "name": "w12-inspect-contact"
+      },
+      "w12-c04": {
+        "stage": "inspect",
+        "intent": "preview_file",
+        "name": "w12-inspect-file"
+      },
+      "w12-c05": {
+        "stage": "inspect",
+        "intent": "read_thread",
+        "name": "w12-inspect-thread"
+      },
+      "w12-c06": {
+        "stage": "inspect",
+        "intent": "skip_inspection",
+        "name": "w12-inspect-skip"
+      },
+      "w12-c07": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w12-branch-hangup"
+      },
+      "w12-c08": {
+        "stage": "branch",
+        "intent": "call_number",
+        "name": "w12-branch-stay"
+      },
+      "w12-c09": {
+        "stage": "branch",
+        "intent": "submit_data",
+        "name": "w12-branch-id"
+      },
+      "w12-c10": {
+        "stage": "branch",
+        "intent": "attempt_payment",
+        "name": "w12-branch-pay"
+      },
+      "w12-c11": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w12-branch-pivot"
+      },
+      "w12-c12": {
+        "stage": "branch",
+        "intent": "reply",
+        "name": "w12-branch-plead"
+      },
+      "w12-c13": {
+        "stage": "verify",
+        "intent": "verify_known_number",
+        "name": "w12-verify-desk"
+      },
+      "w12-c14": {
+        "stage": "verify",
+        "intent": "verify_trusted_directory",
+        "name": "w12-verify-directory"
+      },
+      "w12-c15": {
+        "stage": "verify",
+        "intent": "verify_in_message_contact",
+        "name": "w12-verify-inmessage"
+      },
+      "w12-c16": {
+        "stage": "verify",
+        "intent": "report",
+        "name": "w12-verify-report"
+      },
+      "w12-c17": {
+        "stage": "verify",
+        "intent": "block",
+        "name": "w12-verify-block"
+      },
+      "w12-c18": {
+        "stage": "resolve",
+        "intent": "resolve_retain",
+        "name": "w12-resolve-retain"
+      },
+      "w12-c19": {
+        "stage": "resolve",
+        "intent": "resolve_report",
+        "name": "w12-resolve-report"
+      },
+      "w12-c20": {
+        "stage": "resolve",
+        "intent": "resolve_block",
+        "name": "w12-resolve-block"
+      },
+      "w12-c21": {
+        "stage": "resolve",
+        "intent": "resolve_continue",
+        "name": "w12-resolve-continue"
+      },
+      "w12-c22": {
+        "stage": "resolve",
+        "intent": "resolve_ignore",
+        "name": "w12-resolve-ignore"
+      }
+    },
+    "W13": {
+      "w13-c01": {
+        "stage": "open",
+        "intent": "read",
+        "name": "w13-open-read"
+      },
+      "w13-c02": {
+        "stage": "open",
+        "intent": "open_link",
+        "name": "w13-open-link"
+      },
+      "w13-c03": {
+        "stage": "inspect",
+        "intent": "inspect_profile",
+        "name": "w13-inspect-group"
+      },
+      "w13-c04": {
+        "stage": "inspect",
+        "intent": "inspect_link",
+        "name": "w13-inspect-link"
+      },
+      "w13-c05": {
+        "stage": "inspect",
+        "intent": "read_thread",
+        "name": "w13-inspect-thread"
+      },
+      "w13-c06": {
+        "stage": "inspect",
+        "intent": "skip_inspection",
+        "name": "w13-inspect-skip"
+      },
+      "w13-c07": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w13-branch-exit"
+      },
+      "w13-c08": {
+        "stage": "branch",
+        "intent": "reply",
+        "name": "w13-branch-dm"
+      },
+      "w13-c09": {
+        "stage": "branch",
+        "intent": "attempt_payment",
+        "name": "w13-branch-pay"
+      },
+      "w13-c10": {
+        "stage": "verify",
+        "intent": "verify_known_app",
+        "name": "w13-verify-app"
+      },
+      "w13-c11": {
+        "stage": "verify",
+        "intent": "verify_trusted_directory",
+        "name": "w13-verify-directory"
+      },
+      "w13-c12": {
+        "stage": "verify",
+        "intent": "verify_in_message_contact",
+        "name": "w13-verify-inmessage"
+      },
+      "w13-c13": {
+        "stage": "verify",
+        "intent": "report",
+        "name": "w13-verify-report"
+      },
+      "w13-c14": {
+        "stage": "verify",
+        "intent": "block",
+        "name": "w13-verify-block"
+      },
+      "w13-c15": {
+        "stage": "resolve",
+        "intent": "resolve_retain",
+        "name": "w13-resolve-retain"
+      },
+      "w13-c16": {
+        "stage": "resolve",
+        "intent": "resolve_report",
+        "name": "w13-resolve-report"
+      },
+      "w13-c17": {
+        "stage": "resolve",
+        "intent": "resolve_block",
+        "name": "w13-resolve-block"
+      },
+      "w13-c18": {
+        "stage": "resolve",
+        "intent": "resolve_continue",
+        "name": "w13-resolve-continue"
+      },
+      "w13-c19": {
+        "stage": "resolve",
+        "intent": "resolve_ignore",
+        "name": "w13-resolve-ignore"
+      }
+    },
+    "W14": {
+      "w14-c01": {
+        "stage": "open",
+        "intent": "read",
+        "name": "w14-open-read"
+      },
+      "w14-c02": {
+        "stage": "open",
+        "intent": "attempt_install",
+        "name": "w14-open-file"
+      },
+      "w14-c03": {
+        "stage": "inspect",
+        "intent": "inspect_sender",
+        "name": "w14-inspect-contact"
+      },
+      "w14-c04": {
+        "stage": "inspect",
+        "intent": "preview_file",
+        "name": "w14-inspect-file"
+      },
+      "w14-c05": {
+        "stage": "inspect",
+        "intent": "read_thread",
+        "name": "w14-inspect-thread"
+      },
+      "w14-c06": {
+        "stage": "inspect",
+        "intent": "skip_inspection",
+        "name": "w14-inspect-skip"
+      },
+      "w14-c07": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w14-branch-cancel-blocked"
+      },
+      "w14-c08": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w14-branch-cancel-confirm"
+      },
+      "w14-c09": {
+        "stage": "branch",
+        "intent": "attempt_install",
+        "name": "w14-branch-install"
+      },
+      "w14-c10": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w14-branch-pivot"
+      },
+      "w14-c11": {
+        "stage": "branch",
+        "intent": "reply",
+        "name": "w14-branch-reply"
+      },
+      "w14-c12": {
+        "stage": "verify",
+        "intent": "verify_known_app",
+        "name": "w14-verify-dms"
+      },
+      "w14-c13": {
+        "stage": "verify",
+        "intent": "verify_known_number",
+        "name": "w14-verify-ops"
+      },
+      "w14-c14": {
+        "stage": "verify",
+        "intent": "verify_trusted_directory",
+        "name": "w14-verify-directory"
+      },
+      "w14-c15": {
+        "stage": "verify",
+        "intent": "verify_in_message_contact",
+        "name": "w14-verify-inmessage"
+      },
+      "w14-c16": {
+        "stage": "verify",
+        "intent": "report",
+        "name": "w14-verify-report"
+      },
+      "w14-c17": {
+        "stage": "verify",
+        "intent": "block",
+        "name": "w14-verify-block"
+      },
+      "w14-c18": {
+        "stage": "resolve",
+        "intent": "resolve_retain",
+        "name": "w14-resolve-retain"
+      },
+      "w14-c19": {
+        "stage": "resolve",
+        "intent": "resolve_report",
+        "name": "w14-resolve-report"
+      },
+      "w14-c20": {
+        "stage": "resolve",
+        "intent": "resolve_block",
+        "name": "w14-resolve-block"
+      },
+      "w14-c21": {
+        "stage": "resolve",
+        "intent": "resolve_continue",
+        "name": "w14-resolve-continue"
+      },
+      "w14-c22": {
+        "stage": "resolve",
+        "intent": "resolve_ignore",
+        "name": "w14-resolve-ignore"
+      }
+    },
+    "W15": {
+      "w15-c01": {
+        "stage": "open",
+        "intent": "read",
+        "name": "w15-open-read"
+      },
+      "w15-c02": {
+        "stage": "open",
+        "intent": "reply",
+        "name": "w15-open-quickreply"
+      },
+      "w15-c03": {
+        "stage": "inspect",
+        "intent": "inspect_sender",
+        "name": "w15-inspect-contact"
+      },
+      "w15-c04": {
+        "stage": "inspect",
+        "intent": "preview_file",
+        "name": "w15-inspect-voice"
+      },
+      "w15-c05": {
+        "stage": "inspect",
+        "intent": "read_thread",
+        "name": "w15-inspect-thread"
+      },
+      "w15-c06": {
+        "stage": "inspect",
+        "intent": "skip_inspection",
+        "name": "w15-inspect-skip"
+      },
+      "w15-c07": {
+        "stage": "branch",
+        "intent": "share_secret",
+        "name": "w15-branch-phrase"
+      },
+      "w15-c08": {
+        "stage": "branch",
+        "intent": "submit_data",
+        "name": "w15-branch-photo"
+      },
+      "w15-c09": {
+        "stage": "branch",
+        "intent": "submit_data",
+        "name": "w15-branch-doc"
+      },
+      "w15-c10": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w15-branch-pivot"
+      },
+      "w15-c11": {
+        "stage": "branch",
+        "intent": "call_number",
+        "name": "w15-branch-call"
+      },
+      "w15-c12": {
+        "stage": "verify",
+        "intent": "verify_known_number",
+        "name": "w15-verify-adjt"
+      },
+      "w15-c13": {
+        "stage": "verify",
+        "intent": "verify_trusted_directory",
+        "name": "w15-verify-directory"
+      },
+      "w15-c14": {
+        "stage": "verify",
+        "intent": "verify_in_message_contact",
+        "name": "w15-verify-inmessage"
+      },
+      "w15-c15": {
+        "stage": "verify",
+        "intent": "report",
+        "name": "w15-verify-report"
+      },
+      "w15-c16": {
+        "stage": "verify",
+        "intent": "block",
+        "name": "w15-verify-block"
+      },
+      "w15-c17": {
+        "stage": "resolve",
+        "intent": "resolve_retain",
+        "name": "w15-resolve-retain"
+      },
+      "w15-c18": {
+        "stage": "resolve",
+        "intent": "resolve_report",
+        "name": "w15-resolve-report"
+      },
+      "w15-c19": {
+        "stage": "resolve",
+        "intent": "resolve_block",
+        "name": "w15-resolve-block"
+      },
+      "w15-c20": {
+        "stage": "resolve",
+        "intent": "resolve_continue",
+        "name": "w15-resolve-continue"
+      },
+      "w15-c21": {
+        "stage": "resolve",
+        "intent": "resolve_ignore",
+        "name": "w15-resolve-ignore"
+      }
+    },
+    "W16": {
+      "w16-c01": {
+        "stage": "open",
+        "intent": "read",
+        "name": "w16-open-read"
+      },
+      "w16-c02": {
+        "stage": "open",
+        "intent": "reply",
+        "name": "w16-open-quickreply"
+      },
+      "w16-c03": {
+        "stage": "inspect",
+        "intent": "inspect_sender",
+        "name": "w16-inspect-contact"
+      },
+      "w16-c04": {
+        "stage": "inspect",
+        "intent": "preview_file",
+        "name": "w16-inspect-plan"
+      },
+      "w16-c05": {
+        "stage": "inspect",
+        "intent": "read_thread",
+        "name": "w16-inspect-thread"
+      },
+      "w16-c06": {
+        "stage": "inspect",
+        "intent": "skip_inspection",
+        "name": "w16-inspect-skip"
+      },
+      "w16-c07": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w16-branch-ack"
+      },
+      "w16-c08": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w16-branch-reply"
+      },
+      "w16-c09": {
+        "stage": "branch",
+        "intent": "submit_data",
+        "name": "w16-branch-overshare"
+      },
+      "w16-c10": {
+        "stage": "branch",
+        "intent": "reply",
+        "name": "w16-branch-forward"
+      },
+      "w16-c11": {
+        "stage": "branch",
+        "intent": "reject_ignore",
+        "name": "w16-branch-ignore"
+      },
+      "w16-c12": {
+        "stage": "verify",
+        "intent": "verify_known_app",
+        "name": "w16-verify-board"
+      },
+      "w16-c13": {
+        "stage": "verify",
+        "intent": "verify_trusted_directory",
+        "name": "w16-verify-directory"
+      },
+      "w16-c14": {
+        "stage": "verify",
+        "intent": "verify_in_message_contact",
+        "name": "w16-verify-inmessage"
+      },
+      "w16-c15": {
+        "stage": "verify",
+        "intent": "report",
+        "name": "w16-verify-report"
+      },
+      "w16-c16": {
+        "stage": "verify",
+        "intent": "block",
+        "name": "w16-verify-block"
+      },
+      "w16-c17": {
+        "stage": "resolve",
+        "intent": "resolve_continue",
+        "name": "w16-resolve-continue"
+      },
+      "w16-c18": {
+        "stage": "resolve",
+        "intent": "resolve_ignore",
+        "name": "w16-resolve-ignore"
+      },
+      "w16-c19": {
+        "stage": "resolve",
+        "intent": "resolve_retain",
+        "name": "w16-resolve-retain"
+      },
+      "w16-c20": {
+        "stage": "resolve",
+        "intent": "resolve_report",
+        "name": "w16-resolve-report"
+      },
+      "w16-c21": {
+        "stage": "resolve",
+        "intent": "resolve_block",
+        "name": "w16-resolve-block"
+      }
+    },
+    "W17": {
+      "w17-c01": {
+        "stage": "open",
+        "intent": "read",
+        "name": "w17-open-read"
+      },
+      "w17-c02": {
+        "stage": "open",
+        "intent": "reply",
+        "name": "w17-open-quickreply"
+      },
+      "w17-c03": {
+        "stage": "inspect",
+        "intent": "inspect_sender",
+        "name": "w17-inspect-contact"
+      },
+      "w17-c04": {
+        "stage": "inspect",
+        "intent": "inspect_link",
+        "name": "w17-inspect-link"
+      },
+      "w17-c05": {
+        "stage": "inspect",
+        "intent": "read_thread",
+        "name": "w17-inspect-thread"
+      },
+      "w17-c06": {
+        "stage": "inspect",
+        "intent": "skip_inspection",
+        "name": "w17-inspect-skip"
+      },
+      "w17-c07": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w17-branch-stop"
+      },
+      "w17-c08": {
+        "stage": "branch",
+        "intent": "reply",
+        "name": "w17-branch-yes"
+      },
+      "w17-c09": {
+        "stage": "branch",
+        "intent": "reply",
+        "name": "w17-branch-invite"
+      },
+      "w17-c10": {
+        "stage": "branch",
+        "intent": "submit_data",
+        "name": "w17-branch-bank"
+      },
+      "w17-c11": {
+        "stage": "branch",
+        "intent": "attempt_payment",
+        "name": "w17-branch-pay"
+      },
+      "w17-c12": {
+        "stage": "verify",
+        "intent": "verify_known_app",
+        "name": "w17-verify-jobs"
+      },
+      "w17-c13": {
+        "stage": "verify",
+        "intent": "verify_trusted_directory",
+        "name": "w17-verify-directory"
+      },
+      "w17-c14": {
+        "stage": "verify",
+        "intent": "verify_in_message_contact",
+        "name": "w17-verify-inmessage"
+      },
+      "w17-c15": {
+        "stage": "verify",
+        "intent": "report",
+        "name": "w17-verify-report"
+      },
+      "w17-c16": {
+        "stage": "verify",
+        "intent": "block",
+        "name": "w17-verify-block"
+      },
+      "w17-c17": {
+        "stage": "resolve",
+        "intent": "resolve_report",
+        "name": "w17-resolve-report"
+      },
+      "w17-c18": {
+        "stage": "resolve",
+        "intent": "resolve_block",
+        "name": "w17-resolve-block"
+      },
+      "w17-c19": {
+        "stage": "resolve",
+        "intent": "resolve_retain",
+        "name": "w17-resolve-retain"
+      },
+      "w17-c20": {
+        "stage": "resolve",
+        "intent": "resolve_continue",
+        "name": "w17-resolve-continue"
+      },
+      "w17-c21": {
+        "stage": "resolve",
+        "intent": "resolve_ignore",
+        "name": "w17-resolve-ignore"
+      }
+    },
+    "W18": {
+      "w18-c01": {
+        "stage": "open",
+        "intent": "read",
+        "name": "w18-open-read"
+      },
+      "w18-c02": {
+        "stage": "open",
+        "intent": "open_link",
+        "name": "w18-open-link"
+      },
+      "w18-c03": {
+        "stage": "inspect",
+        "intent": "inspect_profile",
+        "name": "w18-inspect-group"
+      },
+      "w18-c04": {
+        "stage": "inspect",
+        "intent": "inspect_link",
+        "name": "w18-inspect-link"
+      },
+      "w18-c05": {
+        "stage": "inspect",
+        "intent": "inspect_sender",
+        "name": "w18-inspect-admin"
+      },
+      "w18-c06": {
+        "stage": "inspect",
+        "intent": "read_thread",
+        "name": "w18-inspect-thread"
+      },
+      "w18-c07": {
+        "stage": "inspect",
+        "intent": "skip_inspection",
+        "name": "w18-inspect-skip"
+      },
+      "w18-c08": {
+        "stage": "branch",
+        "intent": "submit_data",
+        "name": "w18-branch-submit"
+      },
+      "w18-c09": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w18-branch-pivot"
+      },
+      "w18-c10": {
+        "stage": "branch",
+        "intent": "reply",
+        "name": "w18-branch-ask"
+      },
+      "w18-c11": {
+        "stage": "branch",
+        "intent": "reply",
+        "name": "w18-branch-forward"
+      },
+      "w18-c12": {
+        "stage": "verify",
+        "intent": "verify_known_number",
+        "name": "w18-verify-office"
+      },
+      "w18-c13": {
+        "stage": "verify",
+        "intent": "verify_known_app",
+        "name": "w18-verify-app"
+      },
+      "w18-c14": {
+        "stage": "verify",
+        "intent": "verify_trusted_directory",
+        "name": "w18-verify-directory"
+      },
+      "w18-c15": {
+        "stage": "verify",
+        "intent": "verify_in_message_contact",
+        "name": "w18-verify-inmessage"
+      },
+      "w18-c16": {
+        "stage": "verify",
+        "intent": "report",
+        "name": "w18-verify-report"
+      },
+      "w18-c17": {
+        "stage": "verify",
+        "intent": "block",
+        "name": "w18-verify-block"
+      },
+      "w18-c18": {
+        "stage": "resolve",
+        "intent": "resolve_report",
+        "name": "w18-resolve-report"
+      },
+      "w18-c19": {
+        "stage": "resolve",
+        "intent": "resolve_retain",
+        "name": "w18-resolve-retain"
+      },
+      "w18-c20": {
+        "stage": "resolve",
+        "intent": "resolve_block",
+        "name": "w18-resolve-block"
+      },
+      "w18-c21": {
+        "stage": "resolve",
+        "intent": "resolve_continue",
+        "name": "w18-resolve-continue"
+      },
+      "w18-c22": {
+        "stage": "resolve",
+        "intent": "resolve_ignore",
+        "name": "w18-resolve-ignore"
+      }
+    },
+    "W19": {
+      "w19-c01": {
+        "stage": "open",
+        "intent": "read",
+        "name": "w19-open-read"
+      },
+      "w19-c02": {
+        "stage": "open",
+        "intent": "reply",
+        "name": "w19-open-quickreply"
+      },
+      "w19-c03": {
+        "stage": "inspect",
+        "intent": "inspect_sender",
+        "name": "w19-inspect-contact"
+      },
+      "w19-c04": {
+        "stage": "inspect",
+        "intent": "read_thread",
+        "name": "w19-inspect-thread"
+      },
+      "w19-c05": {
+        "stage": "inspect",
+        "intent": "skip_inspection",
+        "name": "w19-inspect-skip"
+      },
+      "w19-c06": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w19-branch-deny"
+      },
+      "w19-c07": {
+        "stage": "branch",
+        "intent": "share_location",
+        "name": "w19-branch-15m"
+      },
+      "w19-c08": {
+        "stage": "branch",
+        "intent": "share_location",
+        "name": "w19-branch-1h"
+      },
+      "w19-c09": {
+        "stage": "branch",
+        "intent": "share_location",
+        "name": "w19-branch-current"
+      },
+      "w19-c10": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w19-branch-cancel"
+      },
+      "w19-c11": {
+        "stage": "branch",
+        "intent": "submit_data",
+        "name": "w19-branch-schedule"
+      },
+      "w19-c12": {
+        "stage": "branch",
+        "intent": "reply",
+        "name": "w19-branch-ask"
+      },
+      "w19-c13": {
+        "stage": "verify",
+        "intent": "verify_known_number",
+        "name": "w19-verify-duty"
+      },
+      "w19-c14": {
+        "stage": "verify",
+        "intent": "verify_known_number",
+        "name": "w19-verify-co"
+      },
+      "w19-c15": {
+        "stage": "verify",
+        "intent": "verify_trusted_directory",
+        "name": "w19-verify-directory"
+      },
+      "w19-c16": {
+        "stage": "verify",
+        "intent": "verify_in_message_contact",
+        "name": "w19-verify-inmessage"
+      },
+      "w19-c17": {
+        "stage": "verify",
+        "intent": "report",
+        "name": "w19-verify-report"
+      },
+      "w19-c18": {
+        "stage": "verify",
+        "intent": "block",
+        "name": "w19-verify-block"
+      },
+      "w19-c19": {
+        "stage": "resolve",
+        "intent": "resolve_report",
+        "name": "w19-resolve-report"
+      },
+      "w19-c20": {
+        "stage": "resolve",
+        "intent": "resolve_continue",
+        "name": "w19-resolve-continue"
+      },
+      "w19-c21": {
+        "stage": "resolve",
+        "intent": "resolve_block",
+        "name": "w19-resolve-block"
+      },
+      "w19-c22": {
+        "stage": "resolve",
+        "intent": "resolve_retain",
+        "name": "w19-resolve-retain"
+      },
+      "w19-c23": {
+        "stage": "resolve",
+        "intent": "resolve_ignore",
+        "name": "w19-resolve-ignore"
+      }
+    },
+    "W20": {
+      "w20-c01": {
+        "stage": "open",
+        "intent": "read",
+        "name": "w20-open-read"
+      },
+      "w20-c02": {
+        "stage": "open",
+        "intent": "reply",
+        "name": "w20-open-quickreply"
+      },
+      "w20-c03": {
+        "stage": "inspect",
+        "intent": "inspect_sender",
+        "name": "w20-inspect-contact"
+      },
+      "w20-c04": {
+        "stage": "inspect",
+        "intent": "preview_file",
+        "name": "w20-inspect-file"
+      },
+      "w20-c05": {
+        "stage": "inspect",
+        "intent": "read_thread",
+        "name": "w20-inspect-thread"
+      },
+      "w20-c06": {
+        "stage": "inspect",
+        "intent": "skip_inspection",
+        "name": "w20-inspect-skip"
+      },
+      "w20-c07": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w20-branch-hold"
+      },
+      "w20-c08": {
+        "stage": "branch",
+        "intent": "submit_data",
+        "name": "w20-branch-submit"
+      },
+      "w20-c09": {
+        "stage": "branch",
+        "intent": "attempt_payment",
+        "name": "w20-branch-pay"
+      },
+      "w20-c10": {
+        "stage": "branch",
+        "intent": "reply",
+        "name": "w20-branch-reply"
+      },
+      "w20-c11": {
+        "stage": "verify",
+        "intent": "verify_known_number",
+        "name": "w20-verify-rohit"
+      },
+      "w20-c12": {
+        "stage": "verify",
+        "intent": "verify_trusted_directory",
+        "name": "w20-verify-directory"
+      },
+      "w20-c13": {
+        "stage": "verify",
+        "intent": "verify_in_message_contact",
+        "name": "w20-verify-inmessage"
+      },
+      "w20-c14": {
+        "stage": "verify",
+        "intent": "report",
+        "name": "w20-verify-report"
+      },
+      "w20-c15": {
+        "stage": "verify",
+        "intent": "block",
+        "name": "w20-verify-block"
+      },
+      "w20-c16": {
+        "stage": "resolve",
+        "intent": "resolve_report",
+        "name": "w20-resolve-report"
+      },
+      "w20-c17": {
+        "stage": "resolve",
+        "intent": "resolve_continue",
+        "name": "w20-resolve-continue"
+      },
+      "w20-c18": {
+        "stage": "resolve",
+        "intent": "resolve_block",
+        "name": "w20-resolve-block"
+      },
+      "w20-c19": {
+        "stage": "resolve",
+        "intent": "resolve_retain",
+        "name": "w20-resolve-retain"
+      },
+      "w20-c20": {
+        "stage": "resolve",
+        "intent": "resolve_ignore",
+        "name": "w20-resolve-ignore"
+      }
+    },
+    "W21": {
+      "w21-c01": {
+        "stage": "open",
+        "intent": "read",
+        "name": "w21-open-read"
+      },
+      "w21-c02": {
+        "stage": "open",
+        "intent": "reply",
+        "name": "w21-open-quickreply"
+      },
+      "w21-c03": {
+        "stage": "inspect",
+        "intent": "inspect_sender",
+        "name": "w21-inspect-contact"
+      },
+      "w21-c04": {
+        "stage": "inspect",
+        "intent": "read_thread",
+        "name": "w21-inspect-thread"
+      },
+      "w21-c05": {
+        "stage": "inspect",
+        "intent": "skip_inspection",
+        "name": "w21-inspect-skip"
+      },
+      "w21-c06": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w21-branch-ack"
+      },
+      "w21-c07": {
+        "stage": "branch",
+        "intent": "reply",
+        "name": "w21-branch-ask"
+      },
+      "w21-c08": {
+        "stage": "branch",
+        "intent": "call_number",
+        "name": "w21-branch-call"
+      },
+      "w21-c09": {
+        "stage": "branch",
+        "intent": "reply",
+        "name": "w21-branch-forward"
+      },
+      "w21-c10": {
+        "stage": "branch",
+        "intent": "reject_ignore",
+        "name": "w21-branch-ignore"
+      },
+      "w21-c11": {
+        "stage": "verify",
+        "intent": "verify_known_app",
+        "name": "w21-verify-portal"
+      },
+      "w21-c12": {
+        "stage": "verify",
+        "intent": "verify_known_number",
+        "name": "w21-verify-office"
+      },
+      "w21-c13": {
+        "stage": "verify",
+        "intent": "verify_trusted_directory",
+        "name": "w21-verify-directory"
+      },
+      "w21-c14": {
+        "stage": "verify",
+        "intent": "verify_in_message_contact",
+        "name": "w21-verify-inmessage"
+      },
+      "w21-c15": {
+        "stage": "verify",
+        "intent": "report",
+        "name": "w21-verify-report"
+      },
+      "w21-c16": {
+        "stage": "verify",
+        "intent": "block",
+        "name": "w21-verify-block"
+      },
+      "w21-c17": {
+        "stage": "resolve",
+        "intent": "resolve_continue",
+        "name": "w21-resolve-continue"
+      },
+      "w21-c18": {
+        "stage": "resolve",
+        "intent": "resolve_report",
+        "name": "w21-resolve-report"
+      },
+      "w21-c19": {
+        "stage": "resolve",
+        "intent": "resolve_retain",
+        "name": "w21-resolve-retain"
+      },
+      "w21-c20": {
+        "stage": "resolve",
+        "intent": "resolve_block",
+        "name": "w21-resolve-block"
+      },
+      "w21-c21": {
+        "stage": "resolve",
+        "intent": "resolve_ignore",
+        "name": "w21-resolve-ignore"
+      }
+    },
+    "W22": {
+      "w22-c01": {
+        "stage": "open",
+        "intent": "read",
+        "name": "w22-open-read"
+      },
+      "w22-c02": {
+        "stage": "open",
+        "intent": "reply",
+        "name": "w22-open-quickreply"
+      },
+      "w22-c03": {
+        "stage": "inspect",
+        "intent": "inspect_sender",
+        "name": "w22-inspect-contact"
+      },
+      "w22-c04": {
+        "stage": "inspect",
+        "intent": "read_thread",
+        "name": "w22-inspect-thread"
+      },
+      "w22-c05": {
+        "stage": "inspect",
+        "intent": "skip_inspection",
+        "name": "w22-inspect-skip"
+      },
+      "w22-c06": {
+        "stage": "branch",
+        "intent": "submit_data",
+        "name": "w22-branch-kyc"
+      },
+      "w22-c07": {
+        "stage": "branch",
+        "intent": "attempt_payment",
+        "name": "w22-branch-pay"
+      },
+      "w22-c08": {
+        "stage": "branch",
+        "intent": "reply",
+        "name": "w22-branch-proof"
+      },
+      "w22-c09": {
+        "stage": "branch",
+        "intent": "call_number",
+        "name": "w22-branch-call"
+      },
+      "w22-c10": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w22-branch-pivot"
+      },
+      "w22-c11": {
+        "stage": "verify",
+        "intent": "verify_known_app",
+        "name": "w22-verify-register"
+      },
+      "w22-c12": {
+        "stage": "verify",
+        "intent": "verify_trusted_directory",
+        "name": "w22-verify-directory"
+      },
+      "w22-c13": {
+        "stage": "verify",
+        "intent": "verify_in_message_contact",
+        "name": "w22-verify-inmessage"
+      },
+      "w22-c14": {
+        "stage": "verify",
+        "intent": "report",
+        "name": "w22-verify-report"
+      },
+      "w22-c15": {
+        "stage": "verify",
+        "intent": "block",
+        "name": "w22-verify-block"
+      },
+      "w22-c16": {
+        "stage": "resolve",
+        "intent": "resolve_report",
+        "name": "w22-resolve-report"
+      },
+      "w22-c17": {
+        "stage": "resolve",
+        "intent": "resolve_continue",
+        "name": "w22-resolve-continue"
+      },
+      "w22-c18": {
+        "stage": "resolve",
+        "intent": "resolve_block",
+        "name": "w22-resolve-block"
+      },
+      "w22-c19": {
+        "stage": "resolve",
+        "intent": "resolve_retain",
+        "name": "w22-resolve-retain"
+      },
+      "w22-c20": {
+        "stage": "resolve",
+        "intent": "resolve_ignore",
+        "name": "w22-resolve-ignore"
+      }
+    },
+    "W23": {
+      "w23-c01": {
+        "stage": "open",
+        "intent": "read",
+        "name": "w23-open-read"
+      },
+      "w23-c02": {
+        "stage": "open",
+        "intent": "reply",
+        "name": "w23-open-quickreply"
+      },
+      "w23-c03": {
+        "stage": "inspect",
+        "intent": "inspect_sender",
+        "name": "w23-inspect-contact"
+      },
+      "w23-c04": {
+        "stage": "inspect",
+        "intent": "preview_file",
+        "name": "w23-inspect-poster"
+      },
+      "w23-c05": {
+        "stage": "inspect",
+        "intent": "read_thread",
+        "name": "w23-inspect-thread"
+      },
+      "w23-c06": {
+        "stage": "inspect",
+        "intent": "skip_inspection",
+        "name": "w23-inspect-skip"
+      },
+      "w23-c07": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w23-branch-close"
+      },
+      "w23-c08": {
+        "stage": "branch",
+        "intent": "submit_data",
+        "name": "w23-branch-submit"
+      },
+      "w23-c09": {
+        "stage": "branch",
+        "intent": "submit_data",
+        "name": "w23-branch-disclose"
+      },
+      "w23-c10": {
+        "stage": "branch",
+        "intent": "reply",
+        "name": "w23-branch-ask"
+      },
+      "w23-c11": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w23-branch-pivot"
+      },
+      "w23-c12": {
+        "stage": "verify",
+        "intent": "verify_known_number",
+        "name": "w23-verify-ma"
+      },
+      "w23-c13": {
+        "stage": "verify",
+        "intent": "verify_known_number",
+        "name": "w23-verify-welfare"
+      },
+      "w23-c14": {
+        "stage": "verify",
+        "intent": "verify_trusted_directory",
+        "name": "w23-verify-directory"
+      },
+      "w23-c15": {
+        "stage": "verify",
+        "intent": "verify_in_message_contact",
+        "name": "w23-verify-inmessage"
+      },
+      "w23-c16": {
+        "stage": "verify",
+        "intent": "report",
+        "name": "w23-verify-report"
+      },
+      "w23-c17": {
+        "stage": "verify",
+        "intent": "block",
+        "name": "w23-verify-block"
+      },
+      "w23-c18": {
+        "stage": "resolve",
+        "intent": "resolve_report",
+        "name": "w23-resolve-report"
+      },
+      "w23-c19": {
+        "stage": "resolve",
+        "intent": "resolve_continue",
+        "name": "w23-resolve-continue"
+      },
+      "w23-c20": {
+        "stage": "resolve",
+        "intent": "resolve_block",
+        "name": "w23-resolve-block"
+      },
+      "w23-c21": {
+        "stage": "resolve",
+        "intent": "resolve_retain",
+        "name": "w23-resolve-retain"
+      },
+      "w23-c22": {
+        "stage": "resolve",
+        "intent": "resolve_ignore",
+        "name": "w23-resolve-ignore"
+      }
+    },
+    "W24": {
+      "w24-c01": {
+        "stage": "open",
+        "intent": "read",
+        "name": "w24-open-read"
+      },
+      "w24-c02": {
+        "stage": "open",
+        "intent": "open_link",
+        "name": "w24-open-link"
+      },
+      "w24-c03": {
+        "stage": "inspect",
+        "intent": "inspect_sender",
+        "name": "w24-inspect-contact"
+      },
+      "w24-c04": {
+        "stage": "inspect",
+        "intent": "preview_file",
+        "name": "w24-inspect-file"
+      },
+      "w24-c05": {
+        "stage": "inspect",
+        "intent": "read_thread",
+        "name": "w24-inspect-thread"
+      },
+      "w24-c06": {
+        "stage": "inspect",
+        "intent": "skip_inspection",
+        "name": "w24-inspect-skip"
+      },
+      "w24-c07": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w24-branch-hangup"
+      },
+      "w24-c08": {
+        "stage": "branch",
+        "intent": "share_secret",
+        "name": "w24-branch-share"
+      },
+      "w24-c09": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w24-branch-cancel-share"
+      },
+      "w24-c10": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w24-branch-cancel-download"
+      },
+      "w24-c11": {
+        "stage": "branch",
+        "intent": "attempt_install",
+        "name": "w24-branch-install"
+      },
+      "w24-c12": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w24-branch-cancel-install"
+      },
+      "w24-c13": {
+        "stage": "branch",
+        "intent": "reply",
+        "name": "w24-branch-reply"
+      },
+      "w24-c14": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w24-branch-pivot"
+      },
+      "w24-c15": {
+        "stage": "verify",
+        "intent": "verify_known_number",
+        "name": "w24-verify-it"
+      },
+      "w24-c16": {
+        "stage": "verify",
+        "intent": "verify_trusted_directory",
+        "name": "w24-verify-directory"
+      },
+      "w24-c17": {
+        "stage": "verify",
+        "intent": "verify_in_message_contact",
+        "name": "w24-verify-inmessage"
+      },
+      "w24-c18": {
+        "stage": "verify",
+        "intent": "report",
+        "name": "w24-verify-report"
+      },
+      "w24-c19": {
+        "stage": "verify",
+        "intent": "block",
+        "name": "w24-verify-block"
+      },
+      "w24-c20": {
+        "stage": "resolve",
+        "intent": "resolve_report",
+        "name": "w24-resolve-report"
+      },
+      "w24-c21": {
+        "stage": "resolve",
+        "intent": "resolve_continue",
+        "name": "w24-resolve-continue"
+      },
+      "w24-c22": {
+        "stage": "resolve",
+        "intent": "resolve_block",
+        "name": "w24-resolve-block"
+      },
+      "w24-c23": {
+        "stage": "resolve",
+        "intent": "resolve_retain",
+        "name": "w24-resolve-retain"
+      },
+      "w24-c24": {
+        "stage": "resolve",
+        "intent": "resolve_ignore",
+        "name": "w24-resolve-ignore"
+      }
+    },
+    "W25": {
+      "w25-c01": {
+        "stage": "open",
+        "intent": "read",
+        "name": "w25-open-read"
+      },
+      "w25-c02": {
+        "stage": "open",
+        "intent": "reply",
+        "name": "w25-open-quickreply"
+      },
+      "w25-c03": {
+        "stage": "inspect",
+        "intent": "inspect_sender",
+        "name": "w25-inspect-contact"
+      },
+      "w25-c04": {
+        "stage": "inspect",
+        "intent": "read_thread",
+        "name": "w25-inspect-thread"
+      },
+      "w25-c05": {
+        "stage": "inspect",
+        "intent": "skip_inspection",
+        "name": "w25-inspect-skip"
+      },
+      "w25-c06": {
+        "stage": "branch",
+        "intent": "approve_device_link",
+        "name": "w25-branch-link"
+      },
+      "w25-c07": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w25-branch-deny"
+      },
+      "w25-c08": {
+        "stage": "branch",
+        "intent": "share_secret",
+        "name": "w25-branch-code"
+      },
+      "w25-c09": {
+        "stage": "branch",
+        "intent": "reply",
+        "name": "w25-branch-ask"
+      },
+      "w25-c10": {
+        "stage": "branch",
+        "intent": "safe_pivot",
+        "name": "w25-branch-pivot"
+      },
+      "w25-c11": {
+        "stage": "verify",
+        "intent": "verify_known_number",
+        "name": "w25-verify-call"
+      },
+      "w25-c12": {
+        "stage": "verify",
+        "intent": "verify_known_app",
+        "name": "w25-verify-devices"
+      },
+      "w25-c13": {
+        "stage": "verify",
+        "intent": "verify_trusted_directory",
+        "name": "w25-verify-directory"
+      },
+      "w25-c14": {
+        "stage": "verify",
+        "intent": "verify_in_message_contact",
+        "name": "w25-verify-inmessage"
+      },
+      "w25-c15": {
+        "stage": "verify",
+        "intent": "report",
+        "name": "w25-verify-report"
+      },
+      "w25-c16": {
+        "stage": "verify",
+        "intent": "block",
+        "name": "w25-verify-block"
+      },
+      "w25-c17": {
+        "stage": "resolve",
+        "intent": "resolve_report",
+        "name": "w25-resolve-report"
+      },
+      "w25-c18": {
+        "stage": "resolve",
+        "intent": "resolve_continue",
+        "name": "w25-resolve-continue"
+      },
+      "w25-c19": {
+        "stage": "resolve",
+        "intent": "resolve_block",
+        "name": "w25-resolve-block"
+      },
+      "w25-c20": {
+        "stage": "resolve",
+        "intent": "resolve_retain",
+        "name": "w25-resolve-retain"
+      },
+      "w25-c21": {
+        "stage": "resolve",
+        "intent": "resolve_ignore",
+        "name": "w25-resolve-ignore"
+      }
+    }
+  }
+}

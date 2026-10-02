@@ -1,0 +1,193 @@
+{
+  "contract": "SECURITY-001 neutral learner action contract",
+  "note": "SERVER-SIDE ONLY. The generic action sheet (every scenario without an authored scene: Email and SMS today). Keys are the neutral ids frontend/src/constants/simulation.js gives the same controls, in the same order. `name` is for tests and review and is never sent to a client.",
+  "version": 1,
+  "platform": "generic",
+  "controls": {
+    "gen-c01": {
+      "stage": "notify",
+      "intent": "open_item",
+      "name": "generic-notify-open_item"
+    },
+    "gen-c02": {
+      "stage": "notify",
+      "intent": "dismiss",
+      "name": "generic-notify-dismiss"
+    },
+    "gen-c03": {
+      "stage": "open",
+      "intent": "read",
+      "name": "generic-open-read"
+    },
+    "gen-c04": {
+      "stage": "open",
+      "intent": "reply",
+      "name": "generic-open-reply"
+    },
+    "gen-c05": {
+      "stage": "open",
+      "intent": "open_link",
+      "name": "generic-open-open_link"
+    },
+    "gen-c06": {
+      "stage": "open",
+      "intent": "submit_data",
+      "name": "generic-open-submit_data"
+    },
+    "gen-c07": {
+      "stage": "open",
+      "intent": "attempt_payment",
+      "name": "generic-open-attempt_payment"
+    },
+    "gen-c08": {
+      "stage": "open",
+      "intent": "attempt_install",
+      "name": "generic-open-attempt_install"
+    },
+    "gen-c09": {
+      "stage": "open",
+      "intent": "call_number",
+      "name": "generic-open-call_number"
+    },
+    "gen-c10": {
+      "stage": "inspect",
+      "intent": "inspect_sender",
+      "name": "generic-inspect-inspect_sender"
+    },
+    "gen-c11": {
+      "stage": "inspect",
+      "intent": "inspect_profile",
+      "name": "generic-inspect-inspect_profile"
+    },
+    "gen-c12": {
+      "stage": "inspect",
+      "intent": "inspect_link",
+      "name": "generic-inspect-inspect_link"
+    },
+    "gen-c13": {
+      "stage": "inspect",
+      "intent": "preview_file",
+      "name": "generic-inspect-preview_file"
+    },
+    "gen-c14": {
+      "stage": "inspect",
+      "intent": "inspect_qr",
+      "name": "generic-inspect-inspect_qr"
+    },
+    "gen-c15": {
+      "stage": "inspect",
+      "intent": "read_thread",
+      "name": "generic-inspect-read_thread"
+    },
+    "gen-c16": {
+      "stage": "inspect",
+      "intent": "skip_inspection",
+      "name": "generic-inspect-skip_inspection"
+    },
+    "gen-c17": {
+      "stage": "branch",
+      "intent": "safe_pivot",
+      "name": "generic-branch-safe_pivot"
+    },
+    "gen-c18": {
+      "stage": "branch",
+      "intent": "reply",
+      "name": "generic-branch-reply"
+    },
+    "gen-c19": {
+      "stage": "branch",
+      "intent": "share_secret",
+      "name": "generic-branch-share_secret"
+    },
+    "gen-c20": {
+      "stage": "branch",
+      "intent": "open_link",
+      "name": "generic-branch-open_link"
+    },
+    "gen-c21": {
+      "stage": "branch",
+      "intent": "submit_data",
+      "name": "generic-branch-submit_data"
+    },
+    "gen-c22": {
+      "stage": "branch",
+      "intent": "open_file",
+      "name": "generic-branch-open_file"
+    },
+    "gen-c23": {
+      "stage": "branch",
+      "intent": "scan_qr",
+      "name": "generic-branch-scan_qr"
+    },
+    "gen-c24": {
+      "stage": "branch",
+      "intent": "call_number",
+      "name": "generic-branch-call_number"
+    },
+    "gen-c25": {
+      "stage": "branch",
+      "intent": "attempt_payment",
+      "name": "generic-branch-attempt_payment"
+    },
+    "gen-c26": {
+      "stage": "branch",
+      "intent": "attempt_install",
+      "name": "generic-branch-attempt_install"
+    },
+    "gen-c27": {
+      "stage": "verify",
+      "intent": "verify_trusted_directory",
+      "name": "generic-verify-verify_trusted_directory"
+    },
+    "gen-c28": {
+      "stage": "verify",
+      "intent": "verify_known_number",
+      "name": "generic-verify-verify_known_number"
+    },
+    "gen-c29": {
+      "stage": "verify",
+      "intent": "verify_known_app",
+      "name": "generic-verify-verify_known_app"
+    },
+    "gen-c30": {
+      "stage": "verify",
+      "intent": "verify_in_message_contact",
+      "name": "generic-verify-verify_in_message_contact"
+    },
+    "gen-c31": {
+      "stage": "verify",
+      "intent": "report",
+      "name": "generic-verify-report"
+    },
+    "gen-c32": {
+      "stage": "verify",
+      "intent": "block",
+      "name": "generic-verify-block"
+    },
+    "gen-c33": {
+      "stage": "resolve",
+      "intent": "resolve_report",
+      "name": "generic-resolve-resolve_report"
+    },
+    "gen-c34": {
+      "stage": "resolve",
+      "intent": "resolve_block",
+      "name": "generic-resolve-resolve_block"
+    },
+    "gen-c35": {
+      "stage": "resolve",
+      "intent": "resolve_continue",
+      "name": "generic-resolve-resolve_continue"
+    },
+    "gen-c36": {
+      "stage": "resolve",
+      "intent": "resolve_retain",
+      "name": "generic-resolve-resolve_retain"
+    },
+    "gen-c37": {
+      "stage": "resolve",
+      "intent": "resolve_ignore",
+      "name": "generic-resolve-resolve_ignore"
+    }
+  }
+}

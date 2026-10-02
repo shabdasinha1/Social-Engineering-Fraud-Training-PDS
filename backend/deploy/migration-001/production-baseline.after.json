@@ -1,0 +1,735 @@
+{
+  "captured_at": "2026-09-22T15:03:10.217Z",
+  "purpose": "MIGRATION-001 post-migration production inventory",
+  "mongod_version": "8.3.8",
+  "topology": "replica set \"rs0\"",
+  "server_database_count": 144,
+  "database": "cyber_awareness_training",
+  "collections": {
+    "__rs0_transaction_test__": {
+      "count": 0,
+      "indexes": [
+        {
+          "name": "_id_",
+          "key": {
+            "_id": 1
+          }
+        }
+      ],
+      "validator": null,
+      "newest": null,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "ids_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "adminusers": {
+      "count": 0,
+      "indexes": [
+        {
+          "name": "_id_",
+          "key": {
+            "_id": 1
+          }
+        },
+        {
+          "name": "usernameNormalised_1",
+          "key": {
+            "usernameNormalised": 1
+          },
+          "unique": true
+        }
+      ],
+      "validator": null,
+      "newest": null,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "ids_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "assessments": {
+      "count": 1,
+      "indexes": [
+        {
+          "name": "_id_",
+          "key": {
+            "_id": 1
+          }
+        },
+        {
+          "name": "candidate_1",
+          "key": {
+            "candidate": 1
+          }
+        },
+        {
+          "name": "candidate_1_createdAt_-1",
+          "key": {
+            "candidate": 1,
+            "createdAt": -1
+          }
+        },
+        {
+          "name": "candidate_1_status_1",
+          "key": {
+            "candidate": 1,
+            "status": 1
+          }
+        }
+      ],
+      "validator": null,
+      "newest": {
+        "_id": "{\"$oid\":\"6a9a6ab993c853e49add6c82\"}",
+        "updatedAt": "2026-09-04T06:54:32.267Z",
+        "sha256": "2f70854601a9f5c545620a38ac1d1b7e8d40fe447d3f4c0f39184162ad263756"
+      },
+      "sha256": "d7c41b2d4e2292049bade2a540b59d060d3ec09aa361ca4341b4268b0714a63a",
+      "ids_sha256": "4e5e33f638ea55fee0dc19a4250a9382890dffc201e8e4074d2201b398a0f35f"
+    },
+    "attempts": {
+      "count": 10,
+      "indexes": [
+        {
+          "name": "_id_",
+          "key": {
+            "_id": 1
+          }
+        },
+        {
+          "name": "profile_id_1",
+          "key": {
+            "profile_id": 1
+          }
+        },
+        {
+          "name": "profile_id_1_started_at_-1",
+          "key": {
+            "profile_id": 1,
+            "started_at": -1
+          }
+        },
+        {
+          "name": "profile_id_1_status_1",
+          "key": {
+            "profile_id": 1,
+            "status": 1
+          }
+        },
+        {
+          "name": "started_at_-1__id_-1",
+          "key": {
+            "started_at": -1,
+            "_id": -1
+          }
+        },
+        {
+          "name": "status_1_expires_at_1",
+          "key": {
+            "status": 1,
+            "expires_at": 1
+          }
+        }
+      ],
+      "validator": null,
+      "newest": {
+        "_id": "{\"$oid\":\"6aa28e7d9c9560185bcd76d2\"}",
+        "updatedAt": "2026-09-10T11:05:15.654Z",
+        "sha256": "e4de11d81d94c2183ecdd01cd66247319d9f0e353e0749d9f920bc9cbc5806a3"
+      },
+      "sha256": "620ee15fcb2b77a9d9d2ceaa09b430ef3b97d2441d5fc589d11bccbe7aaef834",
+      "ids_sha256": "00f6710fbe484a5d471ebf03de2fdeb1869df07c829bc5b25065a69c45845f27"
+    },
+    "auditevents": {
+      "count": 0,
+      "indexes": [
+        {
+          "name": "_id_",
+          "key": {
+            "_id": 1
+          }
+        },
+        {
+          "name": "action_1",
+          "key": {
+            "action": 1
+          }
+        },
+        {
+          "name": "actor_admin_id_1",
+          "key": {
+            "actor_admin_id": 1
+          }
+        },
+        {
+          "name": "idempotency_key_1",
+          "key": {
+            "idempotency_key": 1
+          },
+          "unique": true,
+          "partialFilterExpression": {
+            "idempotency_key": {
+              "$type": "string"
+            }
+          }
+        },
+        {
+          "name": "occurred_at_-1",
+          "key": {
+            "occurred_at": -1
+          }
+        },
+        {
+          "name": "occurred_at_1",
+          "key": {
+            "occurred_at": 1
+          }
+        },
+        {
+          "name": "resource_type_1",
+          "key": {
+            "resource_type": 1
+          }
+        },
+        {
+          "name": "resource_type_1_resource_id_1_occurred_at_-1",
+          "key": {
+            "resource_type": 1,
+            "resource_id": 1,
+            "occurred_at": -1
+          }
+        }
+      ],
+      "validator": null,
+      "newest": null,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "ids_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "candidates": {
+      "count": 9,
+      "indexes": [
+        {
+          "name": "_id_",
+          "key": {
+            "_id": 1
+          }
+        },
+        {
+          "name": "archived_1",
+          "key": {
+            "archived": 1
+          }
+        },
+        {
+          "name": "identifierNormalised_1",
+          "key": {
+            "identifierNormalised": 1
+          },
+          "unique": true
+        }
+      ],
+      "validator": null,
+      "newest": {
+        "_id": "{\"$oid\":\"6aa28e759c9560185bcd76d1\"}",
+        "updatedAt": "2026-09-10T11:03:24.233Z",
+        "sha256": "fb2f8673b7c7543ef3b0f6725011f1e920d51ca24bcfe39dbe1a83904bea44cd"
+      },
+      "sha256": "0d1a6d72573095456747e24a2bc303f3ebc52f7c43f15662092ead7f28cd5b0c",
+      "ids_sha256": "e9afde391a582ea089e00e32bd8bd01dad8f905f790078b6ffb4a8322c8e98ad"
+    },
+    "configurations": {
+      "count": 0,
+      "indexes": [
+        {
+          "name": "_id_",
+          "key": {
+            "_id": 1
+          }
+        },
+        {
+          "name": "scope_1",
+          "key": {
+            "scope": 1
+          },
+          "unique": true
+        }
+      ],
+      "validator": null,
+      "newest": null,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "ids_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "progresssnapshots": {
+      "count": 6,
+      "indexes": [
+        {
+          "name": "_id_",
+          "key": {
+            "_id": 1
+          }
+        },
+        {
+          "name": "profile_id_1",
+          "key": {
+            "profile_id": 1
+          },
+          "unique": true
+        }
+      ],
+      "validator": null,
+      "newest": {
+        "_id": "{\"$oid\":\"6aa28e7cdcfdd1dc0b91d88c\"}",
+        "updatedAt": "2026-09-10T11:05:15.680Z",
+        "sha256": "9dc64c7d699b5d1e5ebfbe2fd824988f2a505d6ec2629936292f6ebd4fc9c435"
+      },
+      "sha256": "c0259b9a43358543984ea8a25aaf7d8f579f6d497eb35e1fd81ae4d9c8fa46e0",
+      "ids_sha256": "a82f3185579d7038a2761c08150d152e3658a02e433ffe4f8abd3c3d100c8044"
+    },
+    "scenariodefinitions": {
+      "count": 100,
+      "indexes": [
+        {
+          "name": "_id_",
+          "key": {
+            "_id": 1
+          }
+        },
+        {
+          "name": "active_1_canonical_family_1",
+          "key": {
+            "active": 1,
+            "canonical_family": 1
+          }
+        },
+        {
+          "name": "active_1_canonical_triggers_1",
+          "key": {
+            "active": 1,
+            "canonical_triggers": 1
+          }
+        },
+        {
+          "name": "active_1_disposition_1",
+          "key": {
+            "active": 1,
+            "disposition": 1
+          }
+        },
+        {
+          "name": "active_1_military_flag_1",
+          "key": {
+            "active": 1,
+            "military_flag": 1
+          }
+        },
+        {
+          "name": "active_1_platform_1_level_1",
+          "key": {
+            "active": 1,
+            "platform": 1,
+            "level": 1
+          }
+        },
+        {
+          "name": "scenario_id_1_version_1",
+          "key": {
+            "scenario_id": 1,
+            "version": 1
+          },
+          "unique": true
+        }
+      ],
+      "validator": null,
+      "newest": {
+        "_id": "{\"$oid\":\"6a9a931356f22476ed64592e\"}",
+        "updatedAt": "2026-09-05T05:07:09.493Z",
+        "sha256": "6729741bc5a5d08a7bc6b3e4804fa9f8705d65772775910ddfede548ce00b0b1"
+      },
+      "sha256": "8dd72d63b559c4388e22e101eb93e39fe213f9864677473b7922ad15ef429656",
+      "ids_sha256": "695530f9f1776eea767d29a614dae3d85692457dc428e7b32c81ef16121ad0b7"
+    },
+    "scenarioevents": {
+      "count": 209,
+      "indexes": [
+        {
+          "name": "_id_",
+          "key": {
+            "_id": 1
+          }
+        },
+        {
+          "name": "intent_key_1",
+          "key": {
+            "intent_key": 1
+          },
+          "unique": true
+        },
+        {
+          "name": "run_id_1_sequence_1",
+          "key": {
+            "run_id": 1,
+            "sequence": 1
+          },
+          "unique": true
+        }
+      ],
+      "validator": null,
+      "newest": {
+        "_id": "{\"$oid\":\"6aa28eea9c9560185bcd7711\"}",
+        "updatedAt": "2026-09-10T11:05:14.155Z",
+        "sha256": "9f81fac74175daf4e3c6bd9d0d090e8fbf5e1f6c09c3d5d734ff3e8b5262c57b"
+      },
+      "sha256": "318ae668742421d818d224aba93ca6c3a561dca91d1d4439d5ccff1bc5001779",
+      "ids_sha256": "de17f8eacc7961c498e845abc3564df5ccfa4779b02381ee1beea2e771281302"
+    },
+    "scenarioruns": {
+      "count": 100,
+      "indexes": [
+        {
+          "name": "_id_",
+          "key": {
+            "_id": 1
+          }
+        },
+        {
+          "name": "attempt_id_1_ordinal_1",
+          "key": {
+            "attempt_id": 1,
+            "ordinal": 1
+          },
+          "unique": true
+        },
+        {
+          "name": "attempt_id_1_status_1",
+          "key": {
+            "attempt_id": 1,
+            "status": 1
+          }
+        },
+        {
+          "name": "scenario_id_1_definition_version_1",
+          "key": {
+            "scenario_id": 1,
+            "definition_version": 1
+          }
+        },
+        {
+          "name": "status_1",
+          "key": {
+            "status": 1
+          }
+        }
+      ],
+      "validator": null,
+      "newest": {
+        "_id": "{\"$oid\":\"6aa28e7d9c9560185bcd76dc\"}",
+        "updatedAt": "2026-09-10T11:05:14.157Z",
+        "sha256": "101f850f3b1c92a2e5cffcd3614ead8f12d286d57e2f6f18aba026b734e36679"
+      },
+      "sha256": "2a9dd3b0a6fff6af3c0855c2c30be460c567e48a13353651189c331e1c0b9ee4",
+      "ids_sha256": "e2ff07ff1f128458481ad8a71b801c2bb7c63620b0f8e928fe2d36bda09bd145"
+    },
+    "scenarios": {
+      "count": 40,
+      "indexes": [
+        {
+          "name": "_id_",
+          "key": {
+            "_id": 1
+          }
+        },
+        {
+          "name": "isActive_1_channel_1_type_1",
+          "key": {
+            "isActive": 1,
+            "channel": 1,
+            "type": 1
+          }
+        },
+        {
+          "name": "scenarioCode_1",
+          "key": {
+            "scenarioCode": 1
+          },
+          "unique": true
+        }
+      ],
+      "validator": null,
+      "newest": {
+        "_id": "{\"$oid\":\"6a97c3d02c9ecb38d8d88dd6\"}",
+        "updatedAt": "2026-09-02T10:57:00.573Z",
+        "sha256": "f03204784b84dcedc858a623296bfb6ee955233df5d5b21a9bebf94d1f8167aa"
+      },
+      "sha256": "edfca07fbec096b99939a79c4f02453e81a33601632a6412a2b0cbb1c5107cdb",
+      "ids_sha256": "685d8d6235a835c3c37cb967e8a5867b882f828433cbcc13edb63fc2258e3aa9"
+    }
+  },
+  "scenario_definitions": {
+    "total": 100,
+    "active": 100,
+    "inactive": 0,
+    "active_distribution": {
+      "documents": 100,
+      "scenario_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06",
+        "E07",
+        "E08",
+        "E09",
+        "E10",
+        "E11",
+        "E12",
+        "E13",
+        "E14",
+        "E15",
+        "E16",
+        "E17",
+        "E18",
+        "E19",
+        "E20",
+        "E21",
+        "E22",
+        "E23",
+        "E24",
+        "E25",
+        "I01",
+        "I02",
+        "I03",
+        "I04",
+        "I05",
+        "I06",
+        "I07",
+        "I08",
+        "I09",
+        "I10",
+        "I11",
+        "I12",
+        "I13",
+        "I14",
+        "I15",
+        "I16",
+        "I17",
+        "I18",
+        "I19",
+        "I20",
+        "I21",
+        "I22",
+        "I23",
+        "I24",
+        "I25",
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19",
+        "S20",
+        "S21",
+        "S22",
+        "S23",
+        "S24",
+        "S25",
+        "W01",
+        "W02",
+        "W03",
+        "W04",
+        "W05",
+        "W06",
+        "W07",
+        "W08",
+        "W09",
+        "W10",
+        "W11",
+        "W12",
+        "W13",
+        "W14",
+        "W15",
+        "W16",
+        "W17",
+        "W18",
+        "W19",
+        "W20",
+        "W21",
+        "W22",
+        "W23",
+        "W24",
+        "W25"
+      ],
+      "versions": {
+        "1": 100
+      },
+      "platform": {
+        "email": 25,
+        "instagram": 25,
+        "sms": 25,
+        "whatsapp": 25
+      },
+      "disposition": {
+        "legitimate": 20,
+        "malicious": 80
+      },
+      "level": {
+        "easy": 32,
+        "hard": 32,
+        "medium": 36
+      },
+      "canonical_family": {
+        "account_takeover_authorisation_abuse": 6,
+        "coercion_and_extortion": 4,
+        "credential_phishing": 6,
+        "disinformation_amplification": 1,
+        "financial_credential_phishing": 9,
+        "identity_data_harvesting": 5,
+        "impersonation_emergency_payment": 3,
+        "investment_and_task_fraud": 5,
+        "legit_coordination_request": 6,
+        "legit_routine_broadcast": 6,
+        "legit_system_confirmation": 7,
+        "legit_verified_high_risk_change": 1,
+        "malware_delivery": 5,
+        "operational_elicitation": 10,
+        "payment_diversion": 7,
+        "qr_code_phishing": 5,
+        "relationship_grooming_fraud": 3,
+        "tech_support_and_callback_fraud": 6,
+        "unsolicited_payment_lure": 5
+      },
+      "canonical_triggers": {
+        "authority": 40,
+        "commitment": 2,
+        "confusion": 1,
+        "convenience": 5,
+        "curiosity": 10,
+        "duty_compliance": 3,
+        "empathy": 9,
+        "expert_status": 2,
+        "familiarity": 8,
+        "fear": 18,
+        "flattery": 4,
+        "greed": 11,
+        "helpfulness": 3,
+        "isolation_secrecy": 5,
+        "pride": 5,
+        "reciprocity": 3,
+        "routine": 19,
+        "scarcity": 6,
+        "shame_embarrassment": 2,
+        "social_proof": 2,
+        "trust": 6,
+        "urgency": 27
+      },
+      "military_flag": {
+        "false": 65,
+        "true": 35
+      },
+      "lifecycle_state": {
+        "null": 100
+      },
+      "taxonomy_version": {
+        "1.0.0": 100
+      },
+      "trigger_taxonomy_version": {
+        "1.0.0": 100
+      },
+      "platform_x_disposition": {
+        "sms": {
+          "malicious": 20,
+          "legitimate": 5
+        },
+        "email": {
+          "malicious": 20,
+          "legitimate": 5
+        },
+        "whatsapp": {
+          "legitimate": 5,
+          "malicious": 20
+        },
+        "instagram": {
+          "legitimate": 5,
+          "malicious": 20
+        }
+      },
+      "platform_x_level": {
+        "sms": {
+          "hard": 8,
+          "easy": 8,
+          "medium": 9
+        },
+        "instagram": {
+          "medium": 9,
+          "hard": 8,
+          "easy": 8
+        },
+        "email": {
+          "hard": 8,
+          "easy": 8,
+          "medium": 9
+        },
+        "whatsapp": {
+          "easy": 8,
+          "hard": 8,
+          "medium": 9
+        }
+      },
+      "level_x_disposition": {
+        "easy": {
+          "malicious": 24,
+          "legitimate": 8
+        },
+        "medium": {
+          "legitimate": 8,
+          "malicious": 28
+        },
+        "hard": {
+          "legitimate": 4,
+          "malicious": 28
+        }
+      }
+    }
+  },
+  "legacy_scenarios": {
+    "total": 40,
+    "active": 40,
+    "inactive": 0,
+    "channel": {
+      "email": 10,
+      "instagram": 10,
+      "sms": 10,
+      "whatsapp": 10
+    },
+    "type": {
+      "legitimate": 12,
+      "malicious": 28
+    },
+    "channel_x_type": {
+      "email": {
+        "legitimate": 3,
+        "malicious": 7
+      },
+      "instagram": {
+        "legitimate": 3,
+        "malicious": 7
+      },
+      "whatsapp": {
+        "legitimate": 3,
+        "malicious": 7
+      },
+      "sms": {
+        "malicious": 7,
+        "legitimate": 3
+      }
+    }
+  }
+}

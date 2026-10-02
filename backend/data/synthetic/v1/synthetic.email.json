@@ -1,0 +1,3351 @@
+[
+ {
+  "scenario_id": "E01",
+  "definition_version": 1,
+  "platform": "email",
+  "synthetic": {
+   "sender": {
+    "display_name": "IT Service Desk",
+    "identifier": "itservicedesk@e01.training.example",
+    "avatar_initials": "IS",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "08:38"
+   },
+   "prior_context": "A message using IT branding says the mailbox password expires today.",
+   "assets": [
+    {
+     "asset_id": "E01-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "email notification",
+     "content": {
+      "sender": "IT Service Desk",
+      "body": "Password expires today - retain access by validating now.",
+      "platform": "email",
+      "received_at": "18:32",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "E01-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "IT Service Desk",
+     "content": {
+      "display_name": "IT Service Desk",
+      "identifier": "itservicedesk@e01.training.example",
+      "avatar_initials": "IS",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "08:38"
+     }
+    },
+    {
+     "asset_id": "E01-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "IT Service Desk thread",
+     "content": {
+      "header": {
+       "title": "IT Service Desk",
+       "subtitle": "itservicedesk@e01.training.example",
+       "avatarSeed": "IS"
+      },
+      "blocks": [
+       {
+        "type": "emailHeader",
+        "fromName": "IT Service Desk",
+        "fromAddress": "itservicedesk@e01.training.example",
+        "to": "learner@unit.training.example",
+        "subject": "Password expires today - retain access by validating now.",
+        "time": "08:10"
+       },
+       {
+        "type": "note",
+        "text": "A message using IT branding says the mailbox password expires today."
+       },
+       {
+        "type": "emailBody",
+        "paragraphs": [
+         "Password expires today - retain access by validating now."
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "E01-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 43605",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E01-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://e01.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "e01.training.example",
+      "body": "The interaction advances to a synthetic sign-in page that requests username, password and OTP",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "E01-notif-01"
+   ],
+   [
+    "E01-thread-01",
+    "E01-sender-01"
+   ],
+   [
+    "E01-sender-01",
+    "E01-browser-01"
+   ],
+   [
+    "E01-browser-01"
+   ],
+   [
+    "E01-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "E02",
+  "definition_version": 1,
+  "platform": "email",
+  "synthetic": {
+   "sender": {
+    "display_name": "Accounts Notice",
+    "identifier": "accountsnotice@e02.training.example",
+    "avatar_initials": "AN",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "13:29"
+   },
+   "prior_context": "An unknown supplier sends an overdue invoice as a macro-enabled spreadsheet.",
+   "assets": [
+    {
+     "asset_id": "E02-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "email notification",
+     "content": {
+      "sender": "Accounts Notice",
+      "body": "Overdue invoice - enable content to view payment lines.",
+      "platform": "email",
+      "received_at": "19:14",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "E02-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Accounts Notice",
+     "content": {
+      "display_name": "Accounts Notice",
+      "identifier": "accountsnotice@e02.training.example",
+      "avatar_initials": "AN",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "13:29"
+     }
+    },
+    {
+     "asset_id": "E02-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Accounts Notice thread",
+     "content": {
+      "header": {
+       "title": "Accounts Notice",
+       "subtitle": "accountsnotice@e02.training.example",
+       "avatarSeed": "AN"
+      },
+      "blocks": [
+       {
+        "type": "emailHeader",
+        "fromName": "Accounts Notice",
+        "fromAddress": "accountsnotice@e02.training.example",
+        "to": "learner@unit.training.example",
+        "subject": "Overdue invoice - enable content to view payment lines.",
+        "time": "14:18"
+       },
+       {
+        "type": "note",
+        "text": "An unknown supplier sends an overdue invoice as a macro-enabled spreadsheet."
+       },
+       {
+        "type": "emailBody",
+        "paragraphs": [
+         "Overdue invoice - enable content to view payment lines."
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "E02-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 76227",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E02-file-01",
+     "kind": "file",
+     "inert": true,
+     "label": "Invoice_8841.xlsm",
+     "content": {
+      "file_name": "Invoice_8841.xlsm",
+      "file_kind": "xlsm",
+      "file_size": "232 KB",
+      "preview": "The interaction advances to an inert spreadsheet preview followed by an Enable Content prompt",
+      "executes": false,
+      "macros_extracted": false,
+      "archive_mounted": false,
+      "source": "client_specification"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "E02-notif-01"
+   ],
+   [
+    "E02-thread-01",
+    "E02-sender-01"
+   ],
+   [
+    "E02-sender-01",
+    "E02-file-01"
+   ],
+   [
+    "E02-file-01"
+   ],
+   [
+    "E02-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "E03",
+  "definition_version": 1,
+  "platform": "email",
+  "synthetic": {
+   "sender": {
+    "display_name": "Learning Office",
+    "identifier": "learningoffice@e03.training.example",
+    "avatar_initials": "LO",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "11:44"
+   },
+   "prior_context": "The monthly training newsletter arrives from the expected authenticated internal domain with no action request.",
+   "assets": [
+    {
+     "asset_id": "E03-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "email notification",
+     "content": {
+      "sender": "Learning Office",
+      "body": "September safety newsletter - read-only edition.",
+      "platform": "email",
+      "received_at": "10:23",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "E03-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Learning Office",
+     "content": {
+      "display_name": "Learning Office",
+      "identifier": "learningoffice@e03.training.example",
+      "avatar_initials": "LO",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "11:44"
+     }
+    },
+    {
+     "asset_id": "E03-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Learning Office thread",
+     "content": {
+      "header": {
+       "title": "Learning Office",
+       "subtitle": "learningoffice@e03.training.example",
+       "avatarSeed": "LO"
+      },
+      "blocks": [
+       {
+        "type": "emailHeader",
+        "fromName": "Learning Office",
+        "fromAddress": "learningoffice@e03.training.example",
+        "to": "learner@unit.training.example",
+        "subject": "September safety newsletter - read-only edition.",
+        "time": "10:03"
+       },
+       {
+        "type": "note",
+        "text": "The monthly training newsletter arrives from the expected authenticated internal domain with no action request."
+       },
+       {
+        "type": "emailBody",
+        "paragraphs": [
+         "September safety newsletter - read-only edition."
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "E03-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 82185",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E03-file-01",
+     "kind": "file",
+     "inert": true,
+     "label": "E03_attachment.pdf",
+     "content": {
+      "file_name": "E03_attachment.pdf",
+      "file_kind": "pdf",
+      "file_size": "386 KB",
+      "preview": "The interaction advances to the in-message newsletter reader with Archive/Mark unread",
+      "executes": false,
+      "macros_extracted": false,
+      "archive_mounted": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "E03-notif-01"
+   ],
+   [
+    "E03-thread-01",
+    "E03-sender-01"
+   ],
+   [
+    "E03-sender-01",
+    "E03-file-01"
+   ],
+   [
+    "E03-file-01"
+   ],
+   [
+    "E03-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "E04",
+  "definition_version": 1,
+  "platform": "email",
+  "synthetic": {
+   "sender": {
+    "display_name": "RapidShip Customs",
+    "identifier": "rapidshipcustoms@e04.training.example",
+    "avatar_initials": "RC",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "18:47"
+   },
+   "prior_context": "A courier-themed email claims a parcel is held for missing customs payment.",
+   "assets": [
+    {
+     "asset_id": "E04-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "email notification",
+     "content": {
+      "sender": "RapidShip Customs",
+      "body": "Parcel RS-441 held. Pay a small clearance fee today.",
+      "platform": "email",
+      "received_at": "18:20",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "E04-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "RapidShip Customs",
+     "content": {
+      "display_name": "RapidShip Customs",
+      "identifier": "rapidshipcustoms@e04.training.example",
+      "avatar_initials": "RC",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "18:47"
+     }
+    },
+    {
+     "asset_id": "E04-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "RapidShip Customs thread",
+     "content": {
+      "header": {
+       "title": "RapidShip Customs",
+       "subtitle": "rapidshipcustoms@e04.training.example",
+       "avatarSeed": "RC"
+      },
+      "blocks": [
+       {
+        "type": "emailHeader",
+        "fromName": "RapidShip Customs",
+        "fromAddress": "rapidshipcustoms@e04.training.example",
+        "to": "learner@unit.training.example",
+        "subject": "Parcel RS-441 held. Pay a small clearance fee today.",
+        "time": "13:10"
+       },
+       {
+        "type": "note",
+        "text": "A courier-themed email claims a parcel is held for missing customs payment."
+       },
+       {
+        "type": "emailBody",
+        "paragraphs": [
+         "Parcel RS-441 held. Pay a small clearance fee today."
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "E04-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 81585",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E04-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://e04.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "e04.training.example",
+      "body": "The interaction advances to a fake tracking page requesting card/UPI data",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    },
+    {
+     "asset_id": "E04-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "RapidShip Customs",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-E04",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "E04-notif-01"
+   ],
+   [
+    "E04-thread-01",
+    "E04-sender-01"
+   ],
+   [
+    "E04-sender-01",
+    "E04-browser-01"
+   ],
+   [
+    "E04-browser-01",
+    "E04-payment-01"
+   ],
+   [
+    "E04-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "E05",
+  "definition_version": 1,
+  "platform": "email",
+  "synthetic": {
+   "sender": {
+    "display_name": "People Office",
+    "identifier": "peopleoffice@e05.training.example",
+    "avatar_initials": "PO",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "19:39"
+   },
+   "prior_context": "A message says pay access will be suspended unless a policy is acknowledged through a login button.",
+   "assets": [
+    {
+     "asset_id": "E05-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "email notification",
+     "content": {
+      "sender": "People Office",
+      "body": "Mandatory policy acknowledgement due in 60 minutes.",
+      "platform": "email",
+      "received_at": "17:48",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "E05-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "People Office",
+     "content": {
+      "display_name": "People Office",
+      "identifier": "peopleoffice@e05.training.example",
+      "avatar_initials": "PO",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "19:39"
+     }
+    },
+    {
+     "asset_id": "E05-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "People Office thread",
+     "content": {
+      "header": {
+       "title": "People Office",
+       "subtitle": "peopleoffice@e05.training.example",
+       "avatarSeed": "PO"
+      },
+      "blocks": [
+       {
+        "type": "emailHeader",
+        "fromName": "People Office",
+        "fromAddress": "peopleoffice@e05.training.example",
+        "to": "learner@unit.training.example",
+        "subject": "Mandatory policy acknowledgement due in 60 minutes.",
+        "time": "16:22"
+       },
+       {
+        "type": "note",
+        "text": "A message says pay access will be suspended unless a policy is acknowledged through a login button."
+       },
+       {
+        "type": "emailBody",
+        "paragraphs": [
+         "Mandatory policy acknowledgement due in 60 minutes."
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "E05-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 26215",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E05-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://e05.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "e05.training.example",
+      "body": "The interaction advances to a cloned HR login and acknowledgement screen",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "E05-notif-01"
+   ],
+   [
+    "E05-thread-01",
+    "E05-sender-01"
+   ],
+   [
+    "E05-sender-01",
+    "E05-browser-01"
+   ],
+   [
+    "E05-browser-01"
+   ],
+   [
+    "E05-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "E06",
+  "definition_version": 1,
+  "platform": "email",
+  "synthetic": {
+   "sender": {
+    "display_name": "Unit Adjutant",
+    "identifier": "unitadjutant@e06.training.example",
+    "avatar_initials": "UA",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "14:41"
+   },
+   "prior_context": "A display name resembling the unit adjutant asks for the current personnel roster in spreadsheet form.",
+   "assets": [
+    {
+     "asset_id": "E06-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "email notification",
+     "content": {
+      "sender": "Unit Adjutant",
+      "body": "Send the latest personnel roster before the commander",
+      "platform": "email",
+      "received_at": "12:58",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "E06-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Unit Adjutant",
+     "content": {
+      "display_name": "Unit Adjutant",
+      "identifier": "unitadjutant@e06.training.example",
+      "avatar_initials": "UA",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "14:41"
+     }
+    },
+    {
+     "asset_id": "E06-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Unit Adjutant thread",
+     "content": {
+      "header": {
+       "title": "Unit Adjutant",
+       "subtitle": "unitadjutant@e06.training.example",
+       "avatarSeed": "UA"
+      },
+      "blocks": [
+       {
+        "type": "emailHeader",
+        "fromName": "Unit Adjutant",
+        "fromAddress": "unitadjutant@e06.training.example",
+        "to": "learner@unit.training.example",
+        "subject": "Send the latest personnel roster before the commander",
+        "time": "19:31"
+       },
+       {
+        "type": "note",
+        "text": "A display name resembling the unit adjutant asks for the current personnel roster in spreadsheet form."
+       },
+       {
+        "type": "emailBody",
+        "paragraphs": [
+         "Send the latest personnel roster before the commander"
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "E06-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 41708",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E06-file-01",
+     "kind": "file",
+     "inert": true,
+     "label": "E06_attachment.pdf",
+     "content": {
+      "file_name": "E06_attachment.pdf",
+      "file_kind": "pdf",
+      "file_size": "605 KB",
+      "preview": "The interaction advances to a reply composer with a synthetic roster attachment chip",
+      "executes": false,
+      "macros_extracted": false,
+      "archive_mounted": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "E06-notif-01"
+   ],
+   [
+    "E06-thread-01",
+    "E06-sender-01"
+   ],
+   [
+    "E06-sender-01",
+    "E06-file-01"
+   ],
+   [
+    "E06-file-01"
+   ],
+   [
+    "E06-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "E07",
+  "definition_version": 1,
+  "platform": "email",
+  "synthetic": {
+   "sender": {
+    "display_name": "Training Office",
+    "identifier": "trainingoffice@e07.training.example",
+    "avatar_initials": "TO",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "15:38"
+   },
+   "prior_context": "A known training officer sends the calendar invite announced in the morning briefing.",
+   "assets": [
+    {
+     "asset_id": "E07-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "email notification",
+     "content": {
+      "sender": "Training Office",
+      "body": "Invite - Social Engineering Lab, 04 Sep, Training Room C.",
+      "platform": "email",
+      "received_at": "14:40",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "E07-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Training Office",
+     "content": {
+      "display_name": "Training Office",
+      "identifier": "trainingoffice@e07.training.example",
+      "avatar_initials": "TO",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "15:38"
+     }
+    },
+    {
+     "asset_id": "E07-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Training Office thread",
+     "content": {
+      "header": {
+       "title": "Training Office",
+       "subtitle": "trainingoffice@e07.training.example",
+       "avatarSeed": "TO"
+      },
+      "blocks": [
+       {
+        "type": "emailHeader",
+        "fromName": "Training Office",
+        "fromAddress": "trainingoffice@e07.training.example",
+        "to": "learner@unit.training.example",
+        "subject": "Invite - Social Engineering Lab, 04 Sep, Training Room C.",
+        "time": "15:41"
+       },
+       {
+        "type": "note",
+        "text": "A known training officer sends the calendar invite announced in the morning briefing."
+       },
+       {
+        "type": "emailBody",
+        "paragraphs": [
+         "Invite - Social Engineering Lab, 04 Sep, Training Room C."
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "E07-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 62177",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E07-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "Training Office",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-E07",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "E07-notif-01"
+   ],
+   [
+    "E07-thread-01",
+    "E07-sender-01"
+   ],
+   [
+    "E07-sender-01"
+   ],
+   [
+    "E07-payment-01"
+   ],
+   [
+    "E07-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "E08",
+  "definition_version": 1,
+  "platform": "email",
+  "synthetic": {
+   "sender": {
+    "display_name": "Revenue Refund Centre",
+    "identifier": "revenuerefundcentr@e08.training.example",
+    "avatar_initials": "RR",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "19:45"
+   },
+   "prior_context": "A tax-themed email promises a refund but asks for card and identity details through a button.",
+   "assets": [
+    {
+     "asset_id": "E08-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "email notification",
+     "content": {
+      "sender": "Revenue Refund Centre",
+      "body": "INR 7,840 refund expires today - complete release.",
+      "platform": "email",
+      "received_at": "14:42",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "E08-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Revenue Refund Centre",
+     "content": {
+      "display_name": "Revenue Refund Centre",
+      "identifier": "revenuerefundcentr@e08.training.example",
+      "avatar_initials": "RR",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "19:45"
+     }
+    },
+    {
+     "asset_id": "E08-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Revenue Refund Centre thread",
+     "content": {
+      "header": {
+       "title": "Revenue Refund Centre",
+       "subtitle": "revenuerefundcentr@e08.training.example",
+       "avatarSeed": "RR"
+      },
+      "blocks": [
+       {
+        "type": "emailHeader",
+        "fromName": "Revenue Refund Centre",
+        "fromAddress": "revenuerefundcentr@e08.training.example",
+        "to": "learner@unit.training.example",
+        "subject": "INR 7,840 refund expires today - complete release.",
+        "time": "11:59"
+       },
+       {
+        "type": "note",
+        "text": "A tax-themed email promises a refund but asks for card and identity details through a button."
+       },
+       {
+        "type": "emailBody",
+        "paragraphs": [
+         "INR 7,840 refund expires today - complete release."
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "E08-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 35734",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E08-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://e08.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "e08.training.example",
+      "body": "The interaction advances to a fake refund form requesting PAN-like ID, card and OTP placeholders",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    },
+    {
+     "asset_id": "E08-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "Revenue Refund Centre",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-E08",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "E08-notif-01"
+   ],
+   [
+    "E08-thread-01",
+    "E08-sender-01"
+   ],
+   [
+    "E08-sender-01",
+    "E08-browser-01"
+   ],
+   [
+    "E08-browser-01",
+    "E08-payment-01"
+   ],
+   [
+    "E08-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "E09",
+  "definition_version": 1,
+  "platform": "email",
+  "synthetic": {
+   "sender": {
+    "display_name": "From",
+    "identifier": "from@e09.training.example",
+    "avatar_initials": "F",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "12:44"
+   },
+   "prior_context": "A senior's display name appears on a personal email asking for gift cards while claiming to be in a meeting.",
+   "assets": [
+    {
+     "asset_id": "E09-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "email notification",
+     "content": {
+      "sender": "From",
+      "body": "Col. Dev - Need six gift cards for visitors. Keep this confidential.",
+      "platform": "email",
+      "received_at": "14:24",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "E09-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "From",
+     "content": {
+      "display_name": "From",
+      "identifier": "from@e09.training.example",
+      "avatar_initials": "F",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "12:44"
+     }
+    },
+    {
+     "asset_id": "E09-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "From thread",
+     "content": {
+      "header": {
+       "title": "From",
+       "subtitle": "from@e09.training.example",
+       "avatarSeed": "F"
+      },
+      "blocks": [
+       {
+        "type": "emailHeader",
+        "fromName": "From",
+        "fromAddress": "from@e09.training.example",
+        "to": "learner@unit.training.example",
+        "subject": "Col. Dev - Need six gift cards for visitors. Keep this confidential.",
+        "time": "09:19"
+       },
+       {
+        "type": "note",
+        "text": "A senior's display name appears on a personal email asking for gift cards while claiming to be in a meeting."
+       },
+       {
+        "type": "emailBody",
+        "paragraphs": [
+         "Col. Dev - Need six gift cards for visitors. Keep this confidential."
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "E09-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 91267",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E09-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "From",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-E09",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "E09-notif-01"
+   ],
+   [
+    "E09-thread-01",
+    "E09-sender-01"
+   ],
+   [
+    "E09-sender-01"
+   ],
+   [
+    "E09-payment-01"
+   ],
+   [
+    "E09-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "E10",
+  "definition_version": 1,
+  "platform": "email",
+  "synthetic": {
+   "sender": {
+    "display_name": "Northstar Supplies",
+    "identifier": "northstarsupplies@e10.training.example",
+    "avatar_initials": "NS",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "12:48"
+   },
+   "prior_context": "A look-alike vendor domain replies with a real project reference and new beneficiary account.",
+   "assets": [
+    {
+     "asset_id": "E10-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "email notification",
+     "content": {
+      "sender": "Northstar Supplies",
+      "body": "Banking migration - use the attached new beneficiary for invoice NS-104.",
+      "platform": "email",
+      "received_at": "12:20",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "E10-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Northstar Supplies",
+     "content": {
+      "display_name": "Northstar Supplies",
+      "identifier": "northstarsupplies@e10.training.example",
+      "avatar_initials": "NS",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "12:48"
+     }
+    },
+    {
+     "asset_id": "E10-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Northstar Supplies thread",
+     "content": {
+      "header": {
+       "title": "Northstar Supplies",
+       "subtitle": "northstarsupplies@e10.training.example",
+       "avatarSeed": "NS"
+      },
+      "blocks": [
+       {
+        "type": "emailHeader",
+        "fromName": "Northstar Supplies",
+        "fromAddress": "northstarsupplies@e10.training.example",
+        "to": "learner@unit.training.example",
+        "subject": "Banking migration - use the attached new beneficiary for invoice NS-104.",
+        "time": "09:08"
+       },
+       {
+        "type": "note",
+        "text": "A look-alike vendor domain replies with a real project reference and new beneficiary account."
+       },
+       {
+        "type": "emailBody",
+        "paragraphs": [
+         "Banking migration - use the attached new beneficiary for invoice NS-104."
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "E10-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 48373",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "E10-notif-01"
+   ],
+   [
+    "E10-thread-01",
+    "E10-sender-01"
+   ],
+   [
+    "E10-sender-01"
+   ],
+   [],
+   [
+    "E10-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "E11",
+  "definition_version": 1,
+  "platform": "email",
+  "synthetic": {
+   "sender": {
+    "display_name": "People Portal",
+    "identifier": "peopleportal@e11.training.example",
+    "avatar_initials": "PP",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "14:28"
+   },
+   "prior_context": "The learner recently submitted a leave request; an authenticated notification says the decision is available in the approved portal.",
+   "assets": [
+    {
+     "asset_id": "E11-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "email notification",
+     "content": {
+      "sender": "People Portal",
+      "body": "Request LV-204 status updated. View it from your portal dashboard.",
+      "platform": "email",
+      "received_at": "10:01",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "E11-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "People Portal",
+     "content": {
+      "display_name": "People Portal",
+      "identifier": "peopleportal@e11.training.example",
+      "avatar_initials": "PP",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "14:28"
+     }
+    },
+    {
+     "asset_id": "E11-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "People Portal thread",
+     "content": {
+      "header": {
+       "title": "People Portal",
+       "subtitle": "peopleportal@e11.training.example",
+       "avatarSeed": "PP"
+      },
+      "blocks": [
+       {
+        "type": "emailHeader",
+        "fromName": "People Portal",
+        "fromAddress": "peopleportal@e11.training.example",
+        "to": "learner@unit.training.example",
+        "subject": "Request LV-204 status updated. View it from your portal dashboard.",
+        "time": "15:07"
+       },
+       {
+        "type": "note",
+        "text": "The learner recently submitted a leave request; an authenticated notification says the decision is available in the approved portal."
+       },
+       {
+        "type": "emailBody",
+        "paragraphs": [
+         "Request LV-204 status updated. View it from your portal dashboard."
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "E11-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 64894",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E11-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://e11.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "e11.training.example",
+      "body": "The interaction advances to the dashboard's approved-portal launcher and read-only leave status",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "E11-notif-01"
+   ],
+   [
+    "E11-thread-01",
+    "E11-sender-01"
+   ],
+   [
+    "E11-sender-01",
+    "E11-browser-01"
+   ],
+   [
+    "E11-browser-01"
+   ],
+   [
+    "E11-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "E12",
+  "definition_version": 1,
+  "platform": "email",
+  "synthetic": {
+   "sender": {
+    "display_name": "sender@e12.training.example",
+    "identifier": "sender@e12.training.example",
+    "avatar_initials": "S",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "08:23"
+   },
+   "prior_context": "An external collaborator shares a document with a generic title and prompts a fresh sign-in.",
+   "assets": [
+    {
+     "asset_id": "E12-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "email notification",
+     "content": {
+      "sender": "sender@e12.training.example",
+      "body": "Docs Share:",
+      "platform": "email",
+      "received_at": "08:52",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "E12-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "sender@e12.training.example",
+     "content": {
+      "display_name": "sender@e12.training.example",
+      "identifier": "sender@e12.training.example",
+      "avatar_initials": "S",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "08:23"
+     }
+    },
+    {
+     "asset_id": "E12-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "sender@e12.training.example thread",
+     "content": {
+      "header": {
+       "title": "sender@e12.training.example",
+       "subtitle": "sender@e12.training.example",
+       "avatarSeed": "S"
+      },
+      "blocks": [
+       {
+        "type": "emailHeader",
+        "fromName": "sender@e12.training.example",
+        "fromAddress": "sender@e12.training.example",
+        "to": "learner@unit.training.example",
+        "subject": "Docs Share:",
+        "time": "15:04"
+       },
+       {
+        "type": "note",
+        "text": "An external collaborator shares a document with a generic title and prompts a fresh sign-in."
+       },
+       {
+        "type": "emailBody",
+        "paragraphs": [
+         "Docs Share:"
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "E12-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 60064",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E12-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://e12.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "e12.training.example",
+      "body": "The interaction advances to a cloned cloud-login page followed by an MFA approval prompt",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "E12-notif-01"
+   ],
+   [
+    "E12-thread-01",
+    "E12-sender-01"
+   ],
+   [
+    "E12-sender-01",
+    "E12-browser-01"
+   ],
+   [
+    "E12-browser-01"
+   ],
+   [
+    "E12-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "E13",
+  "definition_version": 1,
+  "platform": "email",
+  "synthetic": {
+   "sender": {
+    "display_name": "Case Documents",
+    "identifier": "casedocuments@e13.training.example",
+    "avatar_initials": "CD",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "15:19"
+   },
+   "prior_context": "An external sender provides a password-protected archive and places the password in the message to bypass inspection.",
+   "assets": [
+    {
+     "asset_id": "E13-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "email notification",
+     "content": {
+      "sender": "Case Documents",
+      "body": "Confidential scan attached. Password: 2468.",
+      "platform": "email",
+      "received_at": "11:01",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "E13-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Case Documents",
+     "content": {
+      "display_name": "Case Documents",
+      "identifier": "casedocuments@e13.training.example",
+      "avatar_initials": "CD",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "15:19"
+     }
+    },
+    {
+     "asset_id": "E13-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Case Documents thread",
+     "content": {
+      "header": {
+       "title": "Case Documents",
+       "subtitle": "casedocuments@e13.training.example",
+       "avatarSeed": "CD"
+      },
+      "blocks": [
+       {
+        "type": "emailHeader",
+        "fromName": "Case Documents",
+        "fromAddress": "casedocuments@e13.training.example",
+        "to": "learner@unit.training.example",
+        "subject": "Confidential scan attached. Password: 2468.",
+        "time": "18:14"
+       },
+       {
+        "type": "note",
+        "text": "An external sender provides a password-protected archive and places the password in the message to bypass inspection."
+       },
+       {
+        "type": "emailBody",
+        "paragraphs": [
+         "Confidential scan attached. Password: 2468."
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "E13-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 95074",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E13-file-01",
+     "kind": "file",
+     "inert": true,
+     "label": "CaseFiles.zip",
+     "content": {
+      "file_name": "CaseFiles.zip",
+      "file_kind": "zip",
+      "file_size": "906 KB",
+      "preview": "The interaction advances to an inert archive viewer with a simulated executable inside",
+      "executes": false,
+      "macros_extracted": false,
+      "archive_mounted": false,
+      "source": "client_specification"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "E13-notif-01"
+   ],
+   [
+    "E13-thread-01",
+    "E13-sender-01"
+   ],
+   [
+    "E13-sender-01",
+    "E13-file-01"
+   ],
+   [
+    "E13-file-01"
+   ],
+   [
+    "E13-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "E14",
+  "definition_version": 1,
+  "platform": "email",
+  "synthetic": {
+   "sender": {
+    "display_name": "HQ Alpha Movements",
+    "identifier": "hqalphamovements@e14.training.example",
+    "avatar_initials": "HA",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "11:44"
+   },
+   "prior_context": "A look-alike HQ address sends a revised movement order shortly before a fictional exercise.",
+   "assets": [
+    {
+     "asset_id": "E14-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "email notification",
+     "content": {
+      "sender": "HQ Alpha Movements",
+      "body": "Urgent revision MOV-77 - open attached order now.",
+      "platform": "email",
+      "received_at": "16:10",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "E14-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "HQ Alpha Movements",
+     "content": {
+      "display_name": "HQ Alpha Movements",
+      "identifier": "hqalphamovements@e14.training.example",
+      "avatar_initials": "HA",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "11:44"
+     }
+    },
+    {
+     "asset_id": "E14-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "HQ Alpha Movements thread",
+     "content": {
+      "header": {
+       "title": "HQ Alpha Movements",
+       "subtitle": "hqalphamovements@e14.training.example",
+       "avatarSeed": "HA"
+      },
+      "blocks": [
+       {
+        "type": "emailHeader",
+        "fromName": "HQ Alpha Movements",
+        "fromAddress": "hqalphamovements@e14.training.example",
+        "to": "learner@unit.training.example",
+        "subject": "Urgent revision MOV-77 - open attached order now.",
+        "time": "10:31"
+       },
+       {
+        "type": "note",
+        "text": "A look-alike HQ address sends a revised movement order shortly before a fictional exercise."
+       },
+       {
+        "type": "emailBody",
+        "paragraphs": [
+         "Urgent revision MOV-77 - open attached order now."
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "E14-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 22275",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E14-file-01",
+     "kind": "file",
+     "inert": true,
+     "label": "E14_attachment.pdf",
+     "content": {
+      "file_name": "E14_attachment.pdf",
+      "file_kind": "pdf",
+      "file_size": "359 KB",
+      "preview": "The interaction advances to a PDF preview containing a QR to 'decrypt' the order",
+      "executes": false,
+      "macros_extracted": false,
+      "archive_mounted": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E14-qr-01",
+     "kind": "qr_payload",
+     "inert": true,
+     "label": "QR code",
+     "display_target": "https://e14.training.example/qr",
+     "content": {
+      "decoded_target": "https://e14.training.example/qr",
+      "decoded_locally": true,
+      "camera": false,
+      "clipboard": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "E14-notif-01"
+   ],
+   [
+    "E14-thread-01",
+    "E14-sender-01"
+   ],
+   [
+    "E14-sender-01",
+    "E14-file-01"
+   ],
+   [
+    "E14-file-01",
+    "E14-qr-01"
+   ],
+   [
+    "E14-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "E15",
+  "definition_version": 1,
+  "platform": "email",
+  "synthetic": {
+   "sender": {
+    "display_name": "Security Upgrade",
+    "identifier": "securityupgrade@e15.training.example",
+    "avatar_initials": "SU",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "09:09"
+   },
+   "prior_context": "A message asks the learner to authorize an app that will supposedly scan the inbox for threats.",
+   "assets": [
+    {
+     "asset_id": "E15-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "email notification",
+     "content": {
+      "sender": "Security Upgrade",
+      "body": "Approve MailSafe Analyzer to complete mandatory protection.",
+      "platform": "email",
+      "received_at": "16:58",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "E15-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Security Upgrade",
+     "content": {
+      "display_name": "Security Upgrade",
+      "identifier": "securityupgrade@e15.training.example",
+      "avatar_initials": "SU",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "09:09"
+     }
+    },
+    {
+     "asset_id": "E15-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Security Upgrade thread",
+     "content": {
+      "header": {
+       "title": "Security Upgrade",
+       "subtitle": "securityupgrade@e15.training.example",
+       "avatarSeed": "SU"
+      },
+      "blocks": [
+       {
+        "type": "emailHeader",
+        "fromName": "Security Upgrade",
+        "fromAddress": "securityupgrade@e15.training.example",
+        "to": "learner@unit.training.example",
+        "subject": "Approve MailSafe Analyzer to complete mandatory protection.",
+        "time": "12:31"
+       },
+       {
+        "type": "note",
+        "text": "A message asks the learner to authorize an app that will supposedly scan the inbox for threats."
+       },
+       {
+        "type": "emailBody",
+        "paragraphs": [
+         "Approve MailSafe Analyzer to complete mandatory protection."
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "E15-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 30991",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "E15-notif-01"
+   ],
+   [
+    "E15-thread-01",
+    "E15-sender-01"
+   ],
+   [
+    "E15-sender-01"
+   ],
+   [],
+   [
+    "E15-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "E16",
+  "definition_version": 1,
+  "platform": "email",
+  "synthetic": {
+   "sender": {
+    "display_name": "IT Operations",
+    "identifier": "itoperations@e16.training.example",
+    "avatar_initials": "IO",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "13:19"
+   },
+   "prior_context": "An authenticated, digitally signed notice announces planned downtime and asks for no credentials.",
+   "assets": [
+    {
+     "asset_id": "E16-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "email notification",
+     "content": {
+      "sender": "IT Operations",
+      "body": "Planned mail maintenance 22:00-22:30; no action required.",
+      "platform": "email",
+      "received_at": "11:39",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "E16-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "IT Operations",
+     "content": {
+      "display_name": "IT Operations",
+      "identifier": "itoperations@e16.training.example",
+      "avatar_initials": "IO",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "13:19"
+     }
+    },
+    {
+     "asset_id": "E16-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "IT Operations thread",
+     "content": {
+      "header": {
+       "title": "IT Operations",
+       "subtitle": "itoperations@e16.training.example",
+       "avatarSeed": "IO"
+      },
+      "blocks": [
+       {
+        "type": "emailHeader",
+        "fromName": "IT Operations",
+        "fromAddress": "itoperations@e16.training.example",
+        "to": "learner@unit.training.example",
+        "subject": "Planned mail maintenance 22:00-22:30; no action required.",
+        "time": "14:08"
+       },
+       {
+        "type": "note",
+        "text": "An authenticated, digitally signed notice announces planned downtime and asks for no credentials."
+       },
+       {
+        "type": "emailBody",
+        "paragraphs": [
+         "Planned mail maintenance 22:00-22:30; no action required."
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "E16-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 68453",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "E16-notif-01"
+   ],
+   [
+    "E16-thread-01",
+    "E16-sender-01"
+   ],
+   [
+    "E16-sender-01"
+   ],
+   [],
+   [
+    "E16-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "E17",
+  "definition_version": 1,
+  "platform": "email",
+  "synthetic": {
+   "sender": {
+    "display_name": "Subscription Billing",
+    "identifier": "subscriptionbillin@e17.training.example",
+    "avatar_initials": "SB",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "19:01"
+   },
+   "prior_context": "A renewal invoice says the learner will be charged unless they call a supplied number immediately.",
+   "assets": [
+    {
+     "asset_id": "E17-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "email notification",
+     "content": {
+      "sender": "Subscription Billing",
+      "body": "INR 32,900 renewal processed. Call within 30 minutes to cancel.",
+      "platform": "email",
+      "received_at": "12:29",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "E17-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Subscription Billing",
+     "content": {
+      "display_name": "Subscription Billing",
+      "identifier": "subscriptionbillin@e17.training.example",
+      "avatar_initials": "SB",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "19:01"
+     }
+    },
+    {
+     "asset_id": "E17-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Subscription Billing thread",
+     "content": {
+      "header": {
+       "title": "Subscription Billing",
+       "subtitle": "subscriptionbillin@e17.training.example",
+       "avatarSeed": "SB"
+      },
+      "blocks": [
+       {
+        "type": "emailHeader",
+        "fromName": "Subscription Billing",
+        "fromAddress": "subscriptionbillin@e17.training.example",
+        "to": "learner@unit.training.example",
+        "subject": "INR 32,900 renewal processed. Call within 30 minutes to cancel.",
+        "time": "12:52"
+       },
+       {
+        "type": "note",
+        "text": "A renewal invoice says the learner will be charged unless they call a supplied number immediately."
+       },
+       {
+        "type": "emailBody",
+        "paragraphs": [
+         "INR 32,900 renewal processed. Call within 30 minutes to cancel."
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "E17-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 21638",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E17-call-01",
+     "kind": "call_screen",
+     "inert": true,
+     "label": "Incoming call",
+     "content": {
+      "caller": "Subscription Billing",
+      "number": "subscriptionbillin@e17.training.example",
+      "captions": [
+       "INR 32,900 renewal processed. Call within 30 minutes to cancel."
+      ],
+      "timer_seconds": 0,
+      "choices": [
+       "decline",
+       "accept",
+       "end",
+       "verify",
+       "report"
+      ],
+      "microphone": false,
+      "camera": false,
+      "real_dialer": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E17-install-01",
+     "kind": "install_screen",
+     "inert": true,
+     "label": "Install / permission request",
+     "content": {
+      "app_name": "E17 Training Mock",
+      "permissions": [
+       "sms",
+       "accessibility",
+       "screen_capture"
+      ],
+      "installs": false,
+      "grants_real_permission": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "E17-notif-01"
+   ],
+   [
+    "E17-thread-01",
+    "E17-sender-01"
+   ],
+   [
+    "E17-sender-01"
+   ],
+   [
+    "E17-call-01",
+    "E17-install-01"
+   ],
+   [
+    "E17-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "E18",
+  "definition_version": 1,
+  "platform": "email",
+  "synthetic": {
+   "sender": {
+    "display_name": "Re",
+    "identifier": "re@e18.training.example",
+    "avatar_initials": "R",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "17:48"
+   },
+   "prior_context": "A compromised mailbox inserts a realistic message into an established invoice thread and changes payment details.",
+   "assets": [
+    {
+     "asset_id": "E18-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "email notification",
+     "content": {
+      "sender": "Re",
+      "body": "NS-104 - Please use our recovery account for this month",
+      "platform": "email",
+      "received_at": "19:15",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "E18-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Re",
+     "content": {
+      "display_name": "Re",
+      "identifier": "re@e18.training.example",
+      "avatar_initials": "R",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "17:48"
+     }
+    },
+    {
+     "asset_id": "E18-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Re thread",
+     "content": {
+      "header": {
+       "title": "Re",
+       "subtitle": "re@e18.training.example",
+       "avatarSeed": "R"
+      },
+      "blocks": [
+       {
+        "type": "emailHeader",
+        "fromName": "Re",
+        "fromAddress": "re@e18.training.example",
+        "to": "learner@unit.training.example",
+        "subject": "NS-104 - Please use our recovery account for this month",
+        "time": "16:48"
+       },
+       {
+        "type": "note",
+        "text": "A compromised mailbox inserts a realistic message into an established invoice thread and changes payment details."
+       },
+       {
+        "type": "emailBody",
+        "paragraphs": [
+         "NS-104 - Please use our recovery account for this month"
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "E18-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 69764",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E18-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "Re",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-E18",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "E18-notif-01"
+   ],
+   [
+    "E18-thread-01",
+    "E18-sender-01"
+   ],
+   [
+    "E18-sender-01"
+   ],
+   [
+    "E18-payment-01"
+   ],
+   [
+    "E18-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "E19",
+  "definition_version": 1,
+  "platform": "email",
+  "synthetic": {
+   "sender": {
+    "display_name": "Dr. Mira Sen",
+    "identifier": "drmirasen@e19.training.example",
+    "avatar_initials": "DM",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "11:44"
+   },
+   "prior_context": "A polished academic request seeks an interview and attaches questions about readiness and equipment gaps.",
+   "assets": [
+    {
+     "asset_id": "E19-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "email notification",
+     "content": {
+      "sender": "Dr. Mira Sen",
+      "body": "Your field experience can improve our readiness study. Questionnaire attached.",
+      "platform": "email",
+      "received_at": "07:34",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "E19-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Dr. Mira Sen",
+     "content": {
+      "display_name": "Dr. Mira Sen",
+      "identifier": "drmirasen@e19.training.example",
+      "avatar_initials": "DM",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "11:44"
+     }
+    },
+    {
+     "asset_id": "E19-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Dr. Mira Sen thread",
+     "content": {
+      "header": {
+       "title": "Dr. Mira Sen",
+       "subtitle": "drmirasen@e19.training.example",
+       "avatarSeed": "DM"
+      },
+      "blocks": [
+       {
+        "type": "emailHeader",
+        "fromName": "Dr. Mira Sen",
+        "fromAddress": "drmirasen@e19.training.example",
+        "to": "learner@unit.training.example",
+        "subject": "Your field experience can improve our readiness study. Questionnaire attached.",
+        "time": "14:06"
+       },
+       {
+        "type": "note",
+        "text": "A polished academic request seeks an interview and attaches questions about readiness and equipment gaps."
+       },
+       {
+        "type": "emailBody",
+        "paragraphs": [
+         "Your field experience can improve our readiness study. Questionnaire attached."
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "E19-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 82822",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "E19-notif-01"
+   ],
+   [
+    "E19-thread-01",
+    "E19-sender-01"
+   ],
+   [
+    "E19-sender-01"
+   ],
+   [],
+   [
+    "E19-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "E20",
+  "definition_version": 1,
+  "platform": "email",
+  "synthetic": {
+   "sender": {
+    "display_name": "National Inquiry Office",
+    "identifier": "nationalinquiryoff@e20.training.example",
+    "avatar_initials": "NI",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "09:54"
+   },
+   "prior_context": "An official-looking notice alleges criminal involvement, forbids discussion and requests a refundable bond.",
+   "assets": [
+    {
+     "asset_id": "E20-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "email notification",
+     "content": {
+      "sender": "National Inquiry Office",
+      "body": "Confidential summons - pay verification bond before 17:00.",
+      "platform": "email",
+      "received_at": "11:51",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "E20-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "National Inquiry Office",
+     "content": {
+      "display_name": "National Inquiry Office",
+      "identifier": "nationalinquiryoff@e20.training.example",
+      "avatar_initials": "NI",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "09:54"
+     }
+    },
+    {
+     "asset_id": "E20-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "National Inquiry Office thread",
+     "content": {
+      "header": {
+       "title": "National Inquiry Office",
+       "subtitle": "nationalinquiryoff@e20.training.example",
+       "avatarSeed": "NI"
+      },
+      "blocks": [
+       {
+        "type": "emailHeader",
+        "fromName": "National Inquiry Office",
+        "fromAddress": "nationalinquiryoff@e20.training.example",
+        "to": "learner@unit.training.example",
+        "subject": "Confidential summons - pay verification bond before 17:00.",
+        "time": "14:55"
+       },
+       {
+        "type": "note",
+        "text": "An official-looking notice alleges criminal involvement, forbids discussion and requests a refundable bond."
+       },
+       {
+        "type": "emailBody",
+        "paragraphs": [
+         "Confidential summons - pay verification bond before 17:00."
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "E20-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 89101",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E20-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://e20.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "e20.training.example",
+      "body": "The interaction advances to a synthetic warrant PDF and bond-payment portal",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    },
+    {
+     "asset_id": "E20-file-01",
+     "kind": "file",
+     "inert": true,
+     "label": "E20_attachment.pdf",
+     "content": {
+      "file_name": "E20_attachment.pdf",
+      "file_kind": "pdf",
+      "file_size": "429 KB",
+      "preview": "The interaction advances to a synthetic warrant PDF and bond-payment portal",
+      "executes": false,
+      "macros_extracted": false,
+      "archive_mounted": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E20-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "National Inquiry Office",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-E20",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "E20-notif-01"
+   ],
+   [
+    "E20-thread-01",
+    "E20-sender-01"
+   ],
+   [
+    "E20-sender-01",
+    "E20-file-01",
+    "E20-browser-01"
+   ],
+   [
+    "E20-browser-01",
+    "E20-file-01",
+    "E20-payment-01"
+   ],
+   [
+    "E20-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "E21",
+  "definition_version": 1,
+  "platform": "email",
+  "synthetic": {
+   "sender": {
+    "display_name": "Northstar Supplies",
+    "identifier": "northstarsupplies@e21.training.example",
+    "avatar_initials": "NS",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "13:01"
+   },
+   "prior_context": "A real vendor initiates a bank-detail change through the approved signed form and expects independent callback and dual approval.",
+   "assets": [
+    {
+     "asset_id": "E21-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "email notification",
+     "content": {
+      "sender": "Northstar Supplies",
+      "body": "Signed beneficiary-change case VC-209 is available in the vendor portal.",
+      "platform": "email",
+      "received_at": "12:56",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "E21-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Northstar Supplies",
+     "content": {
+      "display_name": "Northstar Supplies",
+      "identifier": "northstarsupplies@e21.training.example",
+      "avatar_initials": "NS",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "13:01"
+     }
+    },
+    {
+     "asset_id": "E21-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Northstar Supplies thread",
+     "content": {
+      "header": {
+       "title": "Northstar Supplies",
+       "subtitle": "northstarsupplies@e21.training.example",
+       "avatarSeed": "NS"
+      },
+      "blocks": [
+       {
+        "type": "emailHeader",
+        "fromName": "Northstar Supplies",
+        "fromAddress": "northstarsupplies@e21.training.example",
+        "to": "learner@unit.training.example",
+        "subject": "Signed beneficiary-change case VC-209 is available in the vendor portal.",
+        "time": "11:08"
+       },
+       {
+        "type": "note",
+        "text": "A real vendor initiates a bank-detail change through the approved signed form and expects independent callback and dual approval."
+       },
+       {
+        "type": "emailBody",
+        "paragraphs": [
+         "Signed beneficiary-change case VC-209 is available in the vendor portal."
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "E21-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 43733",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E21-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://e21.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "e21.training.example",
+      "body": "The interaction advances to the approved vendor portal case with side-by-side old/new details and Hold/Verify",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "E21-notif-01"
+   ],
+   [
+    "E21-thread-01",
+    "E21-sender-01"
+   ],
+   [
+    "E21-sender-01",
+    "E21-browser-01"
+   ],
+   [
+    "E21-browser-01"
+   ],
+   [
+    "E21-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "E22",
+  "definition_version": 1,
+  "platform": "email",
+  "synthetic": {
+   "sender": {
+    "display_name": "Col. Dev",
+    "identifier": "coldev@e22.training.example",
+    "avatar_initials": "CD",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "16:55"
+   },
+   "prior_context": "An external email contains a convincing voice memo directing a confidential transfer before a meeting.",
+   "assets": [
+    {
+     "asset_id": "E22-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "email notification",
+     "content": {
+      "sender": "Col. Dev",
+      "body": "Voice memo - process the welfare transfer now; do not call during the briefing.",
+      "platform": "email",
+      "received_at": "12:10",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "E22-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Col. Dev",
+     "content": {
+      "display_name": "Col. Dev",
+      "identifier": "coldev@e22.training.example",
+      "avatar_initials": "CD",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "16:55"
+     }
+    },
+    {
+     "asset_id": "E22-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Col. Dev thread",
+     "content": {
+      "header": {
+       "title": "Col. Dev",
+       "subtitle": "coldev@e22.training.example",
+       "avatarSeed": "CD"
+      },
+      "blocks": [
+       {
+        "type": "emailHeader",
+        "fromName": "Col. Dev",
+        "fromAddress": "coldev@e22.training.example",
+        "to": "learner@unit.training.example",
+        "subject": "Voice memo - process the welfare transfer now; do not call during the briefing",
+        "time": "10:38"
+       },
+       {
+        "type": "note",
+        "text": "An external email contains a convincing voice memo directing a confidential transfer before a meeting."
+       },
+       {
+        "type": "emailBody",
+        "paragraphs": [
+         "Voice memo - process the welfare transfer now; do not call during the briefing."
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "E22-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 51465",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E22-file-01",
+     "kind": "file",
+     "inert": true,
+     "label": "E22_attachment.pdf",
+     "content": {
+      "file_name": "E22_attachment.pdf",
+      "file_kind": "pdf",
+      "file_size": "601 KB",
+      "preview": "The interaction advances to an audio player with transfer instructions and a payment mock",
+      "executes": false,
+      "macros_extracted": false,
+      "archive_mounted": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E22-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "Col. Dev",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-E22",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "E22-notif-01"
+   ],
+   [
+    "E22-thread-01",
+    "E22-sender-01"
+   ],
+   [
+    "E22-sender-01",
+    "E22-file-01"
+   ],
+   [
+    "E22-file-01",
+    "E22-payment-01"
+   ],
+   [
+    "E22-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "E23",
+  "definition_version": 1,
+  "platform": "email",
+  "synthetic": {
+   "sender": {
+    "display_name": "Data Protection Monitor",
+    "identifier": "dataprotectionmoni@e23.training.example",
+    "avatar_initials": "DP",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "19:07"
+   },
+   "prior_context": "A DLP-themed email claims a policy violation and attaches an HTML report for local review.",
+   "assets": [
+    {
+     "asset_id": "E23-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "email notification",
+     "content": {
+      "sender": "Data Protection Monitor",
+      "body": "Potential exfiltration detected - open SecurityReport.html.",
+      "platform": "email",
+      "received_at": "12:19",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "E23-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Data Protection Monitor",
+     "content": {
+      "display_name": "Data Protection Monitor",
+      "identifier": "dataprotectionmoni@e23.training.example",
+      "avatar_initials": "DP",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "19:07"
+     }
+    },
+    {
+     "asset_id": "E23-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Data Protection Monitor thread",
+     "content": {
+      "header": {
+       "title": "Data Protection Monitor",
+       "subtitle": "dataprotectionmoni@e23.training.example",
+       "avatarSeed": "DP"
+      },
+      "blocks": [
+       {
+        "type": "emailHeader",
+        "fromName": "Data Protection Monitor",
+        "fromAddress": "dataprotectionmoni@e23.training.example",
+        "to": "learner@unit.training.example",
+        "subject": "Potential exfiltration detected - open SecurityReport.html.",
+        "time": "16:25"
+       },
+       {
+        "type": "note",
+        "text": "A DLP-themed email claims a policy violation and attaches an HTML report for local review."
+       },
+       {
+        "type": "emailBody",
+        "paragraphs": [
+         "Potential exfiltration detected - open SecurityReport.html."
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "E23-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 67928",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E23-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://e23.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "e23.training.example",
+      "body": "The interaction advances to an inert local HTML page that renders a credential prompt and download button",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    },
+    {
+     "asset_id": "E23-file-01",
+     "kind": "file",
+     "inert": true,
+     "label": "SecurityReport.html",
+     "content": {
+      "file_name": "SecurityReport.html",
+      "file_kind": "html",
+      "file_size": "867 KB",
+      "preview": "The interaction advances to an inert local HTML page that renders a credential prompt and download button",
+      "executes": false,
+      "macros_extracted": false,
+      "archive_mounted": false,
+      "source": "client_specification"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "E23-notif-01"
+   ],
+   [
+    "E23-thread-01",
+    "E23-sender-01"
+   ],
+   [
+    "E23-sender-01",
+    "E23-file-01",
+    "E23-browser-01"
+   ],
+   [
+    "E23-browser-01",
+    "E23-file-01"
+   ],
+   [
+    "E23-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "E24",
+  "definition_version": 1,
+  "platform": "email",
+  "synthetic": {
+   "sender": {
+    "display_name": "Compliance Office",
+    "identifier": "complianceoffice@e24.training.example",
+    "avatar_initials": "CO",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "12:16"
+   },
+   "prior_context": "An otherwise polished policy email attaches a PDF that says scanning a QR is the only way to acknowledge.",
+   "assets": [
+    {
+     "asset_id": "E24-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "email notification",
+     "content": {
+      "sender": "Compliance Office",
+      "body": "Mobile acknowledgement required - scan the QR in attached policy.",
+      "platform": "email",
+      "received_at": "12:58",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "E24-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Compliance Office",
+     "content": {
+      "display_name": "Compliance Office",
+      "identifier": "complianceoffice@e24.training.example",
+      "avatar_initials": "CO",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "12:16"
+     }
+    },
+    {
+     "asset_id": "E24-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Compliance Office thread",
+     "content": {
+      "header": {
+       "title": "Compliance Office",
+       "subtitle": "complianceoffice@e24.training.example",
+       "avatarSeed": "CO"
+      },
+      "blocks": [
+       {
+        "type": "emailHeader",
+        "fromName": "Compliance Office",
+        "fromAddress": "complianceoffice@e24.training.example",
+        "to": "learner@unit.training.example",
+        "subject": "Mobile acknowledgement required - scan the QR in attached policy.",
+        "time": "17:55"
+       },
+       {
+        "type": "note",
+        "text": "An otherwise polished policy email attaches a PDF that says scanning a QR is the only way to acknowledge."
+       },
+       {
+        "type": "emailBody",
+        "paragraphs": [
+         "Mobile acknowledgement required - scan the QR in attached policy."
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "E24-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 35346",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E24-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://e24.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "e24.training.example",
+      "body": "The interaction advances to the PDF QR inspector and synthetic mobile sign-in",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    },
+    {
+     "asset_id": "E24-file-01",
+     "kind": "file",
+     "inert": true,
+     "label": "E24_attachment.pdf",
+     "content": {
+      "file_name": "E24_attachment.pdf",
+      "file_kind": "pdf",
+      "file_size": "292 KB",
+      "preview": "The interaction advances to the PDF QR inspector and synthetic mobile sign-in",
+      "executes": false,
+      "macros_extracted": false,
+      "archive_mounted": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E24-qr-01",
+     "kind": "qr_payload",
+     "inert": true,
+     "label": "QR code",
+     "display_target": "https://e24.training.example/qr",
+     "content": {
+      "decoded_target": "https://e24.training.example/qr",
+      "decoded_locally": true,
+      "camera": false,
+      "clipboard": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "E24-notif-01"
+   ],
+   [
+    "E24-thread-01",
+    "E24-sender-01"
+   ],
+   [
+    "E24-sender-01",
+    "E24-file-01",
+    "E24-browser-01"
+   ],
+   [
+    "E24-browser-01",
+    "E24-file-01",
+    "E24-qr-01"
+   ],
+   [
+    "E24-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "E25",
+  "definition_version": 1,
+  "platform": "email",
+  "synthetic": {
+   "sender": {
+    "display_name": "Re",
+    "identifier": "re@e25.training.example",
+    "avatar_initials": "R",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "18:16"
+   },
+   "prior_context": "A compromised-looking manager thread asks payroll to redirect a service member's allowance using an attached form.",
+   "assets": [
+    {
+     "asset_id": "E25-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "email notification",
+     "content": {
+      "sender": "Re",
+      "body": "Allowance correction - use the new account before today",
+      "platform": "email",
+      "received_at": "11:00",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "E25-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Re",
+     "content": {
+      "display_name": "Re",
+      "identifier": "re@e25.training.example",
+      "avatar_initials": "R",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "18:16"
+     }
+    },
+    {
+     "asset_id": "E25-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Re thread",
+     "content": {
+      "header": {
+       "title": "Re",
+       "subtitle": "re@e25.training.example",
+       "avatarSeed": "R"
+      },
+      "blocks": [
+       {
+        "type": "emailHeader",
+        "fromName": "Re",
+        "fromAddress": "re@e25.training.example",
+        "to": "learner@unit.training.example",
+        "subject": "Allowance correction - use the new account before today",
+        "time": "08:27"
+       },
+       {
+        "type": "note",
+        "text": "A compromised-looking manager thread asks payroll to redirect a service member's allowance using an attached form."
+       },
+       {
+        "type": "emailBody",
+        "paragraphs": [
+         "Allowance correction - use the new account before today"
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "E25-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 99187",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "E25-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://e25.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "e25.training.example",
+      "body": "The interaction advances to a prefilled payroll change form and Approve button",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "E25-notif-01"
+   ],
+   [
+    "E25-thread-01",
+    "E25-sender-01"
+   ],
+   [
+    "E25-sender-01",
+    "E25-browser-01"
+   ],
+   [
+    "E25-browser-01"
+   ],
+   [
+    "E25-dir-01"
+   ],
+   []
+  ]
+ }
+]

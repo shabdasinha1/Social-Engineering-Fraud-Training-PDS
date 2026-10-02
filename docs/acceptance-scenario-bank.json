@@ -1,0 +1,135 @@
+{
+  "generated_at": "2026-09-07T11:02:09.498Z",
+  "total": 100,
+  "active": 100,
+  "platforms": {
+    "whatsapp": {
+      "count": 25,
+      "level": {
+        "easy": 8,
+        "medium": 9,
+        "hard": 8
+      },
+      "disposition": {
+        "malicious": 20,
+        "legitimate": 5
+      },
+      "military": 10,
+      "spec_military": 10,
+      "count_ok": true,
+      "level_ok": true,
+      "disposition_ok": true,
+      "military_ok": true
+    },
+    "instagram": {
+      "count": 25,
+      "level": {
+        "easy": 8,
+        "medium": 9,
+        "hard": 8
+      },
+      "disposition": {
+        "malicious": 20,
+        "legitimate": 5
+      },
+      "military": 12,
+      "spec_military": 12,
+      "count_ok": true,
+      "level_ok": true,
+      "disposition_ok": true,
+      "military_ok": true
+    },
+    "email": {
+      "count": 25,
+      "level": {
+        "easy": 8,
+        "medium": 9,
+        "hard": 8
+      },
+      "disposition": {
+        "malicious": 20,
+        "legitimate": 5
+      },
+      "military": 8,
+      "spec_military": 8,
+      "count_ok": true,
+      "level_ok": true,
+      "disposition_ok": true,
+      "military_ok": true
+    },
+    "sms": {
+      "count": 25,
+      "level": {
+        "easy": 8,
+        "medium": 9,
+        "hard": 8
+      },
+      "disposition": {
+        "malicious": 20,
+        "legitimate": 5
+      },
+      "military": 5,
+      "spec_military": 5,
+      "count_ok": true,
+      "level_ok": true,
+      "disposition_ok": true,
+      "military_ok": true
+    }
+  },
+  "problems": [],
+  "duplicate_ids": [],
+  "duplicate_versions": [],
+  "all_six_stages": true,
+  "stage_order_ok": true,
+  "all_stages_have_transitions": true,
+  "all_stages_have_events": true,
+  "scoring_entries_per_scenario": [
+    12
+  ],
+  "all_have_scoring": true,
+  "scoring_event_codes": [
+    "CONTRADICTORY_UNSAFE_FINAL",
+    "CORRECT_USE",
+    "FALSE_REPORT_BLOCK",
+    "INSPECT_CONTEXT",
+    "ITEM_OPEN",
+    "NEEDLESS_REJECT_IGNORE",
+    "NOTIFY_SEEN",
+    "PREMATURE_REPLY",
+    "REPORT_ONLY_WITHOUT_CHECK",
+    "RESOLVE_CORRECT",
+    "RISKY_OPEN_REPLY",
+    "SAFE_PIVOT",
+    "SECRET_PAYMENT_INSTALL_DATA_RELEASE",
+    "TRUSTED_VERIFY",
+    "UNSAFE_EXTERNAL_ACTION",
+    "VERIFY_THROUGH_MESSAGE"
+  ],
+  "all_have_feedback": true,
+  "all_have_end_state": true,
+  "expected_actions_populated": 0,
+  "assets_total": 511,
+  "all_assets_inert": true,
+  "all_stage_refs_resolve": true,
+  "canonical_families": 19,
+  "canonical_triggers": 22,
+  "legitimate_control_consistent": true,
+  "overall": {
+    "malicious": 80,
+    "legitimate": 20,
+    "military": 35
+  },
+  "offline": {
+    "external_urls": 52,
+    "data_uris": 0,
+    "non_reserved_hosts": [
+      "neel.verma",
+      "arjun.k.singh",
+      "CaseFiles.zip",
+      "Mail.Read",
+      "Mail.Send",
+      "SecurityReport.html"
+    ],
+    "training_numbers_all_reserved": true
+  }
+}

@@ -1,0 +1,586 @@
+[
+  {
+    "scenarioCode": "WA-01",
+    "channel": "whatsapp",
+    "type": "malicious",
+    "title": "Review this conversation",
+    "instruction": "Someone has messaged you about a delivery.",
+    "simulation": {
+      "entryScreenId": "chat-list",
+      "screens": [
+        {
+          "id": "chat-list",
+          "kind": "list",
+          "header": { "title": "Chats", "showBack": false },
+          "blocks": [
+            { "type": "listItem", "title": "+91 80042 61177", "preview": "Sir I am at the gate with your parcel", "time": "17:04", "unread": true, "target": "thread" },
+            { "type": "listItem", "title": "Sunita (Sister)", "preview": "Reached home safely", "time": "15:20", "unread": false, "target": null }
+          ],
+          "actions": []
+        },
+        {
+          "id": "thread",
+          "kind": "thread",
+          "header": { "title": "+91 80042 61177", "subtitle": "online", "avatarSeed": "courier", "showBack": true },
+          "blocks": [
+            { "type": "note", "text": "Today" },
+            { "type": "message", "from": "them", "text": "Sir I am at the gate with your parcel. Security is not allowing me inside.", "time": "16:58" },
+            { "type": "message", "from": "me", "text": "I am not at home right now. Can you leave it with the guard?", "time": "17:00", "status": "read" },
+            { "type": "message", "from": "them", "text": "Yes sir no problem. But to close the delivery in my app I have to confirm with a code. The system has sent a 6 digit code to your number just now.", "time": "17:02" },
+            { "type": "message", "from": "them", "text": "Please read out that code, I will mark delivered and hand it to the guard. Otherwise it goes back to the branch and you have to collect it yourself.", "time": "17:04" }
+          ],
+          "actions": [
+            { "id": "back", "label": "Back", "target": "chat-list", "interaction": null },
+            { "id": "share-code", "label": "Send the 6 digit code", "target": null, "interaction": "enter-otp" }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "refuse-code", "label": "Refuse and tell them to leave it with the guard or return it", "marks": 5 },
+      { "key": "check-app", "label": "Check the order in the shopping app before doing anything", "marks": 5 },
+      { "key": "ignore", "label": "Stop replying", "marks": 3 },
+      { "key": "ask-name", "label": "Ask which company they are from", "marks": 1 },
+      { "key": "share-code", "label": "Read out the 6 digit code", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "otp-never-shared", "label": "A code sent to my phone is never meant for anyone else", "marks": 2 },
+      { "key": "delivery-no-code", "label": "A delivery is closed by the courier's own app, not by my code", "marks": 2 },
+      { "key": "return-threat", "label": "The threat that the parcel goes back is pressure, not a real rule", "marks": 2 },
+      { "key": "plausible-context", "label": "I am expecting a parcel, so the request fits", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "otp-misdirection",
+      "eviTags": ["routine_convenience", "urgency"],
+      "warningSigns": [
+        "A one-time code sent to your own phone is requested by someone else",
+        "The pretext is ordinary and believable, which is what makes it work",
+        "A consequence is attached - the parcel 'goes back' - to make you act quickly",
+        "A genuine courier closes a delivery in their own system, never with your code"
+      ],
+      "feedback": "This is OTP misdirection. The delivery story exists only to make the code request feel routine. The code is almost certainly authorising something else - a payment, or access to one of your accounts. A code that arrives on your phone is never for anybody else, whatever the reason given.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved WhatsApp fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "WA-02",
+    "channel": "whatsapp",
+    "type": "malicious",
+    "title": "Review this conversation",
+    "instruction": "A message has arrived from an unknown number.",
+    "simulation": {
+      "entryScreenId": "thread",
+      "screens": [
+        {
+          "id": "thread",
+          "kind": "thread",
+          "header": { "title": "+91 96331 20845", "subtitle": "last seen recently", "avatarSeed": "unknown", "showBack": false },
+          "blocks": [
+            { "type": "note", "text": "Today" },
+            { "type": "message", "from": "them", "text": "Papa, my phone screen broke and I am messaging from my friend's number. Please save this one.", "time": "18:41" },
+            { "type": "message", "from": "me", "text": "Who is this?", "time": "18:44", "status": "read" },
+            { "type": "message", "from": "them", "text": "It's me, Ananya. Please don't be angry, I dropped it at the hostel gate.", "time": "18:45" },
+            { "type": "message", "from": "them", "text": "The repair shop wants 9,500 and they are closing at 8. If I don't pay today they will not keep the phone and I have my viva submission on Monday.", "time": "18:47" },
+            { "type": "message", "from": "them", "text": "Please send it to this UPI, it is the shop owner's - repairhub.care@fakepay. I will explain everything at night, don't call now the friend is in class.", "time": "18:48" }
+          ],
+          "actions": [
+            { "id": "pay", "label": "Send the money", "target": null, "interaction": "make-payment" },
+            { "id": "call", "label": "Call this number", "target": null, "interaction": "call-number" }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "call-known-number", "label": "Call your daughter on her own saved number", "marks": 5 },
+      { "key": "verify-family", "label": "Check with another family member before doing anything", "marks": 5 },
+      { "key": "ask-question", "label": "Ask something only she would know", "marks": 3 },
+      { "key": "ignore", "label": "Ignore the message", "marks": 1 },
+      { "key": "send-money", "label": "Send the 9,500 to the UPI given", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "new-number-claim", "label": "An unknown number claims to be family and asks for money", "marks": 2 },
+      { "key": "blocks-verification", "label": "They give a reason why I should not call - that blocks the obvious check", "marks": 2 },
+      { "key": "deadline", "label": "A closing-time deadline is used to stop me thinking", "marks": 2 },
+      { "key": "knows-name", "label": "They used my daughter's name, so it must be her", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "family-urgency",
+      "eviTags": ["empathy_trust", "urgency"],
+      "warningSigns": [
+        "An unfamiliar number claims to be a close relative on a borrowed phone",
+        "Money is requested with a same-evening deadline",
+        "A reason is given why you should not phone - the one check that would settle it",
+        "A name is used freely; names are easy to find on social media"
+      ],
+      "feedback": "This is a family-urgency fraud. Every detail is designed to stop you making one phone call to the number you already have. The broken phone, the friend in class, the shop closing - all of it exists to block verification. Always ring the person on their own saved number before sending anything.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved WhatsApp fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "WA-03",
+    "channel": "whatsapp",
+    "type": "malicious",
+    "title": "Review this conversation",
+    "instruction": "A conversation that began as a wrong number has continued.",
+    "simulation": {
+      "entryScreenId": "chat-list",
+      "screens": [
+        {
+          "id": "chat-list",
+          "kind": "list",
+          "header": { "title": "Chats", "showBack": false },
+          "blocks": [
+            { "type": "listItem", "title": "+65 8114 2290", "preview": "So are you free this weekend? :)", "time": "23:12", "unread": true, "target": "thread" },
+            { "type": "listItem", "title": "Section Group", "preview": "Roster is on the board", "time": "20:05", "unread": false, "target": null }
+          ],
+          "actions": []
+        },
+        {
+          "id": "thread",
+          "kind": "thread",
+          "header": { "title": "+65 8114 2290", "subtitle": "online", "avatarSeed": "meera", "showBack": true },
+          "blocks": [
+            { "type": "note", "text": "Last Tuesday" },
+            { "type": "message", "from": "them", "text": "Hello, is this Dr Kapoor's clinic?", "time": "11:20" },
+            { "type": "message", "from": "me", "text": "No, wrong number.", "time": "11:34", "status": "read" },
+            { "type": "message", "from": "them", "text": "Oh sorry! My mistake. You seem polite though, most people just block :)", "time": "11:36" },
+            { "type": "note", "text": "Today" },
+            { "type": "message", "from": "them", "text": "I have been thinking about our chats all week. Honestly you are easier to talk to than people I have known for years.", "time": "22:40" },
+            { "type": "image", "caption": "At the harbour today", "placeholder": "photo" },
+            { "type": "message", "from": "them", "text": "My uncle manages a gold trading desk here. He lets me put small amounts in and it returns 8-10% every week. I put in 40,000 last month.", "time": "23:05" },
+            { "type": "message", "from": "them", "text": "I can add you under my account so you get the same rate. Start with anything, even 20,000. I would not share this with just anyone.", "time": "23:12" }
+          ],
+          "actions": [
+            { "id": "back", "label": "Back", "target": "chat-list", "interaction": null },
+            { "id": "invest", "label": "Send 20,000 to try it", "target": null, "interaction": "make-payment" }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "block-report", "label": "Block and report the number", "marks": 5 },
+      { "key": "stop-replying", "label": "Stop replying and delete the chat", "marks": 5 },
+      { "key": "decline-continue", "label": "Refuse the money part but keep chatting", "marks": -3 },
+      { "key": "ask-proof", "label": "Ask for proof of the returns", "marks": 0 },
+      { "key": "invest", "label": "Send 20,000 to try it", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "wrong-number-opener", "label": "A wrong number that turned into friendship is a known approach", "marks": 2 },
+      { "key": "money-after-warmth", "label": "The warmth came first and the money request followed", "marks": 2 },
+      { "key": "impossible-returns", "label": "8-10% every week is not a real return", "marks": 2 },
+      { "key": "seems-genuine", "label": "She has been friendly for a week, so she is genuine", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "honey-trap",
+      "eviTags": ["romance_attraction", "greed_reward"],
+      "warningSigns": [
+        "The conversation began as a 'wrong number' - a standard opening",
+        "Personal warmth was built first, over days, before any money was mentioned",
+        "Weekly returns of 8-10% are not possible",
+        "Being told you are specially trusted is flattery used as leverage"
+      ],
+      "feedback": "This is a romance-and-investment approach, often called pig butchering. The days of friendly conversation are the investment - the money request only arrives once you feel you know the person. A wrong number that becomes a close friend and then a business opportunity is the whole pattern.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved WhatsApp fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "WA-04",
+    "channel": "whatsapp",
+    "type": "malicious",
+    "title": "Review this conversation",
+    "instruction": "A payment message has arrived in a work group.",
+    "simulation": {
+      "entryScreenId": "thread",
+      "screens": [
+        {
+          "id": "thread",
+          "kind": "thread",
+          "header": { "title": "Mess Supplies - Vendors", "subtitle": "6 participants", "avatarSeed": "group", "showBack": false },
+          "blocks": [
+            { "type": "note", "text": "Yesterday" },
+            { "type": "message", "from": "them", "text": "Naik Verma: Ration indent for September is approved. Vendors kindly confirm dispatch dates.", "time": "10:12" },
+            { "type": "message", "from": "them", "text": "Balaji Provisions: Confirmed sir, dispatch on 4th.", "time": "10:40" },
+            { "type": "note", "text": "Today" },
+            { "type": "message", "from": "them", "text": "Balaji Provisions: Sir, small correction. Our current account is under audit hold since Monday. Please make this month's payment of 1,42,500 to our proprietor's account instead.", "time": "09:15" },
+            { "type": "image", "caption": "Account details", "placeholder": "photo" },
+            { "type": "message", "from": "them", "text": "Balaji Provisions: Kindly do it today itself, the dispatch is already loaded and we cannot release without payment confirmation. Sorry for the trouble sir.", "time": "09:18" }
+          ],
+          "actions": [
+            { "id": "pay", "label": "Make the payment", "target": null, "interaction": "make-payment" }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "call-vendor-office", "label": "Call the vendor's landline from the contract file to confirm", "marks": 5 },
+      { "key": "refer-accounts", "label": "Refer it to the accounts section before any payment", "marks": 5 },
+      { "key": "ask-in-group", "label": "Ask them to confirm in the group", "marks": -3 },
+      { "key": "pay", "label": "Pay to the proprietor's personal account", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "account-change", "label": "A change of payment account announced on chat must be verified separately", "marks": 2 },
+      { "key": "personal-account", "label": "A company payment is being redirected to a personal account", "marks": 2 },
+      { "key": "same-day-pressure", "label": "The dispatch is used as pressure to pay today", "marks": 2 },
+      { "key": "known-group", "label": "It is our official vendor group, so it is safe", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "money-transfer-request",
+      "eviTags": ["routine_convenience", "authority_fear"],
+      "warningSigns": [
+        "Payment is being redirected from a company account to a personal one",
+        "The change is announced only on chat, with no letter or contract amendment",
+        "A loaded dispatch is used to force same-day payment",
+        "The rest of the conversation is genuine, which makes the one changed detail easy to miss"
+      ],
+      "feedback": "This is a payment-diversion fraud. Everything else in the group is real, which is exactly why it works - only the account has changed. A vendor bank change must always be confirmed on a number from the contract file, never by replying in the same chat.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved WhatsApp fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "WA-05",
+    "channel": "whatsapp",
+    "type": "malicious",
+    "title": "Review this conversation",
+    "instruction": "A message about a parcel has arrived.",
+    "simulation": {
+      "entryScreenId": "thread",
+      "screens": [
+        {
+          "id": "thread",
+          "kind": "thread",
+          "header": { "title": "+91 70998 34120", "subtitle": "Business account", "avatarSeed": "parcel", "showBack": false },
+          "blocks": [
+            { "type": "note", "text": "Today" },
+            { "type": "message", "from": "them", "text": "SwiftPost Customs Notice: A parcel addressed to you from overseas is held at the international sorting centre.", "time": "12:31" },
+            { "type": "image", "caption": "Parcel at customs", "placeholder": "photo" },
+            { "type": "message", "from": "them", "text": "Consignment SP-IN-884120375. Declared value USD 240. Customs clearance and handling charge of Rs 347 is payable before release.", "time": "12:32" },
+            { "type": "linkPreview", "displayUrl": "swiftpost-clearance.parcel-customs.example.net/pay/SP-IN-884120375", "title": "Customs Clearance Payment", "description": "Pay the pending charge to release your consignment" },
+            { "type": "message", "from": "them", "text": "Unclaimed consignments are returned to origin after 48 hours and the charge is non refundable at that stage.", "time": "12:33" }
+          ],
+          "actions": [
+            { "id": "open-link", "label": "Open the clearance link", "target": null, "interaction": "open-link" },
+            { "id": "pay", "label": "Pay the 347 charge", "target": null, "interaction": "make-payment" }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "check-orders", "label": "Check whether you are actually expecting anything from overseas", "marks": 5 },
+      { "key": "block-report", "label": "Block and report the number", "marks": 3 },
+      { "key": "ignore", "label": "Ignore the message", "marks": 3 },
+      { "key": "open-link", "label": "Open the link to see the consignment", "marks": -3 },
+      { "key": "pay", "label": "Pay the 347 clearance charge", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "not-expecting", "label": "I am not expecting any parcel from overseas", "marks": 2 },
+      { "key": "small-amount", "label": "The amount is small on purpose, so people pay without checking", "marks": 2 },
+      { "key": "bad-domain", "label": "The payment address is not a real courier or customs site", "marks": 2 },
+      { "key": "has-tracking", "label": "It has a consignment number and a photo, so it is genuine", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "parcel-customs",
+      "eviTags": ["curiosity", "urgency"],
+      "warningSigns": [
+        "A parcel you never expected from a sender you do not know",
+        "A very small charge, chosen so the amount is not worth questioning",
+        "The payment page is not a courier or customs domain",
+        "A 48-hour return deadline discourages checking",
+        "A photo and a consignment number create credibility at no cost to the sender"
+      ],
+      "feedback": "This is a parcel-customs fraud. The 347 rupees is not the goal - the payment page is, because it captures your card details. Real customs charges are paid to the courier through their own official channel, never through a link sent on chat.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved WhatsApp fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "WA-06",
+    "channel": "whatsapp",
+    "type": "malicious",
+    "title": "Review this conversation",
+    "instruction": "A message has arrived from a saved contact.",
+    "simulation": {
+      "entryScreenId": "chat-list",
+      "screens": [
+        {
+          "id": "chat-list",
+          "kind": "list",
+          "header": { "title": "Chats", "showBack": false },
+          "blocks": [
+            { "type": "listItem", "title": "Deepak Rana", "preview": "Are you online? Need a small help", "time": "14:22", "unread": true, "target": "thread" },
+            { "type": "listItem", "title": "Sunita (Sister)", "preview": "Reached home safely", "time": "Yesterday", "unread": false, "target": null }
+          ],
+          "actions": []
+        },
+        {
+          "id": "thread",
+          "kind": "thread",
+          "header": { "title": "Deepak Rana", "subtitle": "last seen today at 14:22", "avatarSeed": "deepak", "showBack": true },
+          "blocks": [
+            { "type": "note", "text": "12 August" },
+            { "type": "message", "from": "them", "text": "Bhai the match photos came out well. Will send in the evening.", "time": "19:02" },
+            { "type": "message", "from": "me", "text": "Haha yes send them", "time": "19:15", "status": "read" },
+            { "type": "note", "text": "Today" },
+            { "type": "message", "from": "them", "text": "Are you online? Need a small help", "time": "14:18" },
+            { "type": "message", "from": "them", "text": "I am trying to pay for my mother's tests but my UPI is showing limit exceeded. Can you transfer 18,000 to this number, I will return it by evening. 89xxx 30117", "time": "14:20" },
+            { "type": "message", "from": "them", "text": "Please do it fast bhai, we are standing at the counter. I am in the hospital so cannot talk, just message.", "time": "14:22" }
+          ],
+          "actions": [
+            { "id": "back", "label": "Back", "target": "chat-list", "interaction": null },
+            { "id": "call", "label": "Call Deepak", "target": null, "interaction": "call-number" },
+            { "id": "pay", "label": "Transfer the money", "target": null, "interaction": "make-payment" }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "call-him", "label": "Call Deepak on his saved number before doing anything", "marks": 5 },
+      { "key": "verify-question", "label": "Ask him something only the real Deepak would know", "marks": 3 },
+      { "key": "wait", "label": "Reply that you will help once you have spoken to him", "marks": 3 },
+      { "key": "pay", "label": "Transfer the 18,000", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "refuses-call", "label": "A sudden money request combined with a reason not to call", "marks": 2 },
+      { "key": "third-party-number", "label": "The money is to go to a different number, not his own account", "marks": 2 },
+      { "key": "account-can-be-taken", "label": "A saved contact's account can be taken over, so the name proves nothing", "marks": 2 },
+      { "key": "saved-contact", "label": "It is a saved contact I know well, so it is safe", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "known-contact-takeover",
+      "eviTags": ["empathy_trust", "urgency"],
+      "warningSigns": [
+        "The request comes from a genuine saved contact, so the usual 'unknown number' check does not help",
+        "The money is to go to a third number, not to the contact's own account",
+        "A reason is given why he cannot speak on the phone",
+        "The tone and urgency do not match the earlier conversation in the same chat"
+      ],
+      "feedback": "This is a contact takeover. The account really is your friend's - it has been compromised, so the name and history look completely normal. That is why the check has to be a phone call to the number you already have, not the chat itself. Notice the money was to go somewhere else entirely.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved WhatsApp fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "WA-07",
+    "channel": "whatsapp",
+    "type": "malicious",
+    "title": "Review this conversation",
+    "instruction": "A message claiming to be from an investigation cell has arrived.",
+    "simulation": {
+      "entryScreenId": "thread",
+      "screens": [
+        {
+          "id": "thread",
+          "kind": "thread",
+          "header": { "title": "+91 62204 77315", "subtitle": "Business account", "avatarSeed": "authority", "showBack": false },
+          "blocks": [
+            { "type": "note", "text": "Today" },
+            { "type": "message", "from": "them", "text": "This is Inspector R. Mahajan, Cyber Crime Coordination Cell. A courier consignment booked in your name and Aadhaar has been intercepted at the airport.", "time": "11:02" },
+            { "type": "image", "caption": "Seizure memo", "placeholder": "document" },
+            { "type": "message", "from": "them", "text": "The consignment contained prohibited items. A case has been registered. Your bank accounts are under scrutiny for money laundering.", "time": "11:05" },
+            { "type": "message", "from": "them", "text": "You are required to remain available on video call for verification and must not discuss this with family or colleagues as the matter is sub judice.", "time": "11:07" },
+            { "type": "message", "from": "them", "text": "To establish that your funds are clean, transfer your current balance to the RBI verification account provided. It will be returned within 3 hours after clearance.", "time": "11:09" }
+          ],
+          "actions": [
+            { "id": "call", "label": "Call the number given", "target": null, "interaction": "call-number" },
+            { "id": "pay", "label": "Transfer the balance for verification", "target": null, "interaction": "make-payment" }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "stop-and-verify", "label": "Stop, tell a colleague or family member, and report it to the real police", "marks": 5 },
+      { "key": "block-report", "label": "Block and report the number", "marks": 5 },
+      { "key": "reply-explain", "label": "Reply explaining that you have not sent any parcel", "marks": -3 },
+      { "key": "call", "label": "Call the number to sort it out", "marks": -3 },
+      { "key": "transfer", "label": "Transfer the balance for verification", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "no-such-process", "label": "No police force asks you to transfer money to prove it is clean", "marks": 2 },
+      { "key": "secrecy-demand", "label": "Being told not to tell anyone is a warning sign, not a legal instruction", "marks": 2 },
+      { "key": "whatsapp-not-official", "label": "A real investigation does not begin with a chat message", "marks": 2 },
+      { "key": "official-documents", "label": "There is a seizure memo and an officer's name, so it is official", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "digital-arrest",
+      "eviTags": ["authority_fear", "urgency"],
+      "warningSigns": [
+        "An investigation is claimed to start over a chat message",
+        "You are told to keep it secret from family and colleagues, isolating you",
+        "Money must be transferred to prove innocence, which no legal process requires",
+        "An official-looking document is attached; documents are easy to fabricate",
+        "Fear and time pressure are used together to prevent you checking"
+      ],
+      "feedback": "This is a digital-arrest fraud. The whole method is fear plus isolation: frighten you, then insist you tell nobody, so that no one talks you out of it. No police, court or bank ever asks you to transfer money to prove it is clean. Telling someone is exactly what breaks it.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored. Digital arrest appears in the approved theme list; assigned to WhatsApp as the seventh malicious scenario. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "WA-08",
+    "channel": "whatsapp",
+    "type": "legitimate",
+    "title": "Review this conversation",
+    "instruction": "A family message has arrived.",
+    "simulation": {
+      "entryScreenId": "chat-list",
+      "screens": [
+        {
+          "id": "chat-list",
+          "kind": "list",
+          "header": { "title": "Chats", "showBack": false },
+          "blocks": [
+            { "type": "listItem", "title": "Sunita (Sister)", "preview": "Call me when you are free, nothing urgent", "time": "20:14", "unread": true, "target": "thread" }
+          ],
+          "actions": []
+        },
+        {
+          "id": "thread",
+          "kind": "thread",
+          "header": { "title": "Sunita (Sister)", "subtitle": "last seen today at 20:15", "avatarSeed": "sunita", "showBack": true },
+          "blocks": [
+            { "type": "note", "text": "Today" },
+            { "type": "message", "from": "them", "text": "Ma's check-up went fine. BP is a little high, doctor changed one tablet.", "time": "20:04" },
+            { "type": "image", "caption": "Prescription", "placeholder": "photo" },
+            { "type": "message", "from": "them", "text": "Sending the prescription so you have it. She keeps forgetting the new one.", "time": "20:06" },
+            { "type": "message", "from": "me", "text": "Ok. Is she taking it properly?", "time": "20:10", "status": "read" },
+            { "type": "message", "from": "them", "text": "Mostly. Also are you coming on the 14th? Ma keeps asking and I said I don't know.", "time": "20:12" },
+            { "type": "message", "from": "them", "text": "Call me when you are free, nothing urgent", "time": "20:14" }
+          ],
+          "actions": [
+            { "id": "back", "label": "Back", "target": "chat-list", "interaction": null }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "reply-call", "label": "Reply and call her back when free", "marks": 5 },
+      { "key": "reply-message", "label": "Reply by message about the 14th", "marks": 3 },
+      { "key": "ignore", "label": "Ignore it for now", "marks": 0 },
+      { "key": "block-report", "label": "Block and report the number", "marks": -3 }
+    ],
+    "reasonOptions": [
+      { "key": "ongoing-conversation", "label": "It continues an ongoing conversation with a saved family contact", "marks": 2 },
+      { "key": "nothing-asked", "label": "Nothing is asked for - no money, no code, no link", "marks": 2 },
+      { "key": "has-image", "label": "It contains a photo, so it is suspicious", "marks": 0 },
+      { "key": "urgent", "label": "It asks me to call, which is pressure", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "genuine",
+      "fraudTheme": null,
+      "eviTags": [],
+      "warningSigns": [],
+      "feedback": "This conversation is genuine. It is an ordinary family exchange with a saved contact, it continues a thread you were already part of, and it asks for nothing. The photo is just a prescription - an image on its own is not a warning sign, and 'call me when free, nothing urgent' is the opposite of the pressure a fraud applies.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "WA-09",
+    "channel": "whatsapp",
+    "type": "legitimate",
+    "title": "Review this conversation",
+    "instruction": "A message has arrived in your section group.",
+    "simulation": {
+      "entryScreenId": "thread",
+      "screens": [
+        {
+          "id": "thread",
+          "kind": "thread",
+          "header": { "title": "Section Group", "subtitle": "14 participants", "avatarSeed": "section", "showBack": false },
+          "blocks": [
+            { "type": "note", "text": "Today" },
+            { "type": "message", "from": "them", "text": "Hav Suresh Patil: Duty roster for next week is revised. Two changes only - Thursday and Saturday.", "time": "17:31" },
+            { "type": "attachment", "fileName": "duty-roster-week-37-revised.pdf", "fileSize": "88 KB", "fileKind": "pdf" },
+            { "type": "message", "from": "them", "text": "Hav Suresh Patil: Copy is also on the notice board outside the section office. Please check your own timing and confirm to your JCO.", "time": "17:33" },
+            { "type": "message", "from": "them", "text": "Naik Verma: Sir mine is showing Thursday 1400, was it 1000 before?", "time": "17:41" },
+            { "type": "message", "from": "them", "text": "Hav Suresh Patil: Yes changed. Confirm with the board if any doubt.", "time": "17:44" },
+            { "type": "message", "from": "me", "text": "Noted sir", "time": "17:52", "status": "delivered" }
+          ],
+          "actions": []
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "check-board", "label": "Check your timing and confirm to the JCO", "marks": 5 },
+      { "key": "verify-board", "label": "Cross-check against the notice board outside the office", "marks": 5 },
+      { "key": "ignore", "label": "Ignore it", "marks": 0 },
+      { "key": "report-group", "label": "Report the message as suspicious", "marks": -3 }
+    ],
+    "reasonOptions": [
+      { "key": "known-group", "label": "It is the regular section group with people I know, discussing routine work", "marks": 2 },
+      { "key": "verifiable-offline", "label": "The same information is on the notice board, so it can be checked", "marks": 2 },
+      { "key": "has-attachment", "label": "It has an attachment, so it must be dangerous", "marks": 0 },
+      { "key": "asks-money", "label": "It asks for a payment", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "genuine",
+      "fraudTheme": null,
+      "eviTags": [],
+      "warningSigns": [],
+      "feedback": "This conversation is genuine. It is routine section business, other members reply naturally, nothing is requested of you beyond confirming your own timing, and the same information can be checked on the notice board. An attachment by itself is not a warning sign - what it asks you to do is.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "WA-10",
+    "channel": "whatsapp",
+    "type": "legitimate",
+    "title": "Review this conversation",
+    "instruction": "A shop you ordered from has sent an update.",
+    "simulation": {
+      "entryScreenId": "chat-list",
+      "screens": [
+        {
+          "id": "chat-list",
+          "kind": "list",
+          "header": { "title": "Chats", "showBack": false },
+          "blocks": [
+            { "type": "listItem", "title": "+91 98220 41007", "preview": "Your cylinder booking is confirmed for tomorrow", "time": "10:26", "unread": true, "target": "thread" }
+          ],
+          "actions": []
+        },
+        {
+          "id": "thread",
+          "kind": "thread",
+          "header": { "title": "+91 98220 41007", "subtitle": "Business account", "avatarSeed": "gas", "showBack": true },
+          "blocks": [
+            { "type": "note", "text": "Yesterday" },
+            { "type": "message", "from": "me", "text": "Booking for one cylinder please. Consumer no. 5512400871", "time": "16:40", "status": "read" },
+            { "type": "message", "from": "them", "text": "Noted sir. Booking taken against consumer 5512400871.", "time": "16:52" },
+            { "type": "note", "text": "Today" },
+            { "type": "message", "from": "them", "text": "Your cylinder booking is confirmed for tomorrow between 0900 and 1300 hrs. Amount 902.50 payable to the delivery man on receipt, cash or UPI at the door.", "time": "10:24" },
+            { "type": "linkPreview", "displayUrl": "sharmagasagency.example.in/track/5512400871", "title": "Sharma Gas Agency - track booking", "description": "Delivery status for consumer 5512400871" },
+            { "type": "message", "from": "them", "text": "Kindly keep the consumer book ready. Do not pay anything in advance.", "time": "10:26" }
+          ],
+          "actions": [
+            { "id": "back", "label": "Back", "target": "chat-list", "interaction": null },
+            { "id": "open-link", "label": "Open the tracking link", "target": null, "interaction": "open-link" }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "wait-delivery", "label": "Keep the consumer book ready and pay on delivery", "marks": 5 },
+      { "key": "call-agency", "label": "Call the agency on its listed number to confirm", "marks": 3 },
+      { "key": "ignore", "label": "Ignore the message", "marks": 0 },
+      { "key": "pay-advance", "label": "Pay the 902.50 in advance to be safe", "marks": -3 },
+      { "key": "block-report", "label": "Block and report the number", "marks": -3 }
+    ],
+    "reasonOptions": [
+      { "key": "matches-my-booking", "label": "It matches a booking I made, with my own consumer number", "marks": 2 },
+      { "key": "no-advance-payment", "label": "It asks for no advance payment - it says the opposite", "marks": 2 },
+      { "key": "unknown-number", "label": "The number is not saved in my contacts, so it is fraud", "marks": 0 },
+      { "key": "has-link", "label": "It contains a link, so it is fraud", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "genuine",
+      "fraudTheme": null,
+      "eviTags": [],
+      "warningSigns": [],
+      "feedback": "This conversation is genuine. It continues a booking you made yourself, quotes your own consumer number, and specifically tells you not to pay in advance - the opposite of what a fraud does. Neither an unsaved number nor a link makes a message fraudulent on its own; the context and what is being asked of you are what matter.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored. Replace with client content when received."
+    }
+  }
+]

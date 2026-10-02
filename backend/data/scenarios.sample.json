@@ -1,0 +1,1166 @@
+[
+  {
+    "scenarioCode": "SAMPLE-WA-01",
+    "channel": "whatsapp",
+    "type": "malicious",
+    "title": "Review this conversation",
+    "simulation": {
+      "entryScreenId": "chat-list",
+      "screens": [
+        {
+          "id": "chat-list",
+          "kind": "list",
+          "header": {
+            "title": "Chats",
+            "showBack": false
+          },
+          "blocks": [
+            {
+              "type": "listItem",
+              "title": "+91 90000 11223",
+              "preview": "Beta, this is my new number...",
+              "time": "10:42",
+              "unread": true,
+              "target": "thread-unknown"
+            },
+            {
+              "type": "listItem",
+              "title": "Unit Group",
+              "preview": "Parade at 0600 tomorrow",
+              "time": "09:15",
+              "unread": false,
+              "target": null
+            }
+          ],
+          "actions": [
+            {
+              "id": "open-unknown",
+              "label": "Open",
+              "target": "thread-unknown",
+              "interaction": null
+            }
+          ]
+        },
+        {
+          "id": "thread-unknown",
+          "kind": "thread",
+          "header": {
+            "title": "+91 90000 11223",
+            "subtitle": "online",
+            "avatarSeed": "unknown-01",
+            "showBack": true
+          },
+          "blocks": [
+            {
+              "type": "note",
+              "text": "Today"
+            },
+            {
+              "type": "message",
+              "from": "them",
+              "text": "Beta, this is my new number. My old phone is lost.",
+              "time": "10:40"
+            },
+            {
+              "type": "message",
+              "from": "them",
+              "text": "I am stuck in a meeting and cannot receive calls. I need 15,000 rupees urgently for a hospital deposit.",
+              "time": "10:41"
+            },
+            {
+              "type": "message",
+              "from": "them",
+              "text": "Please send to this UPI: helpdesk.care@fakebank. I will return it tonight.",
+              "time": "10:42"
+            },
+            {
+              "type": "linkPreview",
+              "displayUrl": "pay-now-secure.example-upi.in/deposit",
+              "title": "Hospital Deposit - Pay Now",
+              "description": "Quick payment link. Opens in 2 minutes.",
+              "time": "10:43"
+            },
+            {
+              "type": "message",
+              "from": "them",
+              "text": "Use this link if UPI does not work. Please hurry beta.",
+              "time": "10:43"
+            }
+          ],
+          "actions": [
+            {
+              "id": "back",
+              "label": "Back",
+              "target": "chat-list",
+              "interaction": null
+            },
+            {
+              "id": "pay",
+              "label": "Send money",
+              "target": null,
+              "interaction": "make-payment"
+            }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      {
+        "key": "verify-call",
+        "label": "Call the person on their old number to check",
+        "marks": 5
+      },
+      {
+        "key": "ignore",
+        "label": "Ignore the message",
+        "marks": 3
+      },
+      {
+        "key": "ask-more",
+        "label": "Reply and ask who it is",
+        "marks": 1
+      },
+      {
+        "key": "block-report",
+        "label": "Block and report the number",
+        "marks": 3
+      },
+      {
+        "key": "send-money",
+        "label": "Send the money",
+        "marks": -5,
+        "isCriticalFailure": true
+      }
+    ],
+    "reasonOptions": [
+      {
+        "key": "unknown-number",
+        "label": "The number is unknown and claims to be a relative",
+        "marks": 2
+      },
+      {
+        "key": "urgency",
+        "label": "It creates urgency about money",
+        "marks": 2
+      },
+      {
+        "key": "looks-normal",
+        "label": "Everything looks normal",
+        "marks": 0
+      },
+      {
+        "key": "known-contact",
+        "label": "It is a saved contact",
+        "marks": 0
+      }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "family-urgency",
+      "eviTags": [
+        "empathy_trust",
+        "urgency"
+      ],
+      "warningSigns": [
+        "An unknown number claims to be a family member",
+        "The old number is said to be unreachable, so it cannot be checked",
+        "Money is requested urgently to an unfamiliar UPI id"
+      ],
+      "feedback": "This is a family-urgency fraud. A stranger claims to be a relative on a new number and asks for money quickly, so you have no time to check. Always call the person on their old, saved number before sending anything.",
+      "authorNotes": "DEVELOPMENT SAMPLE - replace with client-supplied content."
+    }
+  },
+  {
+    "scenarioCode": "SAMPLE-WA-02",
+    "channel": "whatsapp",
+    "type": "legitimate",
+    "title": "Review this conversation",
+    "simulation": {
+      "entryScreenId": "chat-list",
+      "screens": [
+        {
+          "id": "chat-list",
+          "kind": "list",
+          "header": {
+            "title": "Chats",
+            "showBack": false
+          },
+          "blocks": [
+            {
+              "type": "listItem",
+              "title": "Havildar Suresh Patil",
+              "preview": "Documents submitted, thank you",
+              "time": "16:20",
+              "unread": true,
+              "target": "thread-suresh"
+            }
+          ],
+          "actions": [
+            {
+              "id": "open",
+              "label": "Open",
+              "target": "thread-suresh",
+              "interaction": null
+            }
+          ]
+        },
+        {
+          "id": "thread-suresh",
+          "kind": "thread",
+          "header": {
+            "title": "Havildar Suresh Patil",
+            "subtitle": "last seen today",
+            "avatarSeed": "suresh-01",
+            "showBack": true
+          },
+          "blocks": [
+            {
+              "type": "note",
+              "text": "Today"
+            },
+            {
+              "type": "message",
+              "from": "them",
+              "text": "Good afternoon. The leave forms have been submitted at the unit office.",
+              "time": "16:18"
+            },
+            {
+              "type": "message",
+              "from": "them",
+              "text": "Collect the acknowledgement slip from the clerk tomorrow between 1000 and 1200.",
+              "time": "16:19"
+            },
+            {
+              "type": "message",
+              "from": "me",
+              "text": "Understood, thank you.",
+              "time": "16:20",
+              "status": "read"
+            }
+          ],
+          "actions": [
+            {
+              "id": "back",
+              "label": "Back",
+              "target": "chat-list",
+              "interaction": null
+            }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      {
+        "key": "acknowledge",
+        "label": "Reply normally and collect the slip",
+        "marks": 5
+      },
+      {
+        "key": "ignore",
+        "label": "Ignore the message",
+        "marks": 0
+      },
+      {
+        "key": "block-report",
+        "label": "Block and report the number",
+        "marks": -3
+      },
+      {
+        "key": "verify-call",
+        "label": "Call the unit office to confirm",
+        "marks": 3
+      }
+    ],
+    "reasonOptions": [
+      {
+        "key": "known-contact",
+        "label": "It is a known contact and nothing is being asked for",
+        "marks": 2
+      },
+      {
+        "key": "no-money-no-link",
+        "label": "There is no link, no money and no OTP request",
+        "marks": 2
+      },
+      {
+        "key": "urgency",
+        "label": "It creates urgency",
+        "marks": 0
+      },
+      {
+        "key": "unknown-number",
+        "label": "The number is unknown",
+        "marks": 0
+      }
+    ],
+    "evaluation": {
+      "correctJudgement": "genuine",
+      "fraudTheme": null,
+      "eviTags": [],
+      "warningSigns": [],
+      "feedback": "This message is genuine. It comes from a saved contact, asks for nothing, contains no link and creates no pressure. Marking normal messages as fraud is also a mistake.",
+      "authorNotes": "DEVELOPMENT SAMPLE - replace with client-supplied content."
+    }
+  },
+  {
+    "scenarioCode": "SAMPLE-SMS-01",
+    "channel": "sms",
+    "type": "malicious",
+    "title": "Review this text message",
+    "simulation": {
+      "entryScreenId": "sms-list",
+      "screens": [
+        {
+          "id": "sms-list",
+          "kind": "list",
+          "header": {
+            "title": "Messages",
+            "showBack": false
+          },
+          "blocks": [
+            {
+              "type": "listItem",
+              "title": "VM-KYCUPD",
+              "preview": "Your account will be frozen today",
+              "time": "11:05",
+              "unread": true,
+              "target": "sms-thread"
+            }
+          ],
+          "actions": [
+            {
+              "id": "open",
+              "label": "Open",
+              "target": "sms-thread",
+              "interaction": null
+            }
+          ]
+        },
+        {
+          "id": "sms-thread",
+          "kind": "thread",
+          "header": {
+            "title": "VM-KYCUPD",
+            "showBack": true
+          },
+          "blocks": [
+            {
+              "type": "message",
+              "from": "them",
+              "text": "Dear Customer, your bank account will be FROZEN today as KYC is incomplete. Update immediately: kyc-update-secure.example-verify.in",
+              "time": "11:05"
+            }
+          ],
+          "actions": [
+            {
+              "id": "back",
+              "label": "Back",
+              "target": "sms-list",
+              "interaction": null
+            },
+            {
+              "id": "open-link",
+              "label": "Open the link",
+              "target": null,
+              "interaction": "open-link"
+            }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      {
+        "key": "verify-bank",
+        "label": "Check with the bank on its official number",
+        "marks": 5
+      },
+      {
+        "key": "delete",
+        "label": "Delete the message",
+        "marks": 3
+      },
+      {
+        "key": "report",
+        "label": "Report it as spam",
+        "marks": 3
+      },
+      {
+        "key": "open-link",
+        "label": "Open the link and update KYC",
+        "marks": -5,
+        "isCriticalFailure": true
+      }
+    ],
+    "reasonOptions": [
+      {
+        "key": "bad-link",
+        "label": "The web address is not the bank's real address",
+        "marks": 2
+      },
+      {
+        "key": "urgency",
+        "label": "It threatens that the account will be frozen today",
+        "marks": 2
+      },
+      {
+        "key": "looks-official",
+        "label": "It looks official, so it must be real",
+        "marks": 0
+      },
+      {
+        "key": "known-sender",
+        "label": "The sender id is a known bank",
+        "marks": 0
+      }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "kyc-freeze",
+      "eviTags": [
+        "urgency",
+        "authority_fear"
+      ],
+      "warningSigns": [
+        "The web address does not belong to the bank",
+        "It threatens that the account will be frozen the same day",
+        "A real bank does not ask for KYC through an SMS link"
+      ],
+      "feedback": "This is a KYC-freeze fraud. The message frightens you into acting fast and sends you to a fake website. A real bank never asks you to complete KYC through a link in a text message. Always use the number printed on your passbook or card.",
+      "authorNotes": "DEVELOPMENT SAMPLE - replace with client-supplied content."
+    }
+  },
+  {
+    "scenarioCode": "SAMPLE-SMS-02",
+    "channel": "sms",
+    "type": "legitimate",
+    "title": "Review this text message",
+    "simulation": {
+      "entryScreenId": "sms-list",
+      "screens": [
+        {
+          "id": "sms-list",
+          "kind": "list",
+          "header": {
+            "title": "Messages",
+            "showBack": false
+          },
+          "blocks": [
+            {
+              "type": "listItem",
+              "title": "AD-CLINIC",
+              "preview": "Appointment confirmed for 14 Sep",
+              "time": "08:30",
+              "unread": true,
+              "target": "sms-thread"
+            }
+          ],
+          "actions": [
+            {
+              "id": "open",
+              "label": "Open",
+              "target": "sms-thread",
+              "interaction": null
+            }
+          ]
+        },
+        {
+          "id": "sms-thread",
+          "kind": "thread",
+          "header": {
+            "title": "AD-CLINIC",
+            "showBack": true
+          },
+          "blocks": [
+            {
+              "type": "message",
+              "from": "them",
+              "text": "Your appointment at Station Health Centre is confirmed for 14 Sep, 10:30 AM. Please carry your ID card. No reply needed.",
+              "time": "08:30"
+            }
+          ],
+          "actions": [
+            {
+              "id": "back",
+              "label": "Back",
+              "target": "sms-list",
+              "interaction": null
+            }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      {
+        "key": "note-it",
+        "label": "Note the appointment and do nothing else",
+        "marks": 5
+      },
+      {
+        "key": "verify-clinic",
+        "label": "Call the health centre to confirm",
+        "marks": 3
+      },
+      {
+        "key": "delete",
+        "label": "Delete the message",
+        "marks": 1
+      },
+      {
+        "key": "report",
+        "label": "Report it as spam",
+        "marks": -3
+      }
+    ],
+    "reasonOptions": [
+      {
+        "key": "no-action-needed",
+        "label": "It only gives information and asks for nothing",
+        "marks": 2
+      },
+      {
+        "key": "no-link",
+        "label": "There is no link and no request for money or an OTP",
+        "marks": 2
+      },
+      {
+        "key": "urgency",
+        "label": "It creates urgency",
+        "marks": 0
+      },
+      {
+        "key": "bad-link",
+        "label": "The link looks wrong",
+        "marks": 0
+      }
+    ],
+    "evaluation": {
+      "correctJudgement": "genuine",
+      "fraudTheme": null,
+      "eviTags": [],
+      "warningSigns": [],
+      "feedback": "This message is genuine. It confirms an appointment, asks for nothing and contains no link. Treating ordinary notifications as fraud costs you marks too.",
+      "authorNotes": "DEVELOPMENT SAMPLE - replace with client-supplied content."
+    }
+  },
+  {
+    "scenarioCode": "SAMPLE-EMAIL-01",
+    "channel": "email",
+    "type": "malicious",
+    "title": "Review this email",
+    "simulation": {
+      "entryScreenId": "inbox",
+      "screens": [
+        {
+          "id": "inbox",
+          "kind": "inbox",
+          "header": {
+            "title": "Inbox",
+            "subtitle": "3 unread",
+            "showBack": false
+          },
+          "blocks": [
+            {
+              "type": "listItem",
+              "title": "IT Service Desk",
+              "preview": "Action required: your password expires today",
+              "time": "09:02",
+              "unread": true,
+              "target": "email-01"
+            }
+          ],
+          "actions": [
+            {
+              "id": "open",
+              "label": "Open",
+              "target": "email-01",
+              "interaction": null
+            }
+          ]
+        },
+        {
+          "id": "email-01",
+          "kind": "message",
+          "header": {
+            "title": "Action required: your password expires today",
+            "showBack": true
+          },
+          "blocks": [
+            {
+              "type": "emailHeader",
+              "fromName": "IT Service Desk",
+              "fromAddress": "it-servicedesk@secure-mail-portal.example.net",
+              "to": "you@unit.example",
+              "subject": "Action required: your password expires today",
+              "time": "09:02"
+            },
+            {
+              "type": "emailBody",
+              "paragraphs": [
+                "Our records show your account password expires today.",
+                "If you do not confirm your password within 2 hours your account will be locked and you will lose access to all files.",
+                "Click below and sign in with your existing username and password to keep your account active."
+              ]
+            },
+            {
+              "type": "linkPreview",
+              "displayUrl": "secure-mail-portal.example.net/login",
+              "title": "Account Renewal Portal",
+              "description": "Sign in to keep your account active"
+            }
+          ],
+          "actions": [
+            {
+              "id": "back",
+              "label": "Back",
+              "target": "inbox",
+              "interaction": null
+            },
+            {
+              "id": "sign-in",
+              "label": "Sign in to renew",
+              "target": null,
+              "interaction": "enter-credentials"
+            }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      {
+        "key": "report-it",
+        "label": "Report the email to the IT service desk",
+        "marks": 5
+      },
+      {
+        "key": "delete",
+        "label": "Delete the email",
+        "marks": 3
+      },
+      {
+        "key": "ignore",
+        "label": "Ignore it",
+        "marks": 1
+      },
+      {
+        "key": "enter-password",
+        "label": "Open the link and enter your password",
+        "marks": -5,
+        "isCriticalFailure": true
+      }
+    ],
+    "reasonOptions": [
+      {
+        "key": "bad-domain",
+        "label": "The sender's address is not the organisation's real domain",
+        "marks": 2
+      },
+      {
+        "key": "urgency",
+        "label": "It threatens to lock the account within 2 hours",
+        "marks": 2
+      },
+      {
+        "key": "asks-password",
+        "label": "It asks you to enter your password",
+        "marks": 2
+      },
+      {
+        "key": "looks-normal",
+        "label": "Everything looks normal",
+        "marks": 0
+      }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "credential-harvest",
+      "eviTags": [
+        "urgency",
+        "authority_fear"
+      ],
+      "warningSigns": [
+        "The sender's address is not the organisation's real domain",
+        "A short deadline is used to stop you checking",
+        "It asks you to type your password into a web page"
+      ],
+      "feedback": "This is a password-stealing email. Notice the sender's address is not your organisation's real domain, and it gives you only 2 hours so that you act without thinking. No genuine IT department asks for your password by email.",
+      "authorNotes": "DEVELOPMENT SAMPLE - replace with client-supplied content."
+    }
+  },
+  {
+    "scenarioCode": "SAMPLE-EMAIL-02",
+    "channel": "email",
+    "type": "legitimate",
+    "title": "Review this email",
+    "simulation": {
+      "entryScreenId": "inbox",
+      "screens": [
+        {
+          "id": "inbox",
+          "kind": "inbox",
+          "header": {
+            "title": "Inbox",
+            "subtitle": "1 unread",
+            "showBack": false
+          },
+          "blocks": [
+            {
+              "type": "listItem",
+              "title": "Unit Training Cell",
+              "preview": "Training schedule for next week",
+              "time": "17:45",
+              "unread": true,
+              "target": "email-02"
+            }
+          ],
+          "actions": [
+            {
+              "id": "open",
+              "label": "Open",
+              "target": "email-02",
+              "interaction": null
+            }
+          ]
+        },
+        {
+          "id": "email-02",
+          "kind": "message",
+          "header": {
+            "title": "Training schedule for next week",
+            "showBack": true
+          },
+          "blocks": [
+            {
+              "type": "emailHeader",
+              "fromName": "Unit Training Cell",
+              "fromAddress": "training.cell@unit.example",
+              "to": "all.ranks@unit.example",
+              "subject": "Training schedule for next week",
+              "time": "17:45"
+            },
+            {
+              "type": "emailBody",
+              "paragraphs": [
+                "The training schedule for next week is attached for information.",
+                "No action is required. Please report to the training hall at the timings shown."
+              ]
+            },
+            {
+              "type": "attachment",
+              "fileName": "training-schedule.pdf",
+              "fileSize": "142 KB",
+              "fileKind": "pdf",
+              "target": "attachment-01"
+            }
+          ],
+          "actions": [
+            {
+              "id": "back",
+              "label": "Back",
+              "target": "inbox",
+              "interaction": null
+            },
+            {
+              "id": "open-attachment",
+              "label": "Open the attachment",
+              "target": "attachment-01",
+              "interaction": "open-attachment"
+            }
+          ]
+        },
+        {
+          "id": "attachment-01",
+          "kind": "document",
+          "header": {
+            "title": "training-schedule.pdf",
+            "showBack": true
+          },
+          "blocks": [
+            {
+              "type": "note",
+              "text": "Training Schedule - Week commencing 15 Sep"
+            },
+            {
+              "type": "emailBody",
+              "paragraphs": [
+                "Mon 0900 - Physical training",
+                "Wed 1000 - Cyber awareness session",
+                "Fri 1400 - Equipment inspection"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "id": "back",
+              "label": "Back",
+              "target": "email-02",
+              "interaction": null
+            }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      {
+        "key": "read-note",
+        "label": "Read it and note the timings",
+        "marks": 5
+      },
+      {
+        "key": "ignore",
+        "label": "Ignore the email",
+        "marks": 0
+      },
+      {
+        "key": "report-it",
+        "label": "Report it to the IT service desk",
+        "marks": -3
+      },
+      {
+        "key": "verify-sender",
+        "label": "Confirm with the training cell",
+        "marks": 3
+      }
+    ],
+    "reasonOptions": [
+      {
+        "key": "internal-domain",
+        "label": "The sender is on the organisation's own domain",
+        "marks": 2
+      },
+      {
+        "key": "no-credentials",
+        "label": "It asks for nothing and requires no sign in",
+        "marks": 2
+      },
+      {
+        "key": "asks-password",
+        "label": "It asks for a password",
+        "marks": 0
+      },
+      {
+        "key": "bad-domain",
+        "label": "The sender's domain looks wrong",
+        "marks": 0
+      }
+    ],
+    "evaluation": {
+      "correctJudgement": "genuine",
+      "fraudTheme": null,
+      "eviTags": [],
+      "warningSigns": [],
+      "feedback": "This email is genuine. It comes from your own organisation's domain, asks for nothing and needs no sign in. The attachment is an ordinary schedule.",
+      "authorNotes": "DEVELOPMENT SAMPLE - replace with client-supplied content."
+    }
+  },
+  {
+    "scenarioCode": "SAMPLE-IG-01",
+    "channel": "instagram",
+    "type": "malicious",
+    "title": "Review this Instagram message",
+    "simulation": {
+      "entryScreenId": "dm-list",
+      "screens": [
+        {
+          "id": "dm-list",
+          "kind": "list",
+          "header": {
+            "title": "Messages",
+            "showBack": false
+          },
+          "blocks": [
+            {
+              "type": "listItem",
+              "title": "priya_sharma_offical",
+              "preview": "Hi! You have been selected...",
+              "time": "20:11",
+              "unread": true,
+              "target": "dm-thread"
+            }
+          ],
+          "actions": [
+            {
+              "id": "open",
+              "label": "Open",
+              "target": "dm-thread",
+              "interaction": null
+            }
+          ]
+        },
+        {
+          "id": "dm-thread",
+          "kind": "thread",
+          "header": {
+            "title": "priya_sharma_offical",
+            "subtitle": "Active now",
+            "avatarSeed": "priya-01",
+            "showBack": true
+          },
+          "blocks": [
+            {
+              "type": "message",
+              "from": "them",
+              "text": "Hi! You have been selected for our brand ambassador programme.",
+              "time": "20:09"
+            },
+            {
+              "type": "message",
+              "from": "them",
+              "text": "You will receive 25,000 rupees per month. Just pay a refundable registration fee of 1,999 to confirm your slot today.",
+              "time": "20:10"
+            },
+            {
+              "type": "message",
+              "from": "them",
+              "text": "Only 2 slots left. Send the fee here and share the OTP you receive.",
+              "time": "20:11"
+            }
+          ],
+          "actions": [
+            {
+              "id": "back",
+              "label": "Back",
+              "target": "dm-list",
+              "interaction": null
+            },
+            {
+              "id": "view-profile",
+              "label": "View profile",
+              "target": "profile",
+              "interaction": null
+            },
+            {
+              "id": "share-otp",
+              "label": "Pay and share the OTP",
+              "target": null,
+              "interaction": "enter-otp"
+            }
+          ]
+        },
+        {
+          "id": "profile",
+          "kind": "profile",
+          "header": {
+            "title": "priya_sharma_offical",
+            "subtitle": "Joined 3 days ago",
+            "avatarSeed": "priya-01",
+            "showBack": true
+          },
+          "blocks": [
+            {
+              "type": "note",
+              "text": "4 posts   ·   112 followers   ·   3,400 following"
+            },
+            {
+              "type": "post",
+              "author": "priya_sharma_offical",
+              "caption": "Brand collaborations open! DM to join",
+              "likes": 3,
+              "time": "2d"
+            }
+          ],
+          "actions": [
+            {
+              "id": "back",
+              "label": "Back",
+              "target": "dm-thread",
+              "interaction": null
+            }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      {
+        "key": "block-report",
+        "label": "Block and report the account",
+        "marks": 5
+      },
+      {
+        "key": "ignore",
+        "label": "Ignore the message",
+        "marks": 3
+      },
+      {
+        "key": "ask-more",
+        "label": "Reply and ask for details",
+        "marks": 1
+      },
+      {
+        "key": "pay-fee",
+        "label": "Pay the fee to confirm the slot",
+        "marks": -5,
+        "isCriticalFailure": true
+      },
+      {
+        "key": "share-otp",
+        "label": "Pay and share the OTP",
+        "marks": -5,
+        "isCriticalFailure": true
+      }
+    ],
+    "reasonOptions": [
+      {
+        "key": "asks-fee",
+        "label": "A genuine job never asks you to pay first",
+        "marks": 2
+      },
+      {
+        "key": "asks-otp",
+        "label": "It asks for an OTP",
+        "marks": 2
+      },
+      {
+        "key": "new-account",
+        "label": "The account is new with very few followers",
+        "marks": 2
+      },
+      {
+        "key": "looks-normal",
+        "label": "Everything looks normal",
+        "marks": 0
+      }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "fake-brand-collaboration",
+      "eviTags": [
+        "greed_reward",
+        "urgency"
+      ],
+      "warningSigns": [
+        "You are asked to pay a fee to receive money",
+        "It asks you to share an OTP",
+        "The account is three days old with almost no followers",
+        "\"Only 2 slots left\" is used to rush you"
+      ],
+      "feedback": "This is a fake collaboration fraud. Real work never asks you to pay a registration fee first, and nobody legitimate ever needs your OTP. Check how old an account is and how many real followers it has.",
+      "authorNotes": "DEVELOPMENT SAMPLE - replace with client-supplied content."
+    }
+  },
+  {
+    "scenarioCode": "SAMPLE-IG-02",
+    "channel": "instagram",
+    "type": "legitimate",
+    "title": "Review this Instagram message",
+    "simulation": {
+      "entryScreenId": "dm-list",
+      "screens": [
+        {
+          "id": "dm-list",
+          "kind": "list",
+          "header": {
+            "title": "Messages",
+            "showBack": false
+          },
+          "blocks": [
+            {
+              "type": "listItem",
+              "title": "arjun.mehta",
+              "preview": "Photos from the sports meet",
+              "time": "19:02",
+              "unread": true,
+              "target": "dm-thread"
+            }
+          ],
+          "actions": [
+            {
+              "id": "open",
+              "label": "Open",
+              "target": "dm-thread",
+              "interaction": null
+            }
+          ]
+        },
+        {
+          "id": "dm-thread",
+          "kind": "thread",
+          "header": {
+            "title": "arjun.mehta",
+            "subtitle": "Friend",
+            "avatarSeed": "arjun-01",
+            "showBack": true
+          },
+          "blocks": [
+            {
+              "type": "message",
+              "from": "them",
+              "text": "Sharing the photos from last week's sports meet.",
+              "time": "19:01"
+            },
+            {
+              "type": "image",
+              "caption": "Sports meet - relay final",
+              "placeholder": "group-photo"
+            },
+            {
+              "type": "message",
+              "from": "them",
+              "text": "Let me know if you want the full set.",
+              "time": "19:02"
+            }
+          ],
+          "actions": [
+            {
+              "id": "back",
+              "label": "Back",
+              "target": "dm-list",
+              "interaction": null
+            }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      {
+        "key": "reply-normally",
+        "label": "Reply normally",
+        "marks": 5
+      },
+      {
+        "key": "ignore",
+        "label": "Ignore the message",
+        "marks": 1
+      },
+      {
+        "key": "block-report",
+        "label": "Block and report the account",
+        "marks": -3
+      },
+      {
+        "key": "verify",
+        "label": "Confirm it is really them before replying",
+        "marks": 3
+      }
+    ],
+    "reasonOptions": [
+      {
+        "key": "known-friend",
+        "label": "It is a known friend sharing photos",
+        "marks": 2
+      },
+      {
+        "key": "nothing-asked",
+        "label": "Nothing is asked for - no money, no OTP, no link",
+        "marks": 2
+      },
+      {
+        "key": "asks-fee",
+        "label": "It asks for a fee",
+        "marks": 0
+      },
+      {
+        "key": "new-account",
+        "label": "The account is brand new",
+        "marks": 0
+      }
+    ],
+    "evaluation": {
+      "correctJudgement": "genuine",
+      "fraudTheme": null,
+      "eviTags": [],
+      "warningSigns": [],
+      "feedback": "This message is genuine. A known friend is sharing photos and asking for nothing. Not every message is a fraud - being able to recognise normal messages matters just as much.",
+      "authorNotes": "DEVELOPMENT SAMPLE - replace with client-supplied content."
+    }
+  }
+]

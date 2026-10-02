@@ -1,0 +1,7 @@
+node_modules/
+.env
+*.log
+data/scenarios.dev-pool.json
+
+# ADMIN-003 export artifacts are local, per-machine and never committed.
+exports/

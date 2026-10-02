@@ -1,0 +1,792 @@
+[
+  {
+    "scenarioCode": "EM-01",
+    "channel": "email",
+    "type": "malicious",
+    "title": "Review this email",
+    "instruction": "A message about your account password has arrived.",
+    "simulation": {
+      "entryScreenId": "inbox",
+      "screens": [
+        {
+          "id": "inbox",
+          "kind": "inbox",
+          "header": { "title": "Inbox", "subtitle": "2 unread", "showBack": false },
+          "blocks": [
+            { "type": "listItem", "title": "IT Service Desk", "preview": "Action required: your password expires today", "time": "08:14", "unread": true, "target": "email" },
+            { "type": "listItem", "title": "Unit Training Cell", "preview": "Training schedule for next week", "time": "Yesterday", "unread": false, "target": null }
+          ],
+          "actions": []
+        },
+        {
+          "id": "email",
+          "kind": "message",
+          "header": { "title": "Action required: your password expires today", "showBack": true },
+          "blocks": [
+            {
+              "type": "emailHeader",
+              "fromName": "IT Service Desk",
+              "fromAddress": "servicedesk@unit-it-support.secure-mailportal.example.net",
+              "to": "you@unit.example",
+              "subject": "Action required: your password expires today",
+              "time": "Today, 08:14"
+            },
+            {
+              "type": "emailBody",
+              "paragraphs": [
+                "Dear User,",
+                "Our records show that the password for your account expires today at 17:00. Accounts that are not renewed are locked automatically and require a visit to the service desk to restore.",
+                "To continue working without interruption, confirm your existing username and password using the renewal portal below. The process takes less than a minute.",
+                "Ticket reference: SD-2026-41180",
+                "IT Service Desk"
+              ]
+            },
+            {
+              "type": "linkPreview",
+              "displayUrl": "unit-it-support.secure-mailportal.example.net/renew/session",
+              "title": "Account Renewal Portal",
+              "description": "Sign in with your existing credentials to extend your password"
+            }
+          ],
+          "actions": [
+            { "id": "back", "label": "Back", "target": "inbox", "interaction": null },
+            { "id": "open-link", "label": "Open the renewal portal", "target": null, "interaction": "open-link" },
+            { "id": "sign-in", "label": "Sign in to renew the password", "target": null, "interaction": "enter-credentials" }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "report-it", "label": "Report the email to the IT service desk", "marks": 5 },
+      { "key": "check-directly", "label": "Change the password through the normal system settings", "marks": 5 },
+      { "key": "delete", "label": "Delete the email", "marks": 3 },
+      { "key": "open-link", "label": "Open the renewal portal to look at it", "marks": -3 },
+      { "key": "enter-password", "label": "Sign in on the renewal portal", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "wrong-domain", "label": "The sender's address is not the organisation's own domain", "marks": 2 },
+      { "key": "asks-password", "label": "It asks me to type my password into a web page", "marks": 2 },
+      { "key": "same-day-deadline", "label": "A same-day lockout is used to rush me", "marks": 2 },
+      { "key": "has-ticket-ref", "label": "It quotes a ticket reference, so it is genuine", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "credential-expiry",
+      "eviTags": ["urgency", "authority_fear"],
+      "warningSigns": [
+        "The display name says IT Service Desk but the address is an outside domain",
+        "It asks you to enter your existing password on a web page",
+        "A same-day lockout removes your time to check",
+        "A real password change is done in system settings, never through an email link"
+      ],
+      "feedback": "This is a credential-harvesting email. The display name is easy to fake - read the address after the @ instead. No IT department ever needs you to type your existing password into a link they sent you.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved Email fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "EM-02",
+    "channel": "email",
+    "type": "malicious",
+    "title": "Review this email",
+    "instruction": "A supplier has sent an updated invoice.",
+    "simulation": {
+      "entryScreenId": "inbox",
+      "screens": [
+        {
+          "id": "inbox",
+          "kind": "inbox",
+          "header": { "title": "Inbox", "subtitle": "1 unread", "showBack": false },
+          "blocks": [
+            { "type": "listItem", "title": "Ravi Deshmukh - Sundar Traders", "preview": "Revised invoice INV-2026-0884 - updated bank details", "time": "11:02", "unread": true, "target": "email" }
+          ],
+          "actions": []
+        },
+        {
+          "id": "email",
+          "kind": "message",
+          "header": { "title": "Revised invoice INV-2026-0884", "showBack": true },
+          "blocks": [
+            {
+              "type": "emailHeader",
+              "fromName": "Ravi Deshmukh - Sundar Traders",
+              "fromAddress": "accounts@sundartraders-billing.example.co",
+              "to": "you@unit.example",
+              "subject": "Revised invoice INV-2026-0884 - updated bank details",
+              "time": "Today, 11:02"
+            },
+            {
+              "type": "emailBody",
+              "paragraphs": [
+                "Dear Sir,",
+                "Please find attached the revised invoice for the stationery supply order placed last month. The amount is unchanged at Rs 84,600.",
+                "Kindly note that our company bank account has changed following an audit. Payment against this invoice should now be made to the new account given in the attached copy. Payments to the old account will not be credited.",
+                "As the quarter closes on Friday, we would be grateful if the transfer is completed by then.",
+                "Regards,",
+                "Ravi Deshmukh, Accounts, Sundar Traders"
+              ]
+            },
+            { "type": "attachment", "fileName": "Invoice-INV-2026-0884-revised.pdf", "fileSize": "218 KB", "fileKind": "pdf", "target": "attachment" }
+          ],
+          "actions": [
+            { "id": "back", "label": "Back", "target": "inbox", "interaction": null },
+            { "id": "open-attachment", "label": "Open the attachment", "target": "attachment", "interaction": "open-attachment" },
+            { "id": "pay", "label": "Transfer to the new account", "target": null, "interaction": "make-payment" }
+          ]
+        },
+        {
+          "id": "attachment",
+          "kind": "document",
+          "header": { "title": "Invoice-INV-2026-0884-revised.pdf", "showBack": true },
+          "blocks": [
+            { "type": "note", "text": "SUNDAR TRADERS - TAX INVOICE" },
+            {
+              "type": "emailBody",
+              "paragraphs": [
+                "Invoice no. INV-2026-0884   Date: 28 Aug 2026",
+                "Stationery supply - as per purchase order PO/2026/311",
+                "Total payable: Rs 84,600.00",
+                "NEW BANK DETAILS (effective immediately)",
+                "Account name: Sundar Traders Enterprises",
+                "Account no. 007742110935   IFSC: FAKE0004412",
+                "Please disregard all previous account details."
+              ]
+            }
+          ],
+          "actions": [{ "id": "back-email", "label": "Back", "target": "email", "interaction": null }]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "call-known-contact", "label": "Call the supplier on the number you already have on file", "marks": 5 },
+      { "key": "verify-finance", "label": "Refer it to the finance section before any payment", "marks": 5 },
+      { "key": "reply-email", "label": "Reply to the email to confirm the change", "marks": -3 },
+      { "key": "pay-new-account", "label": "Transfer the payment to the new account", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "bank-change-by-email", "label": "A change of bank account announced by email must always be verified by phone", "marks": 2 },
+      { "key": "lookalike-domain", "label": "The sender domain is a look-alike, not the supplier's usual one", "marks": 2 },
+      { "key": "deadline", "label": "A quarter-end deadline is used to hurry the transfer", "marks": 2 },
+      { "key": "known-supplier", "label": "We deal with this supplier, so it is safe", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "invoice-payment-change",
+      "eviTags": ["routine_convenience", "urgency"],
+      "warningSigns": [
+        "The bank account is being changed by email alone",
+        "The sender domain is a look-alike of the supplier's real one",
+        "A quarter-end deadline discourages verification",
+        "The email warns that the old account will not work, to prevent a safe fallback"
+      ],
+      "feedback": "This is invoice fraud. Everything about the order is correct because the attacker has seen the real correspondence - only the bank account is changed. Any change of payment details must be confirmed by calling the number you already hold, never a number or address from the email itself.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved Email fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "EM-03",
+    "channel": "email",
+    "type": "malicious",
+    "title": "Review this email",
+    "instruction": "A prize notification has arrived.",
+    "simulation": {
+      "entryScreenId": "email",
+      "screens": [
+        {
+          "id": "email",
+          "kind": "message",
+          "header": { "title": "Final notification - claim reference BFL/26/77341", "showBack": false },
+          "blocks": [
+            {
+              "type": "emailHeader",
+              "fromName": "Awards Processing Office",
+              "fromAddress": "claims.dept@bharatfortune-awards.example.org",
+              "to": "undisclosed-recipients",
+              "subject": "Final notification - claim reference BFL/26/77341",
+              "time": "Today, 03:47"
+            },
+            {
+              "type": "emailBody",
+              "paragraphs": [
+                "ATTENTION: BENEFICIARY",
+                "This is to inform you that your email address was attached to ticket number 0072-4411-8 in the Bharat Fortune International Email Draw, held on 24 August 2026. Your address was selected from a database of addresses collected online.",
+                "You are therefore approved to claim the sum of Rs 45,00,000 (Forty Five Lakh Rupees only).",
+                "To process the release of funds, kindly reply to this email with your full name, residential address, date of birth, occupation, mobile number and a copy of a photo identity document.",
+                "A one-time courier and legal documentation charge of Rs 12,500 applies and must be settled before the cheque is dispatched.",
+                "This is the final notification. Unclaimed funds are re-allocated after seven days.",
+                "Mrs Alina Fernandes, Claims Officer"
+              ]
+            }
+          ],
+          "actions": [
+            { "id": "reply", "label": "Reply with the details", "target": null, "interaction": null },
+            { "id": "pay-charge", "label": "Pay the documentation charge", "target": null, "interaction": "make-payment" }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "delete-report", "label": "Delete it and report it as phishing", "marks": 5 },
+      { "key": "ignore", "label": "Ignore it", "marks": 3 },
+      { "key": "reply", "label": "Reply to ask for more information", "marks": -3 },
+      { "key": "send-id", "label": "Reply with the identity documents", "marks": -5, "isCriticalFailure": true },
+      { "key": "pay-charge", "label": "Pay the 12,500 documentation charge", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "never-entered", "label": "I never entered any draw", "marks": 2 },
+      { "key": "pay-to-receive", "label": "A genuine prize never requires the winner to pay a charge", "marks": 2 },
+      { "key": "undisclosed-recipients", "label": "It was sent to undisclosed recipients, so it is a bulk email", "marks": 2 },
+      { "key": "official-tone", "label": "It has a claim reference and an officer's name, so it looks official", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "lottery-prize",
+      "eviTags": ["greed_reward", "urgency"],
+      "warningSigns": [
+        "A prize for a draw that was never entered",
+        "Addressed to 'undisclosed-recipients' - a bulk mailing, not a personal notification",
+        "Identity documents are requested by reply email",
+        "A charge must be paid before the money is released",
+        "A seven-day expiry pressures a quick decision"
+      ],
+      "feedback": "This is an advance-fee prize fraud. The charge and the identity documents are the real target - one takes your money, the other lets someone open accounts in your name. Notice it was sent to undisclosed recipients: you were one address in a bulk list.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved Email fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "EM-04",
+    "channel": "email",
+    "type": "malicious",
+    "title": "Review this email",
+    "instruction": "A finance offer has arrived.",
+    "simulation": {
+      "entryScreenId": "inbox",
+      "screens": [
+        {
+          "id": "inbox",
+          "kind": "inbox",
+          "header": { "title": "Inbox", "showBack": false },
+          "blocks": [
+            { "type": "listItem", "title": "Anchor Capital Finance", "preview": "Sanction letter enclosed - Rs 12,00,000 approved", "time": "16:31", "unread": true, "target": "email" }
+          ],
+          "actions": []
+        },
+        {
+          "id": "email",
+          "kind": "message",
+          "header": { "title": "Sanction letter enclosed", "showBack": true },
+          "blocks": [
+            {
+              "type": "emailHeader",
+              "fromName": "Anchor Capital Finance",
+              "fromAddress": "sanctions@anchorcapital-loans.example.biz",
+              "to": "you@unit.example",
+              "subject": "Sanction letter enclosed - Rs 12,00,000 approved",
+              "time": "Today, 16:31"
+            },
+            {
+              "type": "emailBody",
+              "paragraphs": [
+                "Congratulations,",
+                "Your personal loan application has been sanctioned for Rs 12,00,000 at a fixed rate of 3.4% per annum for 60 months. No collateral, no guarantor and no income proof is required.",
+                "The signed sanction letter is attached. To release the amount to your account within 24 hours, a refundable file security deposit of Rs 9,500 is payable to the disbursal account given in the letter.",
+                "The sanction is valid until midnight tomorrow, after which the file is closed automatically.",
+                "Disbursal Team, Anchor Capital Finance"
+              ]
+            },
+            { "type": "attachment", "fileName": "Sanction-Letter-ACF-2026-33417.pdf", "fileSize": "96 KB", "fileKind": "pdf", "target": null }
+          ],
+          "actions": [
+            { "id": "back", "label": "Back", "target": "inbox", "interaction": null },
+            { "id": "open-attachment", "label": "Open the sanction letter", "target": null, "interaction": "open-attachment" },
+            { "id": "pay-deposit", "label": "Pay the security deposit", "target": null, "interaction": "make-payment" }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "delete", "label": "Delete the email", "marks": 5 },
+      { "key": "report-spam", "label": "Report it as phishing", "marks": 5 },
+      { "key": "reply", "label": "Reply to ask about the terms", "marks": -3 },
+      { "key": "pay-deposit", "label": "Pay the 9,500 security deposit", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "never-applied", "label": "I never applied for any loan", "marks": 2 },
+      { "key": "pay-before-loan", "label": "A real lender never asks for money before disbursing", "marks": 2 },
+      { "key": "no-checks", "label": "No income proof, no guarantor and a rate far below market", "marks": 2 },
+      { "key": "has-letter", "label": "A signed sanction letter is attached, so it is genuine", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "loan-finance",
+      "eviTags": ["greed_reward", "urgency"],
+      "warningSigns": [
+        "A loan sanctioned for an application that was never made",
+        "A 'refundable' deposit is demanded before any money is disbursed",
+        "3.4% with no income proof and no guarantor is not a real offer",
+        "A midnight deadline prevents checking",
+        "An official-looking attachment creates false credibility"
+      ],
+      "feedback": "This is an advance-fee loan fraud. A genuine lender deducts charges from the loan and never asks you to transfer money first. An attached 'sanction letter' proves nothing - a document is trivial to produce.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved Email fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "EM-05",
+    "channel": "email",
+    "type": "malicious",
+    "title": "Review this email",
+    "instruction": "A recruitment email has arrived.",
+    "simulation": {
+      "entryScreenId": "email",
+      "screens": [
+        {
+          "id": "email",
+          "kind": "message",
+          "header": { "title": "Offer of employment - Operations Coordinator", "showBack": false },
+          "blocks": [
+            {
+              "type": "emailHeader",
+              "fromName": "Priya Nair | Talent Acquisition, Meridian Logistics",
+              "fromAddress": "hr.meridianlogistics@fastmail-recruit.example.net",
+              "to": "you@unit.example",
+              "subject": "Offer of employment - Operations Coordinator",
+              "time": "Today, 10:20"
+            },
+            {
+              "type": "emailBody",
+              "paragraphs": [
+                "Dear Candidate,",
+                "Following the review of your profile on a public job portal, we are pleased to offer you the position of Operations Coordinator with Meridian Logistics. The role is remote with a monthly salary of Rs 78,000 and a joining bonus.",
+                "No interview is required as your profile has already been assessed by our panel.",
+                "The offer letter and joining kit are attached. To confirm your acceptance, a refundable security deposit of Rs 6,200 for the company laptop and ID card must be paid within 48 hours. The amount is adjusted against your first salary.",
+                "Please reply with a copy of your Aadhaar and a cancelled cheque for payroll registration.",
+                "Priya Nair, Talent Acquisition"
+              ]
+            },
+            { "type": "attachment", "fileName": "Offer-Letter-Meridian-Operations-Coordinator-2026.pdf", "fileSize": "142 KB", "fileKind": "pdf", "target": null }
+          ],
+          "actions": [
+            { "id": "open-attachment", "label": "Open the offer letter", "target": null, "interaction": "open-attachment" },
+            { "id": "send-documents", "label": "Reply with Aadhaar and cheque", "target": null, "interaction": null },
+            { "id": "pay-deposit", "label": "Pay the laptop deposit", "target": null, "interaction": "make-payment" }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "verify-company", "label": "Look the company up independently and contact it directly", "marks": 5 },
+      { "key": "delete-report", "label": "Delete and report the email", "marks": 3 },
+      { "key": "reply-questions", "label": "Reply asking about the role", "marks": 0 },
+      { "key": "send-documents", "label": "Reply with the Aadhaar copy and cancelled cheque", "marks": -5, "isCriticalFailure": true },
+      { "key": "pay-deposit", "label": "Pay the 6,200 laptop deposit", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "pay-to-join", "label": "A real employer never asks a new joiner to pay a deposit", "marks": 2 },
+      { "key": "no-interview", "label": "An offer without any interview is not a real hiring process", "marks": 2 },
+      { "key": "free-mail-domain", "label": "The HR address is on an outside mail domain, not the company's own", "marks": 2 },
+      { "key": "good-salary", "label": "The salary is good, so it is worth pursuing", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "job-recruitment",
+      "eviTags": ["greed_reward", "urgency"],
+      "warningSigns": [
+        "An offer of employment with no interview at any stage",
+        "A deposit is demanded before joining",
+        "The HR address is not on the company's own domain",
+        "Aadhaar and a cancelled cheque are requested by reply email",
+        "A 48-hour window discourages verification"
+      ],
+      "feedback": "This is a recruitment fraud. Genuine employers pay you, never the other way round, and nobody is hired without an interview. The identity documents requested are as valuable to the fraudster as the deposit.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved Email fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "EM-06",
+    "channel": "email",
+    "type": "malicious",
+    "title": "Review this email",
+    "instruction": "A scanned document has arrived.",
+    "simulation": {
+      "entryScreenId": "inbox",
+      "screens": [
+        {
+          "id": "inbox",
+          "kind": "inbox",
+          "header": { "title": "Inbox", "showBack": false },
+          "blocks": [
+            { "type": "listItem", "title": "Document Scanner", "preview": "You have received a scanned document (2 pages)", "time": "09:58", "unread": true, "target": "email" },
+            { "type": "listItem", "title": "Kitab Ghar", "preview": "Your order KG-77120 has shipped", "time": "08:10", "unread": false, "target": null }
+          ],
+          "actions": []
+        },
+        {
+          "id": "email",
+          "kind": "message",
+          "header": { "title": "Scanned document from office device", "showBack": true },
+          "blocks": [
+            {
+              "type": "emailHeader",
+              "fromName": "Document Scanner",
+              "fromAddress": "noreply.scan@officedevice-share.example.net",
+              "to": "you@unit.example",
+              "subject": "Scanned document from office device (2 pages)",
+              "time": "Today, 09:58"
+            },
+            {
+              "type": "emailBody",
+              "paragraphs": [
+                "A document has been scanned and sent to you from the shared office device.",
+                "Device: MFP-2F-04    Pages: 2    Format: PDF",
+                "The file is held in secure storage. Open the attachment and sign in with your work account to view it. The link expires in 24 hours.",
+                "This is an automated message. Do not reply."
+              ]
+            },
+            { "type": "attachment", "fileName": "Scan_2F04_20260902_0958.pdf", "fileSize": "41 KB", "fileKind": "pdf", "target": "viewer" }
+          ],
+          "actions": [
+            { "id": "back", "label": "Back", "target": "inbox", "interaction": null },
+            { "id": "open-attachment", "label": "Open the scanned document", "target": "viewer", "interaction": "open-attachment" }
+          ]
+        },
+        {
+          "id": "viewer",
+          "kind": "document",
+          "header": { "title": "Scan_2F04_20260902_0958.pdf", "showBack": true },
+          "blocks": [
+            { "type": "note", "text": "SECURE DOCUMENT VIEWER" },
+            {
+              "type": "emailBody",
+              "paragraphs": [
+                "This document is protected.",
+                "Sign in with your work email address and password to view the 2 scanned pages."
+              ]
+            },
+            { "type": "linkPreview", "displayUrl": "officedevice-share.example.net/view/secure/auth", "title": "Sign in to view", "description": "Enter your work email and password to continue" }
+          ],
+          "actions": [
+            { "id": "back-email", "label": "Back", "target": "email", "interaction": null },
+            { "id": "sign-in", "label": "Sign in to view the document", "target": null, "interaction": "enter-credentials" }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "report-it", "label": "Report the email to the IT service desk", "marks": 5 },
+      { "key": "check-device", "label": "Check at the actual office device whether anything was scanned", "marks": 5 },
+      { "key": "delete", "label": "Delete the email", "marks": 3 },
+      { "key": "open-attachment", "label": "Open the attachment to see what it is", "marks": -3 },
+      { "key": "sign-in", "label": "Sign in to view the document", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "not-expecting-scan", "label": "I did not scan anything and nobody said they would send one", "marks": 2 },
+      { "key": "document-asks-login", "label": "A scanned page does not require a password to view", "marks": 2 },
+      { "key": "external-domain", "label": "The sender is an outside domain, not the office system", "marks": 2 },
+      { "key": "automated", "label": "It is an automated device message, so it is routine", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "attachment-lure",
+      "eviTags": ["curiosity", "routine_convenience"],
+      "warningSigns": [
+        "A scan arrives that nobody sent and you were not expecting",
+        "The attachment leads to a sign-in page - a scanned page never needs a password",
+        "The sender domain is not the organisation's own office system",
+        "A 24-hour expiry is attached to a routine internal document"
+      ],
+      "feedback": "This is an attachment lure. It imitates a routine office notification so it feels unremarkable, and the 'document' is only a doorway to a sign-in page that collects your work password. If you did not expect a scan, check at the device itself.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved Email fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "EM-07",
+    "channel": "email",
+    "type": "malicious",
+    "title": "Review this email",
+    "instruction": "A message has arrived from a senior officer.",
+    "simulation": {
+      "entryScreenId": "email",
+      "screens": [
+        {
+          "id": "email",
+          "kind": "message",
+          "header": { "title": "Confidential - small task", "showBack": false },
+          "blocks": [
+            {
+              "type": "emailHeader",
+              "fromName": "Col. A. K. Bhatnagar",
+              "fromAddress": "ak.bhatnagar.office@unit-secretariat.example.org",
+              "to": "you@unit.example",
+              "subject": "Confidential - small task",
+              "time": "Today, 15:47"
+            },
+            {
+              "type": "emailBody",
+              "paragraphs": [
+                "Are you at your desk?",
+                "I am in a review meeting and cannot take calls for the next two hours. I need something arranged quietly before the farewell function tomorrow.",
+                "Please arrange eight gift vouchers of Rs 5,000 each from any online store. Send me the voucher codes by reply as soon as you have them. I will get the amount reimbursed through the office on Thursday.",
+                "Please do not discuss this with the others in the section - it is meant to be a surprise.",
+                "Sent from my mobile"
+              ]
+            }
+          ],
+          "actions": [
+            { "id": "reply", "label": "Reply to the officer", "target": null, "interaction": null },
+            { "id": "buy-vouchers", "label": "Buy the vouchers", "target": null, "interaction": "make-payment" }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "verify-in-person", "label": "Confirm in person or on his known number before doing anything", "marks": 5 },
+      { "key": "report-section", "label": "Report it to the section head", "marks": 5 },
+      { "key": "reply-ask", "label": "Reply to the email asking him to confirm", "marks": -3 },
+      { "key": "buy-vouchers", "label": "Buy the vouchers and send the codes", "marks": -5, "isCriticalFailure": true }
+    ],
+    "reasonOptions": [
+      { "key": "secrecy-request", "label": "Being told not to discuss it with anyone is a warning sign, not a reason to comply", "marks": 2 },
+      { "key": "unreachable-by-phone", "label": "The sender is conveniently unreachable by phone", "marks": 2 },
+      { "key": "voucher-codes", "label": "Gift voucher codes are untraceable money, which is why they are asked for", "marks": 2 },
+      { "key": "senior-officer", "label": "It is from a senior officer, so it should be done at once", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "fraudulent",
+      "fraudTheme": "authority-impersonation",
+      "eviTags": ["authority_fear", "routine_convenience"],
+      "warningSigns": [
+        "Authority is used together with a request for secrecy",
+        "The sender says he cannot be reached by phone, blocking the obvious check",
+        "Gift voucher codes are requested - untraceable and irreversible once sent",
+        "The address is a look-alike domain, not the officer's usual one",
+        "Reimbursement is promised later to make the request feel routine"
+      ],
+      "feedback": "This is authority impersonation. Rank plus secrecy plus a blocked phone line is the pattern - it exists precisely to stop you asking anyone. Voucher codes are chosen because they cannot be recovered once sent. Always confirm on a number you already have.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored, aligned with the approved Email fraud categories. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "EM-08",
+    "channel": "email",
+    "type": "legitimate",
+    "title": "Review this email",
+    "instruction": "A newsletter has arrived.",
+    "simulation": {
+      "entryScreenId": "inbox",
+      "screens": [
+        {
+          "id": "inbox",
+          "kind": "inbox",
+          "header": { "title": "Inbox", "showBack": false },
+          "blocks": [
+            { "type": "listItem", "title": "Unit Training Cell", "preview": "Training bulletin - September 2026", "time": "07:30", "unread": true, "target": "email" }
+          ],
+          "actions": []
+        },
+        {
+          "id": "email",
+          "kind": "message",
+          "header": { "title": "Training bulletin - September 2026", "showBack": true },
+          "blocks": [
+            {
+              "type": "emailHeader",
+              "fromName": "Unit Training Cell",
+              "fromAddress": "training.cell@unit.example",
+              "to": "all.ranks@unit.example",
+              "subject": "Training bulletin - September 2026",
+              "time": "Today, 07:30"
+            },
+            {
+              "type": "emailBody",
+              "paragraphs": [
+                "Good morning,",
+                "The training bulletin for September is summarised below. No action is required from your side; details are for information only.",
+                "1. Cyber awareness session - Wednesday 10 Sep, 1000 hrs, training hall.",
+                "2. Physical efficiency test - Monday 15 Sep, 0600 hrs, main ground.",
+                "3. Equipment inspection - Friday 19 Sep, timings by section.",
+                "Section commanders will circulate the detailed nominal roll. Queries may be raised at the training cell during working hours.",
+                "Unit Training Cell"
+              ]
+            },
+            { "type": "linkPreview", "displayUrl": "portal.unit.example/training/bulletin/sep-2026", "title": "September bulletin on the unit portal", "description": "The same bulletin on the internal portal" }
+          ],
+          "actions": [
+            { "id": "back", "label": "Back", "target": "inbox", "interaction": null },
+            { "id": "open-portal", "label": "Open the portal page", "target": null, "interaction": "open-link" }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "read-note", "label": "Read it and note the dates", "marks": 5 },
+      { "key": "open-portal", "label": "Open the internal portal page for the details", "marks": 3 },
+      { "key": "ignore", "label": "Ignore it", "marks": 1 },
+      { "key": "report-it", "label": "Report it to the IT service desk", "marks": -3 }
+    ],
+    "reasonOptions": [
+      { "key": "internal-domain", "label": "The sender and the link are both on the organisation's own domain", "marks": 2 },
+      { "key": "nothing-asked", "label": "It asks for nothing - no sign in, no payment, no documents", "marks": 2 },
+      { "key": "has-link", "label": "It contains a link, so it is suspicious", "marks": 0 },
+      { "key": "urgent", "label": "It creates urgency", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "genuine",
+      "fraudTheme": null,
+      "eviTags": [],
+      "warningSigns": [],
+      "feedback": "This bulletin is genuine. The sender address and the link are both on the organisation's own domain, it asks for nothing, and it applies no pressure. A link by itself is not a warning sign - where the link goes is what matters.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "EM-09",
+    "channel": "email",
+    "type": "legitimate",
+    "title": "Review this email",
+    "instruction": "A receipt has arrived for an order you placed.",
+    "simulation": {
+      "entryScreenId": "email",
+      "screens": [
+        {
+          "id": "email",
+          "kind": "message",
+          "header": { "title": "Your order KG-77120 - invoice", "showBack": false },
+          "blocks": [
+            {
+              "type": "emailHeader",
+              "fromName": "Kitab Ghar",
+              "fromAddress": "orders@kitabghar.example.in",
+              "to": "you@unit.example",
+              "subject": "Your order KG-77120 - invoice",
+              "time": "Today, 08:10"
+            },
+            {
+              "type": "emailBody",
+              "paragraphs": [
+                "Thank you for your order.",
+                "Order KG-77120 placed on 30 Aug 2026 has been dispatched. The invoice is attached for your records.",
+                "Items: 3 books. Total paid: Rs 1,284.00 by card ending 4471 on 30 Aug 2026.",
+                "You can track the delivery from the Orders section of your account. We will never ask you for your card details, password or an OTP by email.",
+                "Kitab Ghar Customer Service"
+              ]
+            },
+            { "type": "attachment", "fileName": "Invoice-KG-77120.pdf", "fileSize": "64 KB", "fileKind": "pdf", "target": "invoice" }
+          ],
+          "actions": [
+            { "id": "open-invoice", "label": "Open the invoice", "target": "invoice", "interaction": "open-attachment" }
+          ]
+        },
+        {
+          "id": "invoice",
+          "kind": "document",
+          "header": { "title": "Invoice-KG-77120.pdf", "showBack": true },
+          "blocks": [
+            { "type": "note", "text": "KITAB GHAR - TAX INVOICE" },
+            {
+              "type": "emailBody",
+              "paragraphs": [
+                "Invoice no. KG-77120   Date: 30 Aug 2026",
+                "3 items - books",
+                "Total paid: Rs 1,284.00",
+                "Payment method: card ending 4471",
+                "This is a computer generated invoice. No signature required."
+              ]
+            }
+          ],
+          "actions": [{ "id": "back-email", "label": "Back", "target": "email", "interaction": null }]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "file-it", "label": "Keep it for your records", "marks": 5 },
+      { "key": "check-orders", "label": "Check the order in the shop's own app to confirm", "marks": 3 },
+      { "key": "delete", "label": "Delete the email", "marks": 1 },
+      { "key": "report-it", "label": "Report it as phishing", "marks": -3 }
+    ],
+    "reasonOptions": [
+      { "key": "matches-order", "label": "It matches an order I actually placed, down to the card and amount", "marks": 2 },
+      { "key": "no-request", "label": "Nothing is asked of me - no payment, no sign in, no details", "marks": 2 },
+      { "key": "has-attachment", "label": "It has an attachment, so it must be dangerous", "marks": 0 },
+      { "key": "asks-card", "label": "It asks for my card details", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "genuine",
+      "fraudTheme": null,
+      "eviTags": [],
+      "warningSigns": [],
+      "feedback": "This receipt is genuine. It matches an order you placed, the card is masked, the attachment is an ordinary invoice that asks for nothing, and the sender explicitly says they will never ask for card details or an OTP. An attachment on its own is not a warning sign - what it asks you to do is.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored. Replace with client content when received."
+    }
+  },
+  {
+    "scenarioCode": "EM-10",
+    "channel": "email",
+    "type": "legitimate",
+    "title": "Review this email",
+    "instruction": "A meeting invitation has arrived.",
+    "simulation": {
+      "entryScreenId": "inbox",
+      "screens": [
+        {
+          "id": "inbox",
+          "kind": "inbox",
+          "header": { "title": "Inbox", "showBack": false },
+          "blocks": [
+            { "type": "listItem", "title": "Maj. S. Raghavan", "preview": "Invitation: Quarterly review - 08 Sep, 1100 hrs", "time": "14:05", "unread": true, "target": "email" }
+          ],
+          "actions": []
+        },
+        {
+          "id": "email",
+          "kind": "message",
+          "header": { "title": "Invitation: Quarterly review", "showBack": true },
+          "blocks": [
+            {
+              "type": "emailHeader",
+              "fromName": "Maj. S. Raghavan",
+              "fromAddress": "s.raghavan@unit.example",
+              "to": "ops.section@unit.example",
+              "subject": "Invitation: Quarterly review - 08 Sep, 1100 hrs",
+              "time": "Today, 14:05"
+            },
+            {
+              "type": "emailBody",
+              "paragraphs": [
+                "Please treat this as the formal invitation for the quarterly operations review.",
+                "Date: Monday, 08 September 2026    Time: 1100 - 1230 hrs    Venue: Conference room, first floor.",
+                "Agenda: last quarter's returns, training compliance, equipment state and any points raised by sections.",
+                "Kindly bring your section returns. Accept or decline using the calendar invitation attached so that seating can be arranged.",
+                "S. Raghavan, Maj"
+              ]
+            },
+            { "type": "attachment", "fileName": "quarterly-review-08sep.ics", "fileSize": "3 KB", "fileKind": "calendar", "target": null }
+          ],
+          "actions": [
+            { "id": "back", "label": "Back", "target": "inbox", "interaction": null },
+            { "id": "accept", "label": "Accept the invitation", "target": null, "interaction": null }
+          ]
+        }
+      ]
+    },
+    "actionOptions": [
+      { "key": "accept", "label": "Accept the invitation and prepare the returns", "marks": 5 },
+      { "key": "confirm-section", "label": "Confirm with the section before accepting", "marks": 3 },
+      { "key": "ignore", "label": "Ignore it", "marks": 0 },
+      { "key": "report-it", "label": "Report it as phishing", "marks": -3 }
+    ],
+    "reasonOptions": [
+      { "key": "internal-sender", "label": "The sender is on the organisation's own domain and is known to me", "marks": 2 },
+      { "key": "routine-request", "label": "It only asks me to accept a meeting, which is routine", "marks": 2 },
+      { "key": "has-attachment", "label": "It has an attachment, so it is suspicious", "marks": 0 },
+      { "key": "asks-money", "label": "It asks for a payment", "marks": 0 }
+    ],
+    "evaluation": {
+      "correctJudgement": "genuine",
+      "fraudTheme": null,
+      "eviTags": [],
+      "warningSigns": [],
+      "feedback": "This invitation is genuine. It comes from a known internal address, the meeting details are specific and checkable, and the only request is to accept a calendar entry. Ordinary work email like this should not be treated as fraud.",
+      "authorNotes": "DEVELOPMENT SAMPLE - internally authored. Replace with client content when received."
+    }
+  }
+]

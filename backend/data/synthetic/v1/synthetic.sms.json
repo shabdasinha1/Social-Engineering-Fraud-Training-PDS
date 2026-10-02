@@ -1,0 +1,3206 @@
+[
+ {
+  "scenario_id": "S01",
+  "definition_version": 1,
+  "platform": "sms",
+  "synthetic": {
+   "sender": {
+    "display_name": "+91 00000 71088",
+    "identifier": "+91 00000 71088",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "12:59"
+   },
+   "prior_context": "A text from an ordinary mobile number says the learner's bank account will be blocked unless KYC is updated.",
+   "assets": [
+    {
+     "asset_id": "S01-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "sms notification",
+     "content": {
+      "sender": "+91 00000 71088",
+      "body": "KYC overdue. Account blocks in 30 min. Update: bank-verify.training.example",
+      "platform": "sms",
+      "received_at": "08:34",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "S01-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "+91 00000 71088",
+     "content": {
+      "display_name": "+91 00000 71088",
+      "identifier": "+91 00000 71088",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "12:59"
+     }
+    },
+    {
+     "asset_id": "S01-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "+91 00000 71088 thread",
+     "content": {
+      "header": {
+       "title": "+91 00000 71088",
+       "subtitle": "+91 00000 71088",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A text from an ordinary mobile number says the learner's bank account will be blocked unless KYC is updated."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "KYC overdue. Account blocks in 30 min. Update: bank-verify.training.example",
+        "time": "15:51"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "S01-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 55963",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "S01-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://s01.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "s01.training.example",
+      "body": "The interaction advances to a fake mobile KYC page requesting account, PIN and OTP",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "S01-notif-01"
+   ],
+   [
+    "S01-thread-01",
+    "S01-sender-01"
+   ],
+   [
+    "S01-sender-01",
+    "S01-browser-01"
+   ],
+   [
+    "S01-browser-01"
+   ],
+   [
+    "S01-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "S02",
+  "definition_version": 1,
+  "platform": "sms",
+  "synthetic": {
+   "sender": {
+    "display_name": "+91 00000 97363",
+    "identifier": "+91 00000 97363",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "17:50"
+   },
+   "prior_context": "A text threatens power disconnection and supplies a personal mobile number for immediate payment.",
+   "assets": [
+    {
+     "asset_id": "S02-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "sms notification",
+     "content": {
+      "sender": "+91 00000 97363",
+      "body": "Power will disconnect 21:30 for unpaid bill. Call 00000 12002 now.",
+      "platform": "sms",
+      "received_at": "18:34",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "S02-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "+91 00000 97363",
+     "content": {
+      "display_name": "+91 00000 97363",
+      "identifier": "+91 00000 97363",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "17:50"
+     }
+    },
+    {
+     "asset_id": "S02-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "+91 00000 97363 thread",
+     "content": {
+      "header": {
+       "title": "+91 00000 97363",
+       "subtitle": "+91 00000 97363",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A text threatens power disconnection and supplies a personal mobile number for immediate payment."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Power will disconnect 21:30 for unpaid bill. Call 00000 12002 now.",
+        "time": "09:22"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "S02-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 42560",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "S02-call-01",
+     "kind": "call_screen",
+     "inert": true,
+     "label": "Incoming call",
+     "content": {
+      "caller": "+91 00000 97363",
+      "number": "+91 00000 97363",
+      "captions": [
+       "Power will disconnect 21:30 for unpaid bill. Call 00000 12002 now."
+      ],
+      "timer_seconds": 0,
+      "choices": [
+       "decline",
+       "accept",
+       "end",
+       "verify",
+       "report"
+      ],
+      "microphone": false,
+      "camera": false,
+      "real_dialer": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "S02-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "+91 00000 97363",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-S02",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "S02-install-01",
+     "kind": "install_screen",
+     "inert": true,
+     "label": "Install / permission request",
+     "content": {
+      "app_name": "S02 Training Mock",
+      "permissions": [
+       "sms",
+       "accessibility",
+       "screen_capture"
+      ],
+      "installs": false,
+      "grants_real_permission": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "S02-notif-01"
+   ],
+   [
+    "S02-thread-01",
+    "S02-sender-01"
+   ],
+   [
+    "S02-sender-01"
+   ],
+   [
+    "S02-call-01",
+    "S02-payment-01",
+    "S02-install-01"
+   ],
+   [
+    "S02-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "S03",
+  "definition_version": 1,
+  "platform": "sms",
+  "synthetic": {
+   "sender": {
+    "display_name": "ALERT",
+    "identifier": "+91 00000 91902",
+    "avatar_initials": "A",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "16:33"
+   },
+   "prior_context": "A no-link bank alert matches the synthetic purchase the learner completed moments earlier.",
+   "assets": [
+    {
+     "asset_id": "S03-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "sms notification",
+     "content": {
+      "sender": "ALERT",
+      "body": "INR 840 debited at TRAINING MART, card xx1042. No action needed.",
+      "platform": "sms",
+      "received_at": "08:31",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "S03-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "ALERT",
+     "content": {
+      "display_name": "ALERT",
+      "identifier": "+91 00000 91902",
+      "avatar_initials": "A",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "16:33"
+     }
+    },
+    {
+     "asset_id": "S03-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "ALERT thread",
+     "content": {
+      "header": {
+       "title": "ALERT",
+       "subtitle": "+91 00000 91902",
+       "avatarSeed": "A"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A no-link bank alert matches the synthetic purchase the learner completed moments earlier."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "INR 840 debited at TRAINING MART, card xx1042. No action needed.",
+        "time": "18:07"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "S03-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 17478",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "S03-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "ALERT",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-S03",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "S03-notif-01"
+   ],
+   [
+    "S03-thread-01",
+    "S03-sender-01"
+   ],
+   [
+    "S03-sender-01"
+   ],
+   [
+    "S03-payment-01"
+   ],
+   [
+    "S03-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "S04",
+  "definition_version": 1,
+  "platform": "sms",
+  "synthetic": {
+   "sender": {
+    "display_name": "+91 00000 77768",
+    "identifier": "+91 00000 77768",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "13:54"
+   },
+   "prior_context": "A text claims an unpaid traffic fine will increase today and contains a look-alike payment link.",
+   "assets": [
+    {
+     "asset_id": "S04-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "sms notification",
+     "content": {
+      "sender": "+91 00000 77768",
+      "body": "E-CHALLAN pending INR 500. Pay today to avoid court: challan-pay.training.example",
+      "platform": "sms",
+      "received_at": "19:09",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "S04-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "+91 00000 77768",
+     "content": {
+      "display_name": "+91 00000 77768",
+      "identifier": "+91 00000 77768",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "13:54"
+     }
+    },
+    {
+     "asset_id": "S04-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "+91 00000 77768 thread",
+     "content": {
+      "header": {
+       "title": "+91 00000 77768",
+       "subtitle": "+91 00000 77768",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A text claims an unpaid traffic fine will increase today and contains a look-alike payment link."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "E-CHALLAN pending INR 500. Pay today to avoid court: challan-pay.training.example",
+        "time": "19:03"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "S04-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 29651",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "S04-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://s04.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "s04.training.example",
+      "body": "The interaction advances to a fake challan page requesting vehicle, card/UPI and OTP",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    },
+    {
+     "asset_id": "S04-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "+91 00000 77768",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-S04",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "S04-notif-01"
+   ],
+   [
+    "S04-thread-01",
+    "S04-sender-01"
+   ],
+   [
+    "S04-sender-01",
+    "S04-browser-01"
+   ],
+   [
+    "S04-browser-01",
+    "S04-payment-01"
+   ],
+   [
+    "S04-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "S05",
+  "definition_version": 1,
+  "platform": "sms",
+  "synthetic": {
+   "sender": {
+    "display_name": "Parcel paused",
+    "identifier": "+91 00000 98499",
+    "avatar_initials": "PP",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "12:15"
+   },
+   "prior_context": "A text says a delivery address is incomplete and asks for a small redelivery fee.",
+   "assets": [
+    {
+     "asset_id": "S05-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "sms notification",
+     "content": {
+      "sender": "Parcel paused",
+      "body": "confirm address and pay INR 20 within 6 hours.",
+      "platform": "sms",
+      "received_at": "15:13",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "S05-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Parcel paused",
+     "content": {
+      "display_name": "Parcel paused",
+      "identifier": "+91 00000 98499",
+      "avatar_initials": "PP",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "12:15"
+     }
+    },
+    {
+     "asset_id": "S05-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Parcel paused thread",
+     "content": {
+      "header": {
+       "title": "Parcel paused",
+       "subtitle": "+91 00000 98499",
+       "avatarSeed": "PP"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A text says a delivery address is incomplete and asks for a small redelivery fee."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "confirm address and pay INR 20 within 6 hours.",
+        "time": "13:35"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "S05-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 40556",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "S05-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://s05.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "s05.training.example",
+      "body": "The interaction advances to a synthetic address form followed by card/UPI fields",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    },
+    {
+     "asset_id": "S05-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "Parcel paused",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-S05",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "S05-notif-01"
+   ],
+   [
+    "S05-thread-01",
+    "S05-sender-01"
+   ],
+   [
+    "S05-sender-01",
+    "S05-browser-01"
+   ],
+   [
+    "S05-browser-01",
+    "S05-payment-01"
+   ],
+   [
+    "S05-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "S06",
+  "definition_version": 1,
+  "platform": "sms",
+  "synthetic": {
+   "sender": {
+    "display_name": "Unit Records",
+    "identifier": "+91 00000 16025",
+    "avatar_initials": "UR",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "14:18"
+   },
+   "prior_context": "An unknown number claims to be the unit clerk and asks the learner to reply with a service number and date of birth.",
+   "assets": [
+    {
+     "asset_id": "S06-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "sms notification",
+     "content": {
+      "sender": "Unit Records",
+      "body": "Reply SERVICE NO + DOB to keep your personnel file active.",
+      "platform": "sms",
+      "received_at": "19:56",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "S06-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Unit Records",
+     "content": {
+      "display_name": "Unit Records",
+      "identifier": "+91 00000 16025",
+      "avatar_initials": "UR",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "14:18"
+     }
+    },
+    {
+     "asset_id": "S06-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Unit Records thread",
+     "content": {
+      "header": {
+       "title": "Unit Records",
+       "subtitle": "+91 00000 16025",
+       "avatarSeed": "UR"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "An unknown number claims to be the unit clerk and asks the learner to reply with a service number and date of birth."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Reply SERVICE NO + DOB to keep your personnel file active.",
+        "time": "11:18"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "S06-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 29759",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "S06-notif-01"
+   ],
+   [
+    "S06-thread-01",
+    "S06-sender-01"
+   ],
+   [
+    "S06-sender-01"
+   ],
+   [],
+   [
+    "S06-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "S07",
+  "definition_version": 1,
+  "platform": "sms",
+  "synthetic": {
+   "sender": {
+    "display_name": "+91 00000 88047",
+    "identifier": "+91 00000 88047",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "17:33"
+   },
+   "prior_context": "A registered telecom header confirms the exact recharge the learner initiated in the synthetic provider app.",
+   "assets": [
+    {
+     "asset_id": "S07-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "sms notification",
+     "content": {
+      "sender": "+91 00000 88047",
+      "body": "Recharge of INR 299 successful for xx7710. Validity 28 days. No action required.",
+      "platform": "sms",
+      "received_at": "15:22",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "S07-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "+91 00000 88047",
+     "content": {
+      "display_name": "+91 00000 88047",
+      "identifier": "+91 00000 88047",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "17:33"
+     }
+    },
+    {
+     "asset_id": "S07-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "+91 00000 88047 thread",
+     "content": {
+      "header": {
+       "title": "+91 00000 88047",
+       "subtitle": "+91 00000 88047",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A registered telecom header confirms the exact recharge the learner initiated in the synthetic provider app."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Recharge of INR 299 successful for xx7710. Validity 28 days. No action required.",
+        "time": "15:07"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "S07-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 77275",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "S07-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "+91 00000 88047",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-S07",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "S07-notif-01"
+   ],
+   [
+    "S07-thread-01",
+    "S07-sender-01"
+   ],
+   [
+    "S07-sender-01"
+   ],
+   [
+    "S07-payment-01"
+   ],
+   [
+    "S07-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "S08",
+  "definition_version": 1,
+  "platform": "sms",
+  "synthetic": {
+   "sender": {
+    "display_name": "+91 00000 62252",
+    "identifier": "+91 00000 62252",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "09:32"
+   },
+   "prior_context": "An unknown sender says the learner won a lottery they never entered and must pay a processing fee.",
+   "assets": [
+    {
+     "asset_id": "S08-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "sms notification",
+     "content": {
+      "sender": "+91 00000 62252",
+      "body": "CONGRATS! You won INR 5 lakh. Pay INR 499 processing before midnight.",
+      "platform": "sms",
+      "received_at": "15:09",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "S08-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "+91 00000 62252",
+     "content": {
+      "display_name": "+91 00000 62252",
+      "identifier": "+91 00000 62252",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "09:32"
+     }
+    },
+    {
+     "asset_id": "S08-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "+91 00000 62252 thread",
+     "content": {
+      "header": {
+       "title": "+91 00000 62252",
+       "subtitle": "+91 00000 62252",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "An unknown sender says the learner won a lottery they never entered and must pay a processing fee."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "CONGRATS! You won INR 5 lakh. Pay INR 499 processing before midnight.",
+        "time": "16:25"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "S08-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 50966",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "S08-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://s08.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "s08.training.example",
+      "body": "The interaction advances to a claim form with identity and payment fields",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    },
+    {
+     "asset_id": "S08-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "+91 00000 62252",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-S08",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "S08-notif-01"
+   ],
+   [
+    "S08-thread-01",
+    "S08-sender-01"
+   ],
+   [
+    "S08-sender-01",
+    "S08-browser-01"
+   ],
+   [
+    "S08-browser-01",
+    "S08-payment-01"
+   ],
+   [
+    "S08-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "S09",
+  "definition_version": 1,
+  "platform": "sms",
+  "synthetic": {
+   "sender": {
+    "display_name": "+91 00000 76798",
+    "identifier": "+91 00000 76798",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "09:39"
+   },
+   "prior_context": "A polite wrong-number exchange develops over several synthetic days before pivoting to private investments.",
+   "assets": [
+    {
+     "asset_id": "S09-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "sms notification",
+     "content": {
+      "sender": "+91 00000 76798",
+      "body": "Sorry, is this Rohan? ... You seem kind. My analyst has a guaranteed trade tonight.",
+      "platform": "sms",
+      "received_at": "11:48",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "S09-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "+91 00000 76798",
+     "content": {
+      "display_name": "+91 00000 76798",
+      "identifier": "+91 00000 76798",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "09:39"
+     }
+    },
+    {
+     "asset_id": "S09-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "+91 00000 76798 thread",
+     "content": {
+      "header": {
+       "title": "+91 00000 76798",
+       "subtitle": "+91 00000 76798",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A polite wrong-number exchange develops over several synthetic days before pivoting to private investments."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Sorry, is this Rohan? ... You seem kind. My analyst has a guaranteed trade tonight.",
+        "time": "15:04"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "S09-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 47162",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "S09-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://s09.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "s09.training.example",
+      "body": "The interaction advances to a fake trading dashboard showing a trial profit and Deposit button",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    },
+    {
+     "asset_id": "S09-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "+91 00000 76798",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-S09",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "S09-notif-01"
+   ],
+   [
+    "S09-thread-01",
+    "S09-sender-01"
+   ],
+   [
+    "S09-sender-01",
+    "S09-browser-01"
+   ],
+   [
+    "S09-browser-01",
+    "S09-payment-01"
+   ],
+   [
+    "S09-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "S10",
+  "definition_version": 1,
+  "platform": "sms",
+  "synthetic": {
+   "sender": {
+    "display_name": "+91 00000 87986",
+    "identifier": "+91 00000 87986",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "07:23"
+   },
+   "prior_context": "A text claims a required eSIM upgrade and directs the learner to call a mobile number and share an OTP.",
+   "assets": [
+    {
+     "asset_id": "S10-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "sms notification",
+     "content": {
+      "sender": "+91 00000 87986",
+      "body": "SIM upgrade pending. Call 00000 31010 and quote the OTP sent next.",
+      "platform": "sms",
+      "received_at": "08:43",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "S10-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "+91 00000 87986",
+     "content": {
+      "display_name": "+91 00000 87986",
+      "identifier": "+91 00000 87986",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "07:23"
+     }
+    },
+    {
+     "asset_id": "S10-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "+91 00000 87986 thread",
+     "content": {
+      "header": {
+       "title": "+91 00000 87986",
+       "subtitle": "+91 00000 87986",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A text claims a required eSIM upgrade and directs the learner to call a mobile number and share an OTP."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "SIM upgrade pending. Call 00000 31010 and quote the OTP sent next.",
+        "time": "12:51"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "S10-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 95161",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "S10-call-01",
+     "kind": "call_screen",
+     "inert": true,
+     "label": "Incoming call",
+     "content": {
+      "caller": "+91 00000 87986",
+      "number": "+91 00000 87986",
+      "captions": [
+       "SIM upgrade pending. Call 00000 31010 and quote the OTP sent next."
+      ],
+      "timer_seconds": 0,
+      "choices": [
+       "decline",
+       "accept",
+       "end",
+       "verify",
+       "report"
+      ],
+      "microphone": false,
+      "camera": false,
+      "real_dialer": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "S10-notif-01"
+   ],
+   [
+    "S10-thread-01",
+    "S10-sender-01"
+   ],
+   [
+    "S10-sender-01"
+   ],
+   [
+    "S10-call-01"
+   ],
+   [
+    "S10-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "S11",
+  "definition_version": 1,
+  "platform": "sms",
+  "synthetic": {
+   "sender": {
+    "display_name": "Training Clinic",
+    "identifier": "+91 00000 35413",
+    "avatar_initials": "TC",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "19:33"
+   },
+   "prior_context": "A registered clinic header reminds the learner of an appointment booked in the synthetic clinic portal.",
+   "assets": [
+    {
+     "asset_id": "S11-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "sms notification",
+     "content": {
+      "sender": "Training Clinic",
+      "body": "Appointment 03 Sep 09:20. Reply 1 confirm, 2 reschedule.",
+      "platform": "sms",
+      "received_at": "17:37",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "S11-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Training Clinic",
+     "content": {
+      "display_name": "Training Clinic",
+      "identifier": "+91 00000 35413",
+      "avatar_initials": "TC",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "19:33"
+     }
+    },
+    {
+     "asset_id": "S11-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Training Clinic thread",
+     "content": {
+      "header": {
+       "title": "Training Clinic",
+       "subtitle": "+91 00000 35413",
+       "avatarSeed": "TC"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A registered clinic header reminds the learner of an appointment booked in the synthetic clinic portal."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Appointment 03 Sep 09:20. Reply 1 confirm, 2 reschedule.",
+        "time": "08:13"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "S11-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 17158",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "S11-notif-01"
+   ],
+   [
+    "S11-thread-01",
+    "S11-sender-01"
+   ],
+   [
+    "S11-sender-01"
+   ],
+   [],
+   [
+    "S11-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "S12",
+  "definition_version": 1,
+  "platform": "sms",
+  "synthetic": {
+   "sender": {
+    "display_name": "+91 00000 28689",
+    "identifier": "+91 00000 28689",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "19:57"
+   },
+   "prior_context": "A branded header promises a refund but uses a shortened link and requests bank credentials.",
+   "assets": [
+    {
+     "asset_id": "S12-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "sms notification",
+     "content": {
+      "sender": "+91 00000 28689",
+      "body": "Tax refund INR 12,480 approved. Confirm bank before 18:00: tx-rf.training.example",
+      "platform": "sms",
+      "received_at": "12:54",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "S12-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "+91 00000 28689",
+     "content": {
+      "display_name": "+91 00000 28689",
+      "identifier": "+91 00000 28689",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "19:57"
+     }
+    },
+    {
+     "asset_id": "S12-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "+91 00000 28689 thread",
+     "content": {
+      "header": {
+       "title": "+91 00000 28689",
+       "subtitle": "+91 00000 28689",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A branded header promises a refund but uses a shortened link and requests bank credentials."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Tax refund INR 12,480 approved. Confirm bank before 18:00: tx-rf.training.example",
+        "time": "15:24"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "S12-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 44312",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "S12-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://s12.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "s12.training.example",
+      "body": "The interaction advances to a synthetic refund form asking identity, account, card and OTP",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    },
+    {
+     "asset_id": "S12-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "+91 00000 28689",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-S12",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "S12-notif-01"
+   ],
+   [
+    "S12-thread-01",
+    "S12-sender-01"
+   ],
+   [
+    "S12-sender-01",
+    "S12-browser-01"
+   ],
+   [
+    "S12-browser-01",
+    "S12-payment-01"
+   ],
+   [
+    "S12-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "S13",
+  "definition_version": 1,
+  "platform": "sms",
+  "synthetic": {
+   "sender": {
+    "display_name": "Remote role",
+    "identifier": "+91 00000 49417",
+    "avatar_initials": "RR",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "15:37"
+   },
+   "prior_context": "An unsolicited recruiter offers high pay for product ratings and quickly asks for a deposit to unlock tasks.",
+   "assets": [
+    {
+     "asset_id": "S13-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "sms notification",
+     "content": {
+      "sender": "Remote role",
+      "body": "earn INR 4,000/day rating products. Reply YES for instant joining.",
+      "platform": "sms",
+      "received_at": "10:35",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "S13-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Remote role",
+     "content": {
+      "display_name": "Remote role",
+      "identifier": "+91 00000 49417",
+      "avatar_initials": "RR",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "15:37"
+     }
+    },
+    {
+     "asset_id": "S13-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Remote role thread",
+     "content": {
+      "header": {
+       "title": "Remote role",
+       "subtitle": "+91 00000 49417",
+       "avatarSeed": "RR"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "An unsolicited recruiter offers high pay for product ratings and quickly asks for a deposit to unlock tasks."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "earn INR 4,000/day rating products. Reply YES for instant joining.",
+        "time": "15:33"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "S13-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 27078",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "S13-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://s13.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "s13.training.example",
+      "body": "The interaction advances to a task dashboard showing bonus earnings followed by a recharge demand",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "S13-notif-01"
+   ],
+   [
+    "S13-thread-01",
+    "S13-sender-01"
+   ],
+   [
+    "S13-sender-01",
+    "S13-browser-01"
+   ],
+   [
+    "S13-browser-01"
+   ],
+   [
+    "S13-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "S14",
+  "definition_version": 1,
+  "platform": "sms",
+  "synthetic": {
+   "sender": {
+    "display_name": "UNIT ALERT",
+    "identifier": "+91 00000 35758",
+    "avatar_initials": "UA",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "17:05"
+   },
+   "prior_context": "A spoofed sender announces an emergency recall and asks the learner to confirm current location via a link.",
+   "assets": [
+    {
+     "asset_id": "S14-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "sms notification",
+     "content": {
+      "sender": "UNIT ALERT",
+      "body": "Immediate recall. Confirm live location and ETA at recall.training.example.",
+      "platform": "sms",
+      "received_at": "15:45",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "S14-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "UNIT ALERT",
+     "content": {
+      "display_name": "UNIT ALERT",
+      "identifier": "+91 00000 35758",
+      "avatar_initials": "UA",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "17:05"
+     }
+    },
+    {
+     "asset_id": "S14-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "UNIT ALERT thread",
+     "content": {
+      "header": {
+       "title": "UNIT ALERT",
+       "subtitle": "+91 00000 35758",
+       "avatarSeed": "UA"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A spoofed sender announces an emergency recall and asks the learner to confirm current location via a link."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Immediate recall. Confirm live location and ETA at recall.training.example.",
+        "time": "11:26"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "S14-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 81739",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "S14-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://s14.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "s14.training.example",
+      "body": "The interaction advances to a synthetic map form asking location, route and service number",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "S14-notif-01"
+   ],
+   [
+    "S14-thread-01",
+    "S14-sender-01"
+   ],
+   [
+    "S14-sender-01",
+    "S14-browser-01"
+   ],
+   [
+    "S14-browser-01"
+   ],
+   [
+    "S14-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "S15",
+  "definition_version": 1,
+  "platform": "sms",
+  "synthetic": {
+   "sender": {
+    "display_name": "+91 00000 46373",
+    "identifier": "+91 00000 46373",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "07:14"
+   },
+   "prior_context": "An MMS image offers a limited canteen subsidy and hides the destination in a QR code.",
+   "assets": [
+    {
+     "asset_id": "S15-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "sms notification",
+     "content": {
+      "sender": "+91 00000 46373",
+      "body": "Service family subsidy - scan today to activate INR 2,000 benefit.",
+      "platform": "sms",
+      "received_at": "17:16",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "S15-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "+91 00000 46373",
+     "content": {
+      "display_name": "+91 00000 46373",
+      "identifier": "+91 00000 46373",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "07:14"
+     }
+    },
+    {
+     "asset_id": "S15-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "+91 00000 46373 thread",
+     "content": {
+      "header": {
+       "title": "+91 00000 46373",
+       "subtitle": "+91 00000 46373",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "An MMS image offers a limited canteen subsidy and hides the destination in a QR code."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Service family subsidy - scan today to activate INR 2,000 benefit.",
+        "time": "10:40"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "S15-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 25089",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "S15-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://s15.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "s15.training.example",
+      "body": "The interaction advances to the QR inspector and synthetic eligibility form",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    },
+    {
+     "asset_id": "S15-qr-01",
+     "kind": "qr_payload",
+     "inert": true,
+     "label": "QR code",
+     "display_target": "https://s15.training.example/qr",
+     "content": {
+      "decoded_target": "https://s15.training.example/qr",
+      "decoded_locally": true,
+      "camera": false,
+      "clipboard": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "S15-notif-01"
+   ],
+   [
+    "S15-thread-01",
+    "S15-sender-01"
+   ],
+   [
+    "S15-sender-01",
+    "S15-browser-01"
+   ],
+   [
+    "S15-browser-01",
+    "S15-qr-01"
+   ],
+   [
+    "S15-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "S16",
+  "definition_version": 1,
+  "platform": "sms",
+  "synthetic": {
+   "sender": {
+    "display_name": "+91 00000 70760",
+    "identifier": "+91 00000 70760",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "19:26"
+   },
+   "prior_context": "The learner has just initiated a login in the synthetic official app and receives the matching one-time code.",
+   "assets": [
+    {
+     "asset_id": "S16-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "sms notification",
+     "content": {
+      "sender": "+91 00000 70760",
+      "body": "Your TRAINING PORTAL code is 482193. Do not share it. Expires in 5 minutes.",
+      "platform": "sms",
+      "received_at": "14:49",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "S16-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "+91 00000 70760",
+     "content": {
+      "display_name": "+91 00000 70760",
+      "identifier": "+91 00000 70760",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "19:26"
+     }
+    },
+    {
+     "asset_id": "S16-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "+91 00000 70760 thread",
+     "content": {
+      "header": {
+       "title": "+91 00000 70760",
+       "subtitle": "+91 00000 70760",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "The learner has just initiated a login in the synthetic official app and receives the matching one-time code."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Your TRAINING PORTAL code is 482193. Do not share it. Expires in 5 minutes.",
+        "time": "07:10"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "S16-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 63530",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "S16-notif-01"
+   ],
+   [
+    "S16-thread-01",
+    "S16-sender-01"
+   ],
+   [
+    "S16-sender-01"
+   ],
+   [],
+   [
+    "S16-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "S17",
+  "definition_version": 1,
+  "platform": "sms",
+  "synthetic": {
+   "sender": {
+    "display_name": "+91 00000 19543",
+    "identifier": "+91 00000 19543",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "16:04"
+   },
+   "prior_context": "An unknown number claims to be a family member with a broken phone and requests immediate payment.",
+   "assets": [
+    {
+     "asset_id": "S17-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "sms notification",
+     "content": {
+      "sender": "+91 00000 19543",
+      "body": "Mum, this is my new number. Phone broke. Please send INR 15,000 to the hospital now.",
+      "platform": "sms",
+      "received_at": "16:53",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "S17-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "+91 00000 19543",
+     "content": {
+      "display_name": "+91 00000 19543",
+      "identifier": "+91 00000 19543",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "16:04"
+     }
+    },
+    {
+     "asset_id": "S17-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "+91 00000 19543 thread",
+     "content": {
+      "header": {
+       "title": "+91 00000 19543",
+       "subtitle": "+91 00000 19543",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "An unknown number claims to be a family member with a broken phone and requests immediate payment."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Mum, this is my new number. Phone broke. Please send INR 15,000 to the hospital now.",
+        "time": "10:53"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "S17-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 71276",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "S17-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "+91 00000 19543",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-S17",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "S17-notif-01"
+   ],
+   [
+    "S17-thread-01",
+    "S17-sender-01"
+   ],
+   [
+    "S17-sender-01"
+   ],
+   [
+    "S17-payment-01"
+   ],
+   [
+    "S17-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "S18",
+  "definition_version": 1,
+  "platform": "sms",
+  "synthetic": {
+   "sender": {
+    "display_name": "SECURITY HOLD",
+    "identifier": "+91 00000 53944",
+    "avatar_initials": "SH",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "16:42"
+   },
+   "prior_context": "A malicious message appears inside a realistic existing bank-alert thread and asks the learner to call a number.",
+   "assets": [
+    {
+     "asset_id": "S18-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "sms notification",
+     "content": {
+      "sender": "SECURITY HOLD",
+      "body": "Unusual transfer. Call 00000 41818 in 10 minutes to prevent account freeze.",
+      "platform": "sms",
+      "received_at": "11:41",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "S18-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "SECURITY HOLD",
+     "content": {
+      "display_name": "SECURITY HOLD",
+      "identifier": "+91 00000 53944",
+      "avatar_initials": "SH",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "16:42"
+     }
+    },
+    {
+     "asset_id": "S18-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "SECURITY HOLD thread",
+     "content": {
+      "header": {
+       "title": "SECURITY HOLD",
+       "subtitle": "+91 00000 53944",
+       "avatarSeed": "SH"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A malicious message appears inside a realistic existing bank-alert thread and asks the learner to call a number."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Unusual transfer. Call 00000 41818 in 10 minutes to prevent account freeze.",
+        "time": "13:42"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "S18-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 17726",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "S18-call-01",
+     "kind": "call_screen",
+     "inert": true,
+     "label": "Incoming call",
+     "content": {
+      "caller": "SECURITY HOLD",
+      "number": "+91 00000 53944",
+      "captions": [
+       "Unusual transfer. Call 00000 41818 in 10 minutes to prevent account freeze."
+      ],
+      "timer_seconds": 0,
+      "choices": [
+       "decline",
+       "accept",
+       "end",
+       "verify",
+       "report"
+      ],
+      "microphone": false,
+      "camera": false,
+      "real_dialer": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "S18-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "SECURITY HOLD",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-S18",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "S18-notif-01"
+   ],
+   [
+    "S18-thread-01",
+    "S18-sender-01"
+   ],
+   [
+    "S18-sender-01"
+   ],
+   [
+    "S18-call-01",
+    "S18-payment-01"
+   ],
+   [
+    "S18-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "S19",
+  "definition_version": 1,
+  "platform": "sms",
+  "synthetic": {
+   "sender": {
+    "display_name": "+91 00000 95779",
+    "identifier": "+91 00000 95779",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "09:54"
+   },
+   "prior_context": "A telecom-style message says a coverage survey for a base requires IMEI, live location and device model.",
+   "assets": [
+    {
+     "asset_id": "S19-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "sms notification",
+     "content": {
+      "sender": "+91 00000 95779",
+      "body": "Priority network survey for Unit Falcon area. Reply IMEI + location + device model.",
+      "platform": "sms",
+      "received_at": "15:55",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "S19-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "+91 00000 95779",
+     "content": {
+      "display_name": "+91 00000 95779",
+      "identifier": "+91 00000 95779",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "09:54"
+     }
+    },
+    {
+     "asset_id": "S19-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "+91 00000 95779 thread",
+     "content": {
+      "header": {
+       "title": "+91 00000 95779",
+       "subtitle": "+91 00000 95779",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A telecom-style message says a coverage survey for a base requires IMEI, live location and device model."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Priority network survey for Unit Falcon area. Reply IMEI + location + device model.",
+        "time": "13:16"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "S19-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 32375",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "S19-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://s19.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "s19.training.example",
+      "body": "The interaction advances to a structured reply form with IMEI, GPS and device fields",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "S19-notif-01"
+   ],
+   [
+    "S19-thread-01",
+    "S19-sender-01"
+   ],
+   [
+    "S19-sender-01",
+    "S19-browser-01"
+   ],
+   [
+    "S19-browser-01"
+   ],
+   [
+    "S19-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "S20",
+  "definition_version": 1,
+  "platform": "sms",
+  "synthetic": {
+   "sender": {
+    "display_name": "Parcel address failed. Later",
+    "identifier": "+91 00000 50050",
+    "avatar_initials": "PA",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "10:43"
+   },
+   "prior_context": "A parcel text first requests address confirmation; a follow-up says fraud was detected and gives a support number.",
+   "assets": [
+    {
+     "asset_id": "S20-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "sms notification",
+     "content": {
+      "sender": "Parcel address failed. Later",
+      "body": "Payment fraud detected - call support immediately.",
+      "platform": "sms",
+      "received_at": "16:01",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "S20-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Parcel address failed. Later",
+     "content": {
+      "display_name": "Parcel address failed. Later",
+      "identifier": "+91 00000 50050",
+      "avatar_initials": "PA",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "10:43"
+     }
+    },
+    {
+     "asset_id": "S20-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Parcel address failed. Later thread",
+     "content": {
+      "header": {
+       "title": "Parcel address failed. Later",
+       "subtitle": "+91 00000 50050",
+       "avatarSeed": "PA"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A parcel text first requests address confirmation; a follow-up says fraud was detected and gives a support number."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Payment fraud detected - call support immediately.",
+        "time": "09:15"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "S20-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 60873",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "S20-call-01",
+     "kind": "call_screen",
+     "inert": true,
+     "label": "Incoming call",
+     "content": {
+      "caller": "Parcel address failed. Later",
+      "number": "+91 00000 50050",
+      "captions": [
+       "Payment fraud detected - call support immediately."
+      ],
+      "timer_seconds": 0,
+      "choices": [
+       "decline",
+       "accept",
+       "end",
+       "verify",
+       "report"
+      ],
+      "microphone": false,
+      "camera": false,
+      "real_dialer": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "S20-install-01",
+     "kind": "install_screen",
+     "inert": true,
+     "label": "Install / permission request",
+     "content": {
+      "app_name": "S20 Training Mock",
+      "permissions": [
+       "sms",
+       "accessibility",
+       "screen_capture"
+      ],
+      "installs": false,
+      "grants_real_permission": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "S20-notif-01"
+   ],
+   [
+    "S20-thread-01",
+    "S20-sender-01"
+   ],
+   [
+    "S20-sender-01"
+   ],
+   [
+    "S20-call-01",
+    "S20-install-01"
+   ],
+   [
+    "S20-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "S21",
+  "definition_version": 1,
+  "platform": "sms",
+  "synthetic": {
+   "sender": {
+    "display_name": "+91 00000 72744",
+    "identifier": "+91 00000 72744",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "09:42"
+   },
+   "prior_context": "A registered security alert matches a login the learner just completed on a synthetic issued device.",
+   "assets": [
+    {
+     "asset_id": "S21-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "sms notification",
+     "content": {
+      "sender": "+91 00000 72744",
+      "body": "TRAINING PORTAL login on DEV-204 at 14:22. If this was you, no action is needed.",
+      "platform": "sms",
+      "received_at": "14:49",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "S21-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "+91 00000 72744",
+     "content": {
+      "display_name": "+91 00000 72744",
+      "identifier": "+91 00000 72744",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "09:42"
+     }
+    },
+    {
+     "asset_id": "S21-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "+91 00000 72744 thread",
+     "content": {
+      "header": {
+       "title": "+91 00000 72744",
+       "subtitle": "+91 00000 72744",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A registered security alert matches a login the learner just completed on a synthetic issued device."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "TRAINING PORTAL login on DEV-204 at 14:22. If this was you, no action is needed.",
+        "time": "13:44"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "S21-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 16215",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "S21-notif-01"
+   ],
+   [
+    "S21-thread-01",
+    "S21-sender-01"
+   ],
+   [
+    "S21-sender-01"
+   ],
+   [],
+   [
+    "S21-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "S22",
+  "definition_version": 1,
+  "platform": "sms",
+  "synthetic": {
+   "sender": {
+    "display_name": "Secure Voice",
+    "identifier": "+91 00000 38373",
+    "avatar_initials": "SV",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "13:07"
+   },
+   "prior_context": "A text claims a senior left a secure voice message accessible only through a short link.",
+   "assets": [
+    {
+     "asset_id": "S22-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "sms notification",
+     "content": {
+      "sender": "Secure Voice",
+      "body": "Col. Dev left 1 urgent message. Listen before 18:00.",
+      "platform": "sms",
+      "received_at": "15:16",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "S22-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Secure Voice",
+     "content": {
+      "display_name": "Secure Voice",
+      "identifier": "+91 00000 38373",
+      "avatar_initials": "SV",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "13:07"
+     }
+    },
+    {
+     "asset_id": "S22-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Secure Voice thread",
+     "content": {
+      "header": {
+       "title": "Secure Voice",
+       "subtitle": "+91 00000 38373",
+       "avatarSeed": "SV"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A text claims a senior left a secure voice message accessible only through a short link."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Col. Dev left 1 urgent message. Listen before 18:00.",
+        "time": "09:56"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "S22-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 39479",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "S22-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://s22.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "s22.training.example",
+      "body": "The interaction advances to a fake voice portal that asks for mail credentials, then plays a synthetic instruction",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    },
+    {
+     "asset_id": "S22-call-01",
+     "kind": "call_screen",
+     "inert": true,
+     "label": "Incoming call",
+     "content": {
+      "caller": "Secure Voice",
+      "number": "+91 00000 38373",
+      "captions": [
+       "Col. Dev left 1 urgent message. Listen before 18:00."
+      ],
+      "timer_seconds": 0,
+      "choices": [
+       "decline",
+       "accept",
+       "end",
+       "verify",
+       "report"
+      ],
+      "microphone": false,
+      "camera": false,
+      "real_dialer": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "S22-notif-01"
+   ],
+   [
+    "S22-thread-01",
+    "S22-sender-01"
+   ],
+   [
+    "S22-sender-01",
+    "S22-browser-01"
+   ],
+   [
+    "S22-browser-01",
+    "S22-call-01"
+   ],
+   [
+    "S22-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "S23",
+  "definition_version": 1,
+  "platform": "sms",
+  "synthetic": {
+   "sender": {
+    "display_name": "+91 00000 93599",
+    "identifier": "+91 00000 93599",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "17:46"
+   },
+   "prior_context": "A merchant-themed text says a refund requires accepting a UPI collect request and entering the payment PIN.",
+   "assets": [
+    {
+     "asset_id": "S23-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "sms notification",
+     "content": {
+      "sender": "+91 00000 93599",
+      "body": "Refund INR 2,499 ready. Accept collect request and enter UPI PIN to receive.",
+      "platform": "sms",
+      "received_at": "17:19",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "S23-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "+91 00000 93599",
+     "content": {
+      "display_name": "+91 00000 93599",
+      "identifier": "+91 00000 93599",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "17:46"
+     }
+    },
+    {
+     "asset_id": "S23-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "+91 00000 93599 thread",
+     "content": {
+      "header": {
+       "title": "+91 00000 93599",
+       "subtitle": "+91 00000 93599",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A merchant-themed text says a refund requires accepting a UPI collect request and entering the payment PIN."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Refund INR 2,499 ready. Accept collect request and enter UPI PIN to receive.",
+        "time": "17:00"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "S23-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 54369",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "S23-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "+91 00000 93599",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-S23",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "S23-notif-01"
+   ],
+   [
+    "S23-thread-01",
+    "S23-sender-01"
+   ],
+   [
+    "S23-sender-01"
+   ],
+   [
+    "S23-payment-01"
+   ],
+   [
+    "S23-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "S24",
+  "definition_version": 1,
+  "platform": "sms",
+  "synthetic": {
+   "sender": {
+    "display_name": "CYBER CASE NOTICE",
+    "identifier": "+91 00000 97400",
+    "avatar_initials": "CC",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "12:35"
+   },
+   "prior_context": "A text claims a cybercrime complaint names the learner and demands a case-clearance fee.",
+   "assets": [
+    {
+     "asset_id": "S24-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "sms notification",
+     "content": {
+      "sender": "CYBER CASE NOTICE",
+      "body": "Pay verification fee to avoid warrant. Case closes today.",
+      "platform": "sms",
+      "received_at": "07:03",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "S24-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "CYBER CASE NOTICE",
+     "content": {
+      "display_name": "CYBER CASE NOTICE",
+      "identifier": "+91 00000 97400",
+      "avatar_initials": "CC",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "12:35"
+     }
+    },
+    {
+     "asset_id": "S24-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "CYBER CASE NOTICE thread",
+     "content": {
+      "header": {
+       "title": "CYBER CASE NOTICE",
+       "subtitle": "+91 00000 97400",
+       "avatarSeed": "CC"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A text claims a cybercrime complaint names the learner and demands a case-clearance fee."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Pay verification fee to avoid warrant. Case closes today.",
+        "time": "09:20"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "S24-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 18649",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "S24-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://s24.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "s24.training.example",
+      "body": "The interaction advances to a fake case portal and payment timer",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    },
+    {
+     "asset_id": "S24-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "CYBER CASE NOTICE",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-S24",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "S24-notif-01"
+   ],
+   [
+    "S24-thread-01",
+    "S24-sender-01"
+   ],
+   [
+    "S24-sender-01",
+    "S24-browser-01"
+   ],
+   [
+    "S24-browser-01",
+    "S24-payment-01"
+   ],
+   [
+    "S24-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "S25",
+  "definition_version": 1,
+  "platform": "sms",
+  "synthetic": {
+   "sender": {
+    "display_name": "+91 00000 20845",
+    "identifier": "+91 00000 20845",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "17:25"
+   },
+   "prior_context": "A text says a toll tag will stop working unless an attached Android app is installed for verification.",
+   "assets": [
+    {
+     "asset_id": "S25-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "sms notification",
+     "content": {
+      "sender": "+91 00000 20845",
+      "body": "FASTag KYC expiring. Install verification app now to avoid deactivation.",
+      "platform": "sms",
+      "received_at": "10:15",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "S25-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "+91 00000 20845",
+     "content": {
+      "display_name": "+91 00000 20845",
+      "identifier": "+91 00000 20845",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "17:25"
+     }
+    },
+    {
+     "asset_id": "S25-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "+91 00000 20845 thread",
+     "content": {
+      "header": {
+       "title": "+91 00000 20845",
+       "subtitle": "+91 00000 20845",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A text says a toll tag will stop working unless an attached Android app is installed for verification."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "FASTag KYC expiring. Install verification app now to avoid deactivation.",
+        "time": "12:20"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "S25-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 35731",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "S25-file-01",
+     "kind": "file",
+     "inert": true,
+     "label": "S25_attachment.pdf",
+     "content": {
+      "file_name": "S25_attachment.pdf",
+      "file_kind": "pdf",
+      "file_size": "791 KB",
+      "preview": "The interaction advances to a simulated APK installer requesting SMS, accessibility and screen-capture permissions",
+      "executes": false,
+      "macros_extracted": false,
+      "archive_mounted": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "S25-notif-01"
+   ],
+   [
+    "S25-thread-01",
+    "S25-sender-01"
+   ],
+   [
+    "S25-sender-01",
+    "S25-file-01"
+   ],
+   [
+    "S25-file-01"
+   ],
+   [
+    "S25-dir-01"
+   ],
+   []
+  ]
+ }
+]

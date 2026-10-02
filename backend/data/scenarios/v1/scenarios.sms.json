@@ -1,0 +1,1577 @@
+[
+ {
+  "scenario_id": "S01",
+  "title": "Bank KYC Suspension",
+  "platform": "SMS",
+  "difficulty": "Easy",
+  "disposition": "Malicious",
+  "family": "Smishing / bank impersonation",
+  "trigger": "Fear + urgency",
+  "end_state": "Official app shows no block; sender is reported as junk.",
+  "feedback": "Banks do not need your PIN or OTP by text. Open the official app yourself and verify.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'KYC overdue. Account blocks in 30 min. Update: bank-verify.training.example' The SMS badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, SMS tile, unread badge, sender/header preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the unread bank-themed conversation. Context presented: A text from an ordinary mobile number says the learner's bank account will be blocked unless KYC is updated.",
+    "ui_to_build": "Native-style conversation list and thread with sender header/number, timestamps and link/MMS preview.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine full number/header, prior thread, shortened/look-alike link and countdown",
+    "ui_to_build": "Conversation details sheet showing full number/header, prior thread, SIM label and report-junk controls.",
+    "expected_safe_behavior": "Check this decision signal: The message is unsolicited, uses pressure and asks the learner to leave the official banking app.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a fake mobile KYC page requesting account, PIN and OTP",
+    "ui_to_build": "Offline safe browser, call-confirmation sheet, MMS/QR inspector or synthetic payment request panel.",
+    "expected_safe_behavior": "Do not enter credentials, PIN, OTP or ID imagery. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: open the known banking app directly or call the card's known number",
+    "ui_to_build": "Conversation action sheet with block/report junk plus independent official-app, statement or known-number verification overlay.",
+    "expected_safe_behavior": "Verify independently: open the known banking app directly or call the card's known number Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: close; report junk/block; verify account status independently",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 89,
+  "content_sha256": "f4130061943fef6df1dfbfc74dbba08e6d4372f10de5fa274426ba8d6330e81c"
+ },
+ {
+  "scenario_id": "S02",
+  "title": "Electricity Disconnect Tonight",
+  "platform": "SMS",
+  "difficulty": "Easy",
+  "disposition": "Malicious",
+  "family": "Utility impersonation / callback scam",
+  "trigger": "Fear + urgency",
+  "end_state": "Official bill mock shows paid status and the fake number is blocked.",
+  "feedback": "Disconnection threats create panic. Verify bills through the utility channel you already know.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Power will disconnect 21:30 for unpaid bill. Call 00000 12002 now.' The SMS badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, SMS tile, unread badge, sender/header preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the utility-themed thread. Context presented: A text threatens power disconnection and supplies a personal mobile number for immediate payment.",
+    "ui_to_build": "Native-style conversation list and thread with sender header/number, timestamps and link/MMS preview.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine sender number, absent customer reference, supplied callback and late-hour pressure",
+    "ui_to_build": "Conversation details sheet showing full number/header, prior thread, SIM label and report-junk controls.",
+    "expected_safe_behavior": "Check this decision signal: A genuine utility notice should match the account and be verifiable in the official portal; the personal callback is suspicious.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a call-confirmation sheet leading to a synthetic operator asking for remote access/payment",
+    "ui_to_build": "Offline safe browser, call-confirmation sheet, MMS/QR inspector or synthetic payment request panel.",
+    "expected_safe_behavior": "Do not call the supplied number, share screen or pay. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: check the known utility app/bill or call the official number from the bill",
+    "ui_to_build": "Conversation action sheet with block/report junk plus independent official-app, statement or known-number verification overlay.",
+    "expected_safe_behavior": "Verify independently: check the known utility app/bill or call the official number from the bill Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: do not call; report junk/block; verify the account independently",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 90,
+  "content_sha256": "68c36f51ed994b2dd67b3c75d3671dca4dac3b5240162fdc97f7f87217977c0e"
+ },
+ {
+  "scenario_id": "S03",
+  "title": "Matching Debit Alert",
+  "platform": "SMS",
+  "difficulty": "Easy",
+  "disposition": "Legitimate",
+  "family": "Legitimate transaction alert",
+  "trigger": "Routine",
+  "end_state": "Transaction match is confirmed and the alert remains in the legitimate thread.",
+  "feedback": "A matching no-action alert is useful security information. Verify it against the account and avoid a false report.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'ALERT: INR 840 debited at TRAINING MART, card xx1042. No action needed.' The SMS badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, SMS tile, unread badge, sender/header preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the established bank-alert thread. Context presented: A no-link bank alert matches the synthetic purchase the learner completed moments earlier.",
+    "ui_to_build": "Native-style conversation list and thread with sender header/number, timestamps and link/MMS preview.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine registered header, amount, masked card, timestamp and absence of links/callback",
+    "ui_to_build": "Conversation details sheet showing full number/header, prior thread, SIM label and report-junk controls.",
+    "expected_safe_behavior": "Check this decision signal: The alert matches the learner's simulated transaction and contains no request for secrets or action.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to the in-app transaction comparison card with Mark reviewed",
+    "ui_to_build": "Offline safe browser, call-confirmation sheet, MMS/QR inspector or synthetic payment request panel.",
+    "expected_safe_behavior": "Use the normal in-app path only after the details match the known context. Do not switch to an untrusted channel.",
+    "scoring_event": "CORRECT_USE +3; needless reject/ignore -2; unsafe external action -4."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: compare with the known banking-app transaction list",
+    "ui_to_build": "Conversation action sheet with block/report junk plus independent official-app, statement or known-number verification overlay.",
+    "expected_safe_behavior": "Verify independently: compare with the known banking-app transaction list If it matches, continue; do not report or block a legitimate sender.",
+    "scoring_event": "TRUSTED_VERIFY +3; false report/block -4; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: mark reviewed/archive; do not report or block",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 91,
+  "content_sha256": "d8cce13dfb489ae55af81d62544e3c9bd5b11d307cfd2f7bfd96575eae02f73c"
+ },
+ {
+  "scenario_id": "S04",
+  "title": "Unpaid E-Challan Link",
+  "platform": "SMS",
+  "difficulty": "Easy",
+  "disposition": "Malicious",
+  "family": "Government-service smishing",
+  "trigger": "Fear + urgency",
+  "end_state": "Official portal mock finds no fine and the sender is blocked.",
+  "feedback": "Verify fines in the official portal you open yourself. Do not pay from an unsolicited text link.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'E-CHALLAN pending INR 500. Pay today to avoid court: challan-pay.training.example' The SMS badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, SMS tile, unread badge, sender/header preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the new challan conversation. Context presented: A text claims an unpaid traffic fine will increase today and contains a look-alike payment link.",
+    "ui_to_build": "Native-style conversation list and thread with sender header/number, timestamps and link/MMS preview.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine sender/header, vehicle/reference mismatch, link target and consequence language",
+    "ui_to_build": "Conversation details sheet showing full number/header, prior thread, SIM label and report-junk controls.",
+    "expected_safe_behavior": "Check this decision signal: The learner has no matching case and the domain is not the known government portal.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a fake challan page requesting vehicle, card/UPI and OTP",
+    "ui_to_build": "Offline safe browser, call-confirmation sheet, MMS/QR inspector or synthetic payment request panel.",
+    "expected_safe_behavior": "Do not pay or enter vehicle/financial/OTP data. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: open the official challan portal/app independently and search a known vehicle/reference",
+    "ui_to_build": "Conversation action sheet with block/report junk plus independent official-app, statement or known-number verification overlay.",
+    "expected_safe_behavior": "Verify independently: open the official challan portal/app independently and search a known vehicle/reference Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: close; report junk/block; preserve the message",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 92,
+  "content_sha256": "14c15cc0b2c3b6523271624701308bbc2cfac583fed69b9cd085c9e166bee561"
+ },
+ {
+  "scenario_id": "S05",
+  "title": "Parcel Address Fee",
+  "platform": "SMS",
+  "difficulty": "Easy",
+  "disposition": "Malicious",
+  "family": "Parcel smishing / payment phishing",
+  "trigger": "Curiosity + urgency",
+  "end_state": "No address/payment data is entered and the sender is blocked.",
+  "feedback": "Small delivery fees are designed to seem harmless. Verify the parcel independently before sharing data.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Parcel paused: confirm address and pay INR 20 within 6 hours.' The SMS badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, SMS tile, unread badge, sender/header preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the package text thread. Context presented: A text says a delivery address is incomplete and asks for a small redelivery fee.",
+    "ui_to_build": "Native-style conversation list and thread with sender header/number, timestamps and link/MMS preview.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine unknown sender, unexpected parcel, shortened link and small-fee request",
+    "ui_to_build": "Conversation details sheet showing full number/header, prior thread, SIM label and report-junk controls.",
+    "expected_safe_behavior": "Check this decision signal: The link and fee are inconsistent with a parcel the learner cannot identify.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a synthetic address form followed by card/UPI fields",
+    "ui_to_build": "Offline safe browser, call-confirmation sheet, MMS/QR inspector or synthetic payment request panel.",
+    "expected_safe_behavior": "Do not enter home address, card details or approve payment. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: check the known courier app/site with independently held tracking information",
+    "ui_to_build": "Conversation action sheet with block/report junk plus independent official-app, statement or known-number verification overlay.",
+    "expected_safe_behavior": "Verify independently: check the known courier app/site with independently held tracking information Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: close; report junk/block; do not reply",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 93,
+  "content_sha256": "5c199dc125b2999626bff9ef2b3e6a202a6d3f25ffd7051f5e48eeefde46a7cc"
+ },
+ {
+  "scenario_id": "S06",
+  "title": "Service-Number Confirmation",
+  "platform": "SMS",
+  "difficulty": "Easy",
+  "disposition": "Malicious",
+  "family": "Military impersonation / identity collection",
+  "trigger": "Authority | FICTIONAL MILITARY CONTEXT",
+  "end_state": "No identity data is sent and the sender is blocked.",
+  "feedback": "Authority claims do not replace the approved records process. Never send service identity data by unsolicited SMS.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Unit Records: Reply SERVICE NO + DOB to keep your personnel file active.' The SMS badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, SMS tile, unread badge, sender/header preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the unsaved administrative-looking thread. Context presented: An unknown number claims to be the unit clerk and asks the learner to reply with a service number and date of birth.",
+    "ui_to_build": "Native-style conversation list and thread with sender header/number, timestamps and link/MMS preview.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine full number, generic sender, absent case reference and sensitive data request",
+    "ui_to_build": "Conversation details sheet showing full number/header, prior thread, SIM label and report-junk controls.",
+    "expected_safe_behavior": "Check this decision signal: A personal SMS number is not the approved personnel-record channel and the data request is excessive.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a quick-reply composer with synthetic identity chips",
+    "ui_to_build": "Offline safe browser, call-confirmation sheet, MMS/QR inspector or synthetic payment request panel.",
+    "expected_safe_behavior": "Do not send service number, date of birth or document photo. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: contact the unit clerk through the approved directory/in person",
+    "ui_to_build": "Conversation action sheet with block/report junk plus independent official-app, statement or known-number verification overlay.",
+    "expected_safe_behavior": "Verify independently: contact the unit clerk through the approved directory/in person Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: do not reply; report through unit security; block the number",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 94,
+  "content_sha256": "2acf9c2c1a3d88108c5522e44d46ba25413b881c9ab4614e8e0ee9b2d7e096b2"
+ },
+ {
+  "scenario_id": "S07",
+  "title": "Expected Recharge Confirmation",
+  "platform": "SMS",
+  "difficulty": "Easy",
+  "disposition": "Legitimate",
+  "family": "Legitimate service receipt",
+  "trigger": "Routine",
+  "end_state": "Recharge and SMS receipt match and remain stored locally.",
+  "feedback": "Expected, matching receipts are legitimate. Verify the amount and account, then handle normally.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Recharge of INR 299 successful for xx7710. Validity 28 days. No action required.' The SMS badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, SMS tile, unread badge, sender/header preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the established provider thread. Context presented: A registered telecom header confirms the exact recharge the learner initiated in the synthetic provider app.",
+    "ui_to_build": "Native-style conversation list and thread with sender header/number, timestamps and link/MMS preview.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine registered header, masked number, amount, timing and no-action text",
+    "ui_to_build": "Conversation details sheet showing full number/header, prior thread, SIM label and report-junk controls.",
+    "expected_safe_behavior": "Check this decision signal: The alert matches the learner-initiated transaction and asks for no link, reply or personal information.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to the provider-app receipt comparison card",
+    "ui_to_build": "Offline safe browser, call-confirmation sheet, MMS/QR inspector or synthetic payment request panel.",
+    "expected_safe_behavior": "Use the normal in-app path only after the details match the known context. Do not switch to an untrusted channel.",
+    "scoring_event": "CORRECT_USE +3; needless reject/ignore -2; unsafe external action -4."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: compare the transaction in the known provider app",
+    "ui_to_build": "Conversation action sheet with block/report junk plus independent official-app, statement or known-number verification overlay.",
+    "expected_safe_behavior": "Verify independently: compare the transaction in the known provider app If it matches, continue; do not report or block a legitimate sender.",
+    "scoring_event": "TRUSTED_VERIFY +3; false report/block -4; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: mark reviewed; retain/archive; do not report/block",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 95,
+  "content_sha256": "50db389a4117b03c3cc92152df2f6b14f1b071417029840d1e0a5e46ec7974a2"
+ },
+ {
+  "scenario_id": "S08",
+  "title": "Lottery Claim Text",
+  "platform": "SMS",
+  "difficulty": "Easy",
+  "disposition": "Malicious",
+  "family": "Prize/advance-fee scam",
+  "trigger": "Greed + scarcity",
+  "end_state": "Claim is discarded and sender is blocked.",
+  "feedback": "Paying to receive an unexpected prize is a classic advance-fee scam. Report and disengage.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'CONGRATS! You won INR 5 lakh. Pay INR 499 processing before midnight.' The SMS badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, SMS tile, unread badge, sender/header preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the unsolicited prize thread. Context presented: An unknown sender says the learner won a lottery they never entered and must pay a processing fee.",
+    "ui_to_build": "Native-style conversation list and thread with sender header/number, timestamps and link/MMS preview.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine unknown number, no entry history, fee demand and urgent deadline",
+    "ui_to_build": "Conversation details sheet showing full number/header, prior thread, SIM label and report-junk controls.",
+    "expected_safe_behavior": "Check this decision signal: A genuine prize cannot arise without entry and should not require payment to release winnings.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a claim form with identity and payment fields",
+    "ui_to_build": "Offline safe browser, call-confirmation sheet, MMS/QR inspector or synthetic payment request panel.",
+    "expected_safe_behavior": "Do not pay the fee or submit identity/bank details. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: verify any promotion through an independently found official organizer",
+    "ui_to_build": "Conversation action sheet with block/report junk plus independent official-app, statement or known-number verification overlay.",
+    "expected_safe_behavior": "Verify independently: verify any promotion through an independently found official organizer Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: do not reply/pay; report junk/block",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 96,
+  "content_sha256": "ae3338f027d872620c74bf6ce519e9bb5dafb51640e084acb488aee5826b1772"
+ },
+ {
+  "scenario_id": "S09",
+  "title": "Wrong Number Becomes an Investment Pitch",
+  "platform": "SMS",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Wrong-number grooming / investment fraud",
+  "trigger": "Curiosity + trust",
+  "end_state": "Synthetic trial profit is exposed as fabricated; no deposit occurs.",
+  "feedback": "A wrong-number chat can be the start of long-game grooming. End contact when it pivots to money.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Sorry, is this Rohan? ... You seem kind. My analyst has a guaranteed trade tonight.' The SMS badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, SMS tile, unread badge, sender/header preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the multi-day wrong-number thread. Context presented: A polite wrong-number exchange develops over several synthetic days before pivoting to private investments.",
+    "ui_to_build": "Native-style conversation list and thread with sender header/number, timestamps and link/MMS preview.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine unsolicited start, rapid rapport, lifestyle claims and investment pivot",
+    "ui_to_build": "Conversation details sheet showing full number/header, prior thread, SIM label and report-junk controls.",
+    "expected_safe_behavior": "Check this decision signal: The accidental contact and relationship are engineered to establish trust before the financial request.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a fake trading dashboard showing a trial profit and Deposit button",
+    "ui_to_build": "Offline safe browser, call-confirmation sheet, MMS/QR inspector or synthetic payment request panel.",
+    "expected_safe_behavior": "Do not deposit, upload identity or move to another app. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: research the person/platform independently and check regulator/official sources",
+    "ui_to_build": "Conversation action sheet with block/report junk plus independent official-app, statement or known-number verification overlay.",
+    "expected_safe_behavior": "Verify independently: research the person/platform independently and check regulator/official sources Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: stop responding; report junk/block; do not invest",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 97,
+  "content_sha256": "e22a72411e409cc38f9f5607a92f35d040bc1ba4914bdb9b8c61953d65f6e2e7"
+ },
+ {
+  "scenario_id": "S10",
+  "title": "eSIM Upgrade OTP",
+  "platform": "SMS",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "SIM-swap / OTP theft",
+  "trigger": "Authority + convenience",
+  "end_state": "No SIM change is approved and the suspicious number is blocked.",
+  "feedback": "SIM-change OTPs protect control of your number. Never share them; contact the carrier through a known route.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'SIM upgrade pending. Call 00000 31010 and quote the OTP sent next.' The SMS badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, SMS tile, unread badge, sender/header preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the telecom-themed thread. Context presented: A text claims a required eSIM upgrade and directs the learner to call a mobile number and share an OTP.",
+    "ui_to_build": "Native-style conversation list and thread with sender header/number, timestamps and link/MMS preview.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine unregistered sender, call number, OTP instruction and account-takeover implications",
+    "ui_to_build": "Conversation details sheet showing full number/header, prior thread, SIM label and report-junk controls.",
+    "expected_safe_behavior": "Check this decision signal: An OTP can authorize SIM/eSIM changes; it must never be relayed to an inbound contact.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a call-confirmation sheet and synthetic OTP message",
+    "ui_to_build": "Offline safe browser, call-confirmation sheet, MMS/QR inspector or synthetic payment request panel.",
+    "expected_safe_behavior": "Do not call the supplied number or share the OTP. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: open the known carrier app/store contact and check for a requested SIM change",
+    "ui_to_build": "Conversation action sheet with block/report junk plus independent official-app, statement or known-number verification overlay.",
+    "expected_safe_behavior": "Verify independently: open the known carrier app/store contact and check for a requested SIM change Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: do not call/share; report junk/block; secure the carrier account",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 98,
+  "content_sha256": "9439648976e817841b81d3714acc0123d59e1938310df737a322d325b0574d14"
+ },
+ {
+  "scenario_id": "S11",
+  "title": "Expected Clinic Reminder",
+  "platform": "SMS",
+  "difficulty": "Medium",
+  "disposition": "Legitimate",
+  "family": "Legitimate appointment reminder",
+  "trigger": "Routine + care",
+  "end_state": "Appointment status updates locally and no health details are transmitted.",
+  "feedback": "A specific expected reminder with limited action can be legitimate. Confirm the booking without oversharing.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Training Clinic: Appointment 03 Sep 09:20. Reply 1 confirm, 2 reschedule.' The SMS badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, SMS tile, unread badge, sender/header preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the established clinic thread. Context presented: A registered clinic header reminds the learner of an appointment booked in the synthetic clinic portal.",
+    "ui_to_build": "Native-style conversation list and thread with sender header/number, timestamps and link/MMS preview.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine registered header, matching date/reference and limited reply options",
+    "ui_to_build": "Conversation details sheet showing full number/header, prior thread, SIM label and report-junk controls.",
+    "expected_safe_behavior": "Check this decision signal: The reminder matches an initiated booking and requests only a low-risk confirmation.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to the SMS quick-reply choices and local appointment comparison",
+    "ui_to_build": "Offline safe browser, call-confirmation sheet, MMS/QR inspector or synthetic payment request panel.",
+    "expected_safe_behavior": "Use the normal in-app path only after the details match the known context. Do not switch to an untrusted channel.",
+    "scoring_event": "CORRECT_USE +3; needless reject/ignore -2; unsafe external action -4."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: compare with the known clinic portal/Trusted Directory",
+    "ui_to_build": "Conversation action sheet with block/report junk plus independent official-app, statement or known-number verification overlay.",
+    "expected_safe_behavior": "Verify independently: compare with the known clinic portal/Trusted Directory If it matches, continue; do not report or block a legitimate sender.",
+    "scoring_event": "TRUSTED_VERIFY +3; false report/block -4; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: reply 1 or 2 as appropriate; retain the thread; do not report",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 99,
+  "content_sha256": "ebcb0513fedc5297593882294eabe2743bf5be148bbb19113e44866176435a42"
+ },
+ {
+  "scenario_id": "S12",
+  "title": "Income-Tax Refund Form",
+  "platform": "SMS",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Government impersonation / refund smishing",
+  "trigger": "Greed + authority",
+  "end_state": "Official portal mock shows no refund and the message is reported.",
+  "feedback": "Unexpected refunds combine authority and reward. Verify directly in the official portal.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Tax refund INR 12,480 approved. Confirm bank before 18:00: tx-rf.training.example' The SMS badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, SMS tile, unread badge, sender/header preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the tax-themed conversation. Context presented: A branded header promises a refund but uses a shortened link and requests bank credentials.",
+    "ui_to_build": "Native-style conversation list and thread with sender header/number, timestamps and link/MMS preview.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine header anomalies, generic reference, target domain and urgency",
+    "ui_to_build": "Conversation details sheet showing full number/header, prior thread, SIM label and report-junk controls.",
+    "expected_safe_behavior": "Check this decision signal: A tax refund should be verified in the official portal and does not require banking secrets by text.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a synthetic refund form asking identity, account, card and OTP",
+    "ui_to_build": "Offline safe browser, call-confirmation sheet, MMS/QR inspector or synthetic payment request panel.",
+    "expected_safe_behavior": "Do not submit identity/financial secrets. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: open the known tax portal directly and check account/refund status",
+    "ui_to_build": "Conversation action sheet with block/report junk plus independent official-app, statement or known-number verification overlay.",
+    "expected_safe_behavior": "Verify independently: open the known tax portal directly and check account/refund status Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: close; report junk/block; do not submit",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 100,
+  "content_sha256": "502bf3a00e3e63c44aa455e4d7a32f6599c5c0630aa35f2dc253b1787da49c64"
+ },
+ {
+  "scenario_id": "S13",
+  "title": "Rating-Task Recruiter",
+  "platform": "SMS",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Task/job scam",
+  "trigger": "Greed + commitment",
+  "end_state": "Synthetic earnings are shown as fake and no deposit is made.",
+  "feedback": "Unexpected easy-income offers often become deposit scams. Research the employer and never pay to work.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Remote role: earn INR 4,000/day rating products. Reply YES for instant joining.' The SMS badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, SMS tile, unread badge, sender/header preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the new recruiter thread. Context presented: An unsolicited recruiter offers high pay for product ratings and quickly asks for a deposit to unlock tasks.",
+    "ui_to_build": "Native-style conversation list and thread with sender header/number, timestamps and link/MMS preview.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine unexpected contact, unrealistic earnings, no interview and personal number",
+    "ui_to_build": "Conversation details sheet showing full number/header, prior thread, SIM label and report-junk controls.",
+    "expected_safe_behavior": "Check this decision signal: Legitimate employers do not hire by random text or require payment to release work or wages.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a task dashboard showing bonus earnings followed by a recharge demand",
+    "ui_to_build": "Offline safe browser, call-confirmation sheet, MMS/QR inspector or synthetic payment request panel.",
+    "expected_safe_behavior": "Do not reply with personal data, deposit or recruit others. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: verify the employer through a separately found corporate site and known vacancy channel",
+    "ui_to_build": "Conversation action sheet with block/report junk plus independent official-app, statement or known-number verification overlay.",
+    "expected_safe_behavior": "Verify independently: verify the employer through a separately found corporate site and known vacancy channel Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: stop; report junk/block; do not pay to earn",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 101,
+  "content_sha256": "a16fa16512c98916a383e536609d91540d7f14c0d3e5cb0ffabce8bbec7d2cff"
+ },
+ {
+  "scenario_id": "S14",
+  "title": "Emergency Recall Location Link",
+  "platform": "SMS",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Military smishing / location collection",
+  "trigger": "Authority + urgency | FICTIONAL MILITARY CONTEXT",
+  "end_state": "No location is shared and the duty office confirms no recall.",
+  "feedback": "Urgent military wording can be spoofed. Verify through the approved recall process before disclosing location.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'UNIT ALERT: Immediate recall. Confirm live location and ETA at recall.training.example.' The SMS badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, SMS tile, unread badge, sender/header preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the urgent administrative-looking thread. Context presented: A spoofed sender announces an emergency recall and asks the learner to confirm current location via a link.",
+    "ui_to_build": "Native-style conversation list and thread with sender header/number, timestamps and link/MMS preview.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine sender/header, absent authentication code, public link and request for live location",
+    "ui_to_build": "Conversation details sheet showing full number/header, prior thread, SIM label and report-junk controls.",
+    "expected_safe_behavior": "Check this decision signal: Recall and location reporting must use approved channels; a public SMS link cannot establish authority.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a synthetic map form asking location, route and service number",
+    "ui_to_build": "Offline safe browser, call-confirmation sheet, MMS/QR inspector or synthetic payment request panel.",
+    "expected_safe_behavior": "Do not submit location, ETA, route or identity data. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: contact the duty office through the approved directory and check the official recall channel",
+    "ui_to_build": "Conversation action sheet with block/report junk plus independent official-app, statement or known-number verification overlay.",
+    "expected_safe_behavior": "Verify independently: contact the duty office through the approved directory and check the official recall channel Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: submit nothing; report through unit security; block the sender",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 102,
+  "content_sha256": "c0d43db288671bb15ed506f10875e4f88ae7d37d48ed09062efdad677ad3a4fb"
+ },
+ {
+  "scenario_id": "S15",
+  "title": "Canteen Subsidy MMS QR",
+  "platform": "SMS",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Military-themed QR smishing",
+  "trigger": "Familiarity + scarcity | FICTIONAL MILITARY CONTEXT",
+  "end_state": "QR target is blocked and no data is entered.",
+  "feedback": "A familiar military theme can disguise a phishing route. Verify benefits in approved channels.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Service family subsidy - scan today to activate INR 2,000 benefit.' The SMS badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, SMS tile, unread badge, sender/header preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the MMS thread and poster image. Context presented: An MMS image offers a limited canteen subsidy and hides the destination in a QR code.",
+    "ui_to_build": "Native-style conversation list and thread with sender header/number, timestamps and link/MMS preview.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine unknown number, generic eligibility, expiry pressure and QR target",
+    "ui_to_build": "Conversation details sheet showing full number/header, prior thread, SIM label and report-junk controls.",
+    "expected_safe_behavior": "Check this decision signal: Benefits are not activated by an unsolicited QR that requests service and payment data.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to the QR inspector and synthetic eligibility form",
+    "ui_to_build": "Offline safe browser, call-confirmation sheet, MMS/QR inspector or synthetic payment request panel.",
+    "expected_safe_behavior": "Do not open the target, enter service/family data or pay activation. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: check the known canteen/welfare portal or directory",
+    "ui_to_build": "Conversation action sheet with block/report junk plus independent official-app, statement or known-number verification overlay.",
+    "expected_safe_behavior": "Verify independently: check the known canteen/welfare portal or directory Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: close; report junk and unit-themed impersonation; do not forward",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 103,
+  "content_sha256": "3e58cbed57365e047a534de53e8b94066832f5a65716aed53bb2e9514175ccc5"
+ },
+ {
+  "scenario_id": "S16",
+  "title": "Learner-Initiated Login Code",
+  "platform": "SMS",
+  "difficulty": "Medium",
+  "disposition": "Legitimate",
+  "family": "Legitimate OTP / security code",
+  "trigger": "Routine",
+  "end_state": "Local login completes and the code expires; no other device is authorized.",
+  "feedback": "An OTP can be legitimate when you initiated the matching action. Use it only in that session and never share it.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Your TRAINING PORTAL code is 482193. Do not share it. Expires in 5 minutes.' The SMS badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, SMS tile, unread badge, sender/header preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the established security-code thread. Context presented: The learner has just initiated a login in the synthetic official app and receives the matching one-time code.",
+    "ui_to_build": "Native-style conversation list and thread with sender header/number, timestamps and link/MMS preview.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine service name, timing, no links, warning text and matching login session",
+    "ui_to_build": "Conversation details sheet showing full number/header, prior thread, SIM label and report-junk controls.",
+    "expected_safe_behavior": "Check this decision signal: The code is expected and should be entered only into the session the learner initiated, never sent to another person.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to the already-open official-app code field with matching session ID",
+    "ui_to_build": "Offline safe browser, call-confirmation sheet, MMS/QR inspector or synthetic payment request panel.",
+    "expected_safe_behavior": "Use the normal in-app path only after the details match the known context. Do not switch to an untrusted channel.",
+    "scoring_event": "CORRECT_USE +3; needless reject/ignore -2; unsafe external action -4."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: compare the service/session in the official app and SMS; no outside contact is needed",
+    "ui_to_build": "Conversation action sheet with block/report junk plus independent official-app, statement or known-number verification overlay.",
+    "expected_safe_behavior": "Verify independently: compare the service/session in the official app and SMS; no outside contact is needed If it matches, continue; do not report or block a legitimate sender.",
+    "scoring_event": "TRUSTED_VERIFY +3; false report/block -4; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: enter the code only in the matching official-app mock; retain no screenshot; do not report the SMS",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 104,
+  "content_sha256": "13f22f654efaf93ed2051ddccae4a9c07e6199be6c295e59eb6860e15071f9c0"
+ },
+ {
+  "scenario_id": "S17",
+  "title": "New-Phone Family Emergency",
+  "platform": "SMS",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Known-person impersonation / emergency payment",
+  "trigger": "Empathy + urgency",
+  "end_state": "Known contact confirms no emergency; no payment occurs.",
+  "feedback": "New-number emergencies demand independent verification using contact details you already trust.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Mum, this is my new number. Phone broke. Please send INR 15,000 to the hospital now.' The SMS badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, SMS tile, unread badge, sender/header preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the unsaved emergency thread. Context presented: An unknown number claims to be a family member with a broken phone and requests immediate payment.",
+    "ui_to_build": "Native-style conversation list and thread with sender header/number, timestamps and link/MMS preview.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine unknown number, generic relationship cue, urgent payment and third-party payee",
+    "ui_to_build": "Conversation details sheet showing full number/header, prior thread, SIM label and report-junk controls.",
+    "expected_safe_behavior": "Check this decision signal: The relationship claim is unverified and the payment recipient does not match the supposed family member.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a payment request plus quick reply 'Done'",
+    "ui_to_build": "Offline safe browser, call-confirmation sheet, MMS/QR inspector or synthetic payment request panel.",
+    "expected_safe_behavior": "Do not send money or verify only in the new-number thread. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: call the family member's known old number or another trusted family contact",
+    "ui_to_build": "Conversation action sheet with block/report junk plus independent official-app, statement or known-number verification overlay.",
+    "expected_safe_behavior": "Verify independently: call the family member's known old number or another trusted family contact Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: decline; report junk/block after impersonation is confirmed",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 105,
+  "content_sha256": "d4d125f09be69edadb5ad069a76be8243b9bfa4f38700a0dfffcdc3817b87a62"
+ },
+ {
+  "scenario_id": "S18",
+  "title": "Bank Header Thread Hijack",
+  "platform": "SMS",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Sender-ID spoofing / callback phishing",
+  "trigger": "Trust + fear",
+  "end_state": "Official app shows no hold and the fake callback is blocked.",
+  "feedback": "Spoofed sender IDs can make texts appear in trusted threads. Verify alerts through the official app or known number.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'SECURITY HOLD: Unusual transfer. Call 00000 41818 in 10 minutes to prevent account freeze.' The SMS badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, SMS tile, unread badge, sender/header preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the established-looking bank thread. Context presented: A malicious message appears inside a realistic existing bank-alert thread and asks the learner to call a number.",
+    "ui_to_build": "Native-style conversation list and thread with sender header/number, timestamps and link/MMS preview.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine message wording, supplied number, absence of transaction detail and official-app status",
+    "ui_to_build": "Conversation details sheet showing full number/header, prior thread, SIM label and report-junk controls.",
+    "expected_safe_behavior": "Check this decision signal: Thread placement or sender ID is not proof; the callback number is controlled by the message.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a call-confirmation sheet leading to a synthetic operator requesting card/PIN/OTP",
+    "ui_to_build": "Offline safe browser, call-confirmation sheet, MMS/QR inspector or synthetic payment request panel.",
+    "expected_safe_behavior": "Do not call the number or disclose financial secrets. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: open the known banking app and call the number printed on the simulated card",
+    "ui_to_build": "Conversation action sheet with block/report junk plus independent official-app, statement or known-number verification overlay.",
+    "expected_safe_behavior": "Verify independently: open the known banking app and call the number printed on the simulated card Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: do not call the message number; report junk if confirmed; secure the account through known channels",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 106,
+  "content_sha256": "3ff4662f37e3fb0938235251b563fc83e702bd4f48b6036e5f73aad891cbd4b0"
+ },
+ {
+  "scenario_id": "S19",
+  "title": "Network Survey Requests IMEI",
+  "platform": "SMS",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Military-targeted technical pretext / device profiling",
+  "trigger": "Authority + helpfulness | FICTIONAL MILITARY CONTEXT",
+  "end_state": "No device/location data is released and the solicitation is logged.",
+  "feedback": "Technical language can conceal reconnaissance. Protect device identifiers, location and unit association.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Priority network survey for Unit Falcon area. Reply IMEI + location + device model.' The SMS badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, SMS tile, unread badge, sender/header preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the technical survey thread. Context presented: A telecom-style message says a coverage survey for a base requires IMEI, live location and device model.",
+    "ui_to_build": "Native-style conversation list and thread with sender header/number, timestamps and link/MMS preview.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine unknown sender, targeted military reference, excessive device/location data and reply request",
+    "ui_to_build": "Conversation details sheet showing full number/header, prior thread, SIM label and report-junk controls.",
+    "expected_safe_behavior": "Check this decision signal: A coverage survey does not justify sending unique device identifiers or protected location by SMS.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a structured reply form with IMEI, GPS and device fields",
+    "ui_to_build": "Offline safe browser, call-confirmation sheet, MMS/QR inspector or synthetic payment request panel.",
+    "expected_safe_behavior": "Do not submit device identifiers, location or unit association. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: contact approved communications/IT staff and the carrier through known channels",
+    "ui_to_build": "Conversation action sheet with block/report junk plus independent official-app, statement or known-number verification overlay.",
+    "expected_safe_behavior": "Verify independently: contact approved communications/IT staff and the carrier through known channels Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: send nothing; report the targeted solicitation through unit security; block",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 107,
+  "content_sha256": "a3d8a61cc87952a4b8e5aa67b76236243eede32192bd443e02e00d9af3336d27"
+ },
+ {
+  "scenario_id": "S20",
+  "title": "Parcel Text Plus Callback",
+  "platform": "SMS",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Multi-stage parcel / callback / remote access scam",
+  "trigger": "Curiosity + urgency",
+  "end_state": "Both parcel and fraud claims fail verification; permissions remain denied.",
+  "feedback": "Multi-stage scams change the story after engagement. Stop, reset and verify each claim independently.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Parcel address failed. Later: Payment fraud detected - call support immediately.' The SMS badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, SMS tile, unread badge, sender/header preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the two-stage parcel thread. Context presented: A parcel text first requests address confirmation; a follow-up says fraud was detected and gives a support number.",
+    "ui_to_build": "Native-style conversation list and thread with sender header/number, timestamps and link/MMS preview.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine unknown parcel, link/callback controlled by sender, escalating story and requested tools",
+    "ui_to_build": "Conversation details sheet showing full number/header, prior thread, SIM label and report-junk controls.",
+    "expected_safe_behavior": "Check this decision signal: The escalation is designed to move the learner from a small task to a high-pressure support scam.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a call mock where 'support' asks for screen share and a remote-help app",
+    "ui_to_build": "Offline safe browser, call-confirmation sheet, MMS/QR inspector or synthetic payment request panel.",
+    "expected_safe_behavior": "Do not call, share screen, install support software or disclose OTP. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: check the known courier account and bank statement independently",
+    "ui_to_build": "Conversation action sheet with block/report junk plus independent official-app, statement or known-number verification overlay.",
+    "expected_safe_behavior": "Verify independently: check the known courier account and bank statement independently Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: do not engage; report junk/block; contact approved support only if a real issue exists",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 108,
+  "content_sha256": "268525b4cff7a51cdf3de178c09f5f66b5247da0471979ad4e8b707bf52b91e4"
+ },
+ {
+  "scenario_id": "S21",
+  "title": "Matching New-Login Alert",
+  "platform": "SMS",
+  "difficulty": "Hard",
+  "disposition": "Legitimate",
+  "family": "Legitimate security alert",
+  "trigger": "Fear + routine",
+  "end_state": "Recognized session remains active and the alert is marked reviewed.",
+  "feedback": "A matching no-action security alert is legitimate. Verify in the account, then avoid an unnecessary incident report.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'TRAINING PORTAL login on DEV-204 at 14:22. If this was you, no action is needed.' The SMS badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, SMS tile, unread badge, sender/header preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the established security-alert thread. Context presented: A registered security alert matches a login the learner just completed on a synthetic issued device.",
+    "ui_to_build": "Native-style conversation list and thread with sender header/number, timestamps and link/MMS preview.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine device ID, exact time, no link/callback and matching active session",
+    "ui_to_build": "Conversation details sheet showing full number/header, prior thread, SIM label and report-junk controls.",
+    "expected_safe_behavior": "Check this decision signal: The alert matches the learner's action and gives a clear no-action state without requesting secrets.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to the official-app session list showing DEV-204 and End session",
+    "ui_to_build": "Offline safe browser, call-confirmation sheet, MMS/QR inspector or synthetic payment request panel.",
+    "expected_safe_behavior": "Use the normal in-app path only after the details match the known context. Do not switch to an untrusted channel.",
+    "scoring_event": "CORRECT_USE +3; needless reject/ignore -2; unsafe external action -4."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: compare with the session list opened directly in the official app",
+    "ui_to_build": "Conversation action sheet with block/report junk plus independent official-app, statement or known-number verification overlay.",
+    "expected_safe_behavior": "Verify independently: compare with the session list opened directly in the official app If it matches, continue; do not report or block a legitimate sender.",
+    "scoring_event": "TRUSTED_VERIFY +3; false report/block -4; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: mark reviewed and keep the session if recognized; do not report/block",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 109,
+  "content_sha256": "33c686b0f2051206b5995764d4813bcd2a3939e248db3ea183803b2885892b20"
+ },
+ {
+  "scenario_id": "S22",
+  "title": "Synthetic Voice-Mail Link",
+  "platform": "SMS",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Voice phishing / link lure",
+  "trigger": "Authority + curiosity | FICTIONAL MILITARY CONTEXT",
+  "end_state": "Senior confirms no message; credentials and actions remain protected.",
+  "feedback": "A voice recording can be fabricated. Verify the sender and use approved systems before acting.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Secure Voice: Col. Dev left 1 urgent message. Listen before 18:00.' The SMS badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, SMS tile, unread badge, sender/header preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the voice-notification thread. Context presented: A text claims a senior left a secure voice message accessible only through a short link.",
+    "ui_to_build": "Native-style conversation list and thread with sender header/number, timestamps and link/MMS preview.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine unknown service, link target, sender identity and artificial expiry",
+    "ui_to_build": "Conversation details sheet showing full number/header, prior thread, SIM label and report-junk controls.",
+    "expected_safe_behavior": "Check this decision signal: An unapproved voice service and link cannot authenticate the caller or justify a new login.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a fake voice portal that asks for mail credentials, then plays a synthetic instruction",
+    "ui_to_build": "Offline safe browser, call-confirmation sheet, MMS/QR inspector or synthetic payment request panel.",
+    "expected_safe_behavior": "Do not enter credentials or act on the voice instruction. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: contact the senior/duty office through known channels and check approved messaging systems",
+    "ui_to_build": "Conversation action sheet with block/report junk plus independent official-app, statement or known-number verification overlay.",
+    "expected_safe_behavior": "Verify independently: contact the senior/duty office through known channels and check approved messaging systems Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: close; report junk and impersonation; do not act on the audio",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 110,
+  "content_sha256": "33c308040651ad8a3f211b59840142f0126585cbfdaa6f072b1c2d707eae96da"
+ },
+ {
+  "scenario_id": "S23",
+  "title": "UPI Refund Collect Request",
+  "platform": "SMS",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Payment-request reversal scam",
+  "trigger": "Greed + confusion",
+  "end_state": "Collect request is declined and account balance is unchanged.",
+  "feedback": "Read the payment direction, not the story. A refund should not require approving a collect request or entering a PIN.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Refund INR 2,499 ready. Accept collect request and enter UPI PIN to receive.' The SMS badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, SMS tile, unread badge, sender/header preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the merchant text and payment notification. Context presented: A merchant-themed text says a refund requires accepting a UPI collect request and entering the payment PIN.",
+    "ui_to_build": "Native-style conversation list and thread with sender header/number, timestamps and link/MMS preview.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine unrecognized order, collect direction, payee name and request for payment PIN",
+    "ui_to_build": "Conversation details sheet showing full number/header, prior thread, SIM label and report-junk controls.",
+    "expected_safe_behavior": "Check this decision signal: A collect request sends money; receiving a refund does not require authorizing a debit with a PIN.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a synthetic UPI collect screen clearly showing PAY and amount",
+    "ui_to_build": "Offline safe browser, call-confirmation sheet, MMS/QR inspector or synthetic payment request panel.",
+    "expected_safe_behavior": "Do not approve the collect request or enter the payment PIN. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: check the original merchant order/refund in the official app and bank statement",
+    "ui_to_build": "Conversation action sheet with block/report junk plus independent official-app, statement or known-number verification overlay.",
+    "expected_safe_behavior": "Verify independently: check the original merchant order/refund in the official app and bank statement Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: decline the collect request; report junk/block; contact the merchant through known support if needed",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 111,
+  "content_sha256": "a684f19710d9346051eaa21905145fd76776c3c9ed955f0227aa6d8abbcf87ea"
+ },
+ {
+  "scenario_id": "S24",
+  "title": "Fake Cybercrime Case Fee",
+  "platform": "SMS",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Government/I4C impersonation / digital arrest",
+  "trigger": "Fear + authority",
+  "end_state": "Case number fails verification and payment stays at zero.",
+  "feedback": "No legitimate case is settled by instant text payment. Verify through official contacts and report impersonation.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'CYBER CASE NOTICE: Pay verification fee to avoid warrant. Case closes today.' The SMS badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, SMS tile, unread badge, sender/header preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the government-themed thread. Context presented: A text claims a cybercrime complaint names the learner and demands a case-clearance fee.",
+    "ui_to_build": "Native-style conversation list and thread with sender header/number, timestamps and link/MMS preview.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine sender/header, payment demand, secrecy, case link and official reporting guidance",
+    "ui_to_build": "Conversation details sheet showing full number/header, prior thread, SIM label and report-junk controls.",
+    "expected_safe_behavior": "Check this decision signal: Cybercrime authorities do not clear warrants through an SMS payment; the pressure and fee are fraudulent.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a fake case portal and payment timer",
+    "ui_to_build": "Offline safe browser, call-confirmation sheet, MMS/QR inspector or synthetic payment request panel.",
+    "expected_safe_behavior": "Do not pay, upload identity/bank data or call the supplied officer. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: use independently known official/unit legal/security contacts and the official portal only",
+    "ui_to_build": "Conversation action sheet with block/report junk plus independent official-app, statement or known-number verification overlay.",
+    "expected_safe_behavior": "Verify independently: use independently known official/unit legal/security contacts and the official portal only Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: do not pay/reply; preserve; report/block through approved channels",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 112,
+  "content_sha256": "f35079f9af3bba0f2e0afbb5d1561841de2743bde4980b39b041554eabe121bb"
+ },
+ {
+  "scenario_id": "S25",
+  "title": "FASTag Update APK",
+  "platform": "SMS",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Road-toll impersonation / malicious app",
+  "trigger": "Convenience + urgency",
+  "end_state": "No app is installed and the official mock shows the tag active.",
+  "feedback": "Never install financial-service apps from message links. Use the official store or issuer app and deny unexpected permissions.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'FASTag KYC expiring. Install verification app now to avoid deactivation.' The SMS badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, SMS tile, unread badge, sender/header preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the toll-service thread and APK link. Context presented: A text says a toll tag will stop working unless an attached Android app is installed for verification.",
+    "ui_to_build": "Native-style conversation list and thread with sender header/number, timestamps and link/MMS preview.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine unregistered sender, APK delivery, broad permission need and short deadline",
+    "ui_to_build": "Conversation details sheet showing full number/header, prior thread, SIM label and report-junk controls.",
+    "expected_safe_behavior": "Check this decision signal: Financial/toll KYC should be completed through the official bank/app; an SMS-delivered APK is unsafe.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a simulated APK installer requesting SMS, accessibility and screen-capture permissions",
+    "ui_to_build": "Offline safe browser, call-confirmation sheet, MMS/QR inspector or synthetic payment request panel.",
+    "expected_safe_behavior": "Do not install or grant any permission. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: open the known issuer/bank app or call its known support number",
+    "ui_to_build": "Conversation action sheet with block/report junk plus independent official-app, statement or known-number verification overlay.",
+    "expected_safe_behavior": "Verify independently: open the known issuer/bank app or call its known support number Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: cancel installation; report junk/block; verify tag status independently",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 113,
+  "content_sha256": "59b234a6994cb1529ec62312b7f152ecea54b27beed496f3d197e794ee07ccb2"
+ }
+]

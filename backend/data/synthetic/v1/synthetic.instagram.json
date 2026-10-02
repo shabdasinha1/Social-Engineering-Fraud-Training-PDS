@@ -1,0 +1,3232 @@
+[
+ {
+  "scenario_id": "I01",
+  "definition_version": 1,
+  "platform": "instagram",
+  "synthetic": {
+   "sender": {
+    "display_name": "@unknownsender274",
+    "identifier": "@unknownsender274",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "12:41",
+    "username": "@unknownsender274",
+    "followers": "1988",
+    "following": "730",
+    "post_count": 153,
+    "bio": ""
+   },
+   "prior_context": "A newly created account tags the learner as a winner in a giveaway they never entered.",
+   "assets": [
+    {
+     "asset_id": "I01-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "instagram notification",
+     "content": {
+      "sender": "@unknownsender274",
+      "body": "@mega_rewards_help: You won! Claim in 10 minutes or we redraw.",
+      "platform": "instagram",
+      "received_at": "10:19",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "I01-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "@unknownsender274",
+     "content": {
+      "display_name": "@unknownsender274",
+      "identifier": "@unknownsender274",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "12:41",
+      "username": "@unknownsender274",
+      "followers": "1988",
+      "following": "730",
+      "post_count": 153,
+      "bio": ""
+     }
+    },
+    {
+     "asset_id": "I01-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "@unknownsender274 thread",
+     "content": {
+      "header": {
+       "title": "@unknownsender274",
+       "subtitle": "@unknownsender274",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A newly created account tags the learner as a winner in a giveaway they never entered."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "@mega_rewards_help: You won! Claim in 10 minutes or we redraw.",
+        "time": "12:15"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "I01-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 64261",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "I01-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://i01.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "i01.training.example",
+      "body": "The interaction advances to a fake prize page asking for social login and a small delivery fee",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    },
+    {
+     "asset_id": "I01-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "@unknownsender274",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-I01",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "I01-notif-01"
+   ],
+   [
+    "I01-thread-01",
+    "I01-sender-01"
+   ],
+   [
+    "I01-sender-01",
+    "I01-browser-01"
+   ],
+   [
+    "I01-browser-01",
+    "I01-payment-01"
+   ],
+   [
+    "I01-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "I02",
+  "definition_version": 1,
+  "platform": "instagram",
+  "synthetic": {
+   "sender": {
+    "display_name": "@unknownsender841",
+    "identifier": "@unknownsender841",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "13:04",
+    "username": "@unknownsender841",
+    "followers": "1085",
+    "following": "819",
+    "post_count": 177,
+    "bio": ""
+   },
+   "prior_context": "A DM claims the learner's profile will be deleted for copyright infringement.",
+   "assets": [
+    {
+     "asset_id": "I02-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "instagram notification",
+     "content": {
+      "sender": "@unknownsender841",
+      "body": "@copyright_case_team: Appeal within 30 minutes or your account will be permanently removed.",
+      "platform": "instagram",
+      "received_at": "19:19",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "I02-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "@unknownsender841",
+     "content": {
+      "display_name": "@unknownsender841",
+      "identifier": "@unknownsender841",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "13:04",
+      "username": "@unknownsender841",
+      "followers": "1085",
+      "following": "819",
+      "post_count": 177,
+      "bio": ""
+     }
+    },
+    {
+     "asset_id": "I02-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "@unknownsender841 thread",
+     "content": {
+      "header": {
+       "title": "@unknownsender841",
+       "subtitle": "@unknownsender841",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A DM claims the learner's profile will be deleted for copyright infringement."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "@copyright_case_team: Appeal within 30 minutes or your account will be permanently removed.",
+        "time": "07:45"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "I02-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 95619",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "I02-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://i02.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "i02.training.example",
+      "body": "The interaction advances to an external-looking appeal login requesting username, password and backup code",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "I02-notif-01"
+   ],
+   [
+    "I02-thread-01",
+    "I02-sender-01"
+   ],
+   [
+    "I02-sender-01",
+    "I02-browser-01"
+   ],
+   [
+    "I02-browser-01"
+   ],
+   [
+    "I02-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "I03",
+  "definition_version": 1,
+  "platform": "instagram",
+  "synthetic": {
+   "sender": {
+    "display_name": "@unknownsender233",
+    "identifier": "@unknownsender233",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "10:05",
+    "username": "@unknownsender233",
+    "followers": "2053",
+    "following": "815",
+    "post_count": 180,
+    "bio": ""
+   },
+   "prior_context": "A verified fictional public-information account posts an already approved blood-donation drive with no external registration.",
+   "assets": [
+    {
+     "asset_id": "I03-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "instagram notification",
+     "content": {
+      "sender": "@unknownsender233",
+      "body": "@unitfalcon_public: Voluntary blood donation, 05 Sep, Civic Hall. Details in approved poster.",
+      "platform": "instagram",
+      "received_at": "15:45",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "I03-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "@unknownsender233",
+     "content": {
+      "display_name": "@unknownsender233",
+      "identifier": "@unknownsender233",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "10:05",
+      "username": "@unknownsender233",
+      "followers": "2053",
+      "following": "815",
+      "post_count": 180,
+      "bio": ""
+     }
+    },
+    {
+     "asset_id": "I03-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "@unknownsender233 thread",
+     "content": {
+      "header": {
+       "title": "@unknownsender233",
+       "subtitle": "@unknownsender233",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A verified fictional public-information account posts an already approved blood-donation drive with no external registration."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "@unitfalcon_public: Voluntary blood donation, 05 Sep, Civic Hall. Details in approved poster.",
+        "time": "08:11"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "I03-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 14735",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "I03-notif-01"
+   ],
+   [
+    "I03-thread-01",
+    "I03-sender-01"
+   ],
+   [
+    "I03-sender-01"
+   ],
+   [],
+   [
+    "I03-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "I04",
+  "definition_version": 1,
+  "platform": "instagram",
+  "synthetic": {
+   "sender": {
+    "display_name": "@unknownsender400",
+    "identifier": "@unknownsender400",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "14:44",
+    "username": "@unknownsender400",
+    "followers": "5583",
+    "following": "747",
+    "post_count": 110,
+    "bio": ""
+   },
+   "prior_context": "A near-identical account follows the learner and sends a direct message asking for travel money.",
+   "assets": [
+    {
+     "asset_id": "I04-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "instagram notification",
+     "content": {
+      "sender": "@unknownsender400",
+      "body": "@riya.kapoor_2: Lost wallet and phone. Please send travel money before the last bus.",
+      "platform": "instagram",
+      "received_at": "07:48",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "I04-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "@unknownsender400",
+     "content": {
+      "display_name": "@unknownsender400",
+      "identifier": "@unknownsender400",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "14:44",
+      "username": "@unknownsender400",
+      "followers": "5583",
+      "following": "747",
+      "post_count": 110,
+      "bio": ""
+     }
+    },
+    {
+     "asset_id": "I04-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "@unknownsender400 thread",
+     "content": {
+      "header": {
+       "title": "@unknownsender400",
+       "subtitle": "@unknownsender400",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A near-identical account follows the learner and sends a direct message asking for travel money."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "@riya.kapoor_2: Lost wallet and phone. Please send travel money before the last bus.",
+        "time": "13:50"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "I04-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 89556",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "I04-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "@unknownsender400",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-I04",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "I04-notif-01"
+   ],
+   [
+    "I04-thread-01",
+    "I04-sender-01"
+   ],
+   [
+    "I04-sender-01"
+   ],
+   [
+    "I04-payment-01"
+   ],
+   [
+    "I04-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "I05",
+  "definition_version": 1,
+  "platform": "instagram",
+  "synthetic": {
+   "sender": {
+    "display_name": "@unknownsender838",
+    "identifier": "@unknownsender838",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "16:04",
+    "username": "@unknownsender838",
+    "followers": "9025",
+    "following": "451",
+    "post_count": 149,
+    "bio": ""
+   },
+   "prior_context": "A new follower compliments the learner's fitness posts and asks a sequence of personal questions.",
+   "assets": [
+    {
+     "asset_id": "I05-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "instagram notification",
+     "content": {
+      "sender": "@unknownsender838",
+      "body": "@trail_fan_87: Great training! Which city, unit and daily route do you use?",
+      "platform": "instagram",
+      "received_at": "14:16",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "I05-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "@unknownsender838",
+     "content": {
+      "display_name": "@unknownsender838",
+      "identifier": "@unknownsender838",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "16:04",
+      "username": "@unknownsender838",
+      "followers": "9025",
+      "following": "451",
+      "post_count": 149,
+      "bio": ""
+     }
+    },
+    {
+     "asset_id": "I05-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "@unknownsender838 thread",
+     "content": {
+      "header": {
+       "title": "@unknownsender838",
+       "subtitle": "@unknownsender838",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A new follower compliments the learner's fitness posts and asks a sequence of personal questions."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "@trail_fan_87: Great training! Which city, unit and daily route do you use?",
+        "time": "08:28"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "I05-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 91282",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "I05-notif-01"
+   ],
+   [
+    "I05-thread-01",
+    "I05-sender-01"
+   ],
+   [
+    "I05-sender-01"
+   ],
+   [],
+   [
+    "I05-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "I06",
+  "definition_version": 1,
+  "platform": "instagram",
+  "synthetic": {
+   "sender": {
+    "display_name": "@unknownsender844",
+    "identifier": "@unknownsender844",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "10:29",
+    "username": "@unknownsender844",
+    "followers": "6139",
+    "following": "892",
+    "post_count": 1,
+    "bio": ""
+   },
+   "prior_context": "A commenter praises a generic training photo and asks for location and timing details.",
+   "assets": [
+    {
+     "asset_id": "I06-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "instagram notification",
+     "content": {
+      "sender": "@unknownsender844",
+      "body": "@defence_fan_archive: Impressive! Which base and what dates was this taken? DM me the route.",
+      "platform": "instagram",
+      "received_at": "10:17",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "I06-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "@unknownsender844",
+     "content": {
+      "display_name": "@unknownsender844",
+      "identifier": "@unknownsender844",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "10:29",
+      "username": "@unknownsender844",
+      "followers": "6139",
+      "following": "892",
+      "post_count": 1,
+      "bio": ""
+     }
+    },
+    {
+     "asset_id": "I06-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "@unknownsender844 thread",
+     "content": {
+      "header": {
+       "title": "@unknownsender844",
+       "subtitle": "@unknownsender844",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A commenter praises a generic training photo and asks for location and timing details."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "@defence_fan_archive: Impressive! Which base and what dates was this taken? DM me the route.",
+        "time": "13:47"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "I06-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 25979",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "I06-notif-01"
+   ],
+   [
+    "I06-thread-01",
+    "I06-sender-01"
+   ],
+   [
+    "I06-sender-01"
+   ],
+   [],
+   [
+    "I06-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "I07",
+  "definition_version": 1,
+  "platform": "instagram",
+  "synthetic": {
+   "sender": {
+    "display_name": "@unknownsender257",
+    "identifier": "@unknownsender257",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "16:52",
+    "username": "@unknownsender257",
+    "followers": "1888",
+    "following": "881",
+    "post_count": 171,
+    "bio": ""
+   },
+   "prior_context": "A long-standing friend shares a harmless public cooking reel without a link or request.",
+   "assets": [
+    {
+     "asset_id": "I07-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "instagram notification",
+     "content": {
+      "sender": "@unknownsender257",
+      "body": "@neel.verma: This is the recipe we discussed yesterday.",
+      "platform": "instagram",
+      "received_at": "19:36",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "I07-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "@unknownsender257",
+     "content": {
+      "display_name": "@unknownsender257",
+      "identifier": "@unknownsender257",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "16:52",
+      "username": "@unknownsender257",
+      "followers": "1888",
+      "following": "881",
+      "post_count": 171,
+      "bio": ""
+     }
+    },
+    {
+     "asset_id": "I07-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "@unknownsender257 thread",
+     "content": {
+      "header": {
+       "title": "@unknownsender257",
+       "subtitle": "@unknownsender257",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A long-standing friend shares a harmless public cooking reel without a link or request."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "@neel.verma: This is the recipe we discussed yesterday.",
+        "time": "15:19"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "I07-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 50929",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "I07-notif-01"
+   ],
+   [
+    "I07-thread-01",
+    "I07-sender-01"
+   ],
+   [
+    "I07-sender-01"
+   ],
+   [],
+   [
+    "I07-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "I08",
+  "definition_version": 1,
+  "platform": "instagram",
+  "synthetic": {
+   "sender": {
+    "display_name": "@unknownsender120",
+    "identifier": "@unknownsender120",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "15:20",
+    "username": "@unknownsender120",
+    "followers": "8883",
+    "following": "303",
+    "post_count": 0,
+    "bio": ""
+   },
+   "prior_context": "A DM account offers a guaranteed blue badge through a private form and fee.",
+   "assets": [
+    {
+     "asset_id": "I08-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "instagram notification",
+     "content": {
+      "sender": "@unknownsender120",
+      "body": "@badge_priority_agent: Your profile is pre-approved. Pay today for guaranteed verification.",
+      "platform": "instagram",
+      "received_at": "13:12",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "I08-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "@unknownsender120",
+     "content": {
+      "display_name": "@unknownsender120",
+      "identifier": "@unknownsender120",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "15:20",
+      "username": "@unknownsender120",
+      "followers": "8883",
+      "following": "303",
+      "post_count": 0,
+      "bio": ""
+     }
+    },
+    {
+     "asset_id": "I08-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "@unknownsender120 thread",
+     "content": {
+      "header": {
+       "title": "@unknownsender120",
+       "subtitle": "@unknownsender120",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A DM account offers a guaranteed blue badge through a private form and fee."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "@badge_priority_agent: Your profile is pre-approved. Pay today for guaranteed verification.",
+        "time": "17:41"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "I08-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 31936",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "I08-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "@unknownsender120",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-I08",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "I08-notif-01"
+   ],
+   [
+    "I08-thread-01",
+    "I08-sender-01"
+   ],
+   [
+    "I08-sender-01"
+   ],
+   [
+    "I08-payment-01"
+   ],
+   [
+    "I08-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "I09",
+  "definition_version": 1,
+  "platform": "instagram",
+  "synthetic": {
+   "sender": {
+    "display_name": "Sponsored",
+    "identifier": "@sponsored829",
+    "avatar_initials": "S",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "18:44",
+    "username": "@sponsored829",
+    "followers": "7251",
+    "following": "681",
+    "post_count": 11,
+    "bio": ""
+   },
+   "prior_context": "A sponsored reel shows a synthetic public figure promising guaranteed AI-trading returns.",
+   "assets": [
+    {
+     "asset_id": "I09-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "instagram notification",
+     "content": {
+      "sender": "Sponsored",
+      "body": "Exclusive AI trading window - join the private group before midnight.",
+      "platform": "instagram",
+      "received_at": "17:56",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "I09-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Sponsored",
+     "content": {
+      "display_name": "Sponsored",
+      "identifier": "@sponsored829",
+      "avatar_initials": "S",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "18:44",
+      "username": "@sponsored829",
+      "followers": "7251",
+      "following": "681",
+      "post_count": 11,
+      "bio": ""
+     }
+    },
+    {
+     "asset_id": "I09-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Sponsored thread",
+     "content": {
+      "header": {
+       "title": "Sponsored",
+       "subtitle": "@sponsored829",
+       "avatarSeed": "S"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A sponsored reel shows a synthetic public figure promising guaranteed AI-trading returns."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Exclusive AI trading window - join the private group before midnight.",
+        "time": "14:31"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "I09-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 88826",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "I09-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://i09.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "i09.training.example",
+      "body": "The interaction advances to an offline ad landing page that moves the learner to a fake WhatsApp group and trading app",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "I09-notif-01"
+   ],
+   [
+    "I09-thread-01",
+    "I09-sender-01"
+   ],
+   [
+    "I09-sender-01",
+    "I09-browser-01"
+   ],
+   [
+    "I09-browser-01"
+   ],
+   [
+    "I09-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "I10",
+  "definition_version": 1,
+  "platform": "instagram",
+  "synthetic": {
+   "sender": {
+    "display_name": "@unknownsender397",
+    "identifier": "@unknownsender397",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "16:50",
+    "username": "@unknownsender397",
+    "followers": "4415",
+    "following": "99",
+    "post_count": 45,
+    "bio": ""
+   },
+   "prior_context": "A supposed sports brand offers a free kit but asks the learner to pay shipping through a bio link.",
+   "assets": [
+    {
+     "asset_id": "I10-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "instagram notification",
+     "content": {
+      "sender": "@unknownsender397",
+      "body": "@peakgear_collabs: Selected ambassador! Free kit - pay only INR 199 shipping.",
+      "platform": "instagram",
+      "received_at": "10:52",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "I10-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "@unknownsender397",
+     "content": {
+      "display_name": "@unknownsender397",
+      "identifier": "@unknownsender397",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "16:50",
+      "username": "@unknownsender397",
+      "followers": "4415",
+      "following": "99",
+      "post_count": 45,
+      "bio": ""
+     }
+    },
+    {
+     "asset_id": "I10-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "@unknownsender397 thread",
+     "content": {
+      "header": {
+       "title": "@unknownsender397",
+       "subtitle": "@unknownsender397",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A supposed sports brand offers a free kit but asks the learner to pay shipping through a bio link."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "@peakgear_collabs: Selected ambassador! Free kit - pay only INR 199 shipping.",
+        "time": "08:55"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "I10-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 91593",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "I10-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://i10.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "i10.training.example",
+      "body": "The interaction advances to a fake creator-contract page requesting address, card and social password",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    },
+    {
+     "asset_id": "I10-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "@unknownsender397",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-I10",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "I10-notif-01"
+   ],
+   [
+    "I10-thread-01",
+    "I10-sender-01"
+   ],
+   [
+    "I10-sender-01",
+    "I10-browser-01"
+   ],
+   [
+    "I10-browser-01",
+    "I10-payment-01"
+   ],
+   [
+    "I10-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "I11",
+  "definition_version": 1,
+  "platform": "instagram",
+  "synthetic": {
+   "sender": {
+    "display_name": "@unknownsender254",
+    "identifier": "@unknownsender254",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "14:44",
+    "username": "@unknownsender254",
+    "followers": "1989",
+    "following": "784",
+    "post_count": 15,
+    "bio": ""
+   },
+   "prior_context": "A verified fictional welfare account posts a helpline change already listed in the approved directory.",
+   "assets": [
+    {
+     "asset_id": "I11-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "instagram notification",
+     "content": {
+      "sender": "@unknownsender254",
+      "body": "@forces_welfare_official: Helpline extension updated. Use the contact in the approved directory.",
+      "platform": "instagram",
+      "received_at": "17:30",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "I11-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "@unknownsender254",
+     "content": {
+      "display_name": "@unknownsender254",
+      "identifier": "@unknownsender254",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "14:44",
+      "username": "@unknownsender254",
+      "followers": "1989",
+      "following": "784",
+      "post_count": 15,
+      "bio": ""
+     }
+    },
+    {
+     "asset_id": "I11-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "@unknownsender254 thread",
+     "content": {
+      "header": {
+       "title": "@unknownsender254",
+       "subtitle": "@unknownsender254",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A verified fictional welfare account posts a helpline change already listed in the approved directory."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "@forces_welfare_official: Helpline extension updated. Use the contact in the approved directory.",
+        "time": "11:49"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "I11-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 71436",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "I11-notif-01"
+   ],
+   [
+    "I11-thread-01",
+    "I11-sender-01"
+   ],
+   [
+    "I11-sender-01"
+   ],
+   [],
+   [
+    "I11-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "I12",
+  "definition_version": 1,
+  "platform": "instagram",
+  "synthetic": {
+   "sender": {
+    "display_name": "@unknownsender586",
+    "identifier": "@unknownsender586",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "17:00",
+    "username": "@unknownsender586",
+    "followers": "6898",
+    "following": "420",
+    "post_count": 61,
+    "bio": ""
+   },
+   "prior_context": "A support-like account claims to have recovered the learner's profile and asks for a backup code to finish.",
+   "assets": [
+    {
+     "asset_id": "I12-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "instagram notification",
+     "content": {
+      "sender": "@unknownsender586",
+      "body": "@meta_recovery_case: We stopped a hacker. Send one backup code to secure your account.",
+      "platform": "instagram",
+      "received_at": "16:29",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "I12-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "@unknownsender586",
+     "content": {
+      "display_name": "@unknownsender586",
+      "identifier": "@unknownsender586",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "17:00",
+      "username": "@unknownsender586",
+      "followers": "6898",
+      "following": "420",
+      "post_count": 61,
+      "bio": ""
+     }
+    },
+    {
+     "asset_id": "I12-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "@unknownsender586 thread",
+     "content": {
+      "header": {
+       "title": "@unknownsender586",
+       "subtitle": "@unknownsender586",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A support-like account claims to have recovered the learner's profile and asks for a backup code to finish."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "@meta_recovery_case: We stopped a hacker. Send one backup code to secure your account.",
+        "time": "11:05"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "I12-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 24458",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "I12-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://i12.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "i12.training.example",
+      "body": "The interaction advances to a reply composer and fake security-check page",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "I12-notif-01"
+   ],
+   [
+    "I12-thread-01",
+    "I12-sender-01"
+   ],
+   [
+    "I12-sender-01",
+    "I12-browser-01"
+   ],
+   [
+    "I12-browser-01"
+   ],
+   [
+    "I12-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "I13",
+  "definition_version": 1,
+  "platform": "instagram",
+  "synthetic": {
+   "sender": {
+    "display_name": "@unknownsender644",
+    "identifier": "@unknownsender644",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "16:36",
+    "username": "@unknownsender644",
+    "followers": "2847",
+    "following": "134",
+    "post_count": 147,
+    "bio": ""
+   },
+   "prior_context": "A profile claiming to be a deployed officer quickly builds intimacy and then requests emergency customs money.",
+   "assets": [
+    {
+     "asset_id": "I13-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "instagram notification",
+     "content": {
+      "sender": "@unknownsender644",
+      "body": "@captain_aarav_global: My baggage is held. Please pay the release fee; I will repay you tomorrow.",
+      "platform": "instagram",
+      "received_at": "13:55",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "I13-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "@unknownsender644",
+     "content": {
+      "display_name": "@unknownsender644",
+      "identifier": "@unknownsender644",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "16:36",
+      "username": "@unknownsender644",
+      "followers": "2847",
+      "following": "134",
+      "post_count": 147,
+      "bio": ""
+     }
+    },
+    {
+     "asset_id": "I13-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "@unknownsender644 thread",
+     "content": {
+      "header": {
+       "title": "@unknownsender644",
+       "subtitle": "@unknownsender644",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A profile claiming to be a deployed officer quickly builds intimacy and then requests emergency customs money."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "@captain_aarav_global: My baggage is held. Please pay the release fee; I will repay you tomorrow.",
+        "time": "08:53"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "I13-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 72397",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "I13-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "@unknownsender644",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-I13",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "I13-notif-01"
+   ],
+   [
+    "I13-thread-01",
+    "I13-sender-01"
+   ],
+   [
+    "I13-sender-01"
+   ],
+   [
+    "I13-payment-01"
+   ],
+   [
+    "I13-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "I14",
+  "definition_version": 1,
+  "platform": "instagram",
+  "synthetic": {
+   "sender": {
+    "display_name": "@unknownsender792",
+    "identifier": "@unknownsender792",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "17:25",
+    "username": "@unknownsender792",
+    "followers": "3383",
+    "following": "56",
+    "post_count": 184,
+    "bio": ""
+   },
+   "prior_context": "A fan page says the learner is shortlisted for a public commendation feature and requests service documents.",
+   "assets": [
+    {
+     "asset_id": "I14-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "instagram notification",
+     "content": {
+      "sender": "@unknownsender792",
+      "body": "@honour_roll_india: Send service card and posting proof to verify your feature today.",
+      "platform": "instagram",
+      "received_at": "12:05",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "I14-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "@unknownsender792",
+     "content": {
+      "display_name": "@unknownsender792",
+      "identifier": "@unknownsender792",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "17:25",
+      "username": "@unknownsender792",
+      "followers": "3383",
+      "following": "56",
+      "post_count": 184,
+      "bio": ""
+     }
+    },
+    {
+     "asset_id": "I14-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "@unknownsender792 thread",
+     "content": {
+      "header": {
+       "title": "@unknownsender792",
+       "subtitle": "@unknownsender792",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A fan page says the learner is shortlisted for a public commendation feature and requests service documents."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "@honour_roll_india: Send service card and posting proof to verify your feature today.",
+        "time": "11:19"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "I14-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 63815",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "I14-notif-01"
+   ],
+   [
+    "I14-thread-01",
+    "I14-sender-01"
+   ],
+   [
+    "I14-sender-01"
+   ],
+   [],
+   [
+    "I14-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "I15",
+  "definition_version": 1,
+  "platform": "instagram",
+  "synthetic": {
+   "sender": {
+    "display_name": "@unknownsender613",
+    "identifier": "@unknownsender613",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "13:02",
+    "username": "@unknownsender613",
+    "followers": "2139",
+    "following": "731",
+    "post_count": 169,
+    "bio": ""
+   },
+   "prior_context": "A known account sends a short DM saying the learner appears in a shocking video.",
+   "assets": [
+    {
+     "asset_id": "I15-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "instagram notification",
+     "content": {
+      "sender": "@unknownsender613",
+      "body": "@knownfriend: Is this you in the video?? I can",
+      "platform": "instagram",
+      "received_at": "19:39",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "I15-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "@unknownsender613",
+     "content": {
+      "display_name": "@unknownsender613",
+      "identifier": "@unknownsender613",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "13:02",
+      "username": "@unknownsender613",
+      "followers": "2139",
+      "following": "731",
+      "post_count": 169,
+      "bio": ""
+     }
+    },
+    {
+     "asset_id": "I15-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "@unknownsender613 thread",
+     "content": {
+      "header": {
+       "title": "@unknownsender613",
+       "subtitle": "@unknownsender613",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A known account sends a short DM saying the learner appears in a shocking video."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "@knownfriend: Is this you in the video?? I can",
+        "time": "07:55"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "I15-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 23422",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "I15-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://i15.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "i15.training.example",
+      "body": "The interaction advances to a fake Instagram login page before the 'video'",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "I15-notif-01"
+   ],
+   [
+    "I15-thread-01",
+    "I15-sender-01"
+   ],
+   [
+    "I15-sender-01",
+    "I15-browser-01"
+   ],
+   [
+    "I15-browser-01"
+   ],
+   [
+    "I15-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "I16",
+  "definition_version": 1,
+  "platform": "instagram",
+  "synthetic": {
+   "sender": {
+    "display_name": "@unknownsender485",
+    "identifier": "@unknownsender485",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "13:03",
+    "username": "@unknownsender485",
+    "followers": "7953",
+    "following": "89",
+    "post_count": 135,
+    "bio": ""
+   },
+   "prior_context": "A known public-information admin asks the learner to approve a previously reviewed, non-sensitive event photo.",
+   "assets": [
+    {
+     "asset_id": "I16-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "instagram notification",
+     "content": {
+      "sender": "@unknownsender485",
+      "body": "@unitfalcon_public: Approved image PF-204 is ready. Confirm your consent in the in-app card.",
+      "platform": "instagram",
+      "received_at": "17:10",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "I16-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "@unknownsender485",
+     "content": {
+      "display_name": "@unknownsender485",
+      "identifier": "@unknownsender485",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "13:03",
+      "username": "@unknownsender485",
+      "followers": "7953",
+      "following": "89",
+      "post_count": 135,
+      "bio": ""
+     }
+    },
+    {
+     "asset_id": "I16-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "@unknownsender485 thread",
+     "content": {
+      "header": {
+       "title": "@unknownsender485",
+       "subtitle": "@unknownsender485",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A known public-information admin asks the learner to approve a previously reviewed, non-sensitive event photo."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "@unitfalcon_public: Approved image PF-204 is ready. Confirm your consent in the in-app card.",
+        "time": "18:22"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "I16-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 31254",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "I16-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "@unknownsender485",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-I16",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "I16-notif-01"
+   ],
+   [
+    "I16-thread-01",
+    "I16-sender-01"
+   ],
+   [
+    "I16-sender-01"
+   ],
+   [
+    "I16-payment-01"
+   ],
+   [
+    "I16-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "I17",
+  "definition_version": 1,
+  "platform": "instagram",
+  "synthetic": {
+   "sender": {
+    "display_name": "@unknownsender170",
+    "identifier": "@unknownsender170",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "13:00",
+    "username": "@unknownsender170",
+    "followers": "4374",
+    "following": "820",
+    "post_count": 71,
+    "bio": ""
+   },
+   "prior_context": "An account sends a blurred synthetic composite and threatens to post it unless paid.",
+   "assets": [
+    {
+     "asset_id": "I17-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "instagram notification",
+     "content": {
+      "sender": "@unknownsender170",
+      "body": "@private_case_404: Pay tonight or this edited image goes to everyone you follow.",
+      "platform": "instagram",
+      "received_at": "09:17",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "I17-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "@unknownsender170",
+     "content": {
+      "display_name": "@unknownsender170",
+      "identifier": "@unknownsender170",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "13:00",
+      "username": "@unknownsender170",
+      "followers": "4374",
+      "following": "820",
+      "post_count": 71,
+      "bio": ""
+     }
+    },
+    {
+     "asset_id": "I17-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "@unknownsender170 thread",
+     "content": {
+      "header": {
+       "title": "@unknownsender170",
+       "subtitle": "@unknownsender170",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "An account sends a blurred synthetic composite and threatens to post it unless paid."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "@private_case_404: Pay tonight or this edited image goes to everyone you follow.",
+        "time": "10:57"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "I17-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 97704",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "I17-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "@unknownsender170",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-I17",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "I17-notif-01"
+   ],
+   [
+    "I17-thread-01",
+    "I17-sender-01"
+   ],
+   [
+    "I17-sender-01"
+   ],
+   [
+    "I17-payment-01"
+   ],
+   [
+    "I17-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "I18",
+  "definition_version": 1,
+  "platform": "instagram",
+  "synthetic": {
+   "sender": {
+    "display_name": "@unknownsender713",
+    "identifier": "@unknownsender713",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "16:32",
+    "username": "@unknownsender713",
+    "followers": "4588",
+    "following": "65",
+    "post_count": 49,
+    "bio": ""
+   },
+   "prior_context": "A clone has bought followers, copied recent posts and follows many mutuals before asking for a meetup location.",
+   "assets": [
+    {
+     "asset_id": "I18-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "instagram notification",
+     "content": {
+      "sender": "@unknownsender713",
+      "body": "@arjun.k_singh: New private account. Send tomorrow",
+      "platform": "instagram",
+      "received_at": "17:00",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "I18-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "@unknownsender713",
+     "content": {
+      "display_name": "@unknownsender713",
+      "identifier": "@unknownsender713",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "16:32",
+      "username": "@unknownsender713",
+      "followers": "4588",
+      "following": "65",
+      "post_count": 49,
+      "bio": ""
+     }
+    },
+    {
+     "asset_id": "I18-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "@unknownsender713 thread",
+     "content": {
+      "header": {
+       "title": "@unknownsender713",
+       "subtitle": "@unknownsender713",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A clone has bought followers, copied recent posts and follows many mutuals before asking for a meetup location."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "@arjun.k_singh: New private account. Send tomorrow",
+        "time": "18:13"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "I18-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 22111",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "I18-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "@unknownsender713",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-I18",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "I18-notif-01"
+   ],
+   [
+    "I18-thread-01",
+    "I18-sender-01"
+   ],
+   [
+    "I18-sender-01"
+   ],
+   [
+    "I18-payment-01"
+   ],
+   [
+    "I18-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "I19",
+  "definition_version": 1,
+  "platform": "instagram",
+  "synthetic": {
+   "sender": {
+    "display_name": "@unknownsender259",
+    "identifier": "@unknownsender259",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "07:43",
+    "username": "@unknownsender259",
+    "followers": "1780",
+    "following": "803",
+    "post_count": 67,
+    "bio": ""
+   },
+   "prior_context": "A dramatic post falsely claims an incident involving fictional Unit Falcon and asks everyone to repost immediately.",
+   "assets": [
+    {
+     "asset_id": "I19-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "instagram notification",
+     "content": {
+      "sender": "@unknownsender259",
+      "body": "@breaking_defence_now: URGENT incident at Unit Falcon - repost before it is deleted.",
+      "platform": "instagram",
+      "received_at": "18:11",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "I19-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "@unknownsender259",
+     "content": {
+      "display_name": "@unknownsender259",
+      "identifier": "@unknownsender259",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "07:43",
+      "username": "@unknownsender259",
+      "followers": "1780",
+      "following": "803",
+      "post_count": 67,
+      "bio": ""
+     }
+    },
+    {
+     "asset_id": "I19-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "@unknownsender259 thread",
+     "content": {
+      "header": {
+       "title": "@unknownsender259",
+       "subtitle": "@unknownsender259",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A dramatic post falsely claims an incident involving fictional Unit Falcon and asks everyone to repost immediately."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "@breaking_defence_now: URGENT incident at Unit Falcon - repost before it is deleted.",
+        "time": "14:07"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "I19-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 62597",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "I19-notif-01"
+   ],
+   [
+    "I19-thread-01",
+    "I19-sender-01"
+   ],
+   [
+    "I19-sender-01"
+   ],
+   [],
+   [
+    "I19-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "I20",
+  "definition_version": 1,
+  "platform": "instagram",
+  "synthetic": {
+   "sender": {
+    "display_name": "@unknownsender506",
+    "identifier": "@unknownsender506",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "17:09",
+    "username": "@unknownsender506",
+    "followers": "5373",
+    "following": "460",
+    "post_count": 186,
+    "bio": ""
+   },
+   "prior_context": "A credible-looking researcher has interacted normally for weeks, then asks about equipment limitations.",
+   "assets": [
+    {
+     "asset_id": "I20-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "instagram notification",
+     "content": {
+      "sender": "@unknownsender506",
+      "body": "@defence_research_lab: Your experience is valuable. Which system fails most often in field conditions?",
+      "platform": "instagram",
+      "received_at": "12:22",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "I20-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "@unknownsender506",
+     "content": {
+      "display_name": "@unknownsender506",
+      "identifier": "@unknownsender506",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "17:09",
+      "username": "@unknownsender506",
+      "followers": "5373",
+      "following": "460",
+      "post_count": 186,
+      "bio": ""
+     }
+    },
+    {
+     "asset_id": "I20-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "@unknownsender506 thread",
+     "content": {
+      "header": {
+       "title": "@unknownsender506",
+       "subtitle": "@unknownsender506",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A credible-looking researcher has interacted normally for weeks, then asks about equipment limitations."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "@defence_research_lab: Your experience is valuable. Which system fails most often in field conditions?",
+        "time": "07:56"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "I20-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 26922",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "I20-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://i20.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "i20.training.example",
+      "body": "The interaction advances to a structured interview form requesting equipment, readiness and routine details",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "I20-notif-01"
+   ],
+   [
+    "I20-thread-01",
+    "I20-sender-01"
+   ],
+   [
+    "I20-sender-01",
+    "I20-browser-01"
+   ],
+   [
+    "I20-browser-01"
+   ],
+   [
+    "I20-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "I21",
+  "definition_version": 1,
+  "platform": "instagram",
+  "synthetic": {
+   "sender": {
+    "display_name": "@unknownsender934",
+    "identifier": "@unknownsender934",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "07:30",
+    "username": "@unknownsender934",
+    "followers": "8904",
+    "following": "784",
+    "post_count": 183,
+    "bio": ""
+   },
+   "prior_context": "A known teammate asks to tag the learner in an approved photo after the event has concluded and the image is marked public.",
+   "assets": [
+    {
+     "asset_id": "I21-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "instagram notification",
+     "content": {
+      "sender": "@unknownsender934",
+      "body": "@arjun.k.singh: Public-release photo PF-311 is up. May I tag you?",
+      "platform": "instagram",
+      "received_at": "13:51",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "I21-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "@unknownsender934",
+     "content": {
+      "display_name": "@unknownsender934",
+      "identifier": "@unknownsender934",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "07:30",
+      "username": "@unknownsender934",
+      "followers": "8904",
+      "following": "784",
+      "post_count": 183,
+      "bio": ""
+     }
+    },
+    {
+     "asset_id": "I21-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "@unknownsender934 thread",
+     "content": {
+      "header": {
+       "title": "@unknownsender934",
+       "subtitle": "@unknownsender934",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A known teammate asks to tag the learner in an approved photo after the event has concluded and the image is marked public."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "@arjun.k.singh: Public-release photo PF-311 is up. May I tag you?",
+        "time": "11:26"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "I21-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 95859",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "I21-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "@unknownsender934",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-I21",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "I21-notif-01"
+   ],
+   [
+    "I21-thread-01",
+    "I21-sender-01"
+   ],
+   [
+    "I21-sender-01"
+   ],
+   [
+    "I21-payment-01"
+   ],
+   [
+    "I21-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "I22",
+  "definition_version": 1,
+  "platform": "instagram",
+  "synthetic": {
+   "sender": {
+    "display_name": "@unknownsender457",
+    "identifier": "@unknownsender457",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "11:51",
+    "username": "@unknownsender457",
+    "followers": "4545",
+    "following": "853",
+    "post_count": 38,
+    "bio": ""
+   },
+   "prior_context": "A fake support account initiates a video call and claims the profile will be disabled unless identity is shown on camera.",
+   "assets": [
+    {
+     "asset_id": "I22-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "instagram notification",
+     "content": {
+      "sender": "@unknownsender457",
+      "body": "@security_live_case: Accept our video verification now to prevent account removal.",
+      "platform": "instagram",
+      "received_at": "11:03",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "I22-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "@unknownsender457",
+     "content": {
+      "display_name": "@unknownsender457",
+      "identifier": "@unknownsender457",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "11:51",
+      "username": "@unknownsender457",
+      "followers": "4545",
+      "following": "853",
+      "post_count": 38,
+      "bio": ""
+     }
+    },
+    {
+     "asset_id": "I22-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "@unknownsender457 thread",
+     "content": {
+      "header": {
+       "title": "@unknownsender457",
+       "subtitle": "@unknownsender457",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A fake support account initiates a video call and claims the profile will be disabled unless identity is shown on camera."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "@security_live_case: Accept our video verification now to prevent account removal.",
+        "time": "17:20"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "I22-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 95469",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "I22-call-01",
+     "kind": "call_screen",
+     "inert": true,
+     "label": "Incoming call",
+     "content": {
+      "caller": "@unknownsender457",
+      "number": "@unknownsender457",
+      "captions": [
+       "@security_live_case: Accept our video verification now to prevent account removal."
+      ],
+      "timer_seconds": 0,
+      "choices": [
+       "decline",
+       "accept",
+       "end",
+       "verify",
+       "report"
+      ],
+      "microphone": false,
+      "camera": false,
+      "real_dialer": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "I22-install-01",
+     "kind": "install_screen",
+     "inert": true,
+     "label": "Install / permission request",
+     "content": {
+      "app_name": "I22 Training Mock",
+      "permissions": [
+       "sms",
+       "accessibility",
+       "screen_capture"
+      ],
+      "installs": false,
+      "grants_real_permission": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "I22-notif-01"
+   ],
+   [
+    "I22-thread-01",
+    "I22-sender-01"
+   ],
+   [
+    "I22-sender-01"
+   ],
+   [
+    "I22-call-01",
+    "I22-install-01"
+   ],
+   [
+    "I22-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "I23",
+  "definition_version": 1,
+  "platform": "instagram",
+  "synthetic": {
+   "sender": {
+    "display_name": "@unknownsender275",
+    "identifier": "@unknownsender275",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "08:14",
+    "username": "@unknownsender275",
+    "followers": "2262",
+    "following": "921",
+    "post_count": 11,
+    "bio": ""
+   },
+   "prior_context": "A known charity creator's account posts a sudden crypto-only emergency fundraiser after takeover.",
+   "assets": [
+    {
+     "asset_id": "I23-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "instagram notification",
+     "content": {
+      "sender": "@unknownsender275",
+      "body": "@carewithmaya: Emergency surgery fund - crypto only for the next two hours.",
+      "platform": "instagram",
+      "received_at": "12:59",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "I23-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "@unknownsender275",
+     "content": {
+      "display_name": "@unknownsender275",
+      "identifier": "@unknownsender275",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "08:14",
+      "username": "@unknownsender275",
+      "followers": "2262",
+      "following": "921",
+      "post_count": 11,
+      "bio": ""
+     }
+    },
+    {
+     "asset_id": "I23-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "@unknownsender275 thread",
+     "content": {
+      "header": {
+       "title": "@unknownsender275",
+       "subtitle": "@unknownsender275",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A known charity creator's account posts a sudden crypto-only emergency fundraiser after takeover."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "@carewithmaya: Emergency surgery fund - crypto only for the next two hours.",
+        "time": "18:45"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "I23-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 38856",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "I23-payment-01",
+     "kind": "payment_screen",
+     "inert": true,
+     "label": "Payment request",
+     "content": {
+      "payee": "@unknownsender275",
+      "amount_label": "INR 0.00",
+      "reference": "TRAIN-I23",
+      "real_payment": false,
+      "stores_card_data": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "I23-notif-01"
+   ],
+   [
+    "I23-thread-01",
+    "I23-sender-01"
+   ],
+   [
+    "I23-sender-01"
+   ],
+   [
+    "I23-payment-01"
+   ],
+   [
+    "I23-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "I24",
+  "definition_version": 1,
+  "platform": "instagram",
+  "synthetic": {
+   "sender": {
+    "display_name": "Sponsored",
+    "identifier": "@sponsored126",
+    "avatar_initials": "S",
+    "avatar_kind": "initials",
+    "name_source": "client_specification",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "11:27",
+    "username": "@sponsored126",
+    "followers": "7251",
+    "following": "677",
+    "post_count": 181,
+    "bio": ""
+   },
+   "prior_context": "A polished sponsored carousel claims special institutional access and shows fabricated regulator marks.",
+   "assets": [
+    {
+     "asset_id": "I24-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "instagram notification",
+     "content": {
+      "sender": "Sponsored",
+      "body": "Institutional account access for service professionals - confirmed IPO allotment.",
+      "platform": "instagram",
+      "received_at": "17:14",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "I24-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "Sponsored",
+     "content": {
+      "display_name": "Sponsored",
+      "identifier": "@sponsored126",
+      "avatar_initials": "S",
+      "avatar_kind": "initials",
+      "name_source": "client_specification",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "11:27",
+      "username": "@sponsored126",
+      "followers": "7251",
+      "following": "677",
+      "post_count": 181,
+      "bio": ""
+     }
+    },
+    {
+     "asset_id": "I24-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "Sponsored thread",
+     "content": {
+      "header": {
+       "title": "Sponsored",
+       "subtitle": "@sponsored126",
+       "avatarSeed": "S"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A polished sponsored carousel claims special institutional access and shows fabricated regulator marks."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "Institutional account access for service professionals - confirmed IPO allotment.",
+        "time": "19:23"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "I24-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 94005",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "I24-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://i24.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "i24.training.example",
+      "body": "The interaction advances to a fake app store/app dashboard with initial profit and withdrawal lock",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "I24-notif-01"
+   ],
+   [
+    "I24-thread-01",
+    "I24-sender-01"
+   ],
+   [
+    "I24-sender-01",
+    "I24-browser-01"
+   ],
+   [
+    "I24-browser-01"
+   ],
+   [
+    "I24-dir-01"
+   ],
+   []
+  ]
+ },
+ {
+  "scenario_id": "I25",
+  "definition_version": 1,
+  "platform": "instagram",
+  "synthetic": {
+   "sender": {
+    "display_name": "@unknownsender410",
+    "identifier": "@unknownsender410",
+    "avatar_initials": "?",
+    "avatar_kind": "initials",
+    "name_source": "placeholder",
+    "identifier_source": "placeholder",
+    "verified": false,
+    "first_seen": "07:08",
+    "username": "@unknownsender410",
+    "followers": "6977",
+    "following": "331",
+    "post_count": 135,
+    "bio": ""
+   },
+   "prior_context": "A convincing community reel offers limited canteen coupons and shows a QR code over copied imagery.",
+   "assets": [
+    {
+     "asset_id": "I25-notif-01",
+     "kind": "notification",
+     "inert": true,
+     "label": "instagram notification",
+     "content": {
+      "sender": "@unknownsender410",
+      "body": "@falcon_family_deals: Scan for the first 200 service-family coupon packs.",
+      "platform": "instagram",
+      "received_at": "11:58",
+      "source": "client_specification"
+     }
+    },
+    {
+     "asset_id": "I25-sender-01",
+     "kind": "sender_profile",
+     "inert": true,
+     "label": "@unknownsender410",
+     "content": {
+      "display_name": "@unknownsender410",
+      "identifier": "@unknownsender410",
+      "avatar_initials": "?",
+      "avatar_kind": "initials",
+      "name_source": "placeholder",
+      "identifier_source": "placeholder",
+      "verified": false,
+      "first_seen": "07:08",
+      "username": "@unknownsender410",
+      "followers": "6977",
+      "following": "331",
+      "post_count": 135,
+      "bio": ""
+     }
+    },
+    {
+     "asset_id": "I25-thread-01",
+     "kind": "message_thread",
+     "inert": true,
+     "label": "@unknownsender410 thread",
+     "content": {
+      "header": {
+       "title": "@unknownsender410",
+       "subtitle": "@unknownsender410",
+       "avatarSeed": "?"
+      },
+      "blocks": [
+       {
+        "type": "note",
+        "text": "A convincing community reel offers limited canteen coupons and shows a QR code over copied imagery."
+       },
+       {
+        "type": "message",
+        "from": "them",
+        "text": "@falcon_family_deals: Scan for the first 200 service-family coupon packs.",
+        "time": "10:06"
+       }
+      ]
+     }
+    },
+    {
+     "asset_id": "I25-dir-01",
+     "kind": "trusted_directory_entry",
+     "inert": true,
+     "label": "Local approved directory",
+     "content": {
+      "name": "Unit Falcon Support Desk",
+      "identifier": "+91 00000 36091",
+      "provenance": "local approved directory",
+      "matches_message_sender": false,
+      "source": "placeholder"
+     }
+    },
+    {
+     "asset_id": "I25-browser-01",
+     "kind": "browser_page",
+     "inert": true,
+     "label": "Offline safe browser",
+     "display_target": "https://i25.training.example/verify",
+     "content": {
+      "title": "Training simulation page",
+      "host": "i25.training.example",
+      "body": "The interaction advances to the QR inspector and a synthetic eligibility form",
+      "fields": [],
+      "source": "placeholder",
+      "network": "blocked"
+     }
+    },
+    {
+     "asset_id": "I25-qr-01",
+     "kind": "qr_payload",
+     "inert": true,
+     "label": "QR code",
+     "display_target": "https://i25.training.example/qr",
+     "content": {
+      "decoded_target": "https://i25.training.example/qr",
+      "decoded_locally": true,
+      "camera": false,
+      "clipboard": false,
+      "source": "placeholder"
+     }
+    }
+   ]
+  },
+  "stage_asset_refs": [
+   [
+    "I25-notif-01"
+   ],
+   [
+    "I25-thread-01",
+    "I25-sender-01"
+   ],
+   [
+    "I25-sender-01",
+    "I25-browser-01"
+   ],
+   [
+    "I25-browser-01",
+    "I25-qr-01"
+   ],
+   [
+    "I25-dir-01"
+   ],
+   []
+  ]
+ }
+]

@@ -1,0 +1,1577 @@
+[
+ {
+  "scenario_id": "E01",
+  "title": "Password Expires Today",
+  "platform": "Email",
+  "difficulty": "Easy",
+  "disposition": "Malicious",
+  "family": "Credential phishing",
+  "trigger": "Urgency + authority",
+  "end_state": "Official portal shows no expiry; message moves to the simulated phishing folder.",
+  "feedback": "A familiar logo is not sender proof. Inspect the full address and go directly to the approved account portal.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'IT Service Desk: Password expires today - retain access by validating now.' The Email badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, mail tile, unread counter, subject preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the unread IT-themed email. Context presented: A message using IT branding says the mailbox password expires today.",
+    "ui_to_build": "Inbox and message pane with folders, thread history, attachment chips, reply controls and warning banners.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine full From/Reply-To, authentication summary and link target",
+    "ui_to_build": "Expanded sender and message-details sheet: display name, full address, reply-to, authentication summary and link target.",
+    "expected_safe_behavior": "Check this decision signal: The display name looks official but the sender and reply-to use unrelated reserved domains.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a synthetic sign-in page that requests username, password and OTP",
+    "ui_to_build": "Offline safe browser, attachment preview, QR inspector, OAuth consent mock or callback panel; no host execution/network.",
+    "expected_safe_behavior": "Do not enter credentials or approve an unexpected sign-in. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: open the known account/security portal directly from the Trusted Directory",
+    "ui_to_build": "More-actions menu with Report phishing plus independent directory, approved portal and known-vendor-contact overlay.",
+    "expected_safe_behavior": "Verify independently: open the known account/security portal directly from the Trusted Directory Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: close the page; report phishing; verify account status in the official portal",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 63,
+  "content_sha256": "f3c1b580e57e8b2c9f6d321a577e9586a49a60c92a608f3301beaafe21d3f170"
+ },
+ {
+  "scenario_id": "E02",
+  "title": "Invoice Spreadsheet Macro",
+  "platform": "Email",
+  "difficulty": "Easy",
+  "disposition": "Malicious",
+  "family": "Malicious attachment",
+  "trigger": "Routine + urgency",
+  "end_state": "Attachment remains inert and the message is quarantined.",
+  "feedback": "Treat unexpected macro-enabled documents as high risk. Verify the invoice and use a safe preview process.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Accounts Notice: Overdue invoice - enable content to view payment lines.' The Email badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, mail tile, unread counter, subject preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the inbox message with Invoice_8841.xlsm. Context presented: An unknown supplier sends an overdue invoice as a macro-enabled spreadsheet.",
+    "ui_to_build": "Inbox and message pane with folders, thread history, attachment chips, reply controls and warning banners.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine sender domain, unexpected supplier, file extension and Enable Content instruction",
+    "ui_to_build": "Expanded sender and message-details sheet: display name, full address, reply-to, authentication summary and link target.",
+    "expected_safe_behavior": "Check this decision signal: A macro-enabled file from an unknown sender is not needed to view an invoice and may execute code.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to an inert spreadsheet preview followed by an Enable Content prompt",
+    "ui_to_build": "Offline safe browser, attachment preview, QR inspector, OAuth consent mock or callback panel; no host execution/network.",
+    "expected_safe_behavior": "Do not enable macros, run content or upload the file elsewhere. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: check the supplier in the approved vendor system and call the known finance contact",
+    "ui_to_build": "More-actions menu with Report phishing plus independent directory, approved portal and known-vendor-contact overlay.",
+    "expected_safe_behavior": "Verify independently: check the supplier in the approved vendor system and call the known finance contact Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: do not enable; report phishing; quarantine the attachment in the simulation",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 64,
+  "content_sha256": "aa5d5d5380c838f234ce8b66d72b1d50d069730f2938f48f6ae11232dddd64f5"
+ },
+ {
+  "scenario_id": "E03",
+  "title": "Authenticated Internal Newsletter",
+  "platform": "Email",
+  "difficulty": "Easy",
+  "disposition": "Legitimate",
+  "family": "Legitimate internal communication",
+  "trigger": "Routine",
+  "end_state": "Newsletter is marked read and archived if selected.",
+  "feedback": "Routine authenticated mail without unusual requests can be handled normally after a proportionate check.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Learning Office: September safety newsletter - read-only edition.' The Email badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, mail tile, unread counter, subject preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the unread newsletter. Context presented: The monthly training newsletter arrives from the expected authenticated internal domain with no action request.",
+    "ui_to_build": "Inbox and message pane with folders, thread history, attachment chips, reply controls and warning banners.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine full sender, authentication summary, prior monthly thread and absence of attachments/login requests",
+    "ui_to_build": "Expanded sender and message-details sheet: display name, full address, reply-to, authentication summary and link target.",
+    "expected_safe_behavior": "Check this decision signal: The message matches cadence and domain, passes the simulated authentication checks, and asks for no sensitive action.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to the in-message newsletter reader with Archive/Mark unread",
+    "ui_to_build": "Offline safe browser, attachment preview, QR inspector, OAuth consent mock or callback panel; no host execution/network.",
+    "expected_safe_behavior": "Use the normal in-app path only after the details match the known context. Do not switch to an untrusted channel.",
+    "scoring_event": "CORRECT_USE +3; needless reject/ignore -2; unsafe external action -4."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: compare sender and issue number with the local internal directory/archive",
+    "ui_to_build": "More-actions menu with Report phishing plus independent directory, approved portal and known-vendor-contact overlay.",
+    "expected_safe_behavior": "Verify independently: compare sender and issue number with the local internal directory/archive If it matches, continue; do not report or block a legitimate sender.",
+    "scoring_event": "TRUSTED_VERIFY +3; false report/block -4; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: read/archive normally; do not report or block",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 65,
+  "content_sha256": "75a0b2096b96a7560d3000cfa759c15f98b2a222095de04d1ab0426122d2e804"
+ },
+ {
+  "scenario_id": "E04",
+  "title": "Customs Parcel Hold",
+  "platform": "Email",
+  "difficulty": "Easy",
+  "disposition": "Malicious",
+  "family": "Delivery impersonation / fee phishing",
+  "trigger": "Fear + curiosity",
+  "end_state": "Known courier mock reports no such parcel; message is quarantined.",
+  "feedback": "Unexpected parcel fees are common lures. Verify tracking in the official service before paying anything.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'RapidShip Customs: Parcel RS-441 held. Pay a small clearance fee today.' The Email badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, mail tile, unread counter, subject preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the delivery email and tracking button. Context presented: A courier-themed email claims a parcel is held for missing customs payment.",
+    "ui_to_build": "Inbox and message pane with folders, thread history, attachment chips, reply controls and warning banners.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine sender domain, unsolicited tracking number, link target and payment urgency",
+    "ui_to_build": "Expanded sender and message-details sheet: display name, full address, reply-to, authentication summary and link target.",
+    "expected_safe_behavior": "Check this decision signal: The parcel is unexpected and the button leads to a look-alike reserved domain.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a fake tracking page requesting card/UPI data",
+    "ui_to_build": "Offline safe browser, attachment preview, QR inspector, OAuth consent mock or callback panel; no host execution/network.",
+    "expected_safe_behavior": "Do not enter payment information or identity documents. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: open the known courier site/app independently and search the number",
+    "ui_to_build": "More-actions menu with Report phishing plus independent directory, approved portal and known-vendor-contact overlay.",
+    "expected_safe_behavior": "Verify independently: open the known courier site/app independently and search the number Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: close; report phishing; retain the message as evidence",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 66,
+  "content_sha256": "0f1d3f8f029832e9f4d27eb61d29a945304487f3b2f07db4bb75c6afcd38188c"
+ },
+ {
+  "scenario_id": "E05",
+  "title": "Mandatory HR Policy Login",
+  "platform": "Email",
+  "difficulty": "Easy",
+  "disposition": "Malicious",
+  "family": "HR impersonation / credential phishing",
+  "trigger": "Authority + compliance",
+  "end_state": "Approved portal shows no task and the phish is reported.",
+  "feedback": "Compliance language can be weaponized. Start from the known HR portal rather than a message link.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'People Office: Mandatory policy acknowledgement due in 60 minutes.' The Email badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, mail tile, unread counter, subject preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the HR-themed email. Context presented: A message says pay access will be suspended unless a policy is acknowledged through a login button.",
+    "ui_to_build": "Inbox and message pane with folders, thread history, attachment chips, reply controls and warning banners.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine sender domain, reply-to, generic greeting, countdown and destination",
+    "ui_to_build": "Expanded sender and message-details sheet: display name, full address, reply-to, authentication summary and link target.",
+    "expected_safe_behavior": "Check this decision signal: The action is high-pressure, uses a look-alike domain and bypasses the approved HR portal.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a cloned HR login and acknowledgement screen",
+    "ui_to_build": "Offline safe browser, attachment preview, QR inspector, OAuth consent mock or callback panel; no host execution/network.",
+    "expected_safe_behavior": "Do not enter password, OTP or payroll information. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: open the approved HR portal from a bookmark/directory and check assigned tasks",
+    "ui_to_build": "More-actions menu with Report phishing plus independent directory, approved portal and known-vendor-contact overlay.",
+    "expected_safe_behavior": "Verify independently: open the approved HR portal from a bookmark/directory and check assigned tasks Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: close; report phishing; take no action in the message",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 67,
+  "content_sha256": "834905aee5d9f846a3c398d7d124be8f5a70b3a31f8ec5ea9f78302c0d4ca797"
+ },
+ {
+  "scenario_id": "E06",
+  "title": "Adjutant Roster Request",
+  "platform": "Email",
+  "difficulty": "Easy",
+  "disposition": "Malicious",
+  "family": "Military display-name spoofing / data request",
+  "trigger": "Authority | FICTIONAL MILITARY CONTEXT",
+  "end_state": "No roster is attached and the spoof is logged for review.",
+  "feedback": "Display names can be copied. Verify the full address and keep personnel data in approved systems.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Unit Adjutant: Send the latest personnel roster before the commander's brief.' The Email badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, mail tile, unread counter, subject preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the authority-themed email. Context presented: A display name resembling the unit adjutant asks for the current personnel roster in spreadsheet form.",
+    "ui_to_build": "Inbox and message pane with folders, thread history, attachment chips, reply controls and warning banners.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine full sender address, reply-to, external banner and data classification cue",
+    "ui_to_build": "Expanded sender and message-details sheet: display name, full address, reply-to, authentication summary and link target.",
+    "expected_safe_behavior": "Check this decision signal: The external address does not match the approved domain and the requested roster is protected.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a reply composer with a synthetic roster attachment chip",
+    "ui_to_build": "Offline safe browser, attachment preview, QR inspector, OAuth consent mock or callback panel; no host execution/network.",
+    "expected_safe_behavior": "Do not attach or summarize roster/personnel information. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: contact the adjutant through the approved internal directory and document system",
+    "ui_to_build": "More-actions menu with Report phishing plus independent directory, approved portal and known-vendor-contact overlay.",
+    "expected_safe_behavior": "Verify independently: contact the adjutant through the approved internal directory and document system Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: cancel the reply; report the spoof through unit security; do not attach data",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 68,
+  "content_sha256": "7e9e3e278736ee80dd258f3feb4753e7086f87c945ce8a20d86c24a6763ef768"
+ },
+ {
+  "scenario_id": "E07",
+  "title": "Expected Training Calendar Invite",
+  "platform": "Email",
+  "difficulty": "Easy",
+  "disposition": "Legitimate",
+  "family": "Legitimate calendar invitation",
+  "trigger": "Routine + authority | FICTIONAL MILITARY CONTEXT",
+  "end_state": "Calendar response is stored locally and invite remains legitimate.",
+  "feedback": "Expected invitations from verified organizers should be handled normally. Check details without creating a false alarm.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Training Office: Invite - Social Engineering Lab, 04 Sep, Training Room C.' The Email badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, mail tile, unread counter, subject preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the calendar invitation in the known thread. Context presented: A known training officer sends the calendar invite announced in the morning briefing.",
+    "ui_to_build": "Inbox and message pane with folders, thread history, attachment chips, reply controls and warning banners.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine organizer address, expected time/location, attendee list and absence of external login",
+    "ui_to_build": "Expanded sender and message-details sheet: display name, full address, reply-to, authentication summary and link target.",
+    "expected_safe_behavior": "Check this decision signal: The invitation matches the prior announcement and organizer directory entry.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to the in-app calendar card with Accept/Tentative/Decline",
+    "ui_to_build": "Offline safe browser, attachment preview, QR inspector, OAuth consent mock or callback panel; no host execution/network.",
+    "expected_safe_behavior": "Use the normal in-app path only after the details match the known context. Do not switch to an untrusted channel.",
+    "scoring_event": "CORRECT_USE +3; needless reject/ignore -2; unsafe external action -4."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: compare the organizer with the Trusted Directory and the local course schedule",
+    "ui_to_build": "More-actions menu with Report phishing plus independent directory, approved portal and known-vendor-contact overlay.",
+    "expected_safe_behavior": "Verify independently: compare the organizer with the Trusted Directory and the local course schedule If it matches, continue; do not report or block a legitimate sender.",
+    "scoring_event": "TRUSTED_VERIFY +3; false report/block -4; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: accept/tentative/decline normally; do not report the sender",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 69,
+  "content_sha256": "87b7fcce4e597695989dcfed02782509e0f50eca2373013098778d8bfeb4b03c"
+ },
+ {
+  "scenario_id": "E08",
+  "title": "Instant Tax Refund",
+  "platform": "Email",
+  "difficulty": "Easy",
+  "disposition": "Malicious",
+  "family": "Government impersonation / refund phishing",
+  "trigger": "Greed + urgency",
+  "end_state": "Official portal mock shows no refund case and the email is quarantined.",
+  "feedback": "Refunds do not require secret codes through unsolicited mail. Check status in the official portal you open yourself.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Revenue Refund Centre: INR 7,840 refund expires today - complete release.' The Email badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, mail tile, unread counter, subject preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the refund email. Context presented: A tax-themed email promises a refund but asks for card and identity details through a button.",
+    "ui_to_build": "Inbox and message pane with folders, thread history, attachment chips, reply controls and warning banners.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine sender domain, generic reference, urgency and link destination",
+    "ui_to_build": "Expanded sender and message-details sheet: display name, full address, reply-to, authentication summary and link target.",
+    "expected_safe_behavior": "Check this decision signal: Unexpected refunds and expiry pressure do not justify submitting financial/identity data to a message link.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a fake refund form requesting PAN-like ID, card and OTP placeholders",
+    "ui_to_build": "Offline safe browser, attachment preview, QR inspector, OAuth consent mock or callback panel; no host execution/network.",
+    "expected_safe_behavior": "Do not enter identity, account, card or OTP data. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: open the relevant official portal using a known address and check filed-return status",
+    "ui_to_build": "More-actions menu with Report phishing plus independent directory, approved portal and known-vendor-contact overlay.",
+    "expected_safe_behavior": "Verify independently: open the relevant official portal using a known address and check filed-return status Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: close; report phishing; do not submit or reply",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 70,
+  "content_sha256": "d8431d12516549c62a127fe671fdfbb029c3de1feb8d52994b7b3d9fe6117961"
+ },
+ {
+  "scenario_id": "E09",
+  "title": "Executive Gift-Card Request",
+  "platform": "Email",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Business email compromise",
+  "trigger": "Authority + urgency + secrecy | FICTIONAL MILITARY CONTEXT",
+  "end_state": "Senior denies the request and the email is flagged as BEC.",
+  "feedback": "Authority plus secrecy is a warning sign. Verify unusual financial requests with a known contact and approved workflow.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'From: Col. Dev - Need six gift cards for visitors. Keep this confidential.' The Email badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, mail tile, unread counter, subject preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the short executive-style email. Context presented: A senior's display name appears on a personal email asking for gift cards while claiming to be in a meeting.",
+    "ui_to_build": "Inbox and message pane with folders, thread history, attachment chips, reply controls and warning banners.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine full sender, reply-to, unusual channel, secrecy and payment method",
+    "ui_to_build": "Expanded sender and message-details sheet: display name, full address, reply-to, authentication summary and link target.",
+    "expected_safe_behavior": "Check this decision signal: The personal domain and gift-card request contradict normal procurement controls.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a reply/purchase mock asking for gift-card images and codes",
+    "ui_to_build": "Offline safe browser, attachment preview, QR inspector, OAuth consent mock or callback panel; no host execution/network.",
+    "expected_safe_behavior": "Do not buy cards, send codes or conceal the request. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: call the senior/duty office through the known directory and check procurement authorization",
+    "ui_to_build": "More-actions menu with Report phishing plus independent directory, approved portal and known-vendor-contact overlay.",
+    "expected_safe_behavior": "Verify independently: call the senior/duty office through the known directory and check procurement authorization Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: do not purchase; report the impersonation; notify the verified senior/security route",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 71,
+  "content_sha256": "999a093671b425f3818b0af02307d854144760bc7f57e1140657ee785dfd98aa"
+ },
+ {
+  "scenario_id": "E10",
+  "title": "Vendor Changes Bank Details",
+  "platform": "Email",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Invoice/payment diversion",
+  "trigger": "Routine + urgency",
+  "end_state": "Beneficiary update is rejected and the real vendor confirms no change.",
+  "feedback": "Accurate context is not enough. Independently verify all payment-detail changes and apply dual approval.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Northstar Supplies: Banking migration - use the attached new beneficiary for invoice NS-104.' The Email badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, mail tile, unread counter, subject preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the vendor email and invoice thread. Context presented: A look-alike vendor domain replies with a real project reference and new beneficiary account.",
+    "ui_to_build": "Inbox and message pane with folders, thread history, attachment chips, reply controls and warning banners.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine one-character domain difference, reply-to, changed beneficiary and approval gap",
+    "ui_to_build": "Expanded sender and message-details sheet: display name, full address, reply-to, authentication summary and link target.",
+    "expected_safe_behavior": "Check this decision signal: Stolen context can make fraud convincing; beneficiary changes require independent callback and dual control.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to an invoice preview and vendor-master edit screen",
+    "ui_to_build": "Offline safe browser, attachment preview, QR inspector, OAuth consent mock or callback panel; no host execution/network.",
+    "expected_safe_behavior": "Do not change bank details or approve payment from the email alone. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: call the known vendor contact on file and use the approved change-control process",
+    "ui_to_build": "More-actions menu with Report phishing plus independent directory, approved portal and known-vendor-contact overlay.",
+    "expected_safe_behavior": "Verify independently: call the known vendor contact on file and use the approved change-control process Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: hold payment; report the look-alike sender; record the attempted change",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 72,
+  "content_sha256": "e53d0e37682f2725c12f763bafc5486bd426154fff03063a0f4dc37f25429a93"
+ },
+ {
+  "scenario_id": "E11",
+  "title": "Leave Approval in Known Portal",
+  "platform": "Email",
+  "difficulty": "Medium",
+  "disposition": "Legitimate",
+  "family": "Legitimate workflow notification",
+  "trigger": "Authority + anticipation",
+  "end_state": "Leave status matches and the email is archived normally.",
+  "feedback": "Legitimate status mail is specific, expected and verifiable in a portal you open independently.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'People Portal: Request LV-204 status updated. View it from your portal dashboard.' The Email badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, mail tile, unread counter, subject preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the existing leave-request thread. Context presented: The learner recently submitted a leave request; an authenticated notification says the decision is available in the approved portal.",
+    "ui_to_build": "Inbox and message pane with folders, thread history, attachment chips, reply controls and warning banners.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine request ID, authenticated sender, no embedded login link and matching timeline",
+    "ui_to_build": "Expanded sender and message-details sheet: display name, full address, reply-to, authentication summary and link target.",
+    "expected_safe_behavior": "Check this decision signal: The notification refers to an action the learner initiated and directs them to the known portal rather than collecting data.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to the dashboard's approved-portal launcher and read-only leave status",
+    "ui_to_build": "Offline safe browser, attachment preview, QR inspector, OAuth consent mock or callback panel; no host execution/network.",
+    "expected_safe_behavior": "Use the normal in-app path only after the details match the known context. Do not switch to an untrusted channel.",
+    "scoring_event": "CORRECT_USE +3; needless reject/ignore -2; unsafe external action -4."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: open the known HR portal from the dashboard and match request LV-204",
+    "ui_to_build": "More-actions menu with Report phishing plus independent directory, approved portal and known-vendor-contact overlay.",
+    "expected_safe_behavior": "Verify independently: open the known HR portal from the dashboard and match request LV-204 If it matches, continue; do not report or block a legitimate sender.",
+    "scoring_event": "TRUSTED_VERIFY +3; false report/block -4; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: view the result in the portal; archive the email; do not report",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 73,
+  "content_sha256": "954ab2668e1540c7946c9b483e52042df673dbcac02ba45bb9601f728f9d684e"
+ },
+ {
+  "scenario_id": "E12",
+  "title": "Shared Document Sign-In",
+  "platform": "Email",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Cloud-document credential phishing",
+  "trigger": "Curiosity + collaboration | FICTIONAL MILITARY CONTEXT",
+  "end_state": "Sender denies the share and credentials remain protected.",
+  "feedback": "Document-sharing lures exploit collaboration habits. Verify the share and sign in only from the known service.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Docs Share: 'Updated Deployment Photos' was shared with you.' The Email badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, mail tile, unread counter, subject preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the document-share email. Context presented: An external collaborator shares a document with a generic title and prompts a fresh sign-in.",
+    "ui_to_build": "Inbox and message pane with folders, thread history, attachment chips, reply controls and warning banners.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine sender identity, unexpected title, external banner, target domain and access scope",
+    "ui_to_build": "Expanded sender and message-details sheet: display name, full address, reply-to, authentication summary and link target.",
+    "expected_safe_behavior": "Check this decision signal: The share is unexpected and the sign-in target is not the approved collaboration domain.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a cloned cloud-login page followed by an MFA approval prompt",
+    "ui_to_build": "Offline safe browser, attachment preview, QR inspector, OAuth consent mock or callback panel; no host execution/network.",
+    "expected_safe_behavior": "Do not enter credentials or approve the sign-in. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: contact the supposed sender by known channel and open the approved collaboration portal directly",
+    "ui_to_build": "More-actions menu with Report phishing plus independent directory, approved portal and known-vendor-contact overlay.",
+    "expected_safe_behavior": "Verify independently: contact the supposed sender by known channel and open the approved collaboration portal directly Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: close; report phishing; do not request access through the fake page",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 74,
+  "content_sha256": "8c71b2c4761fdf40424be773ad6fac44fc35e7683fca232688f8062c03353da2"
+ },
+ {
+  "scenario_id": "E13",
+  "title": "Password-Protected ZIP",
+  "platform": "Email",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Archive-delivered malware",
+  "trigger": "Curiosity + routine",
+  "end_state": "Archive stays unopened and the email is quarantined.",
+  "feedback": "Password-protected archives can conceal unsafe files. Verify the business need before any extraction.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Case Documents: Confidential scan attached. Password: 2468.' The Email badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, mail tile, unread counter, subject preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the external email and CaseFiles.zip chip. Context presented: An external sender provides a password-protected archive and places the password in the message to bypass inspection.",
+    "ui_to_build": "Inbox and message pane with folders, thread history, attachment chips, reply controls and warning banners.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine sender identity, unexpected case, archive type and separate password",
+    "ui_to_build": "Expanded sender and message-details sheet: display name, full address, reply-to, authentication summary and link target.",
+    "expected_safe_behavior": "Check this decision signal: An unsolicited encrypted archive prevents normal inspection and the case context is not expected.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to an inert archive viewer with a simulated executable inside",
+    "ui_to_build": "Offline safe browser, attachment preview, QR inspector, OAuth consent mock or callback panel; no host execution/network.",
+    "expected_safe_behavior": "Do not extract/run the file or disable protection. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: verify the sender/case through the approved records system and known contact",
+    "ui_to_build": "More-actions menu with Report phishing plus independent directory, approved portal and known-vendor-contact overlay.",
+    "expected_safe_behavior": "Verify independently: verify the sender/case through the approved records system and known contact Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: do not extract; report phishing; quarantine the archive",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 75,
+  "content_sha256": "689cfba1ecd1a3d9465daba9c86baf3003a918a6dc3db7edc6e29672165a721b"
+ },
+ {
+  "scenario_id": "E14",
+  "title": "Revised Movement Order",
+  "platform": "Email",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Military spearphishing / attachment",
+  "trigger": "Authority + urgency | FICTIONAL MILITARY CONTEXT",
+  "end_state": "Approved system shows no revision and the attachment remains inert.",
+  "feedback": "Time-relevant military themes can be tailored from public information. Verify orders only in approved channels.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'HQ Alpha Movements: Urgent revision MOV-77 - open attached order now.' The Email badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, mail tile, unread counter, subject preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the priority email and PDF attachment. Context presented: A look-alike HQ address sends a revised movement order shortly before a fictional exercise.",
+    "ui_to_build": "Inbox and message pane with folders, thread history, attachment chips, reply controls and warning banners.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine subtle domain change, reply-to, classification mismatch and unexpected revision process",
+    "ui_to_build": "Expanded sender and message-details sheet: display name, full address, reply-to, authentication summary and link target.",
+    "expected_safe_behavior": "Check this decision signal: Premise alignment raises difficulty, but the sender and distribution route do not match the approved system.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a PDF preview containing a QR to 'decrypt' the order",
+    "ui_to_build": "Offline safe browser, attachment preview, QR inspector, OAuth consent mock or callback panel; no host execution/network.",
+    "expected_safe_behavior": "Do not scan the QR, enter service credentials or disclose schedule details. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: check MOV-77 in the approved orders system and call movement staff through the directory",
+    "ui_to_build": "More-actions menu with Report phishing plus independent directory, approved portal and known-vendor-contact overlay.",
+    "expected_safe_behavior": "Verify independently: check MOV-77 in the approved orders system and call movement staff through the directory Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: do not use the QR; report the spearphish; preserve the email for unit security",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 76,
+  "content_sha256": "3bb3a9ecaf87d2333758bfdab2f529832b81d5f87516e1fc581894a130020afa"
+ },
+ {
+  "scenario_id": "E15",
+  "title": "OAuth Consent for Mail Review",
+  "platform": "Email",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Consent phishing / cloud-app access",
+  "trigger": "Convenience + authority",
+  "end_state": "Consent is denied and no mailbox permission is created.",
+  "feedback": "A consent screen can grant access without asking for a password. Read permissions and verify the app publisher.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Security Upgrade: Approve MailSafe Analyzer to complete mandatory protection.' The Email badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, mail tile, unread counter, subject preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the security-themed email and consent button. Context presented: A message asks the learner to authorize an app that will supposedly scan the inbox for threats.",
+    "ui_to_build": "Inbox and message pane with folders, thread history, attachment chips, reply controls and warning banners.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine publisher status, broad permissions, sender and absence of approved change notice",
+    "ui_to_build": "Expanded sender and message-details sheet: display name, full address, reply-to, authentication summary and link target.",
+    "expected_safe_behavior": "Check this decision signal: The app requests read/send mailbox access and is not an approved publisher.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a synthetic OAuth consent screen listing Mail.Read, Mail.Send and Contacts permissions",
+    "ui_to_build": "Offline safe browser, attachment preview, QR inspector, OAuth consent mock or callback panel; no host execution/network.",
+    "expected_safe_behavior": "Do not grant consent or approve broad access. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: check the approved application catalogue and contact IT through the known directory",
+    "ui_to_build": "More-actions menu with Report phishing plus independent directory, approved portal and known-vendor-contact overlay.",
+    "expected_safe_behavior": "Verify independently: check the approved application catalogue and contact IT through the known directory Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: deny consent; report phishing; review/remove unapproved app grants",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 77,
+  "content_sha256": "53c8a9378a703258210d1eda282d2f59e2df441fd2ab7598e341fda1352531ac"
+ },
+ {
+  "scenario_id": "E16",
+  "title": "Signed Maintenance Notice",
+  "platform": "Email",
+  "difficulty": "Medium",
+  "disposition": "Legitimate",
+  "family": "Legitimate IT maintenance",
+  "trigger": "Authority + routine",
+  "end_state": "Maintenance event is added to the local calendar.",
+  "feedback": "A verified no-action notice is legitimate. Use proportionate checks and avoid unnecessary escalation.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'IT Operations: Planned mail maintenance 22:00-22:30; no action required.' The Email badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, mail tile, unread counter, subject preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the maintenance email. Context presented: An authenticated, digitally signed notice announces planned downtime and asks for no credentials.",
+    "ui_to_build": "Inbox and message pane with folders, thread history, attachment chips, reply controls and warning banners.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine signature status, internal sender, maintenance calendar and no-action wording",
+    "ui_to_build": "Expanded sender and message-details sheet: display name, full address, reply-to, authentication summary and link target.",
+    "expected_safe_behavior": "Check this decision signal: The signed sender and local change calendar match; the message does not ask for a link, file or secret.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to the in-message maintenance detail and Add reminder control",
+    "ui_to_build": "Offline safe browser, attachment preview, QR inspector, OAuth consent mock or callback panel; no host execution/network.",
+    "expected_safe_behavior": "Use the normal in-app path only after the details match the known context. Do not switch to an untrusted channel.",
+    "scoring_event": "CORRECT_USE +3; needless reject/ignore -2; unsafe external action -4."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: compare change ID CHG-118 with the local IT status board",
+    "ui_to_build": "More-actions menu with Report phishing plus independent directory, approved portal and known-vendor-contact overlay.",
+    "expected_safe_behavior": "Verify independently: compare change ID CHG-118 with the local IT status board If it matches, continue; do not report or block a legitimate sender.",
+    "scoring_event": "TRUSTED_VERIFY +3; false report/block -4; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: add a reminder/archive normally; do not report or block",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 78,
+  "content_sha256": "5f3f5f6c32014cddfcb69eb9d04d0508bbc4503f7bd09b8b9d386306f6e01c67"
+ },
+ {
+  "scenario_id": "E17",
+  "title": "Invoice Callback Trap",
+  "platform": "Email",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Callback phishing / tech-support fraud",
+  "trigger": "Fear + urgency",
+  "end_state": "Statement shows no charge; callback path is closed.",
+  "feedback": "A shocking invoice can be bait for a phone scam. Verify the charge independently and do not call numbers in the message.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Subscription Billing: INR 32,900 renewal processed. Call within 30 minutes to cancel.' The Email badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, mail tile, unread counter, subject preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the invoice email. Context presented: A renewal invoice says the learner will be charged unless they call a supplied number immediately.",
+    "ui_to_build": "Inbox and message pane with folders, thread history, attachment chips, reply controls and warning banners.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine unknown sender, no known subscription, supplied callback number and urgency",
+    "ui_to_build": "Expanded sender and message-details sheet: display name, full address, reply-to, authentication summary and link target.",
+    "expected_safe_behavior": "Check this decision signal: The goal is to move the learner to a scam operator who can request remote access or payment details.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a call-confirmation panel leading to a synthetic support script asking for remote access",
+    "ui_to_build": "Offline safe browser, attachment preview, QR inspector, OAuth consent mock or callback panel; no host execution/network.",
+    "expected_safe_behavior": "Do not call the supplied number, share screen or install support software. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: check statements/subscriptions directly and use a known vendor contact if needed",
+    "ui_to_build": "More-actions menu with Report phishing plus independent directory, approved portal and known-vendor-contact overlay.",
+    "expected_safe_behavior": "Verify independently: check statements/subscriptions directly and use a known vendor contact if needed Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: do not call; report phishing; monitor the simulated account independently",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 79,
+  "content_sha256": "e26736ca99cf1e57d92c8716aea65f2e44120e7269895a5f05d9afbe89b671dd"
+ },
+ {
+  "scenario_id": "E18",
+  "title": "Hijacked Reply-Chain Invoice",
+  "platform": "Email",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Thread hijack / payment diversion",
+  "trigger": "Trust + routine",
+  "end_state": "Vendor confirms mailbox compromise; payment remains held.",
+  "feedback": "Thread history is context, not authentication. Independently verify financial changes every time.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Re: NS-104 - Please use our recovery account for this month's settlement.' The Email badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, mail tile, unread counter, subject preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the authentic-looking reply chain. Context presented: A compromised mailbox inserts a realistic message into an established invoice thread and changes payment details.",
+    "ui_to_build": "Inbox and message pane with folders, thread history, attachment chips, reply controls and warning banners.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine new reply-to, changed writing style, beneficiary mismatch and unusual exception",
+    "ui_to_build": "Expanded sender and message-details sheet: display name, full address, reply-to, authentication summary and link target.",
+    "expected_safe_behavior": "Check this decision signal: A genuine thread and prior attachments can be abused after compromise; payment changes still need independent confirmation.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to the existing invoice and vendor-master payment screen",
+    "ui_to_build": "Offline safe browser, attachment preview, QR inspector, OAuth consent mock or callback panel; no host execution/network.",
+    "expected_safe_behavior": "Do not update beneficiary or approve payment based on the thread. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: call the vendor using the pre-existing master-data contact and obtain dual approval",
+    "ui_to_build": "More-actions menu with Report phishing plus independent directory, approved portal and known-vendor-contact overlay.",
+    "expected_safe_behavior": "Verify independently: call the vendor using the pre-existing master-data contact and obtain dual approval Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: hold payment; report the suspicious reply; alert vendor/security through known routes",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 80,
+  "content_sha256": "9ab30ab18d080556b215b27343763cf91b822dc79e5899361a64bc4031d3e815"
+ },
+ {
+  "scenario_id": "E19",
+  "title": "Academic Interview on Readiness",
+  "platform": "Email",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Military elicitation / research pretext",
+  "trigger": "Expert status + flattery | FICTIONAL MILITARY CONTEXT",
+  "end_state": "No questionnaire data is submitted and the request is routed for review.",
+  "feedback": "Elicitation may look scholarly. Authorization and need-to-know determine what can be discussed.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Dr. Mira Sen: Your field experience can improve our readiness study. Questionnaire attached.' The Email badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, mail tile, unread counter, subject preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the formal interview request. Context presented: A polished academic request seeks an interview and attaches questions about readiness and equipment gaps.",
+    "ui_to_build": "Inbox and message pane with folders, thread history, attachment chips, reply controls and warning banners.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine institution domain mismatch, unverifiable publication, narrow operational questions and distribution list",
+    "ui_to_build": "Expanded sender and message-details sheet: display name, full address, reply-to, authentication summary and link target.",
+    "expected_safe_behavior": "Check this decision signal: Professional tone and public credentials do not authorize disclosure of protected capability information.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to an inert questionnaire requesting systems, limitations, locations and routines",
+    "ui_to_build": "Offline safe browser, attachment preview, QR inspector, OAuth consent mock or callback panel; no host execution/network.",
+    "expected_safe_behavior": "Do not answer, correct assumptions with nonpublic facts, or forward internally without review. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: route the inquiry to approved public-information/security staff for authorization",
+    "ui_to_build": "More-actions menu with Report phishing plus independent directory, approved portal and known-vendor-contact overlay.",
+    "expected_safe_behavior": "Verify independently: route the inquiry to approved public-information/security staff for authorization Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: do not answer; report the elicitation attempt internally; retain evidence",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 81,
+  "content_sha256": "473e065db170a01634277cad370d5a6102294ea51ddab4591d8cbe9ffc6d90f8"
+ },
+ {
+  "scenario_id": "E20",
+  "title": "Legal Notice and Secrecy Order",
+  "platform": "Email",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Legal/government impersonation / extortion",
+  "trigger": "Fear + authority + isolation",
+  "end_state": "Case number fails independent verification and the payment screen closes.",
+  "feedback": "Threats, secrecy and payment demands are coercive signals. Verify legal contact independently and seek support.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'National Inquiry Office: Confidential summons - pay verification bond before 17:00.' The Email badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, mail tile, unread counter, subject preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the high-priority legal-themed email. Context presented: An official-looking notice alleges criminal involvement, forbids discussion and requests a refundable bond.",
+    "ui_to_build": "Inbox and message pane with folders, thread history, attachment chips, reply controls and warning banners.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine sender domain, fabricated seal, secrecy demand, payment route and case lookup",
+    "ui_to_build": "Expanded sender and message-details sheet: display name, full address, reply-to, authentication summary and link target.",
+    "expected_safe_behavior": "Check this decision signal: A legal-looking PDF and confidentiality language do not validate a demand for immediate payment.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a synthetic warrant PDF and bond-payment portal",
+    "ui_to_build": "Offline safe browser, attachment preview, QR inspector, OAuth consent mock or callback panel; no host execution/network.",
+    "expected_safe_behavior": "Do not pay, upload ID/bank statements or remain isolated. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: verify with the relevant authority through an independently known official route and inform unit/legal support",
+    "ui_to_build": "More-actions menu with Report phishing plus independent directory, approved portal and known-vendor-contact overlay.",
+    "expected_safe_behavior": "Verify independently: verify with the relevant authority through an independently known official route and inform unit/legal support Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: do not pay or reply; preserve and report the impersonation through approved channels",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 82,
+  "content_sha256": "6c36eb50a5c4660e88e94ac5853a0b4402ca9b24aef69cbc34f887f62951a280"
+ },
+ {
+  "scenario_id": "E21",
+  "title": "Verified Vendor Master Change",
+  "platform": "Email",
+  "difficulty": "Hard",
+  "disposition": "Legitimate",
+  "family": "Legitimate high-risk business change",
+  "trigger": "Routine + authority",
+  "end_state": "Dual approval completes VC-209 and an audit record is written.",
+  "feedback": "Legitimate high-impact changes still require controls. Verification and dual approval enable safe completion without false rejection.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Northstar Supplies: Signed beneficiary-change case VC-209 is available in the vendor portal.' The Email badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, mail tile, unread counter, subject preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the established vendor thread. Context presented: A real vendor initiates a bank-detail change through the approved signed form and expects independent callback and dual approval.",
+    "ui_to_build": "Inbox and message pane with folders, thread history, attachment chips, reply controls and warning banners.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine authenticated sender, signed form hash, portal case ID and explicit callback instruction",
+    "ui_to_build": "Expanded sender and message-details sheet: display name, full address, reply-to, authentication summary and link target.",
+    "expected_safe_behavior": "Check this decision signal: The request follows the approved high-risk process and invites independent verification; it is not safe to accept without those controls.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to the approved vendor portal case with side-by-side old/new details and Hold/Verify",
+    "ui_to_build": "Offline safe browser, attachment preview, QR inspector, OAuth consent mock or callback panel; no host execution/network.",
+    "expected_safe_behavior": "Use the normal in-app path only after the details match the known context. Do not switch to an untrusted channel.",
+    "scoring_event": "CORRECT_USE +3; needless reject/ignore -2; unsafe external action -4."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: call the known vendor contact on file and obtain the required second approver",
+    "ui_to_build": "More-actions menu with Report phishing plus independent directory, approved portal and known-vendor-contact overlay.",
+    "expected_safe_behavior": "Verify independently: call the known vendor contact on file and obtain the required second approver If it matches, continue; do not report or block a legitimate sender.",
+    "scoring_event": "TRUSTED_VERIFY +3; false report/block -4; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: after both checks match, approve in the vendor portal; retain audit evidence; do not report the legitimate sender",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 83,
+  "content_sha256": "dc124207d6122dd57774f353515fc61b94e1e29106d98d4b6a3e294cc50f72c2"
+ },
+ {
+  "scenario_id": "E22",
+  "title": "Senior Voice Memo Transfer",
+  "platform": "Email",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Synthetic voice / executive impersonation",
+  "trigger": "Authority + urgency | FICTIONAL MILITARY CONTEXT",
+  "end_state": "Senior denies the request and the synthetic media is flagged.",
+  "feedback": "A familiar voice is not authorization. Apply the same independent verification and financial controls.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Col. Dev: Voice memo - process the welfare transfer now; do not call during the briefing.' The Email badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, mail tile, unread counter, subject preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the short email and audio attachment. Context presented: An external email contains a convincing voice memo directing a confidential transfer before a meeting.",
+    "ui_to_build": "Inbox and message pane with folders, thread history, attachment chips, reply controls and warning banners.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine external sender, request outside role, secrecy, payment urgency and absence of written approval",
+    "ui_to_build": "Expanded sender and message-details sheet: display name, full address, reply-to, authentication summary and link target.",
+    "expected_safe_behavior": "Check this decision signal: Voice resemblance can be synthesized and cannot replace procurement authorization.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to an audio player with transfer instructions and a payment mock",
+    "ui_to_build": "Offline safe browser, attachment preview, QR inspector, OAuth consent mock or callback panel; no host execution/network.",
+    "expected_safe_behavior": "Do not initiate payment, keep secret or rely on voice identity. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: call the senior/duty office through known contact and check written authorization",
+    "ui_to_build": "More-actions menu with Report phishing plus independent directory, approved portal and known-vendor-contact overlay.",
+    "expected_safe_behavior": "Verify independently: call the senior/duty office through known contact and check written authorization Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: do not transfer; report the impersonation; preserve the audio/email evidence",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 84,
+  "content_sha256": "d066e10badce09f462a7435dc679cec9270bd7c0ab7699b9fa92dc5c634555f9"
+ },
+ {
+  "scenario_id": "E23",
+  "title": "DLP Alert HTML Attachment",
+  "platform": "Email",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Security-tool impersonation / HTML smuggling",
+  "trigger": "Fear + compliance",
+  "end_state": "Approved console shows no alert; HTML file remains inert.",
+  "feedback": "Security alerts can be impersonated. Inspect file types and verify in the real console before acting.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Data Protection Monitor: Potential exfiltration detected - open SecurityReport.html.' The Email badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, mail tile, unread counter, subject preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the security alert email. Context presented: A DLP-themed email claims a policy violation and attaches an HTML report for local review.",
+    "ui_to_build": "Inbox and message pane with folders, thread history, attachment chips, reply controls and warning banners.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine sender/authentication, unusual HTML attachment, threat language and no matching console alert",
+    "ui_to_build": "Expanded sender and message-details sheet: display name, full address, reply-to, authentication summary and link target.",
+    "expected_safe_behavior": "Check this decision signal: An HTML attachment can present a fake login or trigger unsafe content; the approved DLP console should hold real alerts.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to an inert local HTML page that renders a credential prompt and download button",
+    "ui_to_build": "Offline safe browser, attachment preview, QR inspector, OAuth consent mock or callback panel; no host execution/network.",
+    "expected_safe_behavior": "Do not enter credentials or launch the downloaded file. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: open the approved security console directly and contact IT/security via known route",
+    "ui_to_build": "More-actions menu with Report phishing plus independent directory, approved portal and known-vendor-contact overlay.",
+    "expected_safe_behavior": "Verify independently: open the approved security console directly and contact IT/security via known route Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: close/quarantine the attachment; report phishing; verify console status",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 85,
+  "content_sha256": "67d22d0cfdcf6a2cc0858846faf5f4eb569d79acf199fe38d62096126ada99cf"
+ },
+ {
+  "scenario_id": "E24",
+  "title": "QR Code in Policy PDF",
+  "platform": "Email",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "QR phishing / credential theft",
+  "trigger": "Authority + convenience",
+  "end_state": "Portal shows no policy task and the QR is marked unsafe.",
+  "feedback": "QR codes bypass visible-link checks. Inspect the destination and verify the process in the official portal.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Compliance Office: Mobile acknowledgement required - scan the QR in attached policy.' The Email badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, mail tile, unread counter, subject preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the policy email and PDF. Context presented: An otherwise polished policy email attaches a PDF that says scanning a QR is the only way to acknowledge.",
+    "ui_to_build": "Inbox and message pane with folders, thread history, attachment chips, reply controls and warning banners.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine sender/reply-to, unexpected mobile-only method, QR destination and reference mismatch",
+    "ui_to_build": "Expanded sender and message-details sheet: display name, full address, reply-to, authentication summary and link target.",
+    "expected_safe_behavior": "Check this decision signal: The QR hides a look-alike login route and the process is absent from the approved compliance portal.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to the PDF QR inspector and synthetic mobile sign-in",
+    "ui_to_build": "Offline safe browser, attachment preview, QR inspector, OAuth consent mock or callback panel; no host execution/network.",
+    "expected_safe_behavior": "Do not open the QR target or enter credentials/OTP. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: check assigned policies directly in the approved portal and contact Compliance through the directory",
+    "ui_to_build": "More-actions menu with Report phishing plus independent directory, approved portal and known-vendor-contact overlay.",
+    "expected_safe_behavior": "Verify independently: check assigned policies directly in the approved portal and contact Compliance through the directory Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: do not use the QR; report phishing; close the attachment",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 86,
+  "content_sha256": "78f4831fd64e7dfd181e9f2825ea3f5cfa8ac02771f72b2beac65683b3afbc9d"
+ },
+ {
+  "scenario_id": "E25",
+  "title": "Payroll Direct-Deposit Redirect",
+  "platform": "Email",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "HR/business email compromise / payroll fraud",
+  "trigger": "Authority + routine | FICTIONAL MILITARY CONTEXT",
+  "end_state": "Payroll remains unchanged and the legitimate manager is alerted.",
+  "feedback": "Payroll diversion can hide in real threads. Require employee initiation, known-channel verification and dual control.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Re: Allowance correction - use the new account before today's payroll cutoff.' The Email badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, mail tile, unread counter, subject preview and received time.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the realistic HR reply chain. Context presented: A compromised-looking manager thread asks payroll to redirect a service member's allowance using an attached form.",
+    "ui_to_build": "Inbox and message pane with folders, thread history, attachment chips, reply controls and warning banners.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine role mismatch, changed beneficiary, urgent cutoff, altered reply-to and missing case ID",
+    "ui_to_build": "Expanded sender and message-details sheet: display name, full address, reply-to, authentication summary and link target.",
+    "expected_safe_behavior": "Check this decision signal: Copied HR context cannot authorize a bank change; the request bypasses the employee-initiated workflow and dual approval.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a prefilled payroll change form and Approve button",
+    "ui_to_build": "Offline safe browser, attachment preview, QR inspector, OAuth consent mock or callback panel; no host execution/network.",
+    "expected_safe_behavior": "Do not alter bank details or approve without employee verification. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: verify with the employee and HR through known channels and require the approved portal workflow",
+    "ui_to_build": "More-actions menu with Report phishing plus independent directory, approved portal and known-vendor-contact overlay.",
+    "expected_safe_behavior": "Verify independently: verify with the employee and HR through known channels and require the approved portal workflow Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: hold the change; report the compromised thread; preserve evidence",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 87,
+  "content_sha256": "0c273d1a5211716590b3f3c8cedb176e3ca38bd721cacbaa8a36997f17adcad2"
+ }
+]

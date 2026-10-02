@@ -1,0 +1,383 @@
+{
+  "database": "cyber_awareness_training_release",
+  "validated_at": "2026-09-26T07:04:57.939Z",
+  "status": "FAIL",
+  "results": [
+    {
+      "id": "collections",
+      "title": "Exactly the application collections exist",
+      "status": "PASS",
+      "problems": [],
+      "detail": [
+        "adminusers",
+        "assessments",
+        "attempts",
+        "auditevents",
+        "candidates",
+        "configurations",
+        "progresssnapshots",
+        "scenariodefinitions",
+        "scenarioevents",
+        "scenarioruns",
+        "scenarios"
+      ]
+    },
+    {
+      "id": "indexes",
+      "title": "Every index the models declare exists, and nothing else",
+      "status": "PASS",
+      "problems": [],
+      "detail": {
+        "adminusers": [
+          "_id_",
+          "usernameNormalised_1 (unique)"
+        ],
+        "assessments": [
+          "_id_",
+          "candidate_1",
+          "candidate_1_status_1",
+          "candidate_1_createdAt_-1"
+        ],
+        "attempts": [
+          "_id_",
+          "profile_id_1",
+          "profile_id_1_status_1",
+          "profile_id_1_started_at_-1",
+          "started_at_-1__id_-1",
+          "status_1_expires_at_1"
+        ],
+        "auditevents": [
+          "_id_",
+          "occurred_at_-1",
+          "resource_type_1_resource_id_1_occurred_at_-1",
+          "idempotency_key_1 (unique)",
+          "actor_admin_id_1",
+          "action_1",
+          "resource_type_1",
+          "occurred_at_1"
+        ],
+        "candidates": [
+          "_id_",
+          "identifierNormalised_1 (unique)",
+          "archived_1"
+        ],
+        "configurations": [
+          "_id_",
+          "scope_1 (unique)"
+        ],
+        "progresssnapshots": [
+          "_id_",
+          "profile_id_1 (unique)"
+        ],
+        "scenarios": [
+          "_id_",
+          "scenarioCode_1 (unique)",
+          "isActive_1_channel_1_type_1"
+        ],
+        "scenariodefinitions": [
+          "_id_",
+          "scenario_id_1_version_1 (unique)",
+          "active_1_platform_1_level_1",
+          "active_1_disposition_1",
+          "active_1_canonical_family_1",
+          "active_1_canonical_triggers_1",
+          "active_1_military_flag_1"
+        ],
+        "scenarioevents": [
+          "_id_",
+          "intent_key_1 (unique)",
+          "run_id_1_sequence_1 (unique)"
+        ],
+        "scenarioruns": [
+          "_id_",
+          "attempt_id_1_status_1",
+          "scenario_id_1_definition_version_1",
+          "status_1",
+          "attempt_id_1_ordinal_1 (unique)"
+        ]
+      }
+    },
+    {
+      "id": "operational-state",
+      "title": "Operational collections are clean; only the bank is populated",
+      "status": "FAIL",
+      "problems": [
+        "adminusers: expected 0 documents, found 1"
+      ],
+      "detail": {
+        "scenariodefinitions": 100,
+        "configurations": 1,
+        "adminusers": 1,
+        "candidates": 0,
+        "attempts": 0,
+        "scenarioruns": 0,
+        "scenarioevents": 0,
+        "progresssnapshots": 0,
+        "auditevents": 0,
+        "assessments": 0,
+        "scenarios": 0
+      }
+    },
+    {
+      "id": "legacy-not-playable",
+      "title": "No legacy scenario can be selected",
+      "status": "PASS",
+      "problems": [],
+      "detail": {
+        "legacy_documents": 0,
+        "legacy_active": 0,
+        "pool_summary_total": 0
+      }
+    },
+    {
+      "id": "bank-ids",
+      "title": "The active bank is exactly W01-W25, I01-I25, E01-E25, S01-S25",
+      "status": "PASS",
+      "problems": [],
+      "detail": {
+        "active": 100,
+        "total": 100,
+        "versions": {
+          "1": 100
+        }
+      }
+    },
+    {
+      "id": "schema",
+      "title": "Every stored definition passes the application schema",
+      "status": "PASS",
+      "problems": [],
+      "detail": null
+    },
+    {
+      "id": "distribution",
+      "title": "Counts per platform, disposition and difficulty match the specification",
+      "status": "PASS",
+      "problems": [],
+      "detail": null
+    },
+    {
+      "id": "taxonomy",
+      "title": "Families and triggers are canonical, current and unchanged",
+      "status": "PASS",
+      "problems": [],
+      "detail": null
+    },
+    {
+      "id": "stages",
+      "title": "Six stages, safe-behaviour text, scoring and feedback on every scenario",
+      "status": "PASS",
+      "problems": [],
+      "detail": null
+    },
+    {
+      "id": "source-alignment",
+      "title": "Stored content matches the verified source bank and synthetic content",
+      "status": "PASS",
+      "problems": [],
+      "detail": null
+    },
+    {
+      "id": "learner-actions",
+      "title": "Every scenario has a complete, unambiguous, server-side action map",
+      "status": "PASS",
+      "problems": [],
+      "detail": {
+        "scene_controls": 1986,
+        "generic_controls": 37,
+        "per_platform": {
+          "whatsapp": 25,
+          "instagram": 25,
+          "email": 25,
+          "sms": 25
+        },
+        "frontend_scan": "frontend/src (non-test) scanned for map names"
+      }
+    },
+    {
+      "id": "selection",
+      "title": "The real selector builds valid attempts from this bank, never from legacy data",
+      "status": "PASS",
+      "problems": [],
+      "detail": {
+        "attempts_simulated": 200,
+        "distinct_scenarios_selected": 100
+      }
+    }
+  ],
+  "figures": {
+    "collection_counts": {
+      "scenariodefinitions": 100,
+      "configurations": 1,
+      "adminusers": 1,
+      "candidates": 0,
+      "attempts": 0,
+      "scenarioruns": 0,
+      "scenarioevents": 0,
+      "progresssnapshots": 0,
+      "auditevents": 0,
+      "assessments": 0,
+      "scenarios": 0
+    },
+    "platform": {
+      "email": 25,
+      "instagram": 25,
+      "sms": 25,
+      "whatsapp": 25
+    },
+    "disposition": {
+      "malicious": 80,
+      "legitimate": 20
+    },
+    "level": {
+      "easy": 32,
+      "medium": 36,
+      "hard": 32
+    },
+    "platform_x_disposition": {
+      "email": {
+        "malicious": 20,
+        "legitimate": 5
+      },
+      "instagram": {
+        "malicious": 20,
+        "legitimate": 5
+      },
+      "sms": {
+        "malicious": 20,
+        "legitimate": 5
+      },
+      "whatsapp": {
+        "malicious": 20,
+        "legitimate": 5
+      }
+    },
+    "platform_x_level": {
+      "email": {
+        "easy": 8,
+        "medium": 9,
+        "hard": 8
+      },
+      "instagram": {
+        "easy": 8,
+        "medium": 9,
+        "hard": 8
+      },
+      "sms": {
+        "easy": 8,
+        "medium": 9,
+        "hard": 8
+      },
+      "whatsapp": {
+        "easy": 8,
+        "medium": 9,
+        "hard": 8
+      }
+    },
+    "level_x_disposition": {
+      "easy": {
+        "malicious": 24,
+        "legitimate": 8
+      },
+      "medium": {
+        "malicious": 28,
+        "legitimate": 8
+      },
+      "hard": {
+        "malicious": 28,
+        "legitimate": 4
+      }
+    },
+    "canonical_family": {
+      "credential_phishing": 6,
+      "malware_delivery": 5,
+      "legit_routine_broadcast": 6,
+      "financial_credential_phishing": 9,
+      "identity_data_harvesting": 5,
+      "legit_coordination_request": 6,
+      "payment_diversion": 7,
+      "legit_system_confirmation": 7,
+      "qr_code_phishing": 5,
+      "account_takeover_authorisation_abuse": 6,
+      "tech_support_and_callback_fraud": 6,
+      "operational_elicitation": 10,
+      "coercion_and_extortion": 4,
+      "legit_verified_high_risk_change": 1,
+      "unsolicited_payment_lure": 5,
+      "impersonation_emergency_payment": 3,
+      "investment_and_task_fraud": 5,
+      "relationship_grooming_fraud": 3,
+      "disinformation_amplification": 1
+    },
+    "canonical_triggers": {
+      "urgency": 27,
+      "authority": 40,
+      "routine": 19,
+      "fear": 18,
+      "curiosity": 10,
+      "duty_compliance": 3,
+      "greed": 11,
+      "isolation_secrecy": 5,
+      "convenience": 5,
+      "trust": 6,
+      "expert_status": 2,
+      "flattery": 4,
+      "scarcity": 6,
+      "empathy": 9,
+      "pride": 5,
+      "familiarity": 8,
+      "reciprocity": 3,
+      "shame_embarrassment": 2,
+      "social_proof": 2,
+      "commitment": 2,
+      "helpfulness": 3,
+      "confusion": 1
+    },
+    "raw_family_count": 99,
+    "military": 35,
+    "military_by_platform": {
+      "email": 8,
+      "instagram": 12,
+      "sms": 5,
+      "whatsapp": 10
+    },
+    "military_by_disposition": {
+      "malicious": 27,
+      "legitimate": 8
+    },
+    "multi_trigger": 87,
+    "taxonomy": {
+      "family_version": "1.0.0",
+      "trigger_version": "1.0.0",
+      "family_file_sha256": "f6c62c89231102f606080c494fc2429e6eccc23da7bfabe96433096b434e3adc",
+      "trigger_file_sha256": "46cb99d42fbe4cea02680ed0f7e5f8be8d55905a0000a54ac21fcc3378e8f711",
+      "families_declared": 19,
+      "families_used": 19,
+      "triggers_declared": 22,
+      "triggers_used": 22
+    },
+    "hashes": {
+      "source_bank_content_sha256": "8e7a6c98bf938dc863df507f5d778e30eca0c9d59d966f47d7e57551038a7687",
+      "stored_bank_internal_digest_sha256": "43c45ff79be01ea7552e2f552f0132a6a41347ae7173519b5e2cf9c71bf9cf2a",
+      "synthetic_content_version": 1,
+      "synthetic_content_sha256": "2779b03939e13cf11e0bee44493609f0c91e228f201f22f8c025a080509afde1",
+      "stored_definitions_raw_sha256": "6ec38baa86a7b56427d2926c2236c4eec379990866d72748c06df8569ae63f08",
+      "stored_definitions_semantic_sha256": "6ec38baa86a7b56427d2926c2236c4eec379990866d72748c06df8569ae63f08"
+    },
+    "learner_actions": {
+      "scene_controls": 1986,
+      "generic_controls": 37,
+      "per_platform": {
+        "whatsapp": 25,
+        "instagram": 25,
+        "email": 25,
+        "sms": 25
+      },
+      "frontend_scan": "frontend/src (non-test) scanned for map names"
+    },
+    "selection": {
+      "attempts_simulated": 200,
+      "distinct_scenarios_selected": 100
+    }
+  }
+}

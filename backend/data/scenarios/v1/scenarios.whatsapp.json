@@ -1,0 +1,1577 @@
+[
+ {
+  "scenario_id": "W01",
+  "title": "The Accidental Login Code",
+  "platform": "WhatsApp",
+  "difficulty": "Easy",
+  "disposition": "Malicious",
+  "family": "Account takeover / OTP theft",
+  "trigger": "Helpfulness + urgency",
+  "end_state": "Chat closes as Reported + Blocked; account-security checklist is offered locally.",
+  "feedback": "Never share a login or verification code. An 'accidental' code request is an account-takeover attempt.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Unknown: I sent a 6-digit code to you by mistake. Please send it back now.' The WhatsApp badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, WhatsApp-style tile, unread badge, timestamp and synthetic sender preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the unread chat from an unsaved number. Context presented: An unknown number apologizes for entering the learner's number by mistake.",
+    "ui_to_build": "Chat list, unread pill, thread header, bubbles, delivery ticks and prior-message history.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine the full number, absent mutual groups and the system code warning",
+    "ui_to_build": "Contact/group info sheet with full number, mutual groups, join date, media and report controls.",
+    "expected_safe_behavior": "Check this decision signal: A genuine login code is secret and the requester cannot need a code delivered to someone else.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a simulated system-code bubble followed by a reply composer",
+    "ui_to_build": "Chat-native preview plus offline safe browser/file viewer/call screen; every risky control remains selectable and scored.",
+    "expected_safe_behavior": "Do not type or forward the six-digit code. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: check account activity/linked devices from Settings, not through the stranger",
+    "ui_to_build": "Three-dot action sheet and independent Trusted Directory overlay; in-message numbers are never treated as trusted.",
+    "expected_safe_behavior": "Verify independently: check account activity/linked devices from Settings, not through the stranger Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: do not reply; report and block the number; review linked devices",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 11,
+  "content_sha256": "d2eb7dc18ea974009102fbe3186b8704c20a2670cde719f91ea45faa309fc972"
+ },
+ {
+  "scenario_id": "W02",
+  "title": "Parcel Redelivery Fee",
+  "platform": "WhatsApp",
+  "difficulty": "Easy",
+  "disposition": "Malicious",
+  "family": "Delivery impersonation / payment phishing",
+  "trigger": "Urgency + curiosity",
+  "end_state": "The fake checkout records no data and returns to a reported chat.",
+  "feedback": "Small fees are used to lower caution. Verify an expected parcel in the official service, never through the message link.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'QuickParcel Support: Delivery failed. Pay INR 25 today to avoid return.' The WhatsApp badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, WhatsApp-style tile, unread badge, timestamp and synthetic sender preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the business chat and parcel card. Context presented: A business-style account claims a parcel cannot be delivered until a small fee is paid.",
+    "ui_to_build": "Chat list, unread pill, thread header, bubbles, delivery ticks and prior-message history.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine business-account details, spelling, tracking number and preview domain",
+    "ui_to_build": "Contact/group info sheet with full number, mutual groups, join date, media and report controls.",
+    "expected_safe_behavior": "Check this decision signal: The learner did not expect this parcel and the link uses parcel-help.training.example rather than a known portal.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to an offline tracking page requesting card/UPI details",
+    "ui_to_build": "Chat-native preview plus offline safe browser/file viewer/call screen; every risky control remains selectable and scored.",
+    "expected_safe_behavior": "Do not enter payment information or approve a collect request. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: open the known courier app/site from the Trusted Directory and search the tracking number",
+    "ui_to_build": "Three-dot action sheet and independent Trusted Directory overlay; in-message numbers are never treated as trusted.",
+    "expected_safe_behavior": "Verify independently: open the known courier app/site from the Trusted Directory and search the tracking number Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: close the page; report/block the sender; retain the synthetic tracking evidence",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 12,
+  "content_sha256": "8300f0ac6017c9a820aa4b55e1870d20c94f21282ea8223574fa1fbe03bbda04"
+ },
+ {
+  "scenario_id": "W03",
+  "title": "Known Sports Meet Group",
+  "platform": "WhatsApp",
+  "difficulty": "Easy",
+  "disposition": "Legitimate",
+  "family": "Legitimate group invitation",
+  "trigger": "Familiarity | FICTIONAL MILITARY CONTEXT",
+  "end_state": "Poll choice is saved; group remains available as legitimate background traffic.",
+  "feedback": "Not every new group is hostile. Match sender, context and requested action, then proceed without oversharing.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Recreation Coord: Unit Falcon sports meet group is ready. Please confirm attendance in the poll.' The WhatsApp badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, WhatsApp-style tile, unread badge, timestamp and synthetic sender preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the new group thread from a saved coordinator. Context presented: A saved recreation coordinator creates the announced weekend sports group; no sensitive data or external link is requested.",
+    "ui_to_build": "Chat list, unread pill, thread header, bubbles, delivery ticks and prior-message history.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine creator identity, known number, group participants and prior announcement",
+    "ui_to_build": "Contact/group info sheet with full number, mutual groups, join date, media and report controls.",
+    "expected_safe_behavior": "Check this decision signal: The number matches the local directory, the event was expected, and the poll stays inside the app.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to an in-app attendance poll with Yes/No options",
+    "ui_to_build": "Chat-native preview plus offline safe browser/file viewer/call screen; every risky control remains selectable and scored.",
+    "expected_safe_behavior": "Use the normal in-app path only after the details match the known context. Do not switch to an untrusted channel.",
+    "scoring_event": "CORRECT_USE +3; needless reject/ignore -2; unsafe external action -4."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: compare the coordinator number with the local Trusted Directory",
+    "ui_to_build": "Three-dot action sheet and independent Trusted Directory overlay; in-message numbers are never treated as trusted.",
+    "expected_safe_behavior": "Verify independently: compare the coordinator number with the local Trusted Directory If it matches, continue; do not report or block a legitimate sender.",
+    "scoring_event": "TRUSTED_VERIFY +3; false report/block -4; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: answer the in-app poll and keep the group; do not report or block",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 13,
+  "content_sha256": "77607937dd394fedc565a982e7cf4a0c8233b22f56800611206d8afe2c561782"
+ },
+ {
+  "scenario_id": "W04",
+  "title": "Friend on a New Number",
+  "platform": "WhatsApp",
+  "difficulty": "Easy",
+  "disposition": "Malicious",
+  "family": "Known-contact impersonation / emergency payment",
+  "trigger": "Empathy + urgency",
+  "end_state": "Payment remains unexecuted; the verified friend call reveals the clone.",
+  "feedback": "A photo and name are easy to copy. Verify a new-number emergency through a contact route you already trust.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Riya (new number): Phone broke. Please send INR 8,000 for the clinic before 20:00.' The WhatsApp badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, WhatsApp-style tile, unread badge, timestamp and synthetic sender preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the chat with a familiar profile photo but no history. Context presented: An unsaved number uses a friend's name and says their phone was damaged.",
+    "ui_to_build": "Chat list, unread pill, thread header, bubbles, delivery ticks and prior-message history.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine number, account age, mutual groups and writing style",
+    "ui_to_build": "Contact/group info sheet with full number, mutual groups, join date, media and report controls.",
+    "expected_safe_behavior": "Check this decision signal: The number is new, there is no shared history, and the payment request is urgent and unusual.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a UPI request card bearing an unrelated synthetic payee name",
+    "ui_to_build": "Chat-native preview plus offline safe browser/file viewer/call screen; every risky control remains selectable and scored.",
+    "expected_safe_behavior": "Do not approve the payment or ask only in the same chat. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: call the saved old number or another known family contact",
+    "ui_to_build": "Three-dot action sheet and independent Trusted Directory overlay; in-message numbers are never treated as trusted.",
+    "expected_safe_behavior": "Verify independently: call the saved old number or another known family contact Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: decline the request; report/block the clone after the known friend confirms impersonation",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 14,
+  "content_sha256": "73a7506bf7159c93f4e87475d2ee6ca3c2eca75ab76e3e8c11eb6c1e6930a129"
+ },
+ {
+  "scenario_id": "W05",
+  "title": "KYC Suspension Warning",
+  "platform": "WhatsApp",
+  "difficulty": "Easy",
+  "disposition": "Malicious",
+  "family": "Bank impersonation / credential phishing",
+  "trigger": "Fear + urgency",
+  "end_state": "The official-app mock shows no KYC issue; suspicious chat is quarantined.",
+  "feedback": "Banks do not need your PIN or OTP in chat. Open the official app yourself and verify before taking action.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'NationalPay KYC: Your wallet will be blocked in 30 minutes. Update now.' The WhatsApp badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, WhatsApp-style tile, unread badge, timestamp and synthetic sender preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the business chat and warning card. Context presented: A logo-bearing account threatens immediate wallet suspension unless KYC is updated.",
+    "ui_to_build": "Chat list, unread pill, thread header, bubbles, delivery ticks and prior-message history.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine full number, business verification state and target domain",
+    "ui_to_build": "Contact/group info sheet with full number, mutual groups, join date, media and report controls.",
+    "expected_safe_behavior": "Check this decision signal: The account is unverified, uses a countdown, and routes outside the known banking app.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a synthetic KYC form asking for account, PIN and OTP",
+    "ui_to_build": "Chat-native preview plus offline safe browser/file viewer/call screen; every risky control remains selectable and scored.",
+    "expected_safe_behavior": "Do not submit account credentials, PIN, OTP or identity document. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: open the known banking app directly or call the number printed on the simulated card",
+    "ui_to_build": "Three-dot action sheet and independent Trusted Directory overlay; in-message numbers are never treated as trusted.",
+    "expected_safe_behavior": "Verify independently: open the known banking app directly or call the number printed on the simulated card Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: close the form; report/block the sender; verify account status independently",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 15,
+  "content_sha256": "8e49a55ff5c3b95ec5b71c7708dbaa0d6e06a68546b43bd8fbe35c5af6071ef2"
+ },
+ {
+  "scenario_id": "W06",
+  "title": "Unit Clerk ID Photo Request",
+  "platform": "WhatsApp",
+  "difficulty": "Easy",
+  "disposition": "Malicious",
+  "family": "Military impersonation / information collection",
+  "trigger": "Authority | FICTIONAL MILITARY CONTEXT",
+  "end_state": "No image leaves the device; the event is marked as protected-information refusal.",
+  "feedback": "Rank or authority claims do not replace procedure. Never send service documents to an unverified chat account.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Unit Clerk: Send front/back service ID photo now for today's database audit.' The WhatsApp badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, WhatsApp-style tile, unread badge, timestamp and synthetic sender preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the unsaved chat and attached 'audit notice' image. Context presented: An unknown account uses a generic crest and claims a personnel database update is due immediately.",
+    "ui_to_build": "Chat list, unread pill, thread header, bubbles, delivery ticks and prior-message history.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine number, missing mutual group, generic crest and request for ID imagery",
+    "ui_to_build": "Contact/group info sheet with full number, mutual groups, join date, media and report controls.",
+    "expected_safe_behavior": "Check this decision signal: The request bypasses the approved administrative channel and asks for sensitive identity material in chat.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a media composer preloaded with a synthetic service-card image",
+    "ui_to_build": "Chat-native preview plus offline safe browser/file viewer/call screen; every risky control remains selectable and scored.",
+    "expected_safe_behavior": "Do not send an ID image, roster data or personal document. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: contact the unit clerk through the approved internal directory or in person",
+    "ui_to_build": "Three-dot action sheet and independent Trusted Directory overlay; in-message numbers are never treated as trusted.",
+    "expected_safe_behavior": "Verify independently: contact the unit clerk through the approved internal directory or in person Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: cancel the upload; report the impersonation via unit procedure; block the account",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 16,
+  "content_sha256": "0c567b0d782d5e8786ee55534546251be22aaad47ab4adec45528b81313fe2ec"
+ },
+ {
+  "scenario_id": "W07",
+  "title": "Expected Family Document",
+  "platform": "WhatsApp",
+  "difficulty": "Easy",
+  "disposition": "Legitimate",
+  "family": "Legitimate document exchange",
+  "trigger": "Familiarity",
+  "end_state": "Viewer closes normally and the chat is marked read.",
+  "feedback": "Context matters. An expected inert document from a verified contact can be handled normally after inspection.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Asha: Here is the invitation PDF you asked for. No form - just check the date.' The WhatsApp badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, WhatsApp-style tile, unread badge, timestamp and synthetic sender preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the saved-contact thread with visible request history. Context presented: A saved family contact sends the event invitation PDF the learner requested earlier in the same thread.",
+    "ui_to_build": "Chat list, unread pill, thread header, bubbles, delivery ticks and prior-message history.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine known number, matching conversation and PDF type/size",
+    "ui_to_build": "Contact/group info sheet with full number, mutual groups, join date, media and report controls.",
+    "expected_safe_behavior": "Check this decision signal: The file is expected, the sender matches the saved contact, and the preview requests no sign-in or installation.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to the inert PDF preview showing only event details",
+    "ui_to_build": "Chat-native preview plus offline safe browser/file viewer/call screen; every risky control remains selectable and scored.",
+    "expected_safe_behavior": "Use the normal in-app path only after the details match the known context. Do not switch to an untrusted channel.",
+    "scoring_event": "CORRECT_USE +3; needless reject/ignore -2; unsafe external action -4."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: use the existing thread context; optional known-number call if anything differs",
+    "ui_to_build": "Three-dot action sheet and independent Trusted Directory overlay; in-message numbers are never treated as trusted.",
+    "expected_safe_behavior": "Verify independently: use the existing thread context; optional known-number call if anything differs If it matches, continue; do not report or block a legitimate sender.",
+    "scoring_event": "TRUSTED_VERIFY +3; false report/block -4; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: preview the PDF and retain it; do not report or block the sender",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 17,
+  "content_sha256": "ca1311105e90f31fde4e75f22997d31e0301eec69612f3aca191ba814c7e0c12"
+ },
+ {
+  "scenario_id": "W08",
+  "title": "Festival Reward QR",
+  "platform": "WhatsApp",
+  "difficulty": "Easy",
+  "disposition": "Malicious",
+  "family": "Prize scam / QR phishing",
+  "trigger": "Greed + scarcity",
+  "end_state": "The claim is rejected locally and the forwarded item is flagged as deceptive.",
+  "feedback": "QR codes are links with less visible context. Inspect the destination and verify the offer independently.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Forwarded many times: Scan to claim a INR 5,000 festival voucher - 12 left.' The WhatsApp badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, WhatsApp-style tile, unread badge, timestamp and synthetic sender preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the forwarded message in a community chat. Context presented: A forwarded message promises a time-limited shopping voucher to the first 500 scanners.",
+    "ui_to_build": "Chat list, unread pill, thread header, bubbles, delivery ticks and prior-message history.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine forwarded label, unknown origin, expiry language and QR target",
+    "ui_to_build": "Contact/group info sheet with full number, mutual groups, join date, media and report controls.",
+    "expected_safe_behavior": "Check this decision signal: The reward is unsolicited, scarce, and the QR hides a synthetic credential/payment site.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to the local QR inspector and then a claim form",
+    "ui_to_build": "Chat-native preview plus offline safe browser/file viewer/call screen; every risky control remains selectable and scored.",
+    "expected_safe_behavior": "Do not open the target, enter login/payment details or forward the message. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: check the retailer's known app/site from the Trusted Directory",
+    "ui_to_build": "Three-dot action sheet and independent Trusted Directory overlay; in-message numbers are never treated as trusted.",
+    "expected_safe_behavior": "Verify independently: check the retailer's known app/site from the Trusted Directory Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: close the QR flow; report the message; do not forward it",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 18,
+  "content_sha256": "7fe6a8304f0b3d36662487c55a1a51f5c21d55e45d8c8716d72d86dbee9155ac"
+ },
+ {
+  "scenario_id": "W09",
+  "title": "Compromised Colleague Gift Cards",
+  "platform": "WhatsApp",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Compromised-contact fraud",
+  "trigger": "Authority + urgency | FICTIONAL MILITARY CONTEXT",
+  "end_state": "Known-channel verification shows the colleague did not send the request.",
+  "feedback": "Trust the person, not an unusual message from their account. Verify high-impact requests out of band.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Maj. Arin: Can't talk. Buy four gift cards for visitors and send the codes in 10 minutes.' The WhatsApp badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, WhatsApp-style tile, unread badge, timestamp and synthetic sender preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the saved-contact thread with normal history. Context presented: A saved colleague's genuine account sends an out-of-character request while claiming to be in a meeting.",
+    "ui_to_build": "Chat list, unread pill, thread header, bubbles, delivery ticks and prior-message history.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine message style, unusual payment method, secrecy and inability to call",
+    "ui_to_build": "Contact/group info sheet with full number, mutual groups, join date, media and report controls.",
+    "expected_safe_behavior": "Check this decision signal: A genuine account can be compromised; gift-card codes and refusal of voice confirmation are strong warning signs.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a gift-card purchase mock followed by an image/code composer",
+    "ui_to_build": "Chat-native preview plus offline safe browser/file viewer/call screen; every risky control remains selectable and scored.",
+    "expected_safe_behavior": "Do not buy cards, send codes or keep the request secret. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: call the colleague through the known directory or confirm with the duty office",
+    "ui_to_build": "Three-dot action sheet and independent Trusted Directory overlay; in-message numbers are never treated as trusted.",
+    "expected_safe_behavior": "Verify independently: call the colleague through the known directory or confirm with the duty office Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: stop the transaction; report the compromised-account message and alert the verified colleague",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 19,
+  "content_sha256": "3dfabac4401da4d4c54b03b986e12cff982fd4bee9fafb68e8fa050458385d94"
+ },
+ {
+  "scenario_id": "W10",
+  "title": "Survey Device-Link QR",
+  "platform": "WhatsApp",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Linked-device takeover / QR deception",
+  "trigger": "Convenience + authority",
+  "end_state": "Pending device is rejected and the mock account remains under learner control.",
+  "feedback": "A device-link QR is an account-access request, not ordinary verification. Cancel unexpected links and review devices.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'WhatsApp Survey Desk: Scan this QR on Linked Devices to verify your feedback account.' The WhatsApp badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, WhatsApp-style tile, unread badge, timestamp and synthetic sender preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the support chat and QR image. Context presented: A fake support account offers a service survey and says scanning a QR will validate participation.",
+    "ui_to_build": "Chat list, unread pill, thread header, bubbles, delivery ticks and prior-message history.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine unsaved sender, instruction to open Linked Devices and QR purpose",
+    "ui_to_build": "Contact/group info sheet with full number, mutual groups, join date, media and report controls.",
+    "expected_safe_behavior": "Check this decision signal: Linked-device QR codes authorize another device; surveys do not need account linking.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a faithful local Linked Devices screen with a pending link confirmation",
+    "ui_to_build": "Chat-native preview plus offline safe browser/file viewer/call screen; every risky control remains selectable and scored.",
+    "expected_safe_behavior": "Do not scan/approve the device link or share a linking code. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: open Settings > Linked Devices independently and compare the request origin",
+    "ui_to_build": "Three-dot action sheet and independent Trusted Directory overlay; in-message numbers are never treated as trusted.",
+    "expected_safe_behavior": "Verify independently: open Settings > Linked Devices independently and compare the request origin Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: cancel linking; report/block the sender; review and remove unknown linked devices",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 20,
+  "content_sha256": "ab416a069d211c6a8a8bf2831218bd5f5c293e1a2045a961fb23601e56674986"
+ },
+ {
+  "scenario_id": "W11",
+  "title": "Expected Welfare Appointment",
+  "platform": "WhatsApp",
+  "difficulty": "Medium",
+  "disposition": "Legitimate",
+  "family": "Legitimate appointment confirmation",
+  "trigger": "Authority + routine",
+  "end_state": "Appointment is marked Confirmed and no other data is requested.",
+  "feedback": "Legitimate communications align with an action you initiated and use a verifiable, limited request.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Welfare Office: Your requested appointment is confirmed for 10:30. Reply C to confirm.' The WhatsApp badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, WhatsApp-style tile, unread badge, timestamp and synthetic sender preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the verified business chat with prior reference number. Context presented: The learner initiated a welfare-office appointment in the local portal; the saved office account confirms a time.",
+    "ui_to_build": "Chat list, unread pill, thread header, bubbles, delivery ticks and prior-message history.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine saved number, matching request ID, time and minimal reply",
+    "ui_to_build": "Contact/group info sheet with full number, mutual groups, join date, media and report controls.",
+    "expected_safe_behavior": "Check this decision signal: The request is expected, contains no external link, and asks only for a low-risk confirmation.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to an in-chat quick reply with Confirm/Reschedule",
+    "ui_to_build": "Chat-native preview plus offline safe browser/file viewer/call screen; every risky control remains selectable and scored.",
+    "expected_safe_behavior": "Use the normal in-app path only after the details match the known context. Do not switch to an untrusted channel.",
+    "scoring_event": "CORRECT_USE +3; needless reject/ignore -2; unsafe external action -4."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: match the reference in the local appointment portal or Trusted Directory",
+    "ui_to_build": "Three-dot action sheet and independent Trusted Directory overlay; in-message numbers are never treated as trusted.",
+    "expected_safe_behavior": "Verify independently: match the reference in the local appointment portal or Trusted Directory If it matches, continue; do not report or block a legitimate sender.",
+    "scoring_event": "TRUSTED_VERIFY +3; false report/block -4; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: send the in-app confirmation; retain the chat; do not report it",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 21,
+  "content_sha256": "4b60323c9f7a9bccca16d956bdc9eaffd4c0cbe44d484f3be3a16224cd9aa6eb"
+ },
+ {
+  "scenario_id": "W12",
+  "title": "Digital Arrest Escalation",
+  "platform": "WhatsApp",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Government impersonation / digital arrest",
+  "trigger": "Fear + authority + isolation",
+  "end_state": "Call ends; no payment occurs; evidence card is stored in the simulated report queue.",
+  "feedback": "Threats, secrecy and payment demands are coercion. End the call, verify independently and report promptly.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Investigation Desk: Your ID is linked to a seized parcel. Join video verification now.' The WhatsApp badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, WhatsApp-style tile, unread badge, timestamp and synthetic sender preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the chat followed by an incoming video-call screen. Context presented: An unknown caller claims a parcel linked to the learner contains contraband and demands a video call.",
+    "ui_to_build": "Chat list, unread pill, thread header, bubbles, delivery ticks and prior-message history.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine unknown country code, fabricated case PDF and demand for secrecy",
+    "ui_to_build": "Contact/group info sheet with full number, mutual groups, join date, media and report controls.",
+    "expected_safe_behavior": "Check this decision signal: There is no lawful 'digital arrest'; agencies do not settle allegations or demand money by WhatsApp video.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a synthetic video call with a uniformed avatar, countdown and 'security deposit' demand",
+    "ui_to_build": "Chat-native preview plus offline safe browser/file viewer/call screen; every risky control remains selectable and scored.",
+    "expected_safe_behavior": "Do not stay isolated, share identity/bank data or attempt payment. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: end the call and use a known official number/unit security route; never the supplied case contact",
+    "ui_to_build": "Three-dot action sheet and independent Trusted Directory overlay; in-message numbers are never treated as trusted.",
+    "expected_safe_behavior": "Verify independently: end the call and use a known official number/unit security route; never the supplied case contact Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: terminate; preserve evidence; report/block; follow unit and official cybercrime reporting procedures",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 22,
+  "content_sha256": "bfdcc6d48e498faa77034fd7edc0face2cda5c28274a00d767f5f7d5da48709a"
+ },
+ {
+  "scenario_id": "W13",
+  "title": "Guaranteed IPO Group",
+  "platform": "WhatsApp",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Investment-group fraud",
+  "trigger": "Greed + social proof",
+  "end_state": "Group disappears from inbox and synthetic deposit remains zero.",
+  "feedback": "Fabricated profits and early bonuses build trust. Verify registration and never fund an unsolicited social-media scheme.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Alpha Wealth VIP: Guaranteed IPO allotment. Deposit today for 18% weekly returns.' The WhatsApp badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, WhatsApp-style tile, unread badge, timestamp and synthetic sender preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the newly joined investment group. Context presented: The learner is added to a group showing fabricated profits and a supposed adviser offering guaranteed allotments.",
+    "ui_to_build": "Chat list, unread pill, thread header, bubbles, delivery ticks and prior-message history.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine who added the learner, admin numbers, repetitive testimonials and profit claims",
+    "ui_to_build": "Contact/group info sheet with full number, mutual groups, join date, media and report controls.",
+    "expected_safe_behavior": "Check this decision signal: Guaranteed returns, private deposits and unsolicited group additions are incompatible with regulated advice.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a fake trading-app page showing a small bonus and Deposit button",
+    "ui_to_build": "Chat-native preview plus offline safe browser/file viewer/call screen; every risky control remains selectable and scored.",
+    "expected_safe_behavior": "Do not install an APK, deposit funds or share bank details. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: check adviser registration and the broker through independently known official sources",
+    "ui_to_build": "Three-dot action sheet and independent Trusted Directory overlay; in-message numbers are never treated as trusted.",
+    "expected_safe_behavior": "Verify independently: check adviser registration and the broker through independently known official sources Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: leave/report the group; block admins; do not install or deposit",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 23,
+  "content_sha256": "6af591bfd1a7f747f532eb5264bd24a49c77b84704344991f87e8f42d6505500"
+ },
+ {
+  "scenario_id": "W14",
+  "title": "Movement Order APK",
+  "platform": "WhatsApp",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Military spearphishing / malicious app",
+  "trigger": "Authority + urgency | FICTIONAL MILITARY CONTEXT",
+  "end_state": "Installer is closed before permission grant; the inert file is quarantined locally.",
+  "feedback": "Treat unexpected APKs as high risk. Confirm orders in the approved system and never install a chat-delivered viewer.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'HQ Alpha Ops: Revised movement order attached. Install viewer before 18:00.' The WhatsApp badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, WhatsApp-style tile, unread badge, timestamp and synthetic sender preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the unknown chat with file chip MoveOrder_Viewer.apk. Context presented: A number using a senior-sounding name sends an Android package labelled as a revised movement order.",
+    "ui_to_build": "Chat list, unread pill, thread header, bubbles, delivery ticks and prior-message history.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine file extension, unsaved number, missing official reference and install request",
+    "ui_to_build": "Contact/group info sheet with full number, mutual groups, join date, media and report controls.",
+    "expected_safe_behavior": "Check this decision signal: A movement order would not require installing an unknown app from a chat account.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a simulated Android install-permission screen requesting SMS, files and accessibility",
+    "ui_to_build": "Chat-native preview plus offline safe browser/file viewer/call screen; every risky control remains selectable and scored.",
+    "expected_safe_behavior": "Do not install the APK or grant any permission. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: contact the operations staff through the approved internal channel and check the document system",
+    "ui_to_build": "Three-dot action sheet and independent Trusted Directory overlay; in-message numbers are never treated as trusted.",
+    "expected_safe_behavior": "Verify independently: contact the operations staff through the approved internal channel and check the document system Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: cancel installation; report via unit cyber/security route; block the sender",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 24,
+  "content_sha256": "2bc62dd8a55bc874046f06b9db5b30c05bc2537d5abc6c0ff22bb7c797870ee0"
+ },
+ {
+  "scenario_id": "W15",
+  "title": "Senior's Urgent Voice Note",
+  "platform": "WhatsApp",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Synthetic-media impersonation / data request",
+  "trigger": "Authority + familiarity | FICTIONAL MILITARY CONTEXT",
+  "end_state": "Voice note is tagged as unverified synthetic media and the disclosure path closes.",
+  "feedback": "Voice similarity is not identity proof. Follow the approved channel and protect operational access information.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Col. Dev (new account): Voice note - Send today's access phrase here; official phone is unavailable.' The WhatsApp badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, WhatsApp-style tile, unread badge, timestamp and synthetic sender preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the new-account thread and voice note. Context presented: A cloned profile sends a convincing synthetic voice note asking for a secure-room access detail.",
+    "ui_to_build": "Chat list, unread pill, thread header, bubbles, delivery ticks and prior-message history.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine new number, profile creation date, request content and no shared history",
+    "ui_to_build": "Contact/group info sheet with full number, mutual groups, join date, media and report controls.",
+    "expected_safe_behavior": "Check this decision signal: A familiar voice can be synthesized; protected access data must never move to personal chat.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a reply composer with quick chips for phrase/photo/document",
+    "ui_to_build": "Chat-native preview plus offline safe browser/file viewer/call screen; every risky control remains selectable and scored.",
+    "expected_safe_behavior": "Do not send an access phrase, photo or protected procedure. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: confirm via the established chain and approved communications channel",
+    "ui_to_build": "Three-dot action sheet and independent Trusted Directory overlay; in-message numbers are never treated as trusted.",
+    "expected_safe_behavior": "Verify independently: confirm via the established chain and approved communications channel Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: send nothing; report the impersonation; preserve the synthetic voice-note evidence",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 25,
+  "content_sha256": "5fd1dfd36851662d1fe534303d2f1d11090a8347b00b205b08d5f9358c7a6581"
+ },
+ {
+  "scenario_id": "W16",
+  "title": "Verified Vehicle-Pool Change",
+  "platform": "WhatsApp",
+  "difficulty": "Medium",
+  "disposition": "Legitimate",
+  "family": "Legitimate operational administration",
+  "trigger": "Authority + time pressure | FICTIONAL MILITARY CONTEXT",
+  "end_state": "Acknowledgement is recorded; no route or roster information is exposed.",
+  "feedback": "A time-sensitive message can be legitimate. Verify against an established plan and respond with the minimum necessary.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Transport Coord: Weather closure. Use Alternate Gate B at 07:15; acknowledge only.' The WhatsApp badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, WhatsApp-style tile, unread badge, timestamp and synthetic sender preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the saved coordinator thread with earlier schedule. Context presented: A saved transport coordinator changes a routine pickup point to the already published alternate location.",
+    "ui_to_build": "Chat list, unread pill, thread header, bubbles, delivery ticks and prior-message history.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine known number, matching contingency note and limited acknowledgement",
+    "ui_to_build": "Contact/group info sheet with full number, mutual groups, join date, media and report controls.",
+    "expected_safe_behavior": "Check this decision signal: The alternate location is already listed in the synthetic plan and no sensitive information is requested.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to an in-chat Acknowledge button and read receipt",
+    "ui_to_build": "Chat-native preview plus offline safe browser/file viewer/call screen; every risky control remains selectable and scored.",
+    "expected_safe_behavior": "Use the normal in-app path only after the details match the known context. Do not switch to an untrusted channel.",
+    "scoring_event": "CORRECT_USE +3; needless reject/ignore -2; unsafe external action -4."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: compare the update with the local movement board/Trusted Directory",
+    "ui_to_build": "Three-dot action sheet and independent Trusted Directory overlay; in-message numbers are never treated as trusted.",
+    "expected_safe_behavior": "Verify independently: compare the update with the local movement board/Trusted Directory If it matches, continue; do not report or block a legitimate sender.",
+    "scoring_event": "TRUSTED_VERIFY +3; false report/block -4; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: acknowledge the verified change without adding sensitive details; do not report",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 26,
+  "content_sha256": "7e0905dcfbdecc4e3001e995b468692338d3fa32dba28ae2ddeb9f06bf626f00"
+ },
+ {
+  "scenario_id": "W17",
+  "title": "Part-Time Rating Tasks",
+  "platform": "WhatsApp",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Task/job scam",
+  "trigger": "Greed + commitment",
+  "end_state": "Synthetic balance is exposed as non-withdrawable and no deposit is made.",
+  "feedback": "Legitimate employers do not require deposits to release earnings. Stop when a task scheme asks you to pay.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Recruiter Mia: Earn INR 3,000 daily rating products. First task pays instantly.' The WhatsApp badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, WhatsApp-style tile, unread badge, timestamp and synthetic sender preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the unsolicited recruiter chat. Context presented: A recruiter offers quick pay for rating products, then displays small synthetic earnings.",
+    "ui_to_build": "Chat list, unread pill, thread header, bubbles, delivery ticks and prior-message history.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine unknown number, unrealistic pay, generic company name and move-to-payment pressure",
+    "ui_to_build": "Contact/group info sheet with full number, mutual groups, join date, media and report controls.",
+    "expected_safe_behavior": "Check this decision signal: Unexpected easy-income offers often escalate from small rewards to deposits and withdrawal fees.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a task dashboard showing a bonus, then a 'recharge to unlock' demand",
+    "ui_to_build": "Chat-native preview plus offline safe browser/file viewer/call screen; every risky control remains selectable and scored.",
+    "expected_safe_behavior": "Do not deposit/recharge, share bank details or recruit others. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: look up the employer through an independently found corporate site and known vacancy channel",
+    "ui_to_build": "Three-dot action sheet and independent Trusted Directory overlay; in-message numbers are never treated as trusted.",
+    "expected_safe_behavior": "Verify independently: look up the employer through an independently found corporate site and known vacancy channel Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: stop tasks; report/block the recruiter; do not pay to earn",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 27,
+  "content_sha256": "5e6e929c4f54f726ae3bfcae58573c541942690825e7a8d453a245fcafe99ddb"
+ },
+ {
+  "scenario_id": "W18",
+  "title": "Hijacked Group Admin Roster Link",
+  "platform": "WhatsApp",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Compromised admin / group spearphishing",
+  "trigger": "Authority + routine | FICTIONAL MILITARY CONTEXT",
+  "end_state": "The verified admin confirms takeover; the group post is locally marked removed.",
+  "feedback": "Prior trust does not validate a changed process. Inspect links and verify sensitive requests out of band.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Admin: Final roster correction closes in 15 minutes. Confirm your entry here.' The WhatsApp badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, WhatsApp-style tile, unread badge, timestamp and synthetic sender preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the long-standing Unit Falcon group thread. Context presented: A real group admin account posts a roster-update link that conflicts subtly with prior process.",
+    "ui_to_build": "Chat list, unread pill, thread header, bubbles, delivery ticks and prior-message history.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine admin's message history, changed tone, unusual link domain and other members' reactions",
+    "ui_to_build": "Contact/group info sheet with full number, mutual groups, join date, media and report controls.",
+    "expected_safe_behavior": "Check this decision signal: A trusted account can be hijacked; the approved roster process never uses a public form.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a prefilled synthetic roster form asking service number, role and current location",
+    "ui_to_build": "Chat-native preview plus offline safe browser/file viewer/call screen; every risky control remains selectable and scored.",
+    "expected_safe_behavior": "Do not submit personnel, role, location or contact data. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: call the admin via known directory and check the approved roster system",
+    "ui_to_build": "Three-dot action sheet and independent Trusted Directory overlay; in-message numbers are never treated as trusted.",
+    "expected_safe_behavior": "Verify independently: call the admin via known directory and check the approved roster system Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: do not submit; report the compromised post to group admins and unit security; warn without forwarding the link",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 28,
+  "content_sha256": "7ff73a90172e9ae553f82db36f5dccdb18ea69c974c4157d40c10ee6071e1bba"
+ },
+ {
+  "scenario_id": "W19",
+  "title": "Commander Clone Requests Location",
+  "platform": "WhatsApp",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Military impersonation / location collection",
+  "trigger": "Authority + secrecy | FICTIONAL MILITARY CONTEXT",
+  "end_state": "Location permission remains off and the impersonating account is blocked.",
+  "feedback": "Profile cloning can be exact. Compare account identity and never disclose location because a message claims seniority.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Commander: For revised coordination, send live location now. Do not post in the group.' The WhatsApp badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, WhatsApp-style tile, unread badge, timestamp and synthetic sender preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the direct chat from a near-identical account. Context presented: A clone closely matches a senior's photo and About text, and references a public event.",
+    "ui_to_build": "Chat list, unread pill, thread header, bubbles, delivery ticks and prior-message history.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine exact number, account age, common groups and small name-character difference",
+    "ui_to_build": "Contact/group info sheet with full number, mutual groups, join date, media and report controls.",
+    "expected_safe_behavior": "Check this decision signal: The account is new, lacks expected mutual groups, and requests live location outside procedure.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to the live-location share sheet with 15-minute/1-hour options",
+    "ui_to_build": "Chat-native preview plus offline safe browser/file viewer/call screen; every risky control remains selectable and scored.",
+    "expected_safe_behavior": "Do not share live/current location or explain the schedule. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: contact the duty office or senior through an approved known route",
+    "ui_to_build": "Three-dot action sheet and independent Trusted Directory overlay; in-message numbers are never treated as trusted.",
+    "expected_safe_behavior": "Verify independently: contact the duty office or senior through an approved known route Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: cancel location share; report the clone; notify unit security through policy",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 29,
+  "content_sha256": "588fc0c9741ebf12bf3c1010c513fe7a96a0c065a46a1b055d8412caee133008"
+ },
+ {
+  "scenario_id": "W20",
+  "title": "Supplier Bank-Detail Change",
+  "platform": "WhatsApp",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Procurement impersonation / payment diversion",
+  "trigger": "Routine + urgency",
+  "end_state": "Beneficiary change is rejected and the legitimate supplier confirms no request.",
+  "feedback": "Treat payment-detail changes as high-risk even when context is convincing. Use known contacts and dual control.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Northstar Supplies: Our bank is under audit. Use this new account for today's invoice.' The WhatsApp badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, WhatsApp-style tile, unread badge, timestamp and synthetic sender preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the supplier chat with copied invoice references. Context presented: A known supplier logo account enters an existing project context and requests payment to a new beneficiary.",
+    "ui_to_build": "Chat list, unread pill, thread header, bubbles, delivery ticks and prior-message history.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine new number, beneficiary mismatch and deviation from change-control process",
+    "ui_to_build": "Contact/group info sheet with full number, mutual groups, join date, media and report controls.",
+    "expected_safe_behavior": "Check this decision signal: Accurate invoice details may be stolen; bank-detail changes require independent callback and approved workflow.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a synthetic invoice plus beneficiary-edit/payment screen",
+    "ui_to_build": "Chat-native preview plus offline safe browser/file viewer/call screen; every risky control remains selectable and scored.",
+    "expected_safe_behavior": "Do not change stored bank details or approve payment from chat evidence. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: call the supplier contact already on file and obtain dual approval through procurement workflow",
+    "ui_to_build": "Three-dot action sheet and independent Trusted Directory overlay; in-message numbers are never treated as trusted.",
+    "expected_safe_behavior": "Verify independently: call the supplier contact already on file and obtain dual approval through procurement workflow Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: hold payment; report the impersonation; record the discrepancy for procurement/security",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 30,
+  "content_sha256": "085dcadfc15c30da3218f68e91b79368906846656c9f5e44e92c71802a6b9973"
+ },
+ {
+  "scenario_id": "W21",
+  "title": "Verified Senior Requests Secure Follow-Up",
+  "platform": "WhatsApp",
+  "difficulty": "Hard",
+  "disposition": "Legitimate",
+  "family": "Legitimate minimal notification",
+  "trigger": "Authority | FICTIONAL MILITARY CONTEXT",
+  "end_state": "The secure-portal task is opened and WhatsApp retains no sensitive follow-up.",
+  "feedback": "A legitimate message can be brief and authoritative when it moves detail to the approved system. Verify the route, then proceed.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Col. Dev: Please review item REF-ALPHA-17 in the approved portal. No reply details here.' The WhatsApp badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, WhatsApp-style tile, unread badge, timestamp and synthetic sender preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the established saved-contact thread. Context presented: A saved senior sends a brief personal-channel message that contains no task detail and directs the learner to the approved secure system.",
+    "ui_to_build": "Chat list, unread pill, thread header, bubbles, delivery ticks and prior-message history.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine known number, matching directory record, minimal content and approved portal reference",
+    "ui_to_build": "Contact/group info sheet with full number, mutual groups, join date, media and report controls.",
+    "expected_safe_behavior": "Check this decision signal: The message avoids operational detail and asks the learner to use the correct protected channel.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to the local approved-portal launcher without an embedded login link",
+    "ui_to_build": "Chat-native preview plus offline safe browser/file viewer/call screen; every risky control remains selectable and scored.",
+    "expected_safe_behavior": "Use the normal in-app path only after the details match the known context. Do not switch to an untrusted channel.",
+    "scoring_event": "CORRECT_USE +3; needless reject/ignore -2; unsafe external action -4."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: open the approved portal from the dashboard and compare reference REF-ALPHA-17",
+    "ui_to_build": "Three-dot action sheet and independent Trusted Directory overlay; in-message numbers are never treated as trusted.",
+    "expected_safe_behavior": "Verify independently: open the approved portal from the dashboard and compare reference REF-ALPHA-17 If it matches, continue; do not report or block a legitimate sender.",
+    "scoring_event": "TRUSTED_VERIFY +3; false report/block -4; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: review the item in the approved mock portal; send only a minimal acknowledgement if required; do not report",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 31,
+  "content_sha256": "1d235ed8c52859ee28e1e7350cda600ed820f275504464d15cccc13074a814c0"
+ },
+ {
+  "scenario_id": "W22",
+  "title": "Long-Game Online Friendship",
+  "platform": "WhatsApp",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Relationship grooming / investment fraud",
+  "trigger": "Trust + reciprocity",
+  "end_state": "Fake profit display is exposed and the payment route is closed.",
+  "feedback": "Grooming can precede the financial request by weeks. Separate relationship trust from identity and investment verification.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Samira: My uncle's desk has a guaranteed window tonight. Start small so you can trust me.' The WhatsApp badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, WhatsApp-style tile, unread badge, timestamp and synthetic sender preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the multi-week chat history. Context presented: A contact cultivated over several synthetic weeks now recommends a private crypto opportunity.",
+    "ui_to_build": "Chat list, unread pill, thread header, bubbles, delivery ticks and prior-message history.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine rapid intimacy, inconsistent biography, investment pivot and guaranteed-return language",
+    "ui_to_build": "Contact/group info sheet with full number, mutual groups, join date, media and report controls.",
+    "expected_safe_behavior": "Check this decision signal: Time and friendliness do not validate identity or investment claims; the relationship is being used to lower caution.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a polished fake exchange showing profit after a tiny trial deposit",
+    "ui_to_build": "Chat-native preview plus offline safe browser/file viewer/call screen; every risky control remains selectable and scored.",
+    "expected_safe_behavior": "Do not deposit funds, upload ID or reveal financial information. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: verify identity independently and research the platform/regulatory status outside the relationship",
+    "ui_to_build": "Three-dot action sheet and independent Trusted Directory overlay; in-message numbers are never treated as trusted.",
+    "expected_safe_behavior": "Verify independently: verify identity independently and research the platform/regulatory status outside the relationship Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: do not invest; preserve and report the account; block after evidence capture",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 32,
+  "content_sha256": "1afece2e3560db3129158dc53ed5a7cad62661abd686e47a4df45238b8825449"
+ },
+ {
+  "scenario_id": "W23",
+  "title": "Family Welfare Pretext",
+  "platform": "WhatsApp",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Military-family targeting / operational elicitation",
+  "trigger": "Empathy + authority | FICTIONAL MILITARY CONTEXT",
+  "end_state": "Form is discarded and the verified welfare office shows no case.",
+  "feedback": "Attackers may target families to elicit service details. Verify welfare claims and disclose nothing in an unsolicited chat.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Forces Welfare Volunteer: We must route an emergency grant. Confirm unit, post and deployment dates.' The WhatsApp badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, WhatsApp-style tile, unread badge, timestamp and synthetic sender preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the business-style chat with copied welfare imagery. Context presented: An account posing as a welfare volunteer says a family member needs help and asks where the learner is posted.",
+    "ui_to_build": "Chat list, unread pill, thread header, bubbles, delivery ticks and prior-message history.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine unknown number, broad data request, urgency and lack of case reference",
+    "ui_to_build": "Contact/group info sheet with full number, mutual groups, join date, media and report controls.",
+    "expected_safe_behavior": "Check this decision signal: The request combines family concern with operational and identity questions that a real process would already handle securely.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a synthetic grant form requesting unit, location, schedule, family and bank data",
+    "ui_to_build": "Chat-native preview plus offline safe browser/file viewer/call screen; every risky control remains selectable and scored.",
+    "expected_safe_behavior": "Do not disclose posting, movement, family or bank information. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: contact the known welfare office through the unit directory and check the family directly",
+    "ui_to_build": "Three-dot action sheet and independent Trusted Directory overlay; in-message numbers are never treated as trusted.",
+    "expected_safe_behavior": "Verify independently: contact the known welfare office through the unit directory and check the family directly Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: submit nothing; report the impersonation through unit security; block the account",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 33,
+  "content_sha256": "156e22d28cae52d8f1d0625ca931161d80ca16abbde804c7b0d41086f967c9fc"
+ },
+ {
+  "scenario_id": "W24",
+  "title": "Remote Support Screen Share",
+  "platform": "WhatsApp",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Tech-support scam / remote access",
+  "trigger": "Fear + helpfulness",
+  "end_state": "No app is installed and all simulated permissions remain denied.",
+  "feedback": "Remote-access and accessibility permissions can expose everything on a device. Use only approved support channels.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Mobile Security Desk: Critical infection detected. Install AssistNow and share screen.' The WhatsApp badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, WhatsApp-style tile, unread badge, timestamp and synthetic sender preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the support chat and diagnostic image. Context presented: A support agent claims the learner's phone is spreading malware and offers to fix it immediately.",
+    "ui_to_build": "Chat list, unread pill, thread header, bubbles, delivery ticks and prior-message history.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine unverified account, unsolicited diagnosis, APK link and remote-control request",
+    "ui_to_build": "Contact/group info sheet with full number, mutual groups, join date, media and report controls.",
+    "expected_safe_behavior": "Check this decision signal: Legitimate support does not discover an infection by cold message or require an unknown remote-access app.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to an install mock followed by accessibility and screen-share permission prompts",
+    "ui_to_build": "Chat-native preview plus offline safe browser/file viewer/call screen; every risky control remains selectable and scored.",
+    "expected_safe_behavior": "Do not install the app, share screen or grant accessibility/SMS permission. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: close chat and contact approved IT support using the local directory",
+    "ui_to_build": "Three-dot action sheet and independent Trusted Directory overlay; in-message numbers are never treated as trusted.",
+    "expected_safe_behavior": "Verify independently: close chat and contact approved IT support using the local directory Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: cancel all permissions; report/block the account; request an approved device check if needed",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 34,
+  "content_sha256": "e71492732127396cb6fb09f8f43636572d0d33623c2176968b9d7f67c91192bc"
+ },
+ {
+  "scenario_id": "W25",
+  "title": "Known Contact Sends a Linking Code",
+  "platform": "WhatsApp",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Compromised-contact device linking",
+  "trigger": "Trust + reciprocity",
+  "end_state": "The account remains controlled by the learner and the compromised-contact warning is recorded.",
+  "feedback": "Even a known account cannot justify sharing a linking code. Protect account-authorization prompts like passwords.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Neel: I'm testing the team desktop. Send the linking code you just got so I can finish setup.' The WhatsApp badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, WhatsApp-style tile, unread badge, timestamp and synthetic sender preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the authentic-looking saved-contact thread. Context presented: A saved contact's compromised account asks the learner to help test a desktop login.",
+    "ui_to_build": "Chat list, unread pill, thread header, bubbles, delivery ticks and prior-message history.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine request purpose, code warning, linked-device context and out-of-character behavior",
+    "ui_to_build": "Contact/group info sheet with full number, mutual groups, join date, media and report controls.",
+    "expected_safe_behavior": "Check this decision signal: A linking code authorizes access to the learner's account; a colleague never needs it to test their own device.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a simulated device-link code and approval sheet",
+    "ui_to_build": "Chat-native preview plus offline safe browser/file viewer/call screen; every risky control remains selectable and scored.",
+    "expected_safe_behavior": "Do not share the code or approve the unfamiliar device. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: call the contact through a known alternate route and review Linked Devices",
+    "ui_to_build": "Three-dot action sheet and independent Trusted Directory overlay; in-message numbers are never treated as trusted.",
+    "expected_safe_behavior": "Verify independently: call the contact through a known alternate route and review Linked Devices Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: deny linking; remove unknown devices; report the compromised message and alert the real contact",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 35,
+  "content_sha256": "678d58e797ff90dd320d15b46a6ae75955883b659c80e1130d43b0a6a0396496"
+ }
+]

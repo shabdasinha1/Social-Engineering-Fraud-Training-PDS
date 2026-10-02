@@ -1,0 +1,51 @@
+{
+  "captured_at": "2026-09-04T10:36:28.835Z",
+  "purpose": "DEPLOY-001 pre-conversion baseline",
+  "mongod_version": "8.3.7",
+  "topology": "standalone",
+  "databases": {
+    "FirstCrud": {
+      "users": 1
+    },
+    "ProjectPhoenix": {
+      "users": 1
+    },
+    "admin": {
+      "system.version": 1
+    },
+    "authDB": {
+      "activitylogs": 150,
+      "notifications": 80,
+      "orders": 2000,
+      "products": 500,
+      "transactions": 1000,
+      "users": 502
+    },
+    "config": {
+      "system.sessions": 4
+    },
+    "cyber_awareness_training": {
+      "adminusers": 0,
+      "assessments": 1,
+      "candidates": 1,
+      "scenariodefinitions": 100,
+      "scenarios": 40
+    },
+    "fortitudefashion": {
+      "blogs": 0,
+      "categories": 0,
+      "galleries": 4,
+      "messages": 5,
+      "products": 4,
+      "profiles": 3,
+      "testimonials": 0,
+      "users": 1
+    },
+    "jobpilot": {
+      "users": 0
+    },
+    "local": {
+      "startup_log": 33
+    }
+  }
+}

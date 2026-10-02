@@ -1,0 +1,1577 @@
+[
+ {
+  "scenario_id": "I01",
+  "title": "Flash Giveaway Winner",
+  "platform": "Instagram",
+  "difficulty": "Easy",
+  "disposition": "Malicious",
+  "family": "Giveaway / credential-payment scam",
+  "trigger": "Greed + scarcity",
+  "end_state": "Claim flow closes and the fake account is removed from the local feed.",
+  "feedback": "You cannot win a promotion you did not enter. Check the exact account and verify on the official page.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: '@mega_rewards_help: You won! Claim in 10 minutes or we redraw.' The Instagram badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, Instagram-style tile, DM/activity badge, account avatar and synthetic preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the Activity item and tagged giveaway post. Context presented: A newly created account tags the learner as a winner in a giveaway they never entered.",
+    "ui_to_build": "DM requests/inbox or activity/feed view with thread, post, story or reel context and timestamps.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine exact handle, account age, follower ratio, comments and bio link",
+    "ui_to_build": "Profile sheet with exact handle, account age, username history, mutuals, follower ratios and report controls.",
+    "expected_safe_behavior": "Check this decision signal: The account imitates a brand, disables comments and uses a look-alike handle and urgent claim link.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a fake prize page asking for social login and a small delivery fee",
+    "ui_to_build": "In-app profile/post/story view plus offline link browser, media composer or synthetic payment panel.",
+    "expected_safe_behavior": "Do not enter credentials, payment data or share the post. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: find the brand's official account independently and check its public promotion rules",
+    "ui_to_build": "DM action sheet with restrict/block/report and independent Trusted Directory or official-account lookup overlay.",
+    "expected_safe_behavior": "Verify independently: find the brand's official account independently and check its public promotion rules Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: close the claim; report the account/post as scam; block the account",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 37,
+  "content_sha256": "e07686d6449771c32800573c96d7b5c0c57926f8fa606f00a7ca567565b8f85c"
+ },
+ {
+  "scenario_id": "I02",
+  "title": "Copyright Appeal Countdown",
+  "platform": "Instagram",
+  "difficulty": "Easy",
+  "disposition": "Malicious",
+  "family": "Fake platform support / credential phishing",
+  "trigger": "Fear + urgency",
+  "end_state": "Account Status shows no violation and the DM is marked as phishing.",
+  "feedback": "Urgent support DMs are a common credential lure. Use the platform's own settings and never share recovery codes.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: '@copyright_case_team: Appeal within 30 minutes or your account will be permanently removed.' The Instagram badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, Instagram-style tile, DM/activity badge, account avatar and synthetic preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the DM request and account-warning message. Context presented: A DM claims the learner's profile will be deleted for copyright infringement.",
+    "ui_to_build": "DM requests/inbox or activity/feed view with thread, post, story or reel context and timestamps.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine support handle, DM-request status, link domain and threat language",
+    "ui_to_build": "Profile sheet with exact handle, account age, username history, mutuals, follower ratios and report controls.",
+    "expected_safe_behavior": "Check this decision signal: Platform enforcement is handled through in-app account status, not an unsolicited support DM.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to an external-looking appeal login requesting username, password and backup code",
+    "ui_to_build": "In-app profile/post/story view plus offline link browser, media composer or synthetic payment panel.",
+    "expected_safe_behavior": "Do not log in, upload ID or share a backup code. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: open Settings > Account Status/Support directly inside the simulated app",
+    "ui_to_build": "DM action sheet with restrict/block/report and independent Trusted Directory or official-account lookup overlay.",
+    "expected_safe_behavior": "Verify independently: open Settings > Account Status/Support directly inside the simulated app Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: close the link; report/block the fake support account; review official account status",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 38,
+  "content_sha256": "fe8fbcb613a0917260c9039673d22854fdc58af44933dd516cece66af32c97e1"
+ },
+ {
+  "scenario_id": "I03",
+  "title": "Published Blood-Donation Drive",
+  "platform": "Instagram",
+  "difficulty": "Easy",
+  "disposition": "Legitimate",
+  "family": "Legitimate public announcement",
+  "trigger": "Empathy | FICTIONAL MILITARY CONTEXT",
+  "end_state": "Post remains in feed and the legitimate action is logged.",
+  "feedback": "A verified public post with matching official history may be used normally. Keep any response within released information.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: '@unitfalcon_public: Voluntary blood donation, 05 Sep, Civic Hall. Details in approved poster.' The Instagram badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, Instagram-style tile, DM/activity badge, account avatar and synthetic preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the Activity item and public post. Context presented: A verified fictional public-information account posts an already approved blood-donation drive with no external registration.",
+    "ui_to_build": "DM requests/inbox or activity/feed view with thread, post, story or reel context and timestamps.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine verified badge context, exact handle, post history and approval label",
+    "ui_to_build": "Profile sheet with exact handle, account age, username history, mutuals, follower ratios and report controls.",
+    "expected_safe_behavior": "Check this decision signal: The account matches the local official-account list and the post contains only publicly releasable information.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to the in-app poster viewer and Save/Share controls",
+    "ui_to_build": "In-app profile/post/story view plus offline link browser, media composer or synthetic payment panel.",
+    "expected_safe_behavior": "Use the normal in-app path only after the details match the known context. Do not switch to an untrusted channel.",
+    "scoring_event": "CORRECT_USE +3; needless reject/ignore -2; unsafe external action -4."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: compare the handle with the local official-account directory",
+    "ui_to_build": "DM action sheet with restrict/block/report and independent Trusted Directory or official-account lookup overlay.",
+    "expected_safe_behavior": "Verify independently: compare the handle with the local official-account directory If it matches, continue; do not report or block a legitimate sender.",
+    "scoring_event": "TRUSTED_VERIFY +3; false report/block -4; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: save or like the post; share only if the approved-public marker is present; do not report",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 39,
+  "content_sha256": "7a4c8523c446c26ecddd35ecf9a7a5596c4f190629c37ab54d867a27cdf2ff6c"
+ },
+ {
+  "scenario_id": "I04",
+  "title": "Cloned Friend in Distress",
+  "platform": "Instagram",
+  "difficulty": "Easy",
+  "disposition": "Malicious",
+  "family": "Profile cloning / emergency payment",
+  "trigger": "Empathy + urgency",
+  "end_state": "Verified friend confirms the clone; no payment is attempted.",
+  "feedback": "Copied photos and mutual followers do not prove identity. Use an existing contact route for emergencies.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: '@riya.kapoor_2: Lost wallet and phone. Please send travel money before the last bus.' The Instagram badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, Instagram-style tile, DM/activity badge, account avatar and synthetic preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the DM request and cloned profile. Context presented: A near-identical account follows the learner and sends a direct message asking for travel money.",
+    "ui_to_build": "DM requests/inbox or activity/feed view with thread, post, story or reel context and timestamps.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine extra character in handle, recent posts, follower overlap and account age",
+    "ui_to_build": "Profile sheet with exact handle, account age, username history, mutuals, follower ratios and report controls.",
+    "expected_safe_behavior": "Check this decision signal: The account is new and copies old photos but lacks the friend's normal interactions.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a payment-handle card with a third-party synthetic name",
+    "ui_to_build": "In-app profile/post/story view plus offline link browser, media composer or synthetic payment panel.",
+    "expected_safe_behavior": "Do not send money or verify only by DM. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: call the friend using the number already saved or ask a known mutual through a separate channel",
+    "ui_to_build": "DM action sheet with restrict/block/report and independent Trusted Directory or official-account lookup overlay.",
+    "expected_safe_behavior": "Verify independently: call the friend using the number already saved or ask a known mutual through a separate channel Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: decline; report the clone for impersonation; block after independent confirmation",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 40,
+  "content_sha256": "abb8623b88e3f326b9cb5e0509ea74342b912680f4b7f03bf3898cba57f6a7d2"
+ },
+ {
+  "scenario_id": "I05",
+  "title": "Friendly New Follower Questionnaire",
+  "platform": "Instagram",
+  "difficulty": "Easy",
+  "disposition": "Malicious",
+  "family": "Social profiling / information elicitation",
+  "trigger": "Flattery + curiosity | FICTIONAL MILITARY CONTEXT",
+  "end_state": "DM request is restricted and no personal detail is released.",
+  "feedback": "Friendly conversation can be elicitation. Share only what an unknown follower genuinely needs to know.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: '@trail_fan_87: Great training! Which city, unit and daily route do you use?' The Instagram badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, Instagram-style tile, DM/activity badge, account avatar and synthetic preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the DM request and follower profile. Context presented: A new follower compliments the learner's fitness posts and asks a sequence of personal questions.",
+    "ui_to_build": "DM requests/inbox or activity/feed view with thread, post, story or reel context and timestamps.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine account age, sparse original content, broad following and escalating questions",
+    "ui_to_build": "Profile sheet with exact handle, account age, username history, mutuals, follower ratios and report controls.",
+    "expected_safe_behavior": "Check this decision signal: The questions combine location, affiliation and routine details useful for targeting.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a quick-reply panel offering city/unit/route answers",
+    "ui_to_build": "In-app profile/post/story view plus offline link browser, media composer or synthetic payment panel.",
+    "expected_safe_behavior": "Do not reveal workplace, location, schedule or relationship data. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: review the profile and, if identity is claimed, verify through a known mutual outside the DM",
+    "ui_to_build": "DM action sheet with restrict/block/report and independent Trusted Directory or official-account lookup overlay.",
+    "expected_safe_behavior": "Verify independently: review the profile and, if identity is claimed, verify through a known mutual outside the DM Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: do not answer; restrict/report the account; review profile privacy",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 41,
+  "content_sha256": "e3b02c9be975666a139c4ac0acd3e915e95f9e4e2014ca43eb9002efbf64e79b"
+ },
+ {
+  "scenario_id": "I06",
+  "title": "Where Was This Exercise?",
+  "platform": "Instagram",
+  "difficulty": "Easy",
+  "disposition": "Malicious",
+  "family": "Operational-information elicitation",
+  "trigger": "Pride + social validation | FICTIONAL MILITARY CONTEXT",
+  "end_state": "No reply or geotag is added; the comment is routed to moderation.",
+  "feedback": "Small details can combine into an operational picture. Do not answer location, schedule or capability questions.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: '@defence_fan_archive: Impressive! Which base and what dates was this taken? DM me the route.' The Instagram badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, Instagram-style tile, DM/activity badge, account avatar and synthetic preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the comment thread and commenter's profile. Context presented: A commenter praises a generic training photo and asks for location and timing details.",
+    "ui_to_build": "DM requests/inbox or activity/feed view with thread, post, story or reel context and timestamps.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine unknown identity, military-themed reposts and specific location/schedule questions",
+    "ui_to_build": "Profile sheet with exact handle, account age, username history, mutuals, follower ratios and report controls.",
+    "expected_safe_behavior": "Check this decision signal: Public enthusiasm does not create a need to know; the request seeks operational context.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a reply composer and location-tag selector",
+    "ui_to_build": "In-app profile/post/story view plus offline link browser, media composer or synthetic payment panel.",
+    "expected_safe_behavior": "Do not identify a base, route, schedule, capability or participant. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: check the post's approved-release note and consult the unit public-information route",
+    "ui_to_build": "DM action sheet with restrict/block/report and independent Trusted Directory or official-account lookup overlay.",
+    "expected_safe_behavior": "Verify independently: check the post's approved-release note and consult the unit public-information route Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: do not disclose details; hide/report the eliciting comment if policy requires",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 42,
+  "content_sha256": "3d8cd56d413d3d8308982ea825a589273d7067ca45b06bbb4c6327602ff5e272"
+ },
+ {
+  "scenario_id": "I07",
+  "title": "Known Friend Shares a Reel",
+  "platform": "Instagram",
+  "difficulty": "Easy",
+  "disposition": "Legitimate",
+  "family": "Legitimate social sharing",
+  "trigger": "Familiarity",
+  "end_state": "Reel closes normally and the message is marked read.",
+  "feedback": "Good security includes normal use of verified, expected content. Do not create false positives without evidence.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: '@neel.verma: This is the recipe we discussed yesterday.' The Instagram badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, Instagram-style tile, DM/activity badge, account avatar and synthetic preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the established DM thread and shared reel. Context presented: A long-standing friend shares a harmless public cooking reel without a link or request.",
+    "ui_to_build": "DM requests/inbox or activity/feed view with thread, post, story or reel context and timestamps.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine exact handle, long message history, public source and absence of external action",
+    "ui_to_build": "Profile sheet with exact handle, account age, username history, mutuals, follower ratios and report controls.",
+    "expected_safe_behavior": "Check this decision signal: The context matches the prior conversation and the reel stays within the app.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to the in-app reel player with Like/Save/Reply",
+    "ui_to_build": "In-app profile/post/story view plus offline link browser, media composer or synthetic payment panel.",
+    "expected_safe_behavior": "Use the normal in-app path only after the details match the known context. Do not switch to an untrusted channel.",
+    "scoring_event": "CORRECT_USE +3; needless reject/ignore -2; unsafe external action -4."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: use the existing thread context; no extra verification is required unless the content differs",
+    "ui_to_build": "DM action sheet with restrict/block/report and independent Trusted Directory or official-account lookup overlay.",
+    "expected_safe_behavior": "Verify independently: use the existing thread context; no extra verification is required unless the content differs If it matches, continue; do not report or block a legitimate sender.",
+    "scoring_event": "TRUSTED_VERIFY +3; false report/block -4; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: view/save or reply normally; do not report or block",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 43,
+  "content_sha256": "dd4eeeed143eed39632ec9f5fe3fbf2c05a2af9b41f0be6bc50e612da5bc7ef7"
+ },
+ {
+  "scenario_id": "I08",
+  "title": "Verification Badge Agent",
+  "platform": "Instagram",
+  "difficulty": "Easy",
+  "disposition": "Malicious",
+  "family": "Fake verification service",
+  "trigger": "Status + scarcity",
+  "end_state": "Fake application is discarded and account remains secure.",
+  "feedback": "Verification is not sold through unsolicited DMs. Use only the platform's in-app process.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: '@badge_priority_agent: Your profile is pre-approved. Pay today for guaranteed verification.' The Instagram badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, Instagram-style tile, DM/activity badge, account avatar and synthetic preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the DM request and agent profile. Context presented: A DM account offers a guaranteed blue badge through a private form and fee.",
+    "ui_to_build": "DM requests/inbox or activity/feed view with thread, post, story or reel context and timestamps.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine third-party claim, recent account, guaranteed outcome and payment request",
+    "ui_to_build": "Profile sheet with exact handle, account age, username history, mutuals, follower ratios and report controls.",
+    "expected_safe_behavior": "Check this decision signal: A private agent cannot guarantee platform verification; official options are available through in-app settings.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a synthetic badge application requesting password, ID and payment",
+    "ui_to_build": "In-app profile/post/story view plus offline link browser, media composer or synthetic payment panel.",
+    "expected_safe_behavior": "Do not submit credentials/ID or pay the agent. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: open the platform's own verification settings and Help Center locally",
+    "ui_to_build": "DM action sheet with restrict/block/report and independent Trusted Directory or official-account lookup overlay.",
+    "expected_safe_behavior": "Verify independently: open the platform's own verification settings and Help Center locally Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: close; report/block the agent; use only official in-app verification if desired",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 44,
+  "content_sha256": "123ccf0c893083d7d229910fa3b8bda083bf83087d4a5ee6eba060e0bf5b9a68"
+ },
+ {
+  "scenario_id": "I09",
+  "title": "Deepfake Trading Advertisement",
+  "platform": "Instagram",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Investment fraud / synthetic endorsement",
+  "trigger": "Greed + authority",
+  "end_state": "Ad is removed locally and the synthetic portfolio remains empty.",
+  "feedback": "Synthetic media and ads can manufacture authority. Verify registration and never trust guaranteed social-media returns.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Sponsored: Exclusive AI trading window - join the private group before midnight.' The Instagram badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, Instagram-style tile, DM/activity badge, account avatar and synthetic preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the sponsored reel and advertiser profile. Context presented: A sponsored reel shows a synthetic public figure promising guaranteed AI-trading returns.",
+    "ui_to_build": "DM requests/inbox or activity/feed view with thread, post, story or reel context and timestamps.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine paid-ad label, advertiser history, altered lip sync, promised returns and destination",
+    "ui_to_build": "Profile sheet with exact handle, account age, username history, mutuals, follower ratios and report controls.",
+    "expected_safe_behavior": "Check this decision signal: A polished or familiar face does not prove endorsement; guaranteed returns and private groups are warning signs.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to an offline ad landing page that moves the learner to a fake WhatsApp group and trading app",
+    "ui_to_build": "In-app profile/post/story view plus offline link browser, media composer or synthetic payment panel.",
+    "expected_safe_behavior": "Do not join, install, deposit or upload identity documents. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: check the investment adviser and platform through independently known regulator/official sources",
+    "ui_to_build": "DM action sheet with restrict/block/report and independent Trusted Directory or official-account lookup overlay.",
+    "expected_safe_behavior": "Verify independently: check the investment adviser and platform through independently known regulator/official sources Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: close and report the ad/account; do not join, install or deposit",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 45,
+  "content_sha256": "ef4b685c54fd06b8fc99d0209b68e881b9a5775853a0c44a9f5079ca876d8ddc"
+ },
+ {
+  "scenario_id": "I10",
+  "title": "Brand Collaboration Shipping Fee",
+  "platform": "Instagram",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Influencer/brand impersonation",
+  "trigger": "Flattery + reciprocity",
+  "end_state": "No shipping fee or data submission occurs.",
+  "feedback": "Flattery can lower caution. Verify the company independently and reject upfront-fee collaborations.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: '@peakgear_collabs: Selected ambassador! Free kit - pay only INR 199 shipping.' The Instagram badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, Instagram-style tile, DM/activity badge, account avatar and synthetic preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the DM and brand-look-alike profile. Context presented: A supposed sports brand offers a free kit but asks the learner to pay shipping through a bio link.",
+    "ui_to_build": "DM requests/inbox or activity/feed view with thread, post, story or reel context and timestamps.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine handle spelling, account age, copied posts, private payment link and pressure",
+    "ui_to_build": "Profile sheet with exact handle, account age, username history, mutuals, follower ratios and report controls.",
+    "expected_safe_behavior": "Check this decision signal: Unsolicited selection, cloned branding and upfront fees contradict a normal documented collaboration.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a fake creator-contract page requesting address, card and social password",
+    "ui_to_build": "In-app profile/post/story view plus offline link browser, media composer or synthetic payment panel.",
+    "expected_safe_behavior": "Do not pay, enter credentials or provide unnecessary personal data. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: contact the brand through its separately found official site/account",
+    "ui_to_build": "DM action sheet with restrict/block/report and independent Trusted Directory or official-account lookup overlay.",
+    "expected_safe_behavior": "Verify independently: contact the brand through its separately found official site/account Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: decline; report the impersonating account and link; block it",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 46,
+  "content_sha256": "c61dbe228ffb663aee9cb4fdc72abe52d41563fc957072e43615329090541b39"
+ },
+ {
+  "scenario_id": "I11",
+  "title": "Official Welfare Helpline Update",
+  "platform": "Instagram",
+  "difficulty": "Medium",
+  "disposition": "Legitimate",
+  "family": "Legitimate official-account update",
+  "trigger": "Authority + care | FICTIONAL MILITARY CONTEXT",
+  "end_state": "Directory match is confirmed and the post remains saved.",
+  "feedback": "Official updates should be cross-checked with an approved directory. Keep personal cases out of public comments.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: '@forces_welfare_official: Helpline extension updated. Use the contact in the approved directory.' The Instagram badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, Instagram-style tile, DM/activity badge, account avatar and synthetic preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the official post and profile. Context presented: A verified fictional welfare account posts a helpline change already listed in the approved directory.",
+    "ui_to_build": "DM requests/inbox or activity/feed view with thread, post, story or reel context and timestamps.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine exact handle, verified status, consistent history and directory match",
+    "ui_to_build": "Profile sheet with exact handle, account age, username history, mutuals, follower ratios and report controls.",
+    "expected_safe_behavior": "Check this decision signal: The post directs users to an independently maintained directory and requests no private response.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to the post details and local directory comparison panel",
+    "ui_to_build": "In-app profile/post/story view plus offline link browser, media composer or synthetic payment panel.",
+    "expected_safe_behavior": "Use the normal in-app path only after the details match the known context. Do not switch to an untrusted channel.",
+    "scoring_event": "CORRECT_USE +3; needless reject/ignore -2; unsafe external action -4."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: compare the account and extension with the Trusted Directory",
+    "ui_to_build": "DM action sheet with restrict/block/report and independent Trusted Directory or official-account lookup overlay.",
+    "expected_safe_behavior": "Verify independently: compare the account and extension with the Trusted Directory If it matches, continue; do not report or block a legitimate sender.",
+    "scoring_event": "TRUSTED_VERIFY +3; false report/block -4; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: save the verified update; do not report/block; do not post personal case details",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 47,
+  "content_sha256": "9931bfae458414e58e5dddb7058fb67b121364c6c6f33227bf621449c29f936b"
+ },
+ {
+  "scenario_id": "I12",
+  "title": "Account Recovery Backup Code",
+  "platform": "Instagram",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Account-recovery phishing",
+  "trigger": "Fear + authority",
+  "end_state": "No code is revealed and the account-security mock shows controlled sessions.",
+  "feedback": "Recovery codes are secrets. Start recovery yourself through the platform, never through an inbound DM.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: '@meta_recovery_case: We stopped a hacker. Send one backup code to secure your account.' The Instagram badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, Instagram-style tile, DM/activity badge, account avatar and synthetic preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the DM request and recovery profile. Context presented: A support-like account claims to have recovered the learner's profile and asks for a backup code to finish.",
+    "ui_to_build": "DM requests/inbox or activity/feed view with thread, post, story or reel context and timestamps.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine unofficial handle, request for a secret, no in-app case and suspicious link",
+    "ui_to_build": "Profile sheet with exact handle, account age, username history, mutuals, follower ratios and report controls.",
+    "expected_safe_behavior": "Check this decision signal: Backup codes grant account access; legitimate support does not ask for them in DMs.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a reply composer and fake security-check page",
+    "ui_to_build": "In-app profile/post/story view plus offline link browser, media composer or synthetic payment panel.",
+    "expected_safe_behavior": "Do not send a backup code, password or recovery link. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: open Security Checkup/Password and security directly from Settings",
+    "ui_to_build": "DM action sheet with restrict/block/report and independent Trusted Directory or official-account lookup overlay.",
+    "expected_safe_behavior": "Verify independently: open Security Checkup/Password and security directly from Settings Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: send nothing; report/block the fake support account; review sessions and enable strong MFA",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 48,
+  "content_sha256": "6c22d547f18cd359ac4f8d0e2c2715ffc50243e6a053cb2c0f73a8eea03b19bf"
+ },
+ {
+  "scenario_id": "I13",
+  "title": "Deployed Officer Romance Profile",
+  "platform": "Instagram",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Romance scam / identity fabrication",
+  "trigger": "Trust + empathy | FICTIONAL MILITARY CONTEXT",
+  "end_state": "Fake customs case fails verification and the payment path closes.",
+  "feedback": "Uniform photos and emotional stories are not identity proof. Never finance an online-only relationship under pressure.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: '@captain_aarav_global: My baggage is held. Please pay the release fee; I will repay you tomorrow.' The Instagram badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, Instagram-style tile, DM/activity badge, account avatar and synthetic preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the multi-day DM and profile. Context presented: A profile claiming to be a deployed officer quickly builds intimacy and then requests emergency customs money.",
+    "ui_to_build": "DM requests/inbox or activity/feed view with thread, post, story or reel context and timestamps.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine stolen-looking photos, inconsistent locations, rapid intimacy and money request",
+    "ui_to_build": "Profile sheet with exact handle, account age, username history, mutuals, follower ratios and report controls.",
+    "expected_safe_behavior": "Check this decision signal: Military status is being used as credibility; the relationship cannot validate identity or financial need.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a customs-payment mock with crypto/gift-card choices",
+    "ui_to_build": "In-app profile/post/story view plus offline link browser, media composer or synthetic payment panel.",
+    "expected_safe_behavior": "Do not send money, gift cards, identity documents or intimate media. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: verify identity independently; reverse-image/search tools may be represented locally for training",
+    "ui_to_build": "DM action sheet with restrict/block/report and independent Trusted Directory or official-account lookup overlay.",
+    "expected_safe_behavior": "Verify independently: verify identity independently; reverse-image/search tools may be represented locally for training Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: do not pay; preserve evidence; report/block the account",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 49,
+  "content_sha256": "c2d8e8f13ff47a8fc5609eb3d4904d06b88bdf277f236e0ac74d372479415437"
+ },
+ {
+  "scenario_id": "I14",
+  "title": "Commendation Page Requests Documents",
+  "platform": "Instagram",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Military-themed impersonation / identity theft",
+  "trigger": "Pride + authority | FICTIONAL MILITARY CONTEXT",
+  "end_state": "Uploader is cleared and the account is added to the local report queue.",
+  "feedback": "Pride and recognition can be used as bait. Protect service documents and verify through official channels.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: '@honour_roll_india: Send service card and posting proof to verify your feature today.' The Instagram badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, Instagram-style tile, DM/activity badge, account avatar and synthetic preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the DM request and fan page. Context presented: A fan page says the learner is shortlisted for a public commendation feature and requests service documents.",
+    "ui_to_build": "DM requests/inbox or activity/feed view with thread, post, story or reel context and timestamps.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine non-official status, copied emblems, public bio and document request",
+    "ui_to_build": "Profile sheet with exact handle, account age, username history, mutuals, follower ratios and report controls.",
+    "expected_safe_behavior": "Check this decision signal: A social-media feature has no legitimate need for service identity documents or posting proof.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a media uploader accepting synthetic ID and posting-order files",
+    "ui_to_build": "In-app profile/post/story view plus offline link browser, media composer or synthetic payment panel.",
+    "expected_safe_behavior": "Do not upload identity, posting or family documents. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: check with the approved public-information/administrative office through known channels",
+    "ui_to_build": "DM action sheet with restrict/block/report and independent Trusted Directory or official-account lookup overlay.",
+    "expected_safe_behavior": "Verify independently: check with the approved public-information/administrative office through known channels Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: upload nothing; report the impersonation/data solicitation; block the page",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 50,
+  "content_sha256": "eb7381a53260def28a964413e5d11c6c672d2d60ade60cac40f82607c4bc92a1"
+ },
+ {
+  "scenario_id": "I15",
+  "title": "You Are in This Video",
+  "platform": "Instagram",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Compromised-contact link phishing",
+  "trigger": "Curiosity + embarrassment",
+  "end_state": "Known friend confirms compromise; learner credentials remain untouched.",
+  "feedback": "Unexpected emotion-driven links from known accounts still require verification. Do not re-login from a DM link.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: '@knownfriend: Is this you in the video?? I can't believe it.' The Instagram badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, Instagram-style tile, DM/activity badge, account avatar and synthetic preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the existing DM thread and video thumbnail. Context presented: A known account sends a short DM saying the learner appears in a shocking video.",
+    "ui_to_build": "DM requests/inbox or activity/feed view with thread, post, story or reel context and timestamps.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine changed message style, external target, generic thumbnail and unusual timing",
+    "ui_to_build": "Profile sheet with exact handle, account age, username history, mutuals, follower ratios and report controls.",
+    "expected_safe_behavior": "Check this decision signal: A real contact can be compromised; the lure creates curiosity and embarrassment to force a click.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a fake Instagram login page before the 'video'",
+    "ui_to_build": "In-app profile/post/story view plus offline link browser, media composer or synthetic payment panel.",
+    "expected_safe_behavior": "Do not enter username/password or approve a login prompt. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: call/message the friend through another known route and review login activity",
+    "ui_to_build": "DM action sheet with restrict/block/report and independent Trusted Directory or official-account lookup overlay.",
+    "expected_safe_behavior": "Verify independently: call/message the friend through another known route and review login activity Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: close the page; report the suspicious DM; alert the verified friend",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 51,
+  "content_sha256": "f74a0cda4eaf95a2ea7200d0054082da151dc23da81b2574480b563520d1758a"
+ },
+ {
+  "scenario_id": "I16",
+  "title": "Approved Photo Release Request",
+  "platform": "Instagram",
+  "difficulty": "Medium",
+  "disposition": "Legitimate",
+  "family": "Legitimate public-affairs workflow",
+  "trigger": "Authority + pride | FICTIONAL MILITARY CONTEXT",
+  "end_state": "Consent decision is stored against the synthetic approved image only.",
+  "feedback": "A legitimate publication request is specific, verifiable and limited. Confirm the exact approved asset and scope.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: '@unitfalcon_public: Approved image PF-204 is ready. Confirm your consent in the in-app card.' The Instagram badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, Instagram-style tile, DM/activity badge, account avatar and synthetic preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the established admin DM and tagged draft. Context presented: A known public-information admin asks the learner to approve a previously reviewed, non-sensitive event photo.",
+    "ui_to_build": "DM requests/inbox or activity/feed view with thread, post, story or reel context and timestamps.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine known admin handle, local approval ID, image status and consent scope",
+    "ui_to_build": "Profile sheet with exact handle, account age, username history, mutuals, follower ratios and report controls.",
+    "expected_safe_behavior": "Check this decision signal: The request matches the synthetic release register and asks only for in-app consent, not operational data.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a consent card showing the approved image, scope and Confirm/Decline",
+    "ui_to_build": "In-app profile/post/story view plus offline link browser, media composer or synthetic payment panel.",
+    "expected_safe_behavior": "Use the normal in-app path only after the details match the known context. Do not switch to an untrusted channel.",
+    "scoring_event": "CORRECT_USE +3; needless reject/ignore -2; unsafe external action -4."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: compare image ID PF-204 with the local public-release register",
+    "ui_to_build": "DM action sheet with restrict/block/report and independent Trusted Directory or official-account lookup overlay.",
+    "expected_safe_behavior": "Verify independently: compare image ID PF-204 with the local public-release register If it matches, continue; do not report or block a legitimate sender.",
+    "scoring_event": "TRUSTED_VERIFY +3; false report/block -4; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: confirm or decline the matching consent card; do not report the verified admin",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 52,
+  "content_sha256": "14d66c316e6052cbee63bab647d6ab3d53498bebda5bb907d353f9d59e776ba8"
+ },
+ {
+  "scenario_id": "I17",
+  "title": "Morphed-Photo Blackmail",
+  "platform": "Instagram",
+  "difficulty": "Medium",
+  "disposition": "Malicious",
+  "family": "Image-based extortion",
+  "trigger": "Fear + shame + isolation",
+  "end_state": "Threat is contained, evidence is stored locally and support options are displayed.",
+  "feedback": "You are not at fault. Do not pay or comply; preserve evidence, report the account and seek trusted support.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: '@private_case_404: Pay tonight or this edited image goes to everyone you follow.' The Instagram badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, Instagram-style tile, DM/activity badge, account avatar and synthetic preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the DM request with safety-blurred image. Context presented: An account sends a blurred synthetic composite and threatens to post it unless paid.",
+    "ui_to_build": "DM requests/inbox or activity/feed view with thread, post, story or reel context and timestamps.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine unknown account, extortion demand, countdown and crypto payment handle",
+    "ui_to_build": "Profile sheet with exact handle, account age, username history, mutuals, follower ratios and report controls.",
+    "expected_safe_behavior": "Check this decision signal: Paying or negotiating does not guarantee removal and may increase demands; evidence and support matter.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a payment panel and threatening follow-up timer",
+    "ui_to_build": "In-app profile/post/story view plus offline link browser, media composer or synthetic payment panel.",
+    "expected_safe_behavior": "Do not pay, send more images, negotiate alone or delete all evidence. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: use the platform report path and approved unit/law-enforcement support route",
+    "ui_to_build": "DM action sheet with restrict/block/report and independent Trusted Directory or official-account lookup overlay.",
+    "expected_safe_behavior": "Verify independently: use the platform report path and approved unit/law-enforcement support route Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: do not pay or respond; preserve evidence; report/block; seek approved support promptly",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 53,
+  "content_sha256": "135253ecbf21abbc0bdb37757c1438fa7190f170b281f8cea5ec9af83067b3fb"
+ },
+ {
+  "scenario_id": "I18",
+  "title": "High-Fidelity Teammate Clone",
+  "platform": "Instagram",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Profile cloning / location elicitation",
+  "trigger": "Familiarity + urgency | FICTIONAL MILITARY CONTEXT",
+  "end_state": "Clone is confirmed despite strong social proof; location remains protected.",
+  "feedback": "High-quality clones exploit social proof. Account history and an independent known contact matter more than follower counts.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: '@arjun.k_singh: New private account. Send tomorrow's assembly point so I don't miss it.' The Instagram badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, Instagram-style tile, DM/activity badge, account avatar and synthetic preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the DM and highly copied profile. Context presented: A clone has bought followers, copied recent posts and follows many mutuals before asking for a meetup location.",
+    "ui_to_build": "DM requests/inbox or activity/feed view with thread, post, story or reel context and timestamps.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine username history, creation date, mutual timing, copied captions and private request",
+    "ui_to_build": "Profile sheet with exact handle, account age, username history, mutuals, follower ratios and report controls.",
+    "expected_safe_behavior": "Check this decision signal: Follower count and mutuals can be manufactured; a new account still cannot receive protected schedule/location details.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a map/location reply card",
+    "ui_to_build": "In-app profile/post/story view plus offline link browser, media composer or synthetic payment panel.",
+    "expected_safe_behavior": "Do not send assembly point, live location, schedule or roster detail. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: contact the teammate through the previously known account/number and check the approved schedule channel",
+    "ui_to_build": "DM action sheet with restrict/block/report and independent Trusted Directory or official-account lookup overlay.",
+    "expected_safe_behavior": "Verify independently: contact the teammate through the previously known account/number and check the approved schedule channel Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: send nothing; report the clone; notify the real teammate and unit security",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 54,
+  "content_sha256": "d0c2cf5b3a5de69e2dd2edb827c706624e80b482a8057f31f89cab2822e78cc2"
+ },
+ {
+  "scenario_id": "I19",
+  "title": "Urgent Unit Incident Repost",
+  "platform": "Instagram",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Disinformation / amplification lure",
+  "trigger": "Fear + duty | FICTIONAL MILITARY CONTEXT",
+  "end_state": "The viral post is held from sharing and routed to local moderation.",
+  "feedback": "Pause before amplifying crisis claims. Verify through official channels and never add operational context.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: '@breaking_defence_now: URGENT incident at Unit Falcon - repost before it is deleted.' The Instagram badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, Instagram-style tile, DM/activity badge, account avatar and synthetic preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the viral post and reshare tray. Context presented: A dramatic post falsely claims an incident involving fictional Unit Falcon and asks everyone to repost immediately.",
+    "ui_to_build": "DM requests/inbox or activity/feed view with thread, post, story or reel context and timestamps.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine source history, absent official confirmation, recycled image and urgency to amplify",
+    "ui_to_build": "Profile sheet with exact handle, account age, username history, mutuals, follower ratios and report controls.",
+    "expected_safe_behavior": "Check this decision signal: Unverified crisis content can expose, misinform or amplify manipulation; speed is not a substitute for confirmation.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a reshare composer with Add location/Tag personnel options",
+    "ui_to_build": "In-app profile/post/story view plus offline link browser, media composer or synthetic payment panel.",
+    "expected_safe_behavior": "Do not repost, speculate, tag personnel or add location. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: check approved official statements and alert the unit public-information/security route",
+    "ui_to_build": "DM action sheet with restrict/block/report and independent Trusted Directory or official-account lookup overlay.",
+    "expected_safe_behavior": "Verify independently: check approved official statements and alert the unit public-information/security route Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: do not repost; report misinformation/impersonation if applicable; preserve link for review",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 55,
+  "content_sha256": "d86fad4fe6e0173d098bad1b88c58c8eeb436ed487348e2992e5a26aea83149a"
+ },
+ {
+  "scenario_id": "I20",
+  "title": "Researcher Asks Capability Questions",
+  "platform": "Instagram",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Rapport-based elicitation / espionage pretext",
+  "trigger": "Expert status + flattery | FICTIONAL MILITARY CONTEXT",
+  "end_state": "No capability data is submitted and the account is flagged for review.",
+  "feedback": "Elicitation often feels like professional conversation. Need-to-know and release authorization still apply.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: '@defence_research_lab: Your experience is valuable. Which system fails most often in field conditions?' The Instagram badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, Instagram-style tile, DM/activity badge, account avatar and synthetic preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the long-running DM and researcher profile. Context presented: A credible-looking researcher has interacted normally for weeks, then asks about equipment limitations.",
+    "ui_to_build": "DM requests/inbox or activity/feed view with thread, post, story or reel context and timestamps.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine institution mismatch, unverifiable publications, narrow capability questions and gradual escalation",
+    "ui_to_build": "Profile sheet with exact handle, account age, username history, mutuals, follower ratios and report controls.",
+    "expected_safe_behavior": "Check this decision signal: A plausible professional identity does not create authorization to discuss capabilities or limitations.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a structured interview form requesting equipment, readiness and routine details",
+    "ui_to_build": "In-app profile/post/story view plus offline link browser, media composer or synthetic payment panel.",
+    "expected_safe_behavior": "Do not answer, correct public speculation with nonpublic facts, or upload photos. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: route the request to the approved public-information/security contact for authorization",
+    "ui_to_build": "DM action sheet with restrict/block/report and independent Trusted Directory or official-account lookup overlay.",
+    "expected_safe_behavior": "Verify independently: route the request to the approved public-information/security contact for authorization Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: decline to discuss; report the elicitation attempt internally; restrict/block per policy",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 56,
+  "content_sha256": "9151252ea316ceb6f6b171b791ca26501287b5a2cc6feff6381fbfda431908d0"
+ },
+ {
+  "scenario_id": "I21",
+  "title": "Post-Event Teammate Tag",
+  "platform": "Instagram",
+  "difficulty": "Hard",
+  "disposition": "Legitimate",
+  "family": "Legitimate post-event sharing",
+  "trigger": "Familiarity + pride | FICTIONAL MILITARY CONTEXT",
+  "end_state": "Tag preference is applied only to the approved post.",
+  "feedback": "After verification, legitimate social use should remain possible. Control audience and avoid adding extra detail.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: '@arjun.k.singh: Public-release photo PF-311 is up. May I tag you?' The Instagram badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, Instagram-style tile, DM/activity badge, account avatar and synthetic preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the established DM and published post. Context presented: A known teammate asks to tag the learner in an approved photo after the event has concluded and the image is marked public.",
+    "ui_to_build": "DM requests/inbox or activity/feed view with thread, post, story or reel context and timestamps.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine exact handle, long history, public-release ID and absence of future schedule/location",
+    "ui_to_build": "Profile sheet with exact handle, account age, username history, mutuals, follower ratios and report controls.",
+    "expected_safe_behavior": "Check this decision signal: The image and event are already approved for public release; the request is limited to a consent choice.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to the tag-review card with Approve/Decline and privacy audience",
+    "ui_to_build": "In-app profile/post/story view plus offline link browser, media composer or synthetic payment panel.",
+    "expected_safe_behavior": "Use the normal in-app path only after the details match the known context. Do not switch to an untrusted channel.",
+    "scoring_event": "CORRECT_USE +3; needless reject/ignore -2; unsafe external action -4."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: compare PF-311 with the local release register and privacy preferences",
+    "ui_to_build": "DM action sheet with restrict/block/report and independent Trusted Directory or official-account lookup overlay.",
+    "expected_safe_behavior": "Verify independently: compare PF-311 with the local release register and privacy preferences If it matches, continue; do not report or block a legitimate sender.",
+    "scoring_event": "TRUSTED_VERIFY +3; false report/block -4; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: approve or decline the verified tag; do not report/block; add no sensitive caption",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 57,
+  "content_sha256": "f667975f7e79507ba6033083c5333481ebd3eb3874bdbaa24d1614cea6783895"
+ },
+ {
+  "scenario_id": "I22",
+  "title": "Live Support Video Call",
+  "platform": "Instagram",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Fake platform support / call coercion",
+  "trigger": "Authority + fear",
+  "end_state": "Call ends before any permission or code is shared.",
+  "feedback": "A video call is not proof of platform authority. Start support from the app and protect identity and recovery secrets.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: '@security_live_case: Accept our video verification now to prevent account removal.' The Instagram badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, Instagram-style tile, DM/activity badge, account avatar and synthetic preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the DM request and incoming call screen. Context presented: A fake support account initiates a video call and claims the profile will be disabled unless identity is shown on camera.",
+    "ui_to_build": "DM requests/inbox or activity/feed view with thread, post, story or reel context and timestamps.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine unofficial handle, unsolicited call, secrecy and absence of in-app case",
+    "ui_to_build": "Profile sheet with exact handle, account age, username history, mutuals, follower ratios and report controls.",
+    "expected_safe_behavior": "Check this decision signal: Support does not require an unsolicited DM video call, screen share or spoken recovery code.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a synthetic call requesting face scan, screen share and backup code",
+    "ui_to_build": "In-app profile/post/story view plus offline link browser, media composer or synthetic payment panel.",
+    "expected_safe_behavior": "Do not accept continued coercion, show ID, share screen or speak a code. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: end the call and open Security/Support directly in app settings",
+    "ui_to_build": "DM action sheet with restrict/block/report and independent Trusted Directory or official-account lookup overlay.",
+    "expected_safe_behavior": "Verify independently: end the call and open Security/Support directly in app settings Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: decline/end; report/block the support impersonator; review account security",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 58,
+  "content_sha256": "b5c096902ad57ce6bea7ff307997637d70c70a7729aa3205fdcb09fb65555219"
+ },
+ {
+  "scenario_id": "I23",
+  "title": "Compromised Charity Influencer",
+  "platform": "Instagram",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Compromised trusted account / donation diversion",
+  "trigger": "Empathy + social proof",
+  "end_state": "Donation is held and the verified charity confirms account compromise.",
+  "feedback": "Verify the beneficiary, not just the account name. Compromised trusted accounts can redirect genuine goodwill.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: '@carewithmaya: Emergency surgery fund - crypto only for the next two hours.' The Instagram badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, Instagram-style tile, DM/activity badge, account avatar and synthetic preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the story, profile and recent post history. Context presented: A known charity creator's account posts a sudden crypto-only emergency fundraiser after takeover.",
+    "ui_to_build": "DM requests/inbox or activity/feed view with thread, post, story or reel context and timestamps.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine changed beneficiary, crypto-only method, disabled comments and abrupt content shift",
+    "ui_to_build": "Profile sheet with exact handle, account age, username history, mutuals, follower ratios and report controls.",
+    "expected_safe_behavior": "Check this decision signal: A real account can be compromised; urgency and a changed payment route need independent confirmation.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a crypto payment screen and share-to-story button",
+    "ui_to_build": "In-app profile/post/story view plus offline link browser, media composer or synthetic payment panel.",
+    "expected_safe_behavior": "Do not send funds or amplify before verification. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: use the charity's separately known website/contact and compare beneficiary details",
+    "ui_to_build": "DM action sheet with restrict/block/report and independent Trusted Directory or official-account lookup overlay.",
+    "expected_safe_behavior": "Verify independently: use the charity's separately known website/contact and compare beneficiary details Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: do not donate/share; report the compromised story; notify the legitimate organization",
+    "ui_to_build": "Outcome card, concise feedback, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 59,
+  "content_sha256": "9d17198fb6a669e86d460ea4e76407fd66b704179009eeafaecaa1ec9de944a9"
+ },
+ {
+  "scenario_id": "I24",
+  "title": "Institutional Trading App",
+  "platform": "Instagram",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Fake regulated investment platform",
+  "trigger": "Authority + greed",
+  "end_state": "The fake app remains inert and no identity/payment data is entered.",
+  "feedback": "Regulatory logos are not proof. Verify registration independently and distrust guaranteed allocation or withdrawal fees.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: 'Sponsored: Institutional account access for service professionals - confirmed IPO allotment.' The Instagram badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, Instagram-style tile, DM/activity badge, account avatar and synthetic preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the carousel, advertiser profile and comments. Context presented: A polished sponsored carousel claims special institutional access and shows fabricated regulator marks.",
+    "ui_to_build": "DM requests/inbox or activity/feed view with thread, post, story or reel context and timestamps.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine misused marks, unverifiable registration, scripted comments and APK/download route",
+    "ui_to_build": "Profile sheet with exact handle, account age, username history, mutuals, follower ratios and report controls.",
+    "expected_safe_behavior": "Check this decision signal: Official-looking marks and testimonials can be fabricated; special guaranteed access is implausible.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to a fake app store/app dashboard with initial profit and withdrawal lock",
+    "ui_to_build": "In-app profile/post/story view plus offline link browser, media composer or synthetic payment panel.",
+    "expected_safe_behavior": "Do not install, upload KYC, deposit or pay withdrawal tax. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: independently verify the entity/adviser and use only an approved store/broker",
+    "ui_to_build": "DM action sheet with restrict/block/report and independent Trusted Directory or official-account lookup overlay.",
+    "expected_safe_behavior": "Verify independently: independently verify the entity/adviser and use only an approved store/broker Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: report the ad/account; do not install, deposit or upload documents",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 60,
+  "content_sha256": "9a439f41fed8da011b5d8381bdf65793eda1a290452c1cbc6afcf7debdfd1834"
+ },
+ {
+  "scenario_id": "I25",
+  "title": "Canteen Coupon Reel QR",
+  "platform": "Instagram",
+  "difficulty": "Hard",
+  "disposition": "Malicious",
+  "family": "Military-themed QR phishing",
+  "trigger": "Familiarity + scarcity | FICTIONAL MILITARY CONTEXT",
+  "end_state": "QR flow is blocked locally and the community account is reported.",
+  "feedback": "Military-themed familiarity can disguise phishing. Inspect the QR and verify benefits through official channels.",
+  "stages": [
+   {
+    "number": 1,
+    "pdf_label": "Event",
+    "learner_flow": "Dashboard notification: '@falcon_family_deals: Scan for the first 200 service-family coupon packs.' The Instagram badge increments and the toast routes into the scenario.",
+    "ui_to_build": "Dashboard toast, Instagram-style tile, DM/activity badge, account avatar and synthetic preview.",
+    "expected_safe_behavior": "Notice the source and time; open the full item before acting. Do not reply from the preview.",
+    "scoring_event": "NOTIFY_SEEN +0; open latency and route logged."
+   },
+   {
+    "number": 2,
+    "pdf_label": "Open",
+    "learner_flow": "Open the reel and community account. Context presented: A convincing community reel offers limited canteen coupons and shows a QR code over copied imagery.",
+    "ui_to_build": "DM requests/inbox or activity/feed view with thread, post, story or reel context and timestamps.",
+    "expected_safe_behavior": "Read the full thread/message and prior context before choosing any action.",
+    "scoring_event": "ITEM_OPEN +0; premature reply/action -1; dwell time logged."
+   },
+   {
+    "number": 3,
+    "pdf_label": "Inspect",
+    "learner_flow": "Open details and examine unofficial handle, copied posts, limited-quantity pressure and hidden QR destination",
+    "ui_to_build": "Profile sheet with exact handle, account age, username history, mutuals, follower ratios and report controls.",
+    "expected_safe_behavior": "Check this decision signal: A community theme and copied photos do not authorize collection of service or payment data.",
+    "scoring_event": "INSPECT_CONTEXT +2; inspection path and time logged."
+   },
+   {
+    "number": 4,
+    "pdf_label": "Branch",
+    "learner_flow": "The interaction advances to the QR inspector and a synthetic eligibility form",
+    "ui_to_build": "In-app profile/post/story view plus offline link browser, media composer or synthetic payment panel.",
+    "expected_safe_behavior": "Do not open the target, enter service number/family details or pay an activation fee. Use Back/Close or safe preview only; no secret, payment, install or data release.",
+    "scoring_event": "SAFE_PIVOT +3; risky open/reply -3; secret/payment/install/data release -8."
+   },
+   {
+    "number": 5,
+    "pdf_label": "Verify",
+    "learner_flow": "The learner opens Verify / More actions. Verification route: check the known canteen/welfare notice route and official directory",
+    "ui_to_build": "DM action sheet with restrict/block/report and independent Trusted Directory or official-account lookup overlay.",
+    "expected_safe_behavior": "Verify independently: check the known canteen/welfare notice route and official directory Then use the platform report/block path or the unit reporting route.",
+    "scoring_event": "TRUSTED_VERIFY +3; report-only without checking +1; verification through message +0."
+   },
+   {
+    "number": 6,
+    "pdf_label": "Resolve",
+    "learner_flow": "Final expected resolution: close; report the account/reel; do not enter data or share the coupon",
+    "ui_to_build": "Outcome card plus 250-character rationale box, warning-sign chips, event summary and Return to dashboard.",
+    "expected_safe_behavior": "Complete the resolution and return to the dashboard. Add a one-line reason without sensitive data.",
+    "scoring_event": "RESOLVE_CORRECT +2; contradictory unsafe final -4; scenario capped 0-10."
+   }
+  ],
+  "source_page": 61,
+  "content_sha256": "c9ad78191471b216ebd5ed4d98a284ad77f3af90fb847dbbe045be24d2b9f623"
+ }
+]
