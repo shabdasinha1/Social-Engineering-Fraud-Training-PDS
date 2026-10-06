@@ -32,7 +32,7 @@ import {
   label,
 } from '@/constants/admin'
 import { adminScenarioPath } from '@/constants/routes'
-import { useDocumentTitle } from '@/hooks/useDocumentTitle'
+import { useAdminDocumentTitle } from '@/hooks/useDocumentTitle'
 import { adminApi } from '@/services/adminApi'
 
 /**
@@ -52,7 +52,7 @@ import { adminApi } from '@/services/adminApi'
 const EMPTY_FILTERS = { platform: '', level: '', disposition: '', lifecycle: '' }
 
 export function AdminScenariosPage() {
-  useDocumentTitle('Scenarios')
+  useAdminDocumentTitle()
 
   const [filters, setFilters] = useState(EMPTY_FILTERS)
   const [page, setPage] = useState(1)

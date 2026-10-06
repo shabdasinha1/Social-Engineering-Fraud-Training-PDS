@@ -162,7 +162,8 @@ describe('remediation', () => {
 
     const section = screen.getByRole('region', { name: /Recommended practice/ })
     expect(within(section).getByText('Payment diversion')).toBeTruthy()
-    expect(section.textContent.replace(/\s+/g, ' ')).toContain('6 practice scenarios available')
+    // The learner is never told how many bank scenarios exist.
+    expect(section.textContent).not.toMatch(/scenarios available/i)
 
     // Never a trait, a susceptibility or an emotional state.
     for (const word of ['vulnerable', 'susceptible', 'manipulable', 'gullible',
@@ -206,7 +207,11 @@ describe('what the result must never show', () => {
     renderResult()
     await screen.findByRole('heading', { level: 1, name: /74/ })
 
-    expect(document.querySelectorAll('img, iframe, embed, object, video, audio')).toHaveLength(0)
+    expect(document.querySelectorAll('iframe, embed, object, video, audio')).toHaveLength(0)
+    // The only image is the bundled SATARK header logo: never a remote source.
+    for (const image of document.querySelectorAll('img')) {
+      expect(image.getAttribute('src')).not.toMatch(/^(https?:)?\/\//)
+    }
     for (const anchor of document.querySelectorAll('a[href]')) {
       expect(anchor.getAttribute('href')).not.toMatch(/^https?:/)
     }

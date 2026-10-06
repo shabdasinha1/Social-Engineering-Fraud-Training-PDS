@@ -4,6 +4,10 @@ import {
   FEEDBACK_TIMINGS,
   FEEDBACK_TIMING_DEFAULTS,
 } from '../constants/instructorControls.js'
+import {
+  ASSESSMENT_DURATION_DEFAULT_MINUTES,
+  ASSESSMENT_DURATION_OPTIONS_MINUTES,
+} from '../constants/attemptTiming.js'
 
 const { Schema } = mongoose
 
@@ -20,6 +24,10 @@ const { Schema } = mongoose
  * what is here. There is deliberately no free-form settings object, no `Mixed` field and
  * no way to store an arbitrary value: `strict: 'throw'` means an unknown path is an error
  * rather than a silently dropped field.
+ *
+ * Admin -> Settings later added one more closed field, `assessment_duration_minutes`: the
+ * default time limit for NEW attempts, one of five values. It is snapshotted into each
+ * attempt when it starts, so changing it never moves a running attempt's deadline.
  *
  * Nothing here affects scoring, selection, the taxonomy or a security boundary, so no
  * attempt pins a configuration version and no result depends on one.
@@ -55,6 +63,24 @@ const configurationSchema = new Schema(
     },
 
     /**
+     * Default assessment duration for NEW attempts, in minutes (Admin -> Settings).
+     *
+     * One of five values and nothing else. A fresh settings row, or an existing one
+     * without this path, reads back as the default, 30 minutes. A stored value is kept
+     * as stored. Never read at expiry time: `createAttempt()` snapshots it into each
+     * attempt's own frozen `time_limit_ms` / `expires_at`.
+     */
+    assessment_duration_minutes: {
+      type: Number,
+      required: true,
+      default: ASSESSMENT_DURATION_DEFAULT_MINUTES,
+      validate: {
+        validator: (value) => ASSESSMENT_DURATION_OPTIONS_MINUTES.includes(value),
+        message: 'assessment_duration_minutes is not an allowed duration',
+      },
+    },
+
+    /**
      * Incremented on every change that actually changed something.
      *
      * Used for optimistic concurrency, so two instructors editing at once cannot silently
@@ -83,6 +109,7 @@ configurationSchema.methods.toAdminJSON = function toAdminJSON() {
   return {
     training_feedback_timing: this.training_feedback_timing,
     assessment_feedback_timing: this.assessment_feedback_timing,
+    assessment_duration_minutes: this.assessment_duration_minutes,
     config_version: this.config_version,
     updated_at: this.updatedAt ?? null,
     updated_by: this.updated_by ? this.updated_by.toString() : null,

@@ -169,6 +169,39 @@ describe('assessment only (ENHANCEMENT-001B)', () => {
   })
 })
 
+describe('score ranges', () => {
+  const rangeRows = () => {
+    const list = screen.getByRole('list', { name: 'Completed assessment attempts by score range' })
+    // Label and count are separate cells; the bar between them is decorative.
+    return within(list).getAllByRole('listitem').map((item) => [...item.children]
+      .map((cell) => cell.textContent.replace(/\s+/g, ' ').trim())
+      .filter(Boolean)
+      .join(' '))
+  }
+
+  it('sums the server bands into 70+, 50–69 and Below 50, keeping an empty range at 0', async () => {
+    renderDashboard()
+    await loaded()
+
+    expect(screen.getByRole('heading', { name: 'Score ranges' })).toBeTruthy()
+    // Fixture bands: one attempt in 30-39, one in 70-79, one in 90-100.
+    expect(rangeRows()).toEqual([
+      '70+ 2 attempts · 67%',
+      '50–69 0 attempts · 0%',
+      'Below 50 1 attempt · 33%',
+    ])
+    expect(screen.getByText('Based on 3 completed attempts, scored out of 100.')).toBeTruthy()
+  })
+
+  it('shows all three ranges at 0 before any attempt is completed', async () => {
+    server.dashboard = DASHBOARD_EMPTY
+    renderDashboard()
+    await screen.findByText('Nothing to compare yet')
+
+    expect(rangeRows()).toEqual(['70+ 0 attempts', '50–69 0 attempts', 'Below 50 0 attempts'])
+  })
+})
+
 describe('little or no data', () => {
   it('reads clearly on a new installation', async () => {
     server.dashboard = DASHBOARD_EMPTY

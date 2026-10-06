@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { ProgressBar } from '@/components/ui/ProgressBar'
 import { Spinner } from '@/components/ui/Spinner'
-import { ASSESSMENT_SCENARIO_COUNT, SCENARIOS_PER_CHANNEL } from '@/constants/app'
+import { ASSESSMENT_SCENARIO_COUNT } from '@/constants/app'
 import { ASSESSMENT_STATUS } from '@/constants/assessment'
 import { CHANNELS } from '@/constants/channels'
 import { ROUTES } from '@/constants/routes'
@@ -72,7 +72,7 @@ function ProgressLine({ progress, loading }) {
 }
 
 export function DashboardPage() {
-  useDocumentTitle('Dashboard')
+  useDocumentTitle()
 
   const navigate = useNavigate()
   const { candidate, clearSession, signOut } = useCandidate()
@@ -275,7 +275,6 @@ export function DashboardPage() {
         <h2 className="text-lg font-bold sm:text-xl">Where the scenarios come from</h2>
         <p className="mt-1 max-w-2xl text-balance-pretty text-text-muted">
           Your {ASSESSMENT_SCENARIO_COUNT} scenarios are picked from these four apps.
-          Each app has {SCENARIOS_PER_CHANNEL} scenarios available.
         </p>
 
         <ul className="mt-5 grid gap-4 sm:grid-cols-2">
@@ -299,10 +298,6 @@ export function DashboardPage() {
                 </div>
               </div>
 
-              <p className="mt-4 border-t border-border pt-3 text-sm font-medium text-text-muted">
-                <span className="tabular-nums">{SCENARIOS_PER_CHANNEL}</span> scenarios
-                available
-              </p>
             </li>
           ))}
         </ul>

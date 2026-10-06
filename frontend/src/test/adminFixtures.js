@@ -262,6 +262,7 @@ export const FEEDBACK_CONFIG = {
   config: {
     training_feedback_timing: 'on_completion',
     assessment_feedback_timing: 'on_completion',
+    assessment_duration_minutes: 30,
     config_version: 1,
     updated_at: null,
     updated_by: null,
@@ -1096,6 +1097,8 @@ export function createAdminServer(overrides = {}) {
     attemptDetail: ATTEMPT_DETAIL_COMPLETE,
     learners: [{ ...PROFILE, created_at: '2026-09-01T00:00:00.000Z' }],
     config: FEEDBACK_CONFIG,
+    /** In-progress assessments the duration endpoint reports; above zero it refuses a change. */
+    runningAssessments: 0,
     auditEntries: [AUDIT_ENTRY],
     exportResult: EXPORT_RESULT,
     dashboard: DASHBOARD,
@@ -1248,6 +1251,34 @@ export function installAdminFetch(server) {
         changed: true,
         changed_keys: Object.keys(body).filter((key) => key.endsWith('_feedback_timing')),
       })
+    }
+
+    if (path === '/admin/config/assessment-duration' && method === 'GET') {
+      return ok({
+        config: server.config.config,
+        allowed_durations_minutes: [30, 45, 60, 75, 90],
+        default_duration_minutes: 30,
+        running_assessments: server.runningAssessments,
+      })
+    }
+    if (path === '/admin/config/assessment-duration' && method === 'PATCH') {
+      if (server.runningAssessments > 0) {
+        return err(409, 'ASSESSMENT_IN_PROGRESS',
+          'The assessment duration cannot be changed while an assessment is currently running.',
+          { running_assessments: server.runningAssessments })
+      }
+      const changed = body.assessment_duration_minutes !== server.config.config.assessment_duration_minutes
+      const next = changed
+        ? {
+          ...server.config.config,
+          assessment_duration_minutes: body.assessment_duration_minutes,
+          config_version: server.config.config.config_version + 1,
+          updated_at: '2026-09-07T12:40:00.000Z',
+          updated_by_username: 'instructor',
+        }
+        : server.config.config
+      server.config = { ...server.config, config: next }
+      return ok({ config: next, allowed_durations_minutes: [30, 45, 60, 75, 90], changed })
     }
 
     if (path === '/admin/dashboard') return ok(server.dashboard)

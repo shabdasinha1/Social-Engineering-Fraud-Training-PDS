@@ -169,9 +169,9 @@
   /* Instructor console spacing (ENHANCEMENT-001B). One deliberate hierarchy for every
      admin page, exposed as utilities (space-y-section, gap-grid, p-card ...). The values
      step up at the lg breakpoint - see the :root override below the theme block. */
-  --spacing-section: 1.25rem;
-  --spacing-grid: 0.875rem;
-  --spacing-card: 1rem;
+  --spacing-section: 1.5rem;
+  --spacing-grid: 1rem;
+  --spacing-card: 1.125rem;
 
   /* The admin content column: wide enough for analytics and tables on a large monitor,
      still centred on an ultra-wide one. */
@@ -337,9 +337,9 @@
 /* The spacing hierarchy loosens slightly on wide screens. */
 @media (width >= 64rem) {
   :root {
-    --spacing-section: 1.5rem;
-    --spacing-grid: 1rem;
-    --spacing-card: 1.25rem;
+    --spacing-section: 2rem;
+    --spacing-grid: 1.25rem;
+    --spacing-card: 1.5rem;
   }
 }
 

@@ -18,6 +18,10 @@ import mongoose from 'mongoose'
 import { Candidate } from '../src/models/Candidate.js'
 import { ScenarioRun } from '../src/models/ScenarioRun.js'
 import { Configuration } from '../src/models/Configuration.js'
+import {
+  ASSESSMENT_DURATION_DEFAULT_MINUTES,
+  ASSESSMENT_DURATION_OPTIONS_MINUTES,
+} from '../src/constants/attemptTiming.js'
 
 /**
  * ADMIN-004 - the vocabulary, the schemas and the projections, without a database.
@@ -139,14 +143,14 @@ test('the public profile projection still publishes no archival or identity inte
  * 10-16  the configuration surface
  * ------------------------------------------------------------------ */
 
-test('the configuration surface is exactly two enum fields', () => {
+test('the configuration surface is two enum fields plus the assessment duration', () => {
   assert.deepEqual(FEEDBACK_CONFIG_KEYS,
     ['training_feedback_timing', 'assessment_feedback_timing'])
 
   const paths = Object.keys(Configuration.schema.paths)
     .filter((p) => !['_id', '__v', 'createdAt', 'updatedAt'].includes(p))
   assert.deepEqual(paths.sort(), [
-    'assessment_feedback_timing', 'config_version', 'scope',
+    'assessment_duration_minutes', 'assessment_feedback_timing', 'config_version', 'scope',
     'training_feedback_timing', 'updated_by', 'updated_by_username',
   ])
 })
@@ -207,8 +211,8 @@ test('the configuration projection is an allowlist and carries no admin credenti
   const json = config.toAdminJSON()
 
   assert.deepEqual(Object.keys(json).sort(), [
-    'assessment_feedback_timing', 'config_version', 'training_feedback_timing',
-    'updated_at', 'updated_by', 'updated_by_username',
+    'assessment_duration_minutes', 'assessment_feedback_timing', 'config_version',
+    'training_feedback_timing', 'updated_at', 'updated_by', 'updated_by_username',
   ])
   const text = JSON.stringify(json)
   for (const field of ['password', 'password_hash', 'passwordHash', 'salt', 'secret',
@@ -228,4 +232,25 @@ test('the reset target status closes every learner query that asks for in_progre
   // The property the whole reset design rests on: the two statuses differ, so every
   // existing `{status: 'in_progress'}` query excludes a reset attempt without any change.
   assert.notEqual(RESET_TARGET_STATUS, RESET_SOURCE_STATUS)
+})
+
+/* ------------------------------------------------------------------ *
+ * Assessment duration (Admin -> Settings)
+ * ------------------------------------------------------------------ */
+
+test('the assessment duration defaults to 30 minutes and allows only five values', async () => {
+  assert.deepEqual(ASSESSMENT_DURATION_OPTIONS_MINUTES, [30, 45, 60, 75, 90])
+  assert.equal(ASSESSMENT_DURATION_DEFAULT_MINUTES, 30)
+  assert.equal(new Configuration({ scope: 'instructor' }).assessment_duration_minutes, 30)
+
+  for (const minutes of ASSESSMENT_DURATION_OPTIONS_MINUTES) {
+    await new Configuration({ scope: 'instructor', assessment_duration_minutes: minutes }).validate()
+  }
+  for (const minutes of [0, 15, 29, 46, 61, 120, 240, -30, 45.5]) {
+    await assert.rejects(
+      () => new Configuration({ scope: 'instructor', assessment_duration_minutes: minutes }).validate(),
+      /assessment_duration_minutes/,
+      `${minutes} must be refused`,
+    )
+  }
 })

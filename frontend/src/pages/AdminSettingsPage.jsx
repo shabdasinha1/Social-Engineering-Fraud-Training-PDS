@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { Clock, Info, Save } from 'lucide-react'
+import { Clock, Info, Save, Timer } from 'lucide-react'
 import { Alert } from '@/components/ui/Alert'
 import { Button } from '@/components/ui/Button'
 import {
@@ -11,19 +11,18 @@ import {
   SelectFilter,
 } from '@/components/admin/AdminPrimitives'
 import { enter, staggerStyle } from '@/components/admin/adminUi'
-import { FEEDBACK_TIMING_LABELS, formatDateTime } from '@/constants/admin'
-import { useDocumentTitle } from '@/hooks/useDocumentTitle'
+import { FEEDBACK_TIMING_LABELS, formatDateTime, formatDurationMinutes } from '@/constants/admin'
+import { useAdminDocumentTitle } from '@/hooks/useDocumentTitle'
 import { adminApi } from '@/services/adminApi'
 import { cn } from '@/utils/cn'
 
 /**
  * Feedback timing (ADMIN-004, ADMIN-006).
  *
- * The whole configurable surface of this product is two enum fields — when feedback may be
- * shown in assessment mode and in training mode. The assessment flow only ever uses the
- * first; the training value is kept (and still editable) because ADMIN-004's configuration
- * contract stores and validates both, and removing it would be an API change
- * (ENHANCEMENT-001B lists it first and labels the second as unused, and changes nothing else). There is deliberately nothing here for
+ * SATARK is a direct assessment flow, so only the assessment feedback timing is offered.
+ * ADMIN-004's configuration contract still stores a training value; it is no longer shown
+ * or sent from here (a PATCH carries only the keys it changes), so the stored value is left
+ * as it is and the API is unchanged. There is deliberately nothing here for
  * scoring, either taxonomy, scenario selection, evaluation keys or any security or network
  * setting; the server would refuse those, and offering them would misrepresent what an
  * instructor controls.
@@ -45,27 +44,36 @@ import { cn } from '@/utils/cn'
  * ADMIN-004 returns an `enforcement` block saying what each timing does. It is rendered
  * verbatim, so the screen can never claim more than the server does. Since ADM-007 both
  * timings take effect on the learner's resolve step.
+ *
+ * ### Assessment duration
+ *
+ * The default time limit for NEW assessments, one of the five values the server allows.
+ * The server snapshots it into each attempt when it starts, and refuses a change (409
+ * ASSESSMENT_IN_PROGRESS) while any assessment is running - the warning and the disabled
+ * button here only mirror that rule, they do not enforce it.
  */
 /** "On completion — when the attempt finishes" -> "On completion", for the summary strip. */
 const shortTiming = (value) => (FEEDBACK_TIMING_LABELS[value] ?? value).split(' — ')[0]
 
 export function AdminSettingsPage() {
-  useDocumentTitle('Settings')
+  useAdminDocumentTitle()
 
   const [data, setData] = useState(null)
-  const [form, setForm] = useState({ training: '', assessment: '' })
+  const [form, setForm] = useState({ assessment: '' })
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [saveError, setSaveError] = useState(null)
   const [notice, setNotice] = useState('')
   const [saving, setSaving] = useState(false)
+  const [duration, setDuration] = useState(null)
+  const [durationForm, setDurationForm] = useState('')
+  const [durationError, setDurationError] = useState(null)
+  const [durationNotice, setDurationNotice] = useState('')
+  const [savingDuration, setSavingDuration] = useState(false)
 
   const apply = useCallback((result) => {
     setData(result)
-    setForm({
-      training: result.config.training_feedback_timing,
-      assessment: result.config.assessment_feedback_timing,
-    })
+    setForm({ assessment: result.config.assessment_feedback_timing })
   }, [])
 
   const load = useCallback((signal) => {
@@ -75,10 +83,14 @@ export function AdminSettingsPage() {
      * is cleared by whichever branch settles; a refetch raises it from the event that
      * caused it.
      */
-    return adminApi
-      .getFeedbackConfig({ signal })
-      .then((result) => {
+    return Promise.all([
+      adminApi.getFeedbackConfig({ signal }),
+      adminApi.getAssessmentDuration({ signal }),
+    ])
+      .then(([result, durationResult]) => {
         apply(result)
+        setDuration(durationResult)
+        setDurationForm(String(durationResult.config.assessment_duration_minutes))
         setError(null)
         setLoading(false)
       })
@@ -101,7 +113,6 @@ export function AdminSettingsPage() {
     setNotice('')
     try {
       const result = await adminApi.updateFeedbackConfig({
-        trainingTiming: form.training,
         assessmentTiming: form.assessment,
         expectedConfigVersion: data.config.config_version,
       })
@@ -119,6 +130,38 @@ export function AdminSettingsPage() {
     }
   }
 
+  const saveDuration = async () => {
+    setSavingDuration(true)
+    setDurationError(null)
+    setDurationNotice('')
+    try {
+      const result = await adminApi.updateAssessmentDuration({
+        minutes: Number(durationForm),
+        expectedConfigVersion: data.config.config_version,
+      })
+      // One settings document: keep the shared version current without touching the
+      // feedback form's unsaved edits.
+      setData((previous) => ({ ...previous, config: result.config }))
+      setDuration((previous) => ({ ...previous, config: result.config }))
+      setDurationForm(String(result.config.assessment_duration_minutes))
+      setDurationNotice(
+        result.changed
+          ? `Saved. New assessments will run for ${formatDurationMinutes(result.config.assessment_duration_minutes)}.`
+          : 'Nothing changed — that duration was already in force.',
+      )
+    } catch (updateError) {
+      setDurationError(updateError)
+      if (updateError.code === 'ASSESSMENT_IN_PROGRESS') {
+        setDuration((previous) => ({
+          ...previous,
+          running_assessments: updateError.details?.running_assessments ?? 1,
+        }))
+      }
+    } finally {
+      setSavingDuration(false)
+    }
+  }
+
   if (loading) return <LoadingState label="Loading configuration" />
   if (error) return <ErrorState error={error} onRetry={() => { setLoading(true); load() }} />
   if (!data) return null
@@ -127,17 +170,23 @@ export function AdminSettingsPage() {
     value,
     label: FEEDBACK_TIMING_LABELS[value] ?? value,
   }))
-  const dirty =
-    form.training !== data.config.training_feedback_timing
-    || form.assessment !== data.config.assessment_feedback_timing
+  const dirty = form.assessment !== data.config.assessment_feedback_timing
   const stale = saveError?.code === 'CONFIG_VERSION_CONFLICT'
+
+  const currentDuration = data.config.assessment_duration_minutes ?? duration?.default_duration_minutes
+  const durationOptions = (duration?.allowed_durations_minutes ?? []).map((minutes) => ({
+    value: String(minutes),
+    label: formatDurationMinutes(minutes),
+  }))
+  const running = duration?.running_assessments ?? 0
+  const durationDirty = durationForm !== String(currentDuration)
 
   return (
     <div className="space-y-section">
       <PageHeading
         eyebrow="Configuration"
         title="Settings"
-        description="Feedback timing is the only configurable setting. Scoring, the taxonomies and scenario selection are fixed and cannot be changed here."
+        description="Feedback timing and the assessment duration are the only configurable settings. Scoring, the taxonomies and scenario selection are fixed and cannot be changed here."
       />
 
       <div className="grid items-start gap-grid lg:grid-cols-3">
@@ -151,24 +200,11 @@ export function AdminSettingsPage() {
           <div className="grid gap-3 sm:grid-cols-2">
             <SelectFilter
               id="assessment-timing"
-              label="Assessment mode"
+              label="Assessment"
               value={form.assessment}
               options={options}
               onChange={(value) => setForm((previous) => ({ ...previous, assessment: value }))}
             />
-            <div className="min-w-0">
-              <SelectFilter
-                id="training-timing"
-                label="Training mode"
-                value={form.training}
-                options={options}
-                onChange={(value) => setForm((previous) => ({ ...previous, training: value }))}
-              />
-              <p className="mt-1 text-xs text-text-muted">
-                Not used by the assessment flow. Kept because the configuration contract
-                stores both values.
-              </p>
-            </div>
           </div>
 
           <div aria-live="polite" className="space-y-3 [&:not(:empty)]:mt-3">
@@ -199,12 +235,9 @@ export function AdminSettingsPage() {
             )}
           </div>
 
-          <dl className="mt-3 grid gap-3 rounded-md bg-secondary-soft/60 px-3 py-2.5 sm:grid-cols-4">
+          <dl className="mt-3 grid gap-3 rounded-md bg-secondary-soft/60 px-3 py-2.5 sm:grid-cols-3">
             <Field label="Assessment">
               {shortTiming(data.config.assessment_feedback_timing)}
-            </Field>
-            <Field label="Training">
-              {shortTiming(data.config.training_feedback_timing)}
             </Field>
             <Field label="Version">{data.config.config_version}</Field>
             <Field label="Last changed">
@@ -223,6 +256,57 @@ export function AdminSettingsPage() {
               </li>
             ))}
           </ul>
+        </SectionCard>
+
+        <SectionCard
+          icon={Timer}
+          title="Assessment duration"
+          description="The time limit for assessments started from now on. An assessment that has already started keeps the time it started with."
+          className={cn('lg:col-span-2', enter)}
+          style={staggerStyle(3)}
+        >
+          <div className="grid gap-3 sm:grid-cols-2">
+            <SelectFilter
+              id="assessment-duration"
+              label="Assessment duration"
+              value={durationForm}
+              options={durationOptions}
+              onChange={setDurationForm}
+            />
+          </div>
+
+          <div aria-live="polite" className="space-y-3 [&:not(:empty)]:mt-3">
+            {running > 0 && (
+              <Alert variant="warning" title="An assessment is currently running">
+                The assessment duration cannot be changed while an assessment is currently
+                running ({running === 1 ? '1 assessment' : `${running} assessments`} in progress).
+                Try again once they have finished.
+              </Alert>
+            )}
+            {durationNotice && <Alert variant="success">{durationNotice}</Alert>}
+            {/* ASSESSMENT_IN_PROGRESS is already explained by the warning above. */}
+            {durationError?.code !== 'ASSESSMENT_IN_PROGRESS' && <ErrorState error={durationError} />}
+          </div>
+
+          <div className="mt-3 flex flex-wrap items-center gap-3 border-t border-border pt-3">
+            <Button
+              size="sm"
+              className="min-h-11"
+              onClick={saveDuration}
+              loading={savingDuration}
+              disabled={!durationDirty || running > 0}
+            >
+              {!savingDuration && <Save size={16} aria-hidden="true" />}
+              Save duration
+            </Button>
+          </div>
+
+          <dl className="mt-3 grid gap-3 rounded-md bg-secondary-soft/60 px-3 py-2.5 sm:grid-cols-2">
+            <Field label="Current duration">
+              {currentDuration ? formatDurationMinutes(currentDuration) : '—'}
+            </Field>
+            <Field label="Assessments running">{running}</Field>
+          </dl>
         </SectionCard>
       </div>
     </div>

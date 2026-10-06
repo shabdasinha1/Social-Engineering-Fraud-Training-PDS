@@ -135,6 +135,25 @@ export const CONFIG_BODY_FIELDS = [
   'idempotency_key',
 ]
 
+/* ------------------------------------------------------------------ *
+ * Assessment duration
+ * ------------------------------------------------------------------ */
+
+/** The configuration key that holds the default duration for new attempts, in minutes. */
+export const ASSESSMENT_DURATION_CONFIG_KEY = 'assessment_duration_minutes'
+
+/** The only body fields a duration update may carry. Same concurrency rules as above. */
+export const DURATION_BODY_FIELDS = [
+  ASSESSMENT_DURATION_CONFIG_KEY,
+  'expected_config_version',
+  'idempotency_key',
+]
+
+/** Why a duration change was refused while learners are mid-assessment. */
+export const ASSESSMENT_IN_PROGRESS_MESSAGE =
+  'The assessment duration cannot be changed while an assessment is currently running. '
+  + 'Try again once every in-progress assessment has finished.'
+
 /** One settings document. The scope names it; there is never a second row. */
 export const CONFIG_SCOPE = 'instructor'
 
@@ -155,11 +174,13 @@ export const INSTRUCTOR_CONTROL_ERRORS = {
   INVALID_REASON_CODE: 422,
   INVALID_IDEMPOTENCY_KEY: 422,
   INVALID_FEEDBACK_TIMING: 422,
+  INVALID_ASSESSMENT_DURATION: 422,
   EMPTY_CONFIG_UPDATE: 422,
   ATTEMPT_NOT_FOUND: 404,
   PROFILE_NOT_FOUND: 404,
   ATTEMPT_NOT_RESETTABLE: 409,
   CONFIG_VERSION_CONFLICT: 409,
+  ASSESSMENT_IN_PROGRESS: 409,
 }
 
 /** What a learner is told when their profile has been archived. Never why. */

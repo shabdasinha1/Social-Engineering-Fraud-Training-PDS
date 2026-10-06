@@ -95,8 +95,8 @@ function renderLogin() {
 /** Fills the identity form and submits it. */
 async function signInAs(user, name = 'Asha Menon', identifier = RAW_IDENTIFIER) {
   await user.type(await screen.findByLabelText(/Full Name/), name)
-  await user.type(screen.getByLabelText(/Personal \/ Service Number/), identifier)
-  await user.click(screen.getByRole('button', { name: /Start Training/ }))
+  await user.type(screen.getByLabelText(/Service Number/), identifier)
+  await user.click(screen.getByRole('button', { name: /Start Assessment/ }))
 }
 
 let server
@@ -116,8 +116,8 @@ describe('normal entry', () => {
   it('shows the identity form when nobody is signed in', async () => {
     renderLogin()
     expect(await screen.findByLabelText(/Full Name/)).toBeDefined()
-    expect(screen.getByLabelText(/Personal \/ Service Number/)).toBeDefined()
-    expect(screen.getByRole('button', { name: /Start Training/ })).toBeDefined()
+    expect(screen.getByLabelText(/Service Number/)).toBeDefined()
+    expect(screen.getByRole('button', { name: /Start Assessment/ })).toBeDefined()
   })
 
   it('a new profile goes straight to the briefing', async () => {
@@ -155,6 +155,84 @@ describe('normal entry', () => {
     expect(await screen.findByText(/This profile is not available/)).toBeDefined()
     // A refusal is an answer, not an outage: no Retry is offered.
     expect(screen.queryByRole('button', { name: /^Retry$/ })).toBeNull()
+  })
+})
+
+describe('form validation', () => {
+  const start = (user) => user.click(screen.getByRole('button', { name: /Start Assessment/ }))
+  const posted = () => server.calls.some((c) => c.method === 'POST')
+  const noPersonal = () => expect(document.body.textContent).not.toMatch(/personal/i)
+
+  it('asks for both fields on an empty submission', async () => {
+    const user = userEvent.setup()
+    renderLogin()
+    await screen.findByLabelText(/Full Name/)
+
+    await start(user)
+
+    expect(await screen.findByText('Please enter your full name.')).toBeDefined()
+    expect(screen.getByText('Please enter your service number.')).toBeDefined()
+    expect(posted()).toBe(false)
+    noPersonal()
+  })
+
+  it('asks for the service number when only the name is entered', async () => {
+    const user = userEvent.setup()
+    renderLogin()
+    await user.type(await screen.findByLabelText(/Full Name/), 'Asha Menon')
+
+    await start(user)
+
+    expect(await screen.findByText('Please enter your service number.')).toBeDefined()
+    expect(screen.queryByText('Please enter your full name.')).toBeNull()
+    expect(posted()).toBe(false)
+    noPersonal()
+  })
+
+  it('asks for the name when only the service number is entered', async () => {
+    const user = userEvent.setup()
+    renderLogin()
+    await user.type(await screen.findByLabelText(/Service Number/), RAW_IDENTIFIER)
+
+    await start(user)
+
+    expect(await screen.findByText('Please enter your full name.')).toBeDefined()
+    expect(screen.queryByText('Please enter your service number.')).toBeNull()
+    expect(posted()).toBe(false)
+    noPersonal()
+  })
+
+  it('keeps the existing service number rules', async () => {
+    const user = userEvent.setup()
+    renderLogin()
+    await user.type(await screen.findByLabelText(/Full Name/), 'Asha Menon')
+    const field = screen.getByLabelText(/Service Number/)
+
+    for (const [value, message] of [
+      ['abc', /at least 6 characters/i],
+      ['AB#123456', /Use only letters, numbers, - and \//],
+      ['ABCDEF12', /at least 4 numbers/i],
+    ]) {
+      await user.clear(field)
+      await user.type(field, value)
+      await start(user)
+      expect(await screen.findByText(message)).toBeDefined()
+      noPersonal()
+    }
+    expect(posted()).toBe(false)
+  })
+
+  it('clears the messages and proceeds with a valid name and service number', async () => {
+    const user = userEvent.setup()
+    renderLogin()
+    await screen.findByLabelText(/Full Name/)
+    await start(user)
+    await screen.findByText('Please enter your service number.')
+
+    await signInAs(user)
+
+    expect(await screen.findByText('Briefing screen')).toBeDefined()
+    expect(posted()).toBe(true)
   })
 })
 
@@ -213,7 +291,7 @@ describe('profile found', () => {
 
     const name = await screen.findByLabelText(/Full Name/)
     expect(name.value).toBe('')
-    expect(screen.getByLabelText(/Personal \/ Service Number/).value).toBe('')
+    expect(screen.getByLabelText(/Service Number/).value).toBe('')
     // The session that the match had already started is ended.
     expect(server.calls.some((c) => c.path === '/candidates/logout')).toBe(true)
   })
@@ -368,14 +446,15 @@ describe('safety of the entry screen', () => {
   /**
    * IMMERSIVE-000 regression guard.
    *
-   * Section 2 names the identity field "Personal / Service Number field". The label is
-   * asserted literally, because a paraphrase is what the specification is not.
+   * Section 2 names the identity field "Personal / Service Number field"; at the client's
+   * request (5 Oct 2026) the visible label reads "Service Number", without "Personal".
    */
-  it('names the identity field exactly as section 2 does', async () => {
+  it('names the identity field Service Number, without "Personal"', async () => {
     renderLogin()
     await screen.findByLabelText(/Full Name/)
 
-    expect(screen.getByLabelText(/Personal \/ Service Number/)).toBeDefined()
+    expect(screen.getByLabelText(/^Service Number/)).toBeDefined()
+    expect(screen.queryByLabelText(/Personal/)).toBeNull()
     expect(screen.queryByLabelText(/Phone \/ Service Number/)).toBeNull()
   })
 
@@ -398,7 +477,8 @@ describe('safety of the entry screen', () => {
     await screen.findByRole('heading', { name: /Existing record found/ })
 
     expect(document.body.textContent).not.toMatch(/phone/i)
-    expect(screen.getByText('Personal / Service Number')).toBeDefined()
+    expect(screen.getByText('Service Number')).toBeDefined()
+    expect(screen.queryByText(/Personal/)).toBeNull()
   })
 
   it('carries the persistent training-simulation treatment', async () => {
@@ -481,11 +561,11 @@ describe('entry screen presentation', () => {
 
     renderLogin()
     await user.type(await screen.findByLabelText(/Full Name/), 'Asha Menon')
-    const identifier = screen.getByLabelText(/Personal \/ Service Number/)
+    const identifier = screen.getByLabelText(/Service Number/)
     await user.type(identifier, RAW_IDENTIFIER)
     await user.keyboard('{Enter}{Enter}{Enter}')
 
-    expect(screen.getByRole('button', { name: /Start Training/ }).getAttribute('aria-busy')).toBe('true')
+    expect(screen.getByRole('button', { name: /Start Assessment/ }).getAttribute('aria-busy')).toBe('true')
     release()
     expect(await screen.findByText('Briefing screen')).toBeDefined()
     expect(server.calls.filter((call) => call.path === '/candidates')).toHaveLength(1)

@@ -52,7 +52,7 @@ export function InstructorHelpDialog({ open, onClose }) {
           {
             title: 'Never enter a real credential',
             body:
-              'No password, OTP, PIN, card number, Aadhaar or personal email is needed '
+              'No password, OTP, PIN, card number, Aadhaar or email address is needed '
               + 'anywhere in this system, on this screen or inside the assessment. No field '
               + 'here will ever ask you for one.',
           },

@@ -1,9 +1,16 @@
 import mongoose from 'mongoose'
 import {
+  ASSESSMENT_DURATION_DEFAULT_MINUTES,
+  ASSESSMENT_DURATION_OPTIONS_MINUTES,
+} from '../constants/attemptTiming.js'
+import {
   ARCHIVE_BODY_FIELDS,
   ARCHIVE_REASON_CODES,
+  ASSESSMENT_DURATION_CONFIG_KEY,
+  ASSESSMENT_IN_PROGRESS_MESSAGE,
   CONFIG_BODY_FIELDS,
   CONFIG_SCOPE,
+  DURATION_BODY_FIELDS,
   FEEDBACK_CONFIG_KEYS,
   FEEDBACK_KEY_FOR_MODE,
   FEEDBACK_TIMINGS,
@@ -483,5 +490,142 @@ export async function updateFeedbackConfig({ actor, body = {} } = {}) {
     allowed_timings: [...FEEDBACK_TIMINGS],
     changed: result.changes.length > 0,
     changed_keys: result.changes.map((change) => change.key),
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Assessment duration (Admin -> Settings)
+ * ------------------------------------------------------------------ */
+
+/** A stored value is honoured only if it is one of the five; anything else is the default. */
+const effectiveDurationMinutes = (value) =>
+  (ASSESSMENT_DURATION_OPTIONS_MINUTES.includes(value) ? value : ASSESSMENT_DURATION_DEFAULT_MINUTES)
+
+/**
+ * The time limit a NEW attempt receives, in milliseconds.
+ *
+ * Read by `createAttempt()` inside its creation transaction - the one moment the value is
+ * snapshotted into the attempt. Read-only, like `effectiveFeedbackTiming`: a learner's
+ * Start never creates the settings document, and with no document (or no stored duration)
+ * the limit is the 90-minute default the product shipped with.
+ */
+export async function effectiveAssessmentTimeLimitMs({ session = null } = {}) {
+  const config = await Configuration.findOne({ scope: CONFIG_SCOPE })
+    .select(ASSESSMENT_DURATION_CONFIG_KEY).session(session).lean()
+  return effectiveDurationMinutes(config?.[ASSESSMENT_DURATION_CONFIG_KEY]) * 60 * 1000
+}
+
+/**
+ * How many assessments are running right now, by the server's own lifecycle.
+ *
+ * `status: 'in_progress'` is the attempt state every learner route already gates on. An
+ * attempt whose stored deadline has already passed is NOT counted: every guard treats it
+ * as expired, the sweeper finalises it within one tick, and its deadline is frozen, so no
+ * setting change could reach it anyway. Served by the `{ status, expires_at }` index the
+ * sweeper uses.
+ */
+export async function countRunningAssessments({ session = null, now = new Date() } = {}) {
+  return Attempt.countDocuments({
+    status: 'in_progress',
+    $or: [{ expires_at: null }, { expires_at: { $gt: now } }],
+  }).session(session)
+}
+
+/** The current duration, the five allowed values and whether a change is possible now. */
+export async function getAssessmentDurationConfig() {
+  const [config, running] = await Promise.all([loadFeedbackConfig(), countRunningAssessments()])
+  return {
+    config: config.toAdminJSON(),
+    allowed_durations_minutes: [...ASSESSMENT_DURATION_OPTIONS_MINUTES],
+    default_duration_minutes: ASSESSMENT_DURATION_DEFAULT_MINUTES,
+    running_assessments: running,
+  }
+}
+
+/**
+ * Changes the default assessment duration for attempts started from now on.
+ *
+ * Refused (409 ASSESSMENT_IN_PROGRESS) while any assessment is running. The check runs
+ * inside the same transaction as the write, on the server, so it cannot be bypassed by
+ * calling the API directly. It is belt-and-braces: running attempts carry their own frozen
+ * `time_limit_ms` / `expires_at`, so even a change that got through could not move them.
+ *
+ * Two administrators saving at once both write the one settings document; the loser gets
+ * a WriteConflict and is retried on a fresh snapshot (or told CONFIG_VERSION_CONFLICT when
+ * it sent `expected_config_version`), so the stored value is always one of the five.
+ */
+export async function updateAssessmentDurationConfig({ actor, body = {} } = {}) {
+  const clean = takeBody(body, DURATION_BODY_FIELDS)
+  const idempotencyKey = takeIdempotencyKey(clean.idempotency_key)
+
+  const wanted = clean[ASSESSMENT_DURATION_CONFIG_KEY]
+  if (wanted === undefined) {
+    fail(422, 'EMPTY_CONFIG_UPDATE', `Set ${ASSESSMENT_DURATION_CONFIG_KEY}.`)
+  }
+  // Numbers only: "45", 45.5 and 46 are all refused, never coerced.
+  if (!Number.isInteger(wanted) || !ASSESSMENT_DURATION_OPTIONS_MINUTES.includes(wanted)) {
+    fail(422, 'INVALID_ASSESSMENT_DURATION',
+      `${ASSESSMENT_DURATION_CONFIG_KEY} must be one of: ${ASSESSMENT_DURATION_OPTIONS_MINUTES.join(', ')}.`,
+      { rejected_fields: [ASSESSMENT_DURATION_CONFIG_KEY] })
+  }
+
+  let expectedVersion = null
+  if (clean.expected_config_version !== undefined && clean.expected_config_version !== null) {
+    if (!Number.isInteger(clean.expected_config_version) || clean.expected_config_version < 1) {
+      fail(422, 'FORBIDDEN_FIELD', 'expected_config_version must be a whole number.',
+        { rejected_fields: ['expected_config_version'] })
+    }
+    expectedVersion = clean.expected_config_version
+  }
+
+  await assertTransactionSupport()
+
+  const { result } = await withEngineTransaction(async (session) => {
+    const config = await loadFeedbackConfig({ session })
+
+    if (expectedVersion !== null && expectedVersion !== config.config_version) {
+      fail(409, 'CONFIG_VERSION_CONFLICT',
+        'This configuration has changed since it was read. Re-read it and try again.',
+        { expected_config_version: expectedVersion, config_version: config.config_version })
+    }
+
+    const previous = config[ASSESSMENT_DURATION_CONFIG_KEY]
+    // Setting a value to what it already is changes nothing and records nothing.
+    if (previous === wanted) return { config, changed: false }
+
+    const running = await countRunningAssessments({ session })
+    if (running > 0) {
+      fail(409, 'ASSESSMENT_IN_PROGRESS', ASSESSMENT_IN_PROGRESS_MESSAGE,
+        { running_assessments: running })
+    }
+
+    config[ASSESSMENT_DURATION_CONFIG_KEY] = wanted
+    config.config_version += 1
+    config.updated_by = actor?._id ?? null
+    config.updated_by_username = actor?.username ?? null
+    await config.save({ session })
+
+    await append({
+      actor,
+      action: 'CONFIG_CHANGED',
+      resourceType: 'configuration',
+      resourceId: ASSESSMENT_DURATION_CONFIG_KEY,
+      status: 'succeeded',
+      metadata: {
+        config_key: ASSESSMENT_DURATION_CONFIG_KEY,
+        config_previous_value: previous,
+        config_new_value: wanted,
+      },
+      idempotencyKey: idempotencyKey ? `${idempotencyKey}:${ASSESSMENT_DURATION_CONFIG_KEY}` : null,
+      session,
+    })
+
+    return { config, changed: true }
+  })
+
+  return {
+    config: result.config.toAdminJSON(),
+    allowed_durations_minutes: [...ASSESSMENT_DURATION_OPTIONS_MINUTES],
+    changed: result.changed,
   }
 }

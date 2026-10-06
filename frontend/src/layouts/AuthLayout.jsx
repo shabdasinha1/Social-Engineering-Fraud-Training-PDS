@@ -1,5 +1,5 @@
 import { ClipboardCheck, Eye, MessageSquare } from 'lucide-react'
-import { BrandLogo } from '@/components/common/BrandLogo'
+import satarkLogo from '@/assets/images/logo_satark.jpeg'
 import { SimulationBadge } from '@/components/common/SimulationBadge'
 import { ChannelFeed, EntryBackdrop, OrbitRings } from '@/components/auth/EntryVisuals'
 import { ASSESSMENT_SCENARIO_COUNT } from '@/constants/app'
@@ -49,31 +49,43 @@ export function AuthLayout({ children }) {
     <div className="relative isolate min-h-dvh overflow-clip bg-entry">
       <EntryBackdrop />
 
-      <div className="mx-auto grid min-h-dvh w-full max-w-[120rem] lg:grid-cols-[minmax(0,1fr)_minmax(30rem,40%)] lg:grid-rows-[auto_1fr] 2xl:grid-cols-[minmax(0,1fr)_minmax(29rem,44%)]">
-        <section className="px-5 pt-6 pb-7 text-console-text sm:px-8 sm:pt-8 lg:col-start-1 lg:row-start-1 lg:px-12 lg:pt-10 lg:pb-0 xl:px-16 2xl:px-24 2xl:pt-14">
+      <div className="mx-auto grid min-h-dvh w-full max-w-[120rem] lg:grid-cols-[minmax(0,1fr)_minmax(30rem,40%)] lg:grid-rows-[1fr_auto] 2xl:grid-cols-[minmax(0,1fr)_minmax(29rem,44%)]">
+        <section className="px-5 pt-6 pb-7 text-console-text sm:px-8 sm:pt-8 lg:col-start-1 lg:row-start-1 lg:flex lg:flex-col lg:px-12 lg:pt-10 lg:pb-0 xl:px-16 2xl:px-24 2xl:pt-14">
           <div
             {...rise(0)}
             className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 motion-safe:animate-entry-rise"
           >
-            <BrandLogo tone="light" />
+            {/*
+              SATARK branding: logo and name side by side. Login page only - the other
+              learner pages use the shared BrandLogo in their header.
+            */}
+            <div className="flex min-w-0 items-center gap-3 sm:gap-4">
+              <img
+                src={satarkLogo}
+                alt="SATARK logo"
+                width={813}
+                height={496}
+                className="h-8 w-auto shrink-0 rounded-sm sm:h-9 2xl:h-12"
+              />
+              <h1 className="text-3xl leading-none font-bold tracking-[0.12em] text-white sm:text-4xl 2xl:text-5xl">
+                SATARK
+              </h1>
+            </div>
             <SimulationBadge tone="light" />
           </div>
 
-          <div className="mt-6 max-w-2xl sm:mt-10 lg:mt-10 xl:mt-12 2xl:mt-24 2xl:max-w-3xl">
+          <div className="mt-6 max-w-2xl sm:mt-10 lg:my-auto lg:pt-8 xl:max-w-none xl:pt-10">
             <span
               aria-hidden="true"
               {...rise(1)}
               className="block h-0.5 w-12 rounded-full bg-linear-to-r from-console-accent to-transparent motion-safe:animate-entry-rise"
             />
-            <h1
+            <h2
               {...rise(2)}
-              className="mt-4 text-[1.85rem] leading-[1.12] font-semibold tracking-[-0.02em] text-white motion-safe:animate-entry-rise sm:mt-5 sm:text-4xl lg:text-[2.4rem] xl:text-5xl 2xl:text-[3.6rem]"
+              className="mt-4 text-balance text-[1.6rem] leading-[1.15] font-bold tracking-[-0.01em] text-white motion-safe:animate-entry-rise sm:mt-5 sm:text-[2rem] sm:leading-[1.12] sm:tracking-[-0.02em] xl:text-[clamp(2rem,2.5vw,2.3rem)] 2xl:text-[clamp(2.1rem,calc(2.65vw-0.5rem),2.75rem)]"
             >
-              Learn to spot online fraud{' '}
-              <span className="bg-linear-to-r from-console-accent to-console-text bg-clip-text text-transparent">
-                before it reaches you.
-              </span>
-            </h1>
+              SOCIAL ENGINEERING AWARENESS &amp; TRG APPLN FOR READINESS AND KNOWLEDGE
+            </h2>
             {/*
               Assessment framing, not "practice". The client has asked that this read as a
               measured exercise rather than an optional drill, so the sentence states what
@@ -82,7 +94,7 @@ export function AuthLayout({ children }) {
             */}
             <p
               {...rise(3)}
-              className="mt-4 max-w-xl text-balance-pretty text-[0.95rem] text-console-muted motion-safe:animate-entry-rise sm:text-base lg:mt-5 xl:text-[1.05rem] 2xl:max-w-2xl"
+              className="mt-4 max-w-xl text-balance-pretty text-[0.95rem] text-console-muted motion-safe:animate-entry-rise sm:text-base lg:mt-5 xl:mt-6 xl:text-[1.05rem] 2xl:max-w-2xl"
             >
               Assessment environment. Your decisions will be evaluated across simulated
               communications. 

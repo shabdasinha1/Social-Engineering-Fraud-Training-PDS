@@ -38,6 +38,7 @@ import {
 import { enter, rowClass, staggerStyle } from '@/components/admin/adminUi'
 import {
   ColumnChart,
+  CountBars,
   Legend,
   PlatformLabel,
   RateBars,
@@ -51,7 +52,7 @@ import {
   formatShortDay,
 } from '@/constants/admin'
 import { ROUTES } from '@/constants/routes'
-import { useDocumentTitle } from '@/hooks/useDocumentTitle'
+import { useAdminDocumentTitle } from '@/hooks/useDocumentTitle'
 import { adminApi } from '@/services/adminApi'
 import { cn } from '@/utils/cn'
 
@@ -86,10 +87,10 @@ const EVIDENCE = {
   false_positive_rate: (r) => `${r.numerator} of ${r.denominator} genuine`,
 }
 
+/** Assessment completion shows the two live states only; reset attempts are not charted. */
 const STATUS_SEGMENTS = [
   { key: 'completed', label: 'Completed', swatch: 'bg-success' },
   { key: 'in_progress', label: 'In progress', swatch: 'bg-info' },
-  { key: 'abandoned', label: 'Reset', swatch: 'bg-warning' },
 ]
 
 const TOOLS = [
@@ -267,6 +268,46 @@ function PlatformPerformance({ data, style }) {
           </EmptyState>
         )}
       </div>
+    </SectionCard>
+  )
+}
+
+/**
+ * The three reporting ranges. Derived from the server's own 10-point `attempt_bands`
+ * (completed attempts only, demo attempts excluded): every band starts on a multiple of
+ * 10, so each band - and therefore each attempt - falls in exactly one range. Nothing is
+ * re-scored here; the counts are the server's, only summed.
+ */
+const SCORE_RANGES = [
+  { key: 'high', label: '70+', min: 70, max: Infinity, swatch: 'bg-success' },
+  { key: 'mid', label: '50–69', min: 50, max: 70, swatch: 'bg-warning' },
+  { key: 'low', label: 'Below 50', min: -Infinity, max: 50, swatch: 'bg-danger' },
+]
+
+function ScoreRanges({ data, style }) {
+  const bands = data.scores.attempt_bands
+  const rows = SCORE_RANGES.map((range) => ({
+    ...range,
+    count: bands
+      .filter((band) => band.from >= range.min && band.from < range.max)
+      .reduce((sum, band) => sum + band.count, 0),
+  }))
+  const total = rows.reduce((sum, row) => sum + row.count, 0)
+
+  return (
+    <SectionCard
+      icon={BarChart3}
+      title="Score ranges"
+      description="Completed assessment attempts by score range."
+      className={enter}
+      style={style}
+    >
+      <CountBars rows={rows} total={total} caption="Completed assessment attempts by score range" />
+      <p className="mt-4 border-t border-border pt-3 text-xs text-text-muted">
+        {total === 0
+          ? 'No completed attempts yet. Ranges fill in as assessments are completed.'
+          : `Based on ${total} completed ${total === 1 ? 'attempt' : 'attempts'}, scored out of 100.`}
+      </p>
     </SectionCard>
   )
 }
@@ -538,7 +579,7 @@ function Method({ data }) {
           ))}
           <li>
             <strong className="text-text">Taking a final action</strong> excludes scenarios the
-            90-minute limit closed; their points still count toward the score, as they do for the learner.
+            time limit closed; their points still count toward the score, as they do for the learner.
           </li>
           <li>
             <strong className="text-text">Each learner (latest)</strong> uses each learner&apos;s most
@@ -604,7 +645,7 @@ function DashboardSkeleton() {
 }
 
 export function AdminDashboardPage() {
-  useDocumentTitle('Dashboard')
+  useAdminDocumentTitle()
 
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -720,18 +761,20 @@ export function AdminDashboardPage() {
           </div>
 
           <div className="grid gap-grid lg:grid-cols-2">
-            <ScoreDistribution data={data} style={staggerStyle(6)} />
-            <OutcomeMix data={data} style={staggerStyle(7)} />
+            <ScoreRanges data={data} style={staggerStyle(6)} />
+            <ScoreDistribution data={data} style={staggerStyle(7)} />
           </div>
 
           <div className="grid gap-grid lg:grid-cols-2">
-            <CompletionOverview data={data} style={staggerStyle(8)} />
-            <ActivityChart data={data} style={staggerStyle(9)} />
+            <OutcomeMix data={data} style={staggerStyle(8)} />
+            <CompletionOverview data={data} style={staggerStyle(9)} />
           </div>
 
-          <PlatformTable data={data} style={staggerStyle(10)} />
+          <ActivityChart data={data} style={staggerStyle(10)} />
 
-          <div className={cn('space-y-grid', enter)} style={staggerStyle(11)}>
+          <PlatformTable data={data} style={staggerStyle(11)} />
+
+          <div className={cn('space-y-grid', enter)} style={staggerStyle(12)}>
             <Tools />
             <Method data={data} />
           </div>

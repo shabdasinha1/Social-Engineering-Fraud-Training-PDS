@@ -59,7 +59,7 @@ const tally = (items, key) => items.reduce((acc, item) => {
  *
  * Deterministic: the seed, the history and the attempt index change nothing about which
  * scenarios are chosen or in what order. It also refuses rather than degrades - a missing
- * or inactive id, a duplicate, or a bank whose dispositions no longer give 6 + 4 is a
+ * or inactive id, a duplicate, or a bank whose dispositions no longer match the quota is a
  * configuration fault, and an attempt built around it would be a misleading demonstration.
  */
 export function selectDemoScenarios({ pool, attemptIndex = 0 } = {}) {
@@ -82,7 +82,8 @@ export function selectDemoScenarios({ pool, attemptIndex = 0 } = {}) {
   if (dispositions.malicious !== DEMO_DISPOSITION_QUOTA.malicious
     || dispositions.legitimate !== DEMO_DISPOSITION_QUOTA.legitimate) {
     throw new SelectionError('SELECTION_CONSTRAINT_UNSATISFIABLE',
-      'the demo set no longer holds 6 malicious and 4 legitimate scenarios')
+      `the demo set no longer holds ${DEMO_DISPOSITION_QUOTA.malicious} malicious and `
+        + `${DEMO_DISPOSITION_QUOTA.legitimate} legitimate scenarios`)
   }
 
   return {

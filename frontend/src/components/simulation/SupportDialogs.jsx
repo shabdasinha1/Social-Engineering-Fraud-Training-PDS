@@ -71,7 +71,7 @@ export function RulesDialog({ open, onClose }) {
           {
             title: 'Time limit',
             body:
-              'This assessment runs for 90 minutes from the moment you start it. The clock '
+              'This assessment has a time limit that starts the moment you begin it. The clock '
               + 'is kept by the training system, not by this window - it keeps running if '
               + 'you refresh, close the window or sign out, and it does not restart when '
               + 'you come back. When the time is up the assessment is closed and marked '
@@ -188,8 +188,7 @@ export function AccessibilityDialog({ open, onClose }) {
           {
             title: 'Motion and sound',
             body:
-              'Animations follow your reduced-motion setting. The simulation plays no sound, '
-              + 'and the sound state is shown in the training rail at the top.',
+              'Animations follow your reduced-motion setting. The simulation plays no sound.',
           },
         ]}
       />

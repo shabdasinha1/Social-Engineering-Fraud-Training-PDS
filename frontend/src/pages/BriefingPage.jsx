@@ -14,7 +14,7 @@ import { StepCard } from '@/components/common/StepCard'
 import { AppLayout } from '@/components/layout/AppLayout'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
-import { ASSESSMENT_SCENARIO_COUNT, SCENARIOS_PER_CHANNEL } from '@/constants/app'
+import { ASSESSMENT_SCENARIO_COUNT } from '@/constants/app'
 import { CHANNELS } from '@/constants/channels'
 import { ROUTES } from '@/constants/routes'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
@@ -84,7 +84,7 @@ const SUMMARY = [
 ]
 
 export function BriefingPage() {
-  useDocumentTitle('Briefing')
+  useDocumentTitle()
 
   const navigate = useNavigate()
   const { candidate } = useCandidate()
@@ -148,12 +148,7 @@ export function BriefingPage() {
                   <span className={`grid size-11 shrink-0 place-items-center rounded-md ${accent}`}>
                     <Icon size={22} aria-hidden="true" />
                   </span>
-                  <span>
-                    <span className="block font-semibold">{label}</span>
-                    <span className="block text-sm text-text-muted">
-                      {SCENARIOS_PER_CHANNEL} available
-                    </span>
-                  </span>
+                  <span className="block font-semibold">{label}</span>
                 </li>
               ))}
             </ul>

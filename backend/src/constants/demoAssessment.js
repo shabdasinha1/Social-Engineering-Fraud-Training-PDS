@@ -10,40 +10,36 @@
  * Ten existing ScenarioDefinitions from the authoritative 100-scenario bank, referenced by
  * id. None is duplicated, copied or edited; `selectDemoScenarios()` refuses to build an
  * attempt if any id is missing or inactive, or if the bank's own dispositions no longer
- * give 6 malicious and 4 legitimate - the split below is asserted against the bank, not
- * trusted from this comment.
+ * give DEMO_DISPOSITION_QUOTA (7 malicious and 3 legitimate) - the split below is asserted
+ * against the bank, not trusted from this comment.
  *
- *   #   id    platform   level   disposition  family / what it demonstrates
- *   1   W01   WhatsApp   easy    malicious    account takeover - forwarded login code (OTP)
- *   2   E01   Email      easy    malicious    credential phishing - password-expiry link and form
- *   3   S16   SMS        medium  legitimate   system confirmation - a login code the learner asked for
- *   4   I04   Instagram  easy    malicious    impersonation - cloned friend asks for money
- *   5   E21   Email      hard    legitimate   verified high-risk change - vendor bank change, verified
- *   6   W24   WhatsApp   hard    malicious    tech-support fraud - remote screen share
- *   7   E14   Email      medium  malicious    QR phishing - QR in a revised movement order (military)
- *   8   I11   Instagram  medium  legitimate   routine broadcast - official welfare helpline (military)
- *   9   S25   SMS        hard    malicious    malware delivery - FASTag "update" APK install
- *  10   W16   WhatsApp   medium  legitimate   coordination request - verified vehicle-pool change (military)
+ * The order is the client's (5 Oct 2026) and is presentation order exactly as listed.
  *
- *   platforms   WhatsApp 3, Email 3, Instagram 2, SMS 2 (the 3/3/2/2 shape normal attempts use)
- *   difficulty  easy 3, medium 4, hard 3 (the normal 3/4/3 target)
- *   families    six different malicious families and all four legitimate families
- *   military    3 (inside the normal 2-4 range)
+ *   #   id    platform   level   disposition  family
+ *   1   W14   WhatsApp   medium  malicious    malware delivery (military)
+ *   2   E08   Email      easy    malicious    financial credential phishing
+ *   3   W03   WhatsApp   easy    legitimate   coordination request (military)
+ *   4   S06   SMS        easy    malicious    identity data harvesting (military)
+ *   5   I17   Instagram  medium  malicious    coercion and extortion
+ *   6   S15   SMS        medium  malicious    QR code phishing (military)
+ *   7   I07   Instagram  easy    legitimate   routine broadcast
+ *   8   W12   WhatsApp   medium  malicious    coercion and extortion
+ *   9   E07   Email      easy    legitimate   coordination request (military)
+ *  10   E01   Email      easy    malicious    credential phishing
  *
- * The order interleaves platforms (never more than two in a row) and spreads the four
- * legitimate items through the set, and it pairs deliberately: S16 (a login code the
- * learner requested) follows W01 (a login code someone else wants), and E21 (a verified
- * bank change) precedes the payment and QR lures.
+ *   platforms   WhatsApp 3, Email 3, Instagram 2, SMS 2
+ *   difficulty  easy 6, medium 4
+ *   military    5
  *
- * Changing the set: edit this list. Keep it at 10 unique ids, 6 malicious + 4 legitimate by
- * the bank's own disposition; the service and its tests enforce both.
+ * Changing the set: edit this list and DEMO_DISPOSITION_QUOTA together. Keep it at 10
+ * unique ids whose bank dispositions match the quota; the service and its tests enforce it.
  */
 export const DEMO_SCENARIO_SEQUENCE = Object.freeze([
-  'W01', 'E01', 'S16', 'I04', 'E21', 'W24', 'E14', 'I11', 'S25', 'W16',
+  'W14', 'E08', 'W03', 'S06', 'I17', 'S15', 'I07', 'W12', 'E07', 'E01',
 ])
 
 /** Required split, checked against the bank's own `disposition` at attempt creation. */
-export const DEMO_DISPOSITION_QUOTA = Object.freeze({ malicious: 6, legitimate: 4 })
+export const DEMO_DISPOSITION_QUOTA = Object.freeze({ malicious: 7, legitimate: 3 })
 
 /**
  * Written to `Attempt.selection.selection_algorithm_version`. This is how a DEMO ATTEMPT is

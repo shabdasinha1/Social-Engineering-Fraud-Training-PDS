@@ -190,6 +190,18 @@ export const adminApi = {
       expected_config_version: expectedConfigVersion,
     })),
 
+  getAssessmentDuration: (options) => apiClient.get('/admin/config/assessment-duration', options),
+
+  /**
+   * Changes the default duration for assessments started from now on. The server refuses
+   * it (409 ASSESSMENT_IN_PROGRESS) while any assessment is running.
+   */
+  updateAssessmentDuration: ({ minutes, expectedConfigVersion } = {}) =>
+    apiClient.patch('/admin/config/assessment-duration', present({
+      assessment_duration_minutes: minutes,
+      expected_config_version: expectedConfigVersion,
+    })),
+
   /* --- audit log (ADMIN-005) --------------------------------------- */
 
   /** Read-only. The log is append-only server-side; there is no write call to make. */

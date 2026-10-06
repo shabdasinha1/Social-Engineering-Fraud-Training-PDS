@@ -176,6 +176,16 @@ export const FEEDBACK_TIMING_LABELS = {
   on_completion: 'On completion — when the attempt finishes',
 }
 
+/** 30 -> "30 minutes", 60 -> "1 hour", 75 -> "1 hour 15 minutes". The assessment duration setting. */
+export function formatDurationMinutes(total) {
+  const hours = Math.floor(total / 60)
+  const minutes = total % 60
+  const parts = []
+  if (hours) parts.push(`${hours} ${hours === 1 ? 'hour' : 'hours'}`)
+  if (minutes || !hours) parts.push(`${minutes} ${minutes === 1 ? 'minute' : 'minutes'}`)
+  return parts.join(' ')
+}
+
 /* ------------------------------------------------------------------ *
  * Audit log (ADMIN-005)
  * ------------------------------------------------------------------ */
@@ -247,7 +257,7 @@ export const DASHBOARD_OUTCOMES = [
     key: 'not_resolved',
     label: 'Closed by time limit',
     swatch: 'bg-outcome-unresolved',
-    description: 'The 90-minute limit closed the scenario before a final action.',
+    description: 'The time limit closed the scenario before a final action.',
   },
 ]
 

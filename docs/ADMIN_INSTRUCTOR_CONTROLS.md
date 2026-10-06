@@ -29,6 +29,8 @@ and `configuration`, and every metadata key used here. This task is their first 
 | POST | `/api/admin/learners/:profileId/archive` | Archive one learner profile |
 | GET | `/api/admin/config/feedback` | Current feedback timing, allowed values, defaults |
 | PATCH | `/api/admin/config/feedback` | Change feedback timing |
+| GET | `/api/admin/config/assessment-duration` | Default assessment duration, allowed values, running count |
+| PATCH | `/api/admin/config/assessment-duration` | Change the default assessment duration (refused while one is running) |
 
 Reset and archive are POSTs rather than PATCHes because each is a lifecycle transition with
 a transaction and an audit entry behind it, not a field assignment — the same reasoning
@@ -246,6 +248,35 @@ Feedback timing affects **no** score, selection or result, so **no attempt pins 
 configuration version**. Pinning it would imply a reproducibility relationship that does not
 exist. `ScenarioRun` scoring, the scenario fingerprint and the deterministic selection seed
 are all untouched by this task.
+
+### Assessment duration (Admin → Settings)
+
+The same settings document holds `assessment_duration_minutes`: the time limit for
+assessments **started from now on**. Allowed values are exactly 30, 45, 60, 75 and 90
+minutes (`ASSESSMENT_DURATION_OPTIONS_MINUTES` in `constants/attemptTiming.js`); the default
+for a fresh configuration, a missing document or a document written before this field
+existed is 30 minutes (`ASSESSMENT_TIME_LIMIT_MS`). A duration already stored is kept. The schema validator and the service both reject anything else — strings, decimals,
+other numbers.
+
+* **Snapshot at start.** `createAttempt()` reads the setting inside its creation transaction
+  and writes `time_limit_ms` and `expires_at = started_at + time_limit_ms` onto the attempt.
+  The model's freeze hook forbids moving either afterwards, and expiry, the sweeper and
+  startup recovery all read the attempt's own `expires_at`, never the setting. A setting
+  change therefore cannot lengthen or shorten a running assessment, and a restart or refresh
+  finds the same stored deadline.
+* **Locked while running.** `PATCH` is refused with `409 ASSESSMENT_IN_PROGRESS` while any
+  attempt has `status: 'in_progress'` and a deadline that has not passed. The count runs in
+  the same transaction as the write, server-side; the Settings page only mirrors it. An
+  attempt already past its stored deadline is treated as over (every guard treats it as
+  expired and the sweeper finalises it within one tick).
+* **Concurrency.** Two administrators writing at once both write the one settings document,
+  so one gets a WriteConflict and is retried on a fresh snapshot — or, if it sent
+  `expected_config_version`, is told `CONFIG_VERSION_CONFLICT`. Each real change bumps
+  `config_version` and writes one `CONFIG_CHANGED` audit entry
+  (`config_key: assessment_duration_minutes`).
+* **Known limit.** A learner Start whose transaction began a moment before an admin change
+  committed can still commit with the previous value. That learner keeps the duration that
+  was in force when their Start began; no running deadline is ever altered.
 
 ## 7. Transactions and audit
 

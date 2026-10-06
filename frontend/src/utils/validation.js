@@ -33,7 +33,7 @@ export function validateName(value) {
  */
 export function validateIdentifier(value) {
   const id = value.trim()
-  if (!id) return 'Please enter your personal or service number.'
+  if (!id) return 'Please enter your service number.'
   if (id.length < 6) return 'This must be at least 6 characters.'
   if (id.length > 20) return 'This must be 20 characters or less.'
   if (!IDENTIFIER_PATTERN.test(id)) return 'Use only letters, numbers, - and /.'

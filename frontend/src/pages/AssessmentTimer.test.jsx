@@ -105,6 +105,25 @@ describe('the countdown', () => {
     expect(remaining.textContent).toMatch(/44:5\d left|45:00 left/)
   })
 
+  it('shows the time left on the attempt\'s own stored deadline, whatever duration it was given', async () => {
+    // An attempt started 10 minutes ago under a 30-minute configured duration. The browser
+    // knows nothing about the setting: it only has the server's deadline and clock, and
+    // this machine's clock is 3 minutes slow - the server's clock is the one that counts.
+    const serverNow = Date.now()
+    vi.useFakeTimers({ toFake: ['Date'] })
+    try {
+      vi.setSystemTime(serverNow - 3 * MINUTE)
+      server.serverNow = new Date(serverNow).toISOString()
+      server.expiresAt = new Date(serverNow - 10 * MINUTE + 30 * MINUTE).toISOString()
+
+      renderSimulation()
+      const remaining = await screen.findByTestId('time-remaining')
+      expect(remaining.textContent).toMatch(/\b(19:5\d|20:00) left$/)
+    } finally {
+      vi.useRealTimers()
+    }
+  }, TEST_TIMEOUT)
+
   it('is the only clock in the header - no elapsed (count-up) timer is shown', async () => {
     const now = Date.now()
     server.serverNow = new Date(now).toISOString()

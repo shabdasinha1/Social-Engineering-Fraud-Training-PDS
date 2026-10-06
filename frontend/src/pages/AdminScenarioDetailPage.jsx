@@ -25,7 +25,7 @@ import {
   label,
 } from '@/constants/admin'
 import { ROUTES } from '@/constants/routes'
-import { useDocumentTitle } from '@/hooks/useDocumentTitle'
+import { useAdminDocumentTitle } from '@/hooks/useDocumentTitle'
 import { adminApi } from '@/services/adminApi'
 
 /**
@@ -161,7 +161,7 @@ function VersionCard({
 
 export function AdminScenarioDetailPage() {
   const { scenarioId } = useParams()
-  useDocumentTitle(`Scenario ${scenarioId ?? ''}`)
+  useAdminDocumentTitle()
 
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)

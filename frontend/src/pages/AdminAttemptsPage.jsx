@@ -27,7 +27,7 @@ import {
   formatDuration,
 } from '@/constants/admin'
 import { adminAttemptPath } from '@/constants/routes'
-import { useDocumentTitle } from '@/hooks/useDocumentTitle'
+import { useAdminDocumentTitle } from '@/hooks/useDocumentTitle'
 import { adminApi } from '@/services/adminApi'
 import { cn } from '@/utils/cn'
 
@@ -149,7 +149,7 @@ function LearnerSearch({ onSelect }) {
 }
 
 export function AdminAttemptsPage() {
-  useDocumentTitle('Attempts')
+  useAdminDocumentTitle()
 
   const [filters, setFilters] = useState(EMPTY_FILTERS)
   const [learner, setLearner] = useState(null)

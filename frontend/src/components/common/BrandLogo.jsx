@@ -1,42 +1,32 @@
-import { ShieldCheck } from 'lucide-react'
-import { APP_NAME, APP_TAGLINE } from '@/constants/app'
+import satarkLogo from '@/assets/images/logo_satark.jpeg'
+import { BRAND_NAME } from '@/constants/app'
 import { cn } from '@/utils/cn'
 
 /**
- * Logo mark plus product name. `tone="light"` is for dark backgrounds.
+ * SATARK logo plus product name. `tone="light"` is for dark backgrounds. The logo is the
+ * shared asset, sized to the height of the shield mark it replaced.
  */
 export function BrandLogo({ tone = 'dark', showText = true, className }) {
   const light = tone === 'light'
 
   return (
-    <div className={cn('flex items-center gap-3', className)}>
-      <span
-        className={cn(
-          'grid size-11 shrink-0 place-items-center rounded-md',
-          light ? 'bg-white/12 text-white' : 'bg-primary text-primary-contrast',
-        )}
-      >
-        <ShieldCheck size={24} aria-hidden="true" />
-      </span>
+    <div className={cn('flex shrink-0 items-center gap-3', className)}>
+      <img
+        src={satarkLogo}
+        alt={showText ? '' : `${BRAND_NAME} logo`}
+        width={813}
+        height={496}
+        className="h-8 w-auto max-w-none shrink-0 rounded-md sm:h-11"
+      />
 
       {showText && (
-        <span className="leading-tight">
-          <span
-            className={cn(
-              'block text-base font-bold tracking-tight sm:text-lg',
-              light ? 'text-white' : 'text-text',
-            )}
-          >
-            {APP_NAME}
-          </span>
-          <span
-            className={cn(
-              'block text-xs font-medium sm:text-sm',
-              light ? 'text-text-on-dark-muted' : 'text-text-muted',
-            )}
-          >
-            {APP_TAGLINE}
-          </span>
+        <span
+          className={cn(
+            'text-base leading-tight font-bold tracking-[0.08em] sm:text-lg',
+            light ? 'text-white' : 'text-text',
+          )}
+        >
+          {BRAND_NAME}
         </span>
       )}
     </div>

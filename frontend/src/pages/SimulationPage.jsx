@@ -62,7 +62,7 @@ import { ACTIVITY, activityStateFor, alertDismissed } from '@/state/dashboardOrc
  * rather than remembered in this component.
  */
 export function SimulationPage() {
-  useDocumentTitle('Simulation')
+  useDocumentTitle()
 
   const navigate = useNavigate()
   const { candidate, clearSession } = useCandidate()
@@ -322,7 +322,7 @@ export function SimulationPage() {
         <Card className="text-center">
           <h1 className="text-xl font-bold">Time is up</h1>
           <p className="mt-2 text-balance-pretty text-text-muted">
-            The 90 minutes allowed for this assessment have passed, so it has been closed
+            The time allowed for this assessment has passed, so it has been closed
             and marked. Everything you completed has been saved and counts towards your
             result. Scenarios you did not reach are recorded as not completed.
           </p>

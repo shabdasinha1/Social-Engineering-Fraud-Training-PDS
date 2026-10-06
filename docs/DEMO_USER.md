@@ -25,30 +25,31 @@ Source: MOM of 24 September 2026, item 3.
 
 The list lives in `backend/src/constants/demoAssessment.js` → `DEMO_SCENARIO_SEQUENCE`.
 
-| # | ID | Platform | Level | Disposition | Demonstrates |
+Order set by the client on 5 Oct 2026: W14, E08, W03, S06, I17, S15, I07, W12, E07, E01.
+
+| # | ID | Platform | Level | Disposition | Family |
 |---|---|---|---|---|---|
-| 1 | W01 | WhatsApp | easy | malicious | Forwarded login code (account takeover) |
-| 2 | E01 | Email | easy | malicious | Password-expiry link and credential form |
-| 3 | S16 | SMS | medium | legitimate | Login code the learner requested (contrast with W01) |
-| 4 | I04 | Instagram | easy | malicious | Cloned friend asks for money |
-| 5 | E21 | Email | hard | legitimate | Verified vendor bank-detail change |
-| 6 | W24 | WhatsApp | hard | malicious | Remote-support screen share |
-| 7 | E14 | Email | medium | malicious | QR in a revised movement order (military) |
-| 8 | I11 | Instagram | medium | legitimate | Official welfare helpline update (military) |
-| 9 | S25 | SMS | hard | malicious | FASTag "update" APK install |
-| 10 | W16 | WhatsApp | medium | legitimate | Verified vehicle-pool change (military) |
+| 1 | W14 | WhatsApp | medium | malicious | Malware delivery (military) |
+| 2 | E08 | Email | easy | malicious | Financial credential phishing |
+| 3 | W03 | WhatsApp | easy | legitimate | Coordination request (military) |
+| 4 | S06 | SMS | easy | malicious | Identity data harvesting (military) |
+| 5 | I17 | Instagram | medium | malicious | Coercion and extortion |
+| 6 | S15 | SMS | medium | malicious | QR code phishing (military) |
+| 7 | I07 | Instagram | easy | legitimate | Routine broadcast |
+| 8 | W12 | WhatsApp | medium | malicious | Coercion and extortion |
+| 9 | E07 | Email | easy | legitimate | Coordination request (military) |
+| 10 | E01 | Email | easy | malicious | Credential phishing |
 
 The mix, in summary:
 
-- 6 malicious and 4 legitimate
+- 7 malicious and 3 legitimate (`DEMO_DISPOSITION_QUOTA`)
 - platforms: WhatsApp 3, Email 3, Instagram 2, SMS 2
-- difficulty: easy 3, medium 4, hard 3
-- ten different families: six malicious families and all four legitimate ones
-- 3 military items
+- difficulty: easy 6, medium 4
+- 5 military items
 
 The set comes from the existing bank; no definition was copied or edited. At attempt creation,
 `selectDemoScenarios()` refuses if any ID is inactive, if an ID repeats, or if the bank's own
-dispositions no longer give 6 + 4.
+dispositions no longer match `DEMO_DISPOSITION_QUOTA` (7 + 3).
 
 ## How a demo attempt is built
 

@@ -206,7 +206,7 @@ export function LogoutConfirmDialog({
           className="rounded-md border border-warning/40 bg-warning-soft p-3 text-balance-pretty font-semibold text-warning"
           data-testid="logout-clock-warning"
         >
-          The 90-minute time limit is not paused. It keeps running while you are signed out
+          The time limit is not paused. It keeps running while you are signed out
           <RemainingClause expiresAt={expiresAt} serverNow={serverNow} />. Sign back in before
           it runs out and you can continue. If it runs out first, the assessment is closed and
           marked with whatever you had completed.

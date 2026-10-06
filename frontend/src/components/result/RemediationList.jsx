@@ -8,8 +8,8 @@ import { Target } from 'lucide-react'
  * "you are vulnerable to". Nothing here diagnoses a trait, a susceptibility or an
  * emotional state, and the server's own `reason` strings are written the same way.
  *
- * There is no practice mode yet, so a recommendation says what to practise and how much
- * material exists - it does not link anywhere.
+ * There is no practice mode yet, so a recommendation says what to practise - it does not
+ * link anywhere. How many bank scenarios exist is not shown to the learner.
  */
 export function RemediationList({ remediation }) {
   if (!remediation?.length) {
@@ -61,13 +61,6 @@ export function RemediationList({ remediation }) {
                 {item.points}/{item.max_points}
               </span>{' '}
               in this attempt
-              {typeof item.practice_scenarios_available === 'number' && (
-                <>
-                  {' · '}
-                  <span className="tabular-nums">{item.practice_scenarios_available}</span>{' '}
-                  practice scenarios available
-                </>
-              )}
             </p>
           </li>
         ))}

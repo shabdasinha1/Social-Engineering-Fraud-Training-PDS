@@ -32,7 +32,7 @@ import {
 } from '@/constants/admin'
 import { OUTCOME_CLASS, OUTCOME_CODE_LABELS } from '@/constants/result'
 import { ROUTES } from '@/constants/routes'
-import { useDocumentTitle } from '@/hooks/useDocumentTitle'
+import { useAdminDocumentTitle } from '@/hooks/useDocumentTitle'
 import { adminApi } from '@/services/adminApi'
 import { cn } from '@/utils/cn'
 
@@ -179,7 +179,7 @@ function ExpandAll({ listRef }) {
 
 export function AdminAttemptDetailPage() {
   const { attemptId } = useParams()
-  useDocumentTitle('Attempt')
+  useAdminDocumentTitle()
 
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)

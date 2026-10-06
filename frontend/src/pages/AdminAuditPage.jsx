@@ -26,7 +26,7 @@ import {
   formatDateTime,
   label,
 } from '@/constants/admin'
-import { useDocumentTitle } from '@/hooks/useDocumentTitle'
+import { useAdminDocumentTitle } from '@/hooks/useDocumentTitle'
 import { adminApi } from '@/services/adminApi'
 
 /**
@@ -67,7 +67,7 @@ function MetadataCell({ metadata }) {
 }
 
 export function AdminAuditPage() {
-  useDocumentTitle('Audit log')
+  useAdminDocumentTitle()
 
   const [filters, setFilters] = useState(EMPTY_FILTERS)
   const [page, setPage] = useState(1)

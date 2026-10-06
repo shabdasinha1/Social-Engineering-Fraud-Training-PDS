@@ -1,7 +1,9 @@
 import {
   archiveProfile,
+  getAssessmentDurationConfig,
   getFeedbackConfig,
   resetAttempt,
+  updateAssessmentDurationConfig,
   updateFeedbackConfig,
 } from '../services/instructorControlService.js'
 import { asyncHandler } from '../utils/asyncHandler.js'
@@ -69,4 +71,24 @@ export const getFeedbackTimingConfig = asyncHandler(async (_req, res) => {
  */
 export const patchFeedbackTimingConfig = asyncHandler(async (req, res) => {
   res.json(await updateFeedbackConfig({ actor: req.admin, body: req.body ?? {} }))
+})
+
+/**
+ * GET /api/admin/config/assessment-duration - the default duration for new attempts, the
+ * allowed values, and how many assessments are running right now (a running assessment
+ * locks the setting; the PATCH enforces that independently).
+ */
+export const getAssessmentDurationSetting = asyncHandler(async (_req, res) => {
+  res.json(await getAssessmentDurationConfig())
+})
+
+/**
+ * PATCH /api/admin/config/assessment-duration
+ *
+ * Body: `assessment_duration_minutes` (30, 45, 60, 75 or 90), plus an optional
+ * `expected_config_version` and `idempotency_key`. Anything else is rejected, and so is
+ * any change while an assessment is in progress (409 ASSESSMENT_IN_PROGRESS).
+ */
+export const patchAssessmentDurationSetting = asyncHandler(async (req, res) => {
+  res.json(await updateAssessmentDurationConfig({ actor: req.admin, body: req.body ?? {} }))
 })

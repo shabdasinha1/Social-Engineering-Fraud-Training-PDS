@@ -23,7 +23,9 @@ import {
   postLearnerExport,
 } from '../controllers/exportController.js'
 import {
+  getAssessmentDurationSetting,
   getFeedbackTimingConfig,
+  patchAssessmentDurationSetting,
   patchFeedbackTimingConfig,
   postAttemptReset,
   postProfileArchive,
@@ -113,7 +115,8 @@ adminRoutes.get('/exports/:filename', requireAdmin, getExportArtifact)
  * and an audit entry behind it, not a field assignment. **There is no DELETE**: archival
  * is not deletion, and a reset destroys nothing.
  *
- * The configuration surface is two enum fields. An administrator cannot configure scoring,
+ * The configuration surface is two enum fields plus the assessment duration (one of five
+ * fixed values, refused while any assessment is running). An administrator cannot configure scoring,
  * the taxonomies, selection, evaluation keys, a security boundary or anything about the
  * network through it.
  */
@@ -121,3 +124,5 @@ adminRoutes.post('/attempts/:attemptId/reset', requireAdmin, postAttemptReset)
 adminRoutes.post('/learners/:profileId/archive', requireAdmin, postProfileArchive)
 adminRoutes.get('/config/feedback', requireAdmin, getFeedbackTimingConfig)
 adminRoutes.patch('/config/feedback', requireAdmin, patchFeedbackTimingConfig)
+adminRoutes.get('/config/assessment-duration', requireAdmin, getAssessmentDurationSetting)
+adminRoutes.patch('/config/assessment-duration', requireAdmin, patchAssessmentDurationSetting)

@@ -1,5 +1,9 @@
-export const APP_NAME = 'Cyber Awareness Training'
-export const APP_TAGLINE = 'Fraud Detection Simulation'
+/** The product name shown in headers and sidebars (the /login page carries its own). */
+export const BRAND_NAME = 'SATARK'
+/** The browser tab title on every learner route, exactly (index.html carries the same default). */
+export const LEARNER_DOCUMENT_TITLE = 'SATARK'
+/** The browser tab title on every admin route, exactly. */
+export const ADMIN_DOCUMENT_TITLE = 'SATARK Admin'
 export const SIMULATION_LABEL = 'TRAINING SIMULATION'
 
 /**

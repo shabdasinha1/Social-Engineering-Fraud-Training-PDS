@@ -138,12 +138,12 @@ async function partiallyWork(run) {
  * Model
  * ================================================================== */
 
-it('a new attempt carries a 90-minute deadline derived from the server clock', async () => {
+it('a new attempt carries the default 30-minute deadline derived from the server clock', async () => {
   await reset()
   const { attempt } = await createAttempt({ profileId: PROFILE })
 
   assert.equal(attempt.time_limit_ms, ASSESSMENT_TIME_LIMIT_MS)
-  assert.equal(ASSESSMENT_TIME_LIMIT_MS, 90 * 60 * 1000, 'C1: the approved limit is 90 minutes')
+  assert.equal(ASSESSMENT_TIME_LIMIT_MS, 30 * 60 * 1000, 'the default limit is 30 minutes')
   assert.equal(
     attempt.expires_at.getTime() - attempt.started_at.getTime(),
     ASSESSMENT_TIME_LIMIT_MS,

@@ -34,7 +34,7 @@ function formatDuration(ms) {
 }
 
 export function HistoryPage() {
-  useDocumentTitle('Assessment History')
+  useDocumentTitle()
 
   const navigate = useNavigate()
   const { clearSession } = useCandidate()

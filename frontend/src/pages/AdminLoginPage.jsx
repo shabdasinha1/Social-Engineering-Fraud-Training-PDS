@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { KeyRound, Lock, LogIn, ShieldCheck, User } from 'lucide-react'
+import { KeyRound, Lock, LogIn, User } from 'lucide-react'
+import satarkLogo from '@/assets/images/logo_satark.jpeg'
 import { Alert } from '@/components/ui/Alert'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { FormField } from '@/components/ui/FormField'
 import { Input } from '@/components/ui/Input'
 import { PageContainer } from '@/components/layout/PageContainer'
+import { BRAND_NAME } from '@/constants/app'
 import { ROUTES } from '@/constants/routes'
-import { useDocumentTitle } from '@/hooks/useDocumentTitle'
+import { useAdminDocumentTitle } from '@/hooks/useDocumentTitle'
 import { adminApi } from '@/services/adminApi'
 
 /**
@@ -20,7 +22,7 @@ import { adminApi } from '@/services/adminApi'
  * the operator with `npm run admin:create`.
  */
 export function AdminLoginPage() {
-  useDocumentTitle('Administrator Sign In')
+  useAdminDocumentTitle()
 
   const navigate = useNavigate()
   const [form, setForm] = useState({ username: '', password: '' })
@@ -78,15 +80,19 @@ export function AdminLoginPage() {
       <PageContainer size="sm" className="max-w-md">
         <p className="mb-4 flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-signal">
           <span aria-hidden="true" className="h-px w-6 bg-signal" />
-          Instructor console
+          {BRAND_NAME} · Instructor console
           <span aria-hidden="true" className="h-px w-6 bg-signal" />
         </p>
         <Card className="relative animate-fade-up overflow-hidden rounded-xl">
           <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1 bg-console" />
           <header className="flex items-start gap-3">
-            <span className="grid size-11 shrink-0 place-items-center rounded-lg bg-console text-console-accent">
-              <ShieldCheck size={22} aria-hidden="true" />
-            </span>
+            <img
+              src={satarkLogo}
+              alt={`${BRAND_NAME} logo`}
+              width={813}
+              height={496}
+              className="h-11 w-auto max-w-none shrink-0 rounded-lg"
+            />
             <div>
               <h1 className="text-xl font-bold tracking-tight">Administrator Sign In</h1>
               <p className="mt-1 text-sm text-balance-pretty text-text-muted">

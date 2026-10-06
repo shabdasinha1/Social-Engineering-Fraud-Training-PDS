@@ -38,10 +38,10 @@ export function PageHeading({ title, description, eyebrow, children }) {
           {title}
         </h1>
         {description && (
-          <p className="mt-1 text-sm text-balance-pretty text-text-muted">{description}</p>
+          <p className="mt-1.5 text-sm text-balance-pretty text-text-muted">{description}</p>
         )}
       </div>
-      {children && <div className="flex flex-wrap items-center gap-2">{children}</div>}
+      {children && <div className="flex flex-wrap items-center gap-2.5">{children}</div>}
     </div>
   )
 }
@@ -75,14 +75,14 @@ export function SectionCard({
             <div className="min-w-0">
               {title && <h2 className="text-[0.95rem] font-semibold leading-snug">{title}</h2>}
               {description && (
-                <p className="text-xs text-balance-pretty text-text-muted sm:text-[0.8rem]">{description}</p>
+                <p className="mt-0.5 text-xs text-balance-pretty text-text-muted sm:text-[0.8rem]">{description}</p>
               )}
             </div>
           </div>
           {action}
         </header>
       )}
-      <div className={cn(hasHeader && 'mt-3', bodyClassName)}>{children}</div>
+      <div className={cn(hasHeader && 'mt-4', bodyClassName)}>{children}</div>
     </section>
   )
 }
@@ -96,7 +96,7 @@ export function StatTile({ icon: Icon, label, value, detail, className, style })
     <div
       style={style}
       className={cn(
-        'relative min-w-0 overflow-hidden rounded-lg border border-border bg-card px-card py-3.5 shadow-xs',
+        'relative min-w-0 overflow-hidden rounded-lg border border-border bg-card px-card py-4 shadow-xs',
         'transition-[box-shadow,border-color] duration-200 hover:border-border-strong hover:shadow-sm',
         className,
       )}
@@ -106,8 +106,8 @@ export function StatTile({ icon: Icon, label, value, detail, className, style })
         <p className="text-[0.7rem] font-semibold uppercase leading-tight tracking-wide text-text-muted">{label}</p>
         {Icon && <Icon size={16} aria-hidden="true" className="shrink-0 text-signal" />}
       </div>
-      <p className="mt-1 text-2xl font-bold tracking-tight tabular-nums">{value}</p>
-      {detail && <p className="mt-0.5 text-xs leading-snug text-text-muted">{detail}</p>}
+      <p className="mt-1.5 text-2xl font-bold tracking-tight tabular-nums">{value}</p>
+      {detail && <p className="mt-1 text-xs leading-snug text-text-muted">{detail}</p>}
     </div>
   )
 }
@@ -186,7 +186,7 @@ export function TableSkeleton({ rows = 6, columns = 5, label = 'Loading' }) {
 
 export function EmptyState({ title, icon: Icon = Inbox, children, action }) {
   return (
-    <div className="flex flex-col items-center gap-1.5 px-4 py-8 text-center">
+    <div className="flex flex-col items-center gap-1.5 px-4 py-10 text-center">
       <span className="mb-1 grid size-10 place-items-center rounded-full border border-dashed border-border-strong bg-secondary-soft text-text-muted">
         <Icon size={18} aria-hidden="true" />
       </span>
@@ -283,7 +283,7 @@ export function Th({ children, className }) {
     <th
       scope="col"
       className={cn(
-        'whitespace-nowrap border-b border-border bg-secondary-soft/60 px-2 py-2 text-left sm:px-3',
+        'whitespace-nowrap border-b border-border bg-secondary-soft/60 px-2 py-2.5 text-left sm:px-3',
         'text-[0.7rem] font-semibold uppercase tracking-wide text-text-muted',
         'first:pl-card last:pr-card',
         className,
@@ -298,7 +298,7 @@ export function Td({ children, className }) {
   return (
     <td
       className={cn(
-        'border-b border-border px-2 py-2.5 align-middle first:pl-card last:pr-card sm:px-3',
+        'border-b border-border px-2 py-3 align-middle first:pl-card last:pr-card sm:px-3',
         'transition-colors duration-150',
         className,
       )}
@@ -331,7 +331,7 @@ export function Pagination({ page, pageSize, total, totalPages, onChange, busy =
   return (
     <nav
       aria-label="Pagination"
-      className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-t border-border px-card py-2.5"
+      className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-t border-border px-card py-3"
     >
       <p className="text-sm text-text-muted" aria-live="polite">
         Showing <span className="font-semibold text-text tabular-nums">{from}–{to}</span> of{' '}
@@ -460,7 +460,7 @@ export function FilterBar({ children, onClear, canClear, className, label = 'Fil
     <div
       role="group"
       aria-label={label}
-      className={cn('grid items-end gap-x-3 gap-y-2.5 border-b border-border px-card py-3', className)}
+      className={cn('grid items-end gap-x-4 gap-y-3 border-b border-border px-card py-4', className)}
     >
       {children}
       <Button

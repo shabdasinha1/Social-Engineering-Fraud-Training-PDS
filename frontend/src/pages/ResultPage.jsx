@@ -29,7 +29,7 @@ import { progressApi } from '@/services/progressApi'
  */
 
 export function ResultPage() {
-  useDocumentTitle('Your result')
+  useDocumentTitle()
 
   const navigate = useNavigate()
   const { attemptId } = useParams()

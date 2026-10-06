@@ -1,4 +1,3 @@
-import { ASSESSMENT_TIME_LIMIT_MS } from '../constants/attemptTiming.js'
 import {
   ATTEMPT_MODES,
   ATTEMPT_SCENARIO_COUNT,
@@ -16,6 +15,7 @@ import { buildAttemptResult } from './attemptResultService.js'
 import { actionCodesForRun } from './learnerActionService.js'
 import { refreshProgressAfterCompletion } from './progressService.js'
 import { isDemoAttempt } from './demoSelectionService.js'
+import { effectiveAssessmentTimeLimitMs } from './instructorControlService.js'
 
 /**
  * Attempt creation (SELECT-002).
@@ -161,10 +161,12 @@ export async function createAttempt({
    * Both values are computed locally and written together. No request body reaches them,
    * and the model's freeze hook stops anything moving them afterwards, so a refresh, a
    * reconnect, a reopened browser and a restarted process all find the same deadline.
+   *
+   * The limit itself is the instructor's configured duration (Admin -> Settings, default 90
+   * minutes), read inside the transaction below and snapshotted onto this attempt. It is
+   * never read again for this attempt, so a later change cannot move this deadline.
    */
   const startedAt = new Date()
-  const timeLimitMs = ASSESSMENT_TIME_LIMIT_MS
-  const expiresAt = new Date(startedAt.getTime() + timeLimitMs)
 
   const { result } = await withEngineTransaction(async (session) => {
     /**
@@ -189,6 +191,9 @@ export async function createAttempt({
         'this learner already has an attempt in progress', { attempt_id: String(running._id) })
     }
     await Candidate.updateOne({ _id: profileId }, { $set: { last_seen_at: startedAt } }, { session })
+
+    const timeLimitMs = await effectiveAssessmentTimeLimitMs({ session })
+    const expiresAt = new Date(startedAt.getTime() + timeLimitMs)
 
     const [attempt] = await Attempt.create([{
       profile_id: profileId,

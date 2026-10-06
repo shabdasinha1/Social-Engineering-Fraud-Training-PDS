@@ -86,25 +86,24 @@ test('the demo set is exactly 10 unique ids that all exist in the bank', () => {
   assert.equal(POOL.length, 100)
 })
 
-test('the demo set is 6 malicious and 4 legitimate by the bank\'s own dispositions', () => {
+test('the demo set is 7 malicious and 3 legitimate by the bank\'s own dispositions', () => {
   const plan = selectDemoScenarios({ pool: POOL })
   const dispositions = plan.scenarios.map((s) => byId.get(s.scenario_id).disposition)
-  assert.equal(dispositions.filter((d) => d === 'malicious').length, 6)
-  assert.equal(dispositions.filter((d) => d === 'legitimate').length, 4)
-  assert.deepEqual(DEMO_DISPOSITION_QUOTA, { malicious: 6, legitimate: 4 })
-  assert.deepEqual(plan.composition.disposition_counts, { malicious: 6, legitimate: 4 })
+  assert.equal(dispositions.filter((d) => d === 'malicious').length, 7)
+  assert.equal(dispositions.filter((d) => d === 'legitimate').length, 3)
+  assert.deepEqual(DEMO_DISPOSITION_QUOTA, { malicious: 7, legitimate: 3 })
+  assert.deepEqual(plan.composition.disposition_counts, { malicious: 7, legitimate: 3 })
 })
 
-test('the demo set covers every platform, every difficulty and distinct families', () => {
+test('the demo set covers every platform', () => {
   const { composition } = selectDemoScenarios({ pool: POOL })
   assert.deepEqual(composition.platform_counts, { whatsapp: 3, email: 3, sms: 2, instagram: 2 })
-  assert.deepEqual(composition.difficulty_counts, { easy: 3, medium: 4, hard: 3 })
-  assert.equal(Object.keys(composition.canonical_family_counts).length, 10)
-  assert.ok(composition.military_count >= 2 && composition.military_count <= 4)
+  assert.deepEqual(composition.difficulty_counts, { easy: 6, medium: 4 })
+  assert.equal(composition.military_count, 5)
 })
 
 test('the demo order is fixed and never depends on seed, history or attempt index', () => {
-  const expected = ['W01', 'E01', 'S16', 'I04', 'E21', 'W24', 'E14', 'I11', 'S25', 'W16']
+  const expected = ['W14', 'E08', 'W03', 'S06', 'I17', 'S15', 'I07', 'W12', 'E07', 'E01']
   assert.deepEqual([...DEMO_SCENARIO_SEQUENCE], expected)
   for (const attemptIndex of [0, 1, 7]) {
     const plan = selectDemoScenarios({
@@ -117,20 +116,20 @@ test('the demo order is fixed and never depends on seed, history or attempt inde
   }
 })
 
-test('never more than two of the same platform in a row, and legitimate items are spread out', () => {
+test('never more than two of the same platform in a row, and legitimate items are where listed', () => {
   const platforms = DEMO_SCENARIO_SEQUENCE.map((id) => byId.get(id).platform)
   for (let i = 2; i < platforms.length; i += 1) {
     assert.ok(!(platforms[i] === platforms[i - 1] && platforms[i] === platforms[i - 2]), `run at ${i}`)
   }
   const legitimatePositions = DEMO_SCENARIO_SEQUENCE
     .map((id, i) => (byId.get(id).disposition === 'legitimate' ? i + 1 : null)).filter(Boolean)
-  assert.deepEqual(legitimatePositions, [3, 5, 8, 10])
+  assert.deepEqual(legitimatePositions, [3, 7, 9])
 })
 
 test('the demo selector refuses a pool missing a demo scenario, or one whose split changed', () => {
-  assert.throws(() => selectDemoScenarios({ pool: POOL.filter((s) => s.scenario_id !== 'E21') }),
+  assert.throws(() => selectDemoScenarios({ pool: POOL.filter((s) => s.scenario_id !== 'S15') }),
     (e) => e.code === 'SELECTION_POOL_INSUFFICIENT')
-  const flipped = POOL.map((s) => (s.scenario_id === 'W16' ? { ...s, disposition: 'malicious' } : s))
+  const flipped = POOL.map((s) => (s.scenario_id === 'W03' ? { ...s, disposition: 'malicious' } : s))
   assert.throws(() => selectDemoScenarios({ pool: flipped }),
     (e) => e.code === 'SELECTION_CONSTRAINT_UNSATISFIABLE')
 })

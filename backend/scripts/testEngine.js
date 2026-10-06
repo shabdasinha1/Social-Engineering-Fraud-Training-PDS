@@ -50,6 +50,8 @@ const SUITES = [
   { file: 'tests/smsS21S25Engine.test.js', db: 'sms_s21_test' },
   // Production audit (30 Sep 2026): regressions for the 500s found by the live attack run.
   { file: 'tests/productionAuditApi.test.js', db: 'prod_audit_test' },
+  // Admin -> Settings: configurable assessment duration, snapshotted per attempt.
+  { file: 'tests/assessmentDurationApi.test.js', db: 'duration_test' },
 ]
 
 const MONGOD_CANDIDATES = [

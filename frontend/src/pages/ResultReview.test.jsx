@@ -365,7 +365,11 @@ describe('what the review must never show', () => {
     renderResult()
     await openScenario(1)
 
-    expect(document.querySelectorAll('img, iframe, embed, object, video, audio')).toHaveLength(0)
+    expect(document.querySelectorAll('iframe, embed, object, video, audio')).toHaveLength(0)
+    // The only image is the bundled SATARK header logo: never a remote source.
+    for (const image of document.querySelectorAll('img')) {
+      expect(image.getAttribute('src')).not.toMatch(/^(https?:)?\/\//)
+    }
     for (const anchor of document.querySelectorAll('a[href]')) {
       expect(anchor.getAttribute('href')).not.toMatch(/^https?:/)
     }

@@ -576,8 +576,10 @@ describe('feedback timing configuration', () => {
     renderAdmin(ROUTES.ADMIN_SETTINGS, <AdminSettingsPage />, ROUTES.ADMIN_SETTINGS)
     await screen.findByRole('heading', { level: 1, name: 'Settings' })
 
-    expect(screen.getByLabelText('Training mode').value).toBe('on_completion')
-    expect(screen.getByLabelText('Assessment mode').value).toBe('on_completion')
+    expect(screen.getByLabelText('Assessment').value).toBe('on_completion')
+    // A direct assessment flow: no separate training mode is offered.
+    expect(screen.queryByLabelText(/Training/i)).toBeNull()
+    expect(screen.queryByText(/training mode/i)).toBeNull()
     expect(screen.getByText(/feedback card is released as it resolves/i)).toBeTruthy()
   })
 
@@ -585,7 +587,7 @@ describe('feedback timing configuration', () => {
     renderAdmin(ROUTES.ADMIN_SETTINGS, <AdminSettingsPage />, ROUTES.ADMIN_SETTINGS)
     await screen.findByRole('heading', { level: 1, name: 'Settings' })
 
-    const options = within(screen.getByLabelText('Training mode')).getAllByRole('option')
+    const options = within(screen.getByLabelText('Assessment')).getAllByRole('option')
     expect(options.map((option) => option.value)).toEqual(['immediate', 'on_completion'])
   })
 
@@ -594,19 +596,19 @@ describe('feedback timing configuration', () => {
     renderAdmin(ROUTES.ADMIN_SETTINGS, <AdminSettingsPage />, ROUTES.ADMIN_SETTINGS)
     await screen.findByRole('heading', { level: 1, name: 'Settings' })
 
-    await user.selectOptions(screen.getByLabelText('Training mode'), 'immediate')
+    await user.selectOptions(screen.getByLabelText('Assessment'), 'immediate')
     await user.click(screen.getByRole('button', { name: /save changes/i }))
 
     await waitFor(() => {
       const call = server.calls.find((entry) => entry.method === 'PATCH')
+      // Only the assessment timing is sent; no training value leaves this screen.
       expect(call.body).toEqual({
-        training_feedback_timing: 'immediate',
-        assessment_feedback_timing: 'on_completion',
+        assessment_feedback_timing: 'immediate',
         expected_config_version: 1,
       })
     })
     expect(await screen.findByText(/saved\./i)).toBeTruthy()
-    expect(screen.getByLabelText('Training mode').value).toBe('immediate')
+    expect(screen.getByLabelText('Assessment').value).toBe('immediate')
   })
 
   it('cannot save when nothing changed', async () => {
@@ -622,7 +624,7 @@ describe('feedback timing configuration', () => {
     renderAdmin(ROUTES.ADMIN_SETTINGS, <AdminSettingsPage />, ROUTES.ADMIN_SETTINGS)
     await screen.findByRole('heading', { level: 1, name: 'Settings' })
 
-    await user.selectOptions(screen.getByLabelText('Training mode'), 'immediate')
+    await user.selectOptions(screen.getByLabelText('Assessment'), 'immediate')
     server.failNext = {
       status: 409,
       code: 'CONFIG_VERSION_CONFLICT',
@@ -640,13 +642,85 @@ describe('feedback timing configuration', () => {
     )
     await screen.findByRole('heading', { level: 1, name: 'Settings' })
 
-    // Exactly two controls exist, and they are the two timing selects. The page's prose
-    // does mention scoring and the taxonomies - to say they are NOT configurable - so the
-    // check is on the controls, which is what an instructor can actually change.
+    // Exactly two controls exist: the assessment feedback timing and the assessment
+    // duration. The page's prose does mention scoring and the taxonomies - to say they are
+    // NOT configurable - so the check is on the controls, which is what an instructor can
+    // actually change.
     const selects = [...container.querySelectorAll('select')]
-    // ENHANCEMENT-001B lists the assessment timing first; the training value stays.
-    expect(selects.map((element) => element.id)).toEqual(['assessment-timing', 'training-timing'])
+    expect(selects.map((element) => element.id))
+      .toEqual(['assessment-timing', 'assessment-duration'])
     expect(container.querySelectorAll('input, textarea').length).toBe(0)
+  })
+})
+
+/* ------------------------------------------------------------------ *
+ * assessment duration
+ * ------------------------------------------------------------------ */
+
+describe('assessment duration setting', () => {
+  it('shows the current duration, defaulting to 30 minutes', async () => {
+    renderAdmin(ROUTES.ADMIN_SETTINGS, <AdminSettingsPage />, ROUTES.ADMIN_SETTINGS)
+    await screen.findByRole('heading', { level: 1, name: 'Settings' })
+
+    expect(screen.getByLabelText('Assessment duration').value).toBe('30')
+    expect(screen.getAllByText('30 minutes').length).toBeGreaterThan(0)
+  })
+
+  it('offers exactly the five allowed durations', async () => {
+    renderAdmin(ROUTES.ADMIN_SETTINGS, <AdminSettingsPage />, ROUTES.ADMIN_SETTINGS)
+    await screen.findByRole('heading', { level: 1, name: 'Settings' })
+
+    const options = within(screen.getByLabelText('Assessment duration')).getAllByRole('option')
+    expect(options.map((option) => [option.value, option.textContent])).toEqual([
+      ['30', '30 minutes'],
+      ['45', '45 minutes'],
+      ['60', '1 hour'],
+      ['75', '1 hour 15 minutes'],
+      ['90', '1 hour 30 minutes'],
+    ])
+  })
+
+  it('saves a new duration as a number, with the version it read', async () => {
+    const user = userEvent.setup()
+    renderAdmin(ROUTES.ADMIN_SETTINGS, <AdminSettingsPage />, ROUTES.ADMIN_SETTINGS)
+    await screen.findByRole('heading', { level: 1, name: 'Settings' })
+
+    expect(screen.getByRole('button', { name: /save duration/i }).disabled).toBe(true)
+    await user.selectOptions(screen.getByLabelText('Assessment duration'), '45')
+    await user.click(screen.getByRole('button', { name: /save duration/i }))
+
+    await waitFor(() => {
+      const call = server.calls.find((entry) => entry.method === 'PATCH')
+      expect(call.path).toBe('/admin/config/assessment-duration')
+      expect(call.body).toEqual({ assessment_duration_minutes: 45, expected_config_version: 1 })
+    })
+    expect(await screen.findByText(/new assessments will run for 45 minutes/i)).toBeTruthy()
+    expect(screen.getByLabelText('Assessment duration').value).toBe('45')
+  })
+
+  it('explains and blocks a change while an assessment is running', async () => {
+    server.runningAssessments = 2
+    renderAdmin(ROUTES.ADMIN_SETTINGS, <AdminSettingsPage />, ROUTES.ADMIN_SETTINGS)
+    await screen.findByRole('heading', { level: 1, name: 'Settings' })
+
+    expect(screen.getByText(/cannot be changed while an assessment is currently running/i))
+      .toBeTruthy()
+    expect(screen.getByRole('button', { name: /save duration/i }).disabled).toBe(true)
+  })
+
+  it('shows the server refusal when an assessment started after the page loaded', async () => {
+    const user = userEvent.setup()
+    renderAdmin(ROUTES.ADMIN_SETTINGS, <AdminSettingsPage />, ROUTES.ADMIN_SETTINGS)
+    await screen.findByRole('heading', { level: 1, name: 'Settings' })
+
+    server.runningAssessments = 1
+    await user.selectOptions(screen.getByLabelText('Assessment duration'), '60')
+    await user.click(screen.getByRole('button', { name: /save duration/i }))
+
+    expect(await screen.findByText(/cannot be changed while an assessment is currently running/i))
+      .toBeTruthy()
+    expect(server.config.config.assessment_duration_minutes).toBe(30)
+    expect(screen.getByRole('button', { name: /save duration/i }).disabled).toBe(true)
   })
 })
 

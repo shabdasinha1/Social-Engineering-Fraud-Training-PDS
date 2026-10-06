@@ -3,6 +3,7 @@ import test from 'node:test'
 import mongoose from 'mongoose'
 import { createApp } from '../src/app.js'
 import {
+  DEMO_DISPOSITION_QUOTA,
   DEMO_SCENARIO_SEQUENCE,
   DEMO_SELECTION_VERSION,
   DEMO_SKIP_EVENT_CODE,
@@ -188,8 +189,8 @@ it('the Demo User signs in on the normal Login endpoint and gets the fixed ten, 
 
   const defs = await ScenarioDefinition.find({ scenario_id: { $in: runs.map((r) => r.scenario_id) }, active: true })
   assert.equal(defs.length, 10, 'every demo id is an active bank definition')
-  assert.equal(defs.filter((d) => d.disposition === 'malicious').length, 6)
-  assert.equal(defs.filter((d) => d.disposition === 'legitimate').length, 4)
+  assert.equal(defs.filter((d) => d.disposition === 'malicious').length, DEMO_DISPOSITION_QUOTA.malicious)
+  assert.equal(defs.filter((d) => d.disposition === 'legitimate').length, DEMO_DISPOSITION_QUOTA.legitimate)
 })
 
 it('signing in as the Demo User with another name keeps the demo profile and its name (N1)', async () => {
@@ -222,7 +223,7 @@ it('the demo learner payload never carries a classification or the demo internal
     'selection', DEMO_SELECTION_VERSION, 'demo-fixed', 'expected_action', 'evaluation', 'seed']) {
     assert.ok(!text.includes(leaked), `learner payload leaked ${leaked}`)
   }
-  assert.equal(payload.run.scenario_id, 'W01')
+  assert.equal(payload.run.scenario_id, 'W14')
 })
 
 it('a normal learner is not a demo learner and keeps the unchanged selector', async () => {
@@ -310,7 +311,7 @@ it('the Demo User can skip: one 0-point ledger event, run closed, next scenario 
 
   const next = await currentRun(cookie, attempt.attempt_id)
   assert.equal(next.run.ordinal, 2)
-  assert.equal(next.run.scenario_id, 'E01')
+  assert.equal(next.run.scenario_id, 'E08')
 })
 
 it('a skip mid-scenario keeps the ledger valid and awards and deducts nothing itself', async () => {

@@ -39,7 +39,22 @@
  * printed "90 minutes" as every learner's completion time. The deviation from the plan is
  * deliberate and is recorded in PROJECT_MASTER_PLAN.md 16.12.
  */
-export const ASSESSMENT_TIME_LIMIT_MS = 90 * 60 * 1000
+export const ASSESSMENT_TIME_LIMIT_MS = 30 * 60 * 1000
+
+/**
+ * Instructor-configurable assessment duration (Admin -> Settings).
+ *
+ * A closed list, in minutes: these five values are the ONLY durations the configuration
+ * may hold, and the server rejects anything else. The default for a fresh or unset
+ * configuration is 30 minutes (ASSESSMENT_TIME_LIMIT_MS; changed from C1's original 90 on
+ * client request, 5 Oct 2026). A stored setting is never rewritten by this default.
+ *
+ * The configured value is a DEFAULT for new attempts only. `createAttempt()` snapshots it
+ * into the attempt's own `time_limit_ms` / `expires_at`, and the model freezes both, so a
+ * later change can never lengthen or shorten an attempt that has already started.
+ */
+export const ASSESSMENT_DURATION_OPTIONS_MINUTES = [30, 45, 60, 75, 90]
+export const ASSESSMENT_DURATION_DEFAULT_MINUTES = ASSESSMENT_TIME_LIMIT_MS / 60000
 
 /**
  * Bounds for any future instructor-configurable duration.

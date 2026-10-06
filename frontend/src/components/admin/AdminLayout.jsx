@@ -8,12 +8,13 @@ import {
   Menu,
   ScrollText,
   Settings,
-  ShieldCheck,
   UserRound,
   X,
 } from 'lucide-react'
+import satarkLogo from '@/assets/images/logo_satark.jpeg'
 import { Alert } from '@/components/ui/Alert'
 import { Button } from '@/components/ui/Button'
+import { BRAND_NAME } from '@/constants/app'
 import { ROUTES } from '@/constants/routes'
 import { adminApi } from '@/services/adminApi'
 import { cn } from '@/utils/cn'
@@ -35,7 +36,7 @@ import { cn } from '@/utils/cn'
  */
 
 /** The admin content column: wide on a desktop, centred on an ultra-wide screen. */
-const CONTAINER = 'mx-auto w-full max-w-admin px-4 sm:px-5 lg:px-6'
+const CONTAINER = 'mx-auto w-full max-w-admin px-4 sm:px-6 lg:px-8'
 
 const NAV = [
   { to: ROUTES.ADMIN, label: 'Dashboard', icon: LayoutDashboard, end: true },
@@ -140,14 +141,18 @@ export function AdminLayout() {
       >
         <div className="flex items-center justify-between gap-2 px-4 pb-4 pt-5">
           <div className="flex min-w-0 items-center gap-3">
-            <span className="grid size-9 shrink-0 place-items-center rounded-md bg-console-accent-soft text-console-accent ring-1 ring-console-accent/30">
-              <ShieldCheck size={18} aria-hidden="true" />
-            </span>
+            <img
+              src={satarkLogo}
+              alt=""
+              width={813}
+              height={496}
+              className="h-9 w-auto max-w-none shrink-0 rounded-md ring-1 ring-console-accent/30"
+            />
             <div className="min-w-0 leading-tight">
-              <p className="truncate text-sm font-bold tracking-wide text-console-text">
-                Instructor console
+              <p className="truncate text-sm font-bold tracking-[0.08em] text-console-text">
+                {BRAND_NAME}
               </p>
-              <p className="truncate text-xs text-console-muted">Fraud assessment system</p>
+              <p className="truncate text-xs text-console-muted">Instructor console</p>
             </div>
           </div>
           <button
@@ -276,7 +281,7 @@ export function AdminLayout() {
         </div>
       </header>
 
-      <main id="admin-main" tabIndex={-1} className="py-5 focus:outline-none lg:py-6">
+      <main id="admin-main" tabIndex={-1} className="py-6 focus:outline-none lg:py-8">
         <div className={CONTAINER}>
           {error && (
             <Alert variant="danger" className="mb-section">

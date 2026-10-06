@@ -78,6 +78,45 @@ export function RateBars({ rows, formatValue, evidence, caption }) {
   )
 }
 
+/**
+ * Horizontal bars of counts, each a share of `total`.
+ *
+ * `rows` are `{ key, label, count, swatch }`. Unlike ColumnChart, a zero row keeps its
+ * label and prints "0", so an empty category is visible rather than missing.
+ */
+export function CountBars({ rows, total, caption, unit = 'attempts', unitOne = 'attempt' }) {
+  return (
+    <ul aria-label={caption} className="space-y-4">
+      {rows.map((row, index) => {
+        const share = total > 0 ? row.count / total : 0
+        return (
+          <li key={row.key} className="grid grid-cols-[5.5rem_minmax(0,1fr)_auto] items-center gap-x-4">
+            <span className="text-sm font-semibold tabular-nums">{row.label}</span>
+            <span aria-hidden="true" className="block h-3 w-full overflow-hidden rounded-full bg-chart-track">
+              {row.count > 0 && (
+                <span
+                  className={cn(
+                    'block h-full origin-left rounded-full transition-[width] duration-500 ease-out motion-safe:animate-grow-x',
+                    row.swatch,
+                  )}
+                  style={{ width: `${Math.max(share * 100, 2)}%`, animationDelay: `${index * 60}ms` }}
+                />
+              )}
+            </span>
+            <span className="min-w-[6.5rem] text-right text-sm tabular-nums">
+              <span className="font-bold">{row.count}</span>{' '}
+              <span className="text-text-muted">
+                {row.count === 1 ? unitOne : unit}
+                {total > 0 && ` · ${Math.round(share * 100)}%`}
+              </span>
+            </span>
+          </li>
+        )
+      })}
+    </ul>
+  )
+}
+
 /** The largest count rounded up to a clean axis maximum, and its tick values. */
 function axisFor(maxValue) {
   if (maxValue <= 0) return { max: 1, ticks: [0, 1] }

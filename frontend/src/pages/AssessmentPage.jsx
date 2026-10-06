@@ -25,7 +25,7 @@ const EMPTY_ANSWER = { judgement: '', action: '', reason: '' }
  * candidate's three choices - nothing else.
  */
 export function AssessmentPage() {
-  useDocumentTitle('Assessment')
+  useDocumentTitle()
 
   const navigate = useNavigate()
   const { clearSession } = useCandidate()

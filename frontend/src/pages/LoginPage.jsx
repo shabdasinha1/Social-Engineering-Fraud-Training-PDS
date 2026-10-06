@@ -15,8 +15,8 @@ import { Button } from '@/components/ui/Button'
 import { FormField } from '@/components/ui/FormField'
 import { Input } from '@/components/ui/Input'
 import { AuthLayout } from '@/layouts/AuthLayout'
-import { ROUTES } from '@/constants/routes'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
+import { ROUTES } from '@/constants/routes'
 import { useCandidate } from '@/hooks/useCandidate'
 import { isInfrastructureError } from '@/services/apiClient'
 import { validateIdentifier, validateName } from '@/utils/validation'
@@ -69,7 +69,7 @@ function panelStatus({ storageFailure, retrying, foundProfile, submitting, check
  * service number in full, so the profile-found card cannot print either even by mistake.
  */
 export function LoginPage() {
-  useDocumentTitle('Start Training')
+  useDocumentTitle()
 
   const navigate = useNavigate()
   const { candidate, checking, sessionError, retrySession, signIn, signOut } = useCandidate()
@@ -275,8 +275,9 @@ export function LoginPage() {
               </FormField>
 
               {/*
-                Specification section 2 names this field "Personal / Service Number", and
-                the same section's login data contract says: "Do not add password, Aadhaar,
+                Specification section 2 names this field "Personal / Service Number"; the
+                visible label reads "Service Number" at the client's request (5 Oct 2026). The
+                same section's login data contract says: "Do not add password, Aadhaar,
                 phone, email, rank or real unit fields to Version 1."
 
                 The label previously read "Phone / Service Number" with a hint asking for a
@@ -293,8 +294,8 @@ export function LoginPage() {
               */}
               <FormField
                 id="identifier"
-                label="Personal / Service Number"
-                hint="The personal or service number issued to you."
+                label="Service Number"
+                hint="The service number issued to you."
                 error={errors.identifier}
                 required
               >
@@ -309,7 +310,7 @@ export function LoginPage() {
                     onBlur={handleBlur('identifier')}
                     invalid={Boolean(errors.identifier)}
                     aria-describedby={describedBy}
-                    placeholder="Enter your personal or service number"
+                    placeholder="Enter your service number"
                     inputMode="text"
                     autoComplete="off"
                     maxLength={20}
@@ -325,7 +326,7 @@ export function LoginPage() {
                 loading={submitting}
                 className={`mt-1 ${ENTRY_CTA}`}
               >
-                Start Training
+                Start Assessment
                 {!submitting && <ArrowRight size={19} aria-hidden="true" className={CTA_ARROW} />}
               </Button>
             </form>
@@ -380,7 +381,7 @@ function ProfileFoundState({ headingRef, profile, onContinue, onUseDifferent }) 
             <dd className="font-semibold text-text">{profile.display_name}</dd>
           </div>
           <div>
-            <dt className="text-sm text-text-muted">Personal / Service Number</dt>
+            <dt className="text-sm text-text-muted">Service Number</dt>
             <dd className="font-semibold tabular-nums text-text">
               {profile.service_no_masked}
               <span className="sr-only">
